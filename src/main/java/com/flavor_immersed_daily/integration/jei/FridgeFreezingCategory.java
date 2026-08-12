@@ -1,7 +1,7 @@
-package com.flavor_immersed_daily.jei;
+package com.flavor_immersed_daily.integration.jei;
 
 import com.flavor_immersed_daily.FlavorImmersedDaily;
-import com.flavor_immersed_daily.recipe.FridgeTemperingRecipe;
+import com.flavor_immersed_daily.recipe.FridgeFreezingRecipe;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
@@ -15,27 +15,27 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 
-public class FridgeTemperingCategory implements IRecipeCategory<FridgeTemperingRecipe> {
+public class FridgeFreezingCategory implements IRecipeCategory<FridgeFreezingRecipe> {
 
-    public static final RecipeType<FridgeTemperingRecipe> TYPE =
-            RecipeType.create(FlavorImmersedDaily.MODID, "fridge_tempering", FridgeTemperingRecipe.class);
+    public static final RecipeType<FridgeFreezingRecipe> TYPE =
+            RecipeType.create(FlavorImmersedDaily.MODID, "fridge_freezing", FridgeFreezingRecipe.class);
 
     private final IDrawable background;
     private final IDrawable icon;
 
-    public FridgeTemperingCategory(IGuiHelper helper) {
+    public FridgeFreezingCategory(IGuiHelper helper) {
         this.background = helper.createBlankDrawable(120, 36);
         this.icon = helper.createDrawableItemStack(new ItemStack(FlavorImmersedDaily.FRIDGE_ITEM.get()));
     }
 
     @Override
-    public RecipeType<FridgeTemperingRecipe> getRecipeType() {
+    public RecipeType<FridgeFreezingRecipe> getRecipeType() {
         return TYPE;
     }
 
     @Override
     public Component getTitle() {
-        return Component.translatable("jei." + FlavorImmersedDaily.MODID + ".fridge_tempering");
+        return Component.translatable("jei." + FlavorImmersedDaily.MODID + ".fridge_freezing");
     }
 
     @Override
@@ -49,7 +49,7 @@ public class FridgeTemperingCategory implements IRecipeCategory<FridgeTemperingR
     }
 
     @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, FridgeTemperingRecipe recipe, IFocusGroup focuses) {
+    public void setRecipe(IRecipeLayoutBuilder builder, FridgeFreezingRecipe recipe, IFocusGroup focuses) {
         builder.addSlot(RecipeIngredientRole.INPUT, 1, 10)
                 .addIngredients(recipe.getIngredient());
         builder.addSlot(RecipeIngredientRole.OUTPUT, 83, 10)
@@ -57,7 +57,7 @@ public class FridgeTemperingCategory implements IRecipeCategory<FridgeTemperingR
     }
 
     @Override
-    public void draw(FridgeTemperingRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics,
+    public void draw(FridgeFreezingRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics,
                      double mouseX, double mouseY) {
         guiGraphics.drawString(Minecraft.getInstance().font, "→", 46, 14, 0xFF808080, false);
     }

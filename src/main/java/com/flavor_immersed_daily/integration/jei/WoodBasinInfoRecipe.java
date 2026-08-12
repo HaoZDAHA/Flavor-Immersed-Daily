@@ -1,4 +1,4 @@
-package com.flavor_immersed_daily.jei;
+package com.flavor_immersed_daily.integration.jei;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;

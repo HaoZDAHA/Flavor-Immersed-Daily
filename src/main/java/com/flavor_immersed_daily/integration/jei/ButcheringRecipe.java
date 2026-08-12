@@ -1,4 +1,4 @@
-package com.flavor_immersed_daily.jei;
+package com.flavor_immersed_daily.integration.jei;
 
 import net.minecraft.world.item.ItemStack;
 
