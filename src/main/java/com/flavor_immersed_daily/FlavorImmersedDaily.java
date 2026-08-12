@@ -1722,7 +1722,7 @@ public class FlavorImmersedDaily {
     public static final DeferredItem<Item> DIECEDPRESERVEDEGG = ITEMS.register("diecedpreservedegg", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> CUTDIECEDPRESERVEEGG = ITEMS.register("cutdiecedpreserveegg", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> DICEDSWEETPOTATO = ITEMS.register("dicedsweetpotato", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> PURPLEDICEDSWEETPOTATO = ITEMS.register("purpleDICEDSWEETPOTATO", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> PURPLEDICEDSWEETPOTATO = ITEMS.register("purpledicedsweetpotato", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> PROCESSEDCABBAGE = ITEMS.register("processedcabbage", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> DICEDTOMATO = ITEMS.register("dicedtomato", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> CUTCABBAGE = ITEMS.register("cutcabbage", () -> new Item(new Item.Properties()));

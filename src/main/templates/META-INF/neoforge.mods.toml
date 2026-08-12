@@ -50,8 +50,8 @@ A Minecraft mod that brings the warmth of daily life and culinary delights into 
 '''
 
 # The [[mixins]] block allows you to declare your mixin config to FML so that it gets loaded.
-#[[mixins]]
-#config="${mod_id}.mixins.json"
+[[mixins]]
+config="${mod_id}.mixins.json"
 
 # The [[accessTransformers]] block allows you to declare where your AT file is.
 # If this block is omitted, a fallback attempt will be made to load an AT from META-INF/accesstransformer.cfg
@@ -84,6 +84,14 @@ A Minecraft mod that brings the warmth of daily life and culinary delights into 
     modId="jei"
     type="optional"
     versionRange="[${jei_version},)"
+    ordering="NONE"
+    side="CLIENT"
+
+# EMI - optional dependency for recipe viewing
+[[dependencies.${mod_id}]]
+    modId="emi"
+    type="optional"
+    versionRange="[${emi_version},)"
     ordering="NONE"
     side="CLIENT"
 
