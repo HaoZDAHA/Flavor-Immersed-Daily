@@ -4,9 +4,9 @@
   "experience": 1,
   "cookingtime": 20,
   "ingredient": {
-    "item": "flavor_immersed_daily:whitebrownsugarsyrup"
+    "item": "flavor_immersed_daily:whitesugarsyrup"
   },
   "result": {
-    "id": "flavor_immersed_daily:brownbrownsugarsyrup"
+    "id": "flavor_immersed_daily:brownsugarsyrup"
   }
 }

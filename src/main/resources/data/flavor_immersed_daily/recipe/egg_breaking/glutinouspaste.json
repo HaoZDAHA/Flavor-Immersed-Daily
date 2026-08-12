@@ -1,0 +1,11 @@
+{
+  "type": "flavor_immersed_daily:egg_breaking",
+  "shaped": false,
+  "ingredients": [
+    { "item": "flavor_immersed_daily:rawglutinousdough" }
+  ],
+  "results": [
+    { "id": "flavor_immersed_daily:rawglutinouspaste", "count": 6 }
+  ],
+  "cookingTime": 60
+}

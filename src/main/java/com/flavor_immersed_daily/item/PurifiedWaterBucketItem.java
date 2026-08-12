@@ -102,6 +102,6 @@ public class PurifiedWaterBucketItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, context, tooltip, flag);
-        tooltip.add(Component.literal("右键水方块可获得纯净水，并消耗一点耐久").withStyle(ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("tooltip.flavor_immersed_daily.purified_water_bucket").withStyle(ChatFormatting.GRAY));
     }
 }

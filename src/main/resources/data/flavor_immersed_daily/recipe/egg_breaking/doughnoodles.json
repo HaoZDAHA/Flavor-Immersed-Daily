@@ -1,0 +1,11 @@
+{
+  "type": "flavor_immersed_daily:egg_breaking",
+  "shaped": false,
+  "ingredients": [
+    { "tag": "c:dough" }
+  ],
+  "results": [
+    { "id": "flavor_immersed_daily:rawnoodles", "count": 3 }
+  ],
+  "cookingTime": 60
+}

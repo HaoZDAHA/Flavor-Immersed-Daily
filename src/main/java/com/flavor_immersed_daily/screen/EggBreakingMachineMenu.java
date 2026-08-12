@@ -10,7 +10,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingInput;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 
@@ -23,7 +22,7 @@ public class EggBreakingMachineMenu extends AbstractContainerMenu {
     private static final int PLAYER_INV_START = 9;
     private static final int PLAYER_HOTBAR_START = 36;
 
-    private final SimpleContainer craftContainer;   // 9 槽：3×3 输入
+    private final SimpleContainer craftContainer;   // 9 槽：3×3 输入（引用 BlockEntity 的库存）
     private final ContainerLevelAccess access;
     private final Player player;
 
@@ -35,22 +34,17 @@ public class EggBreakingMachineMenu extends AbstractContainerMenu {
         this(containerId, playerInventory, new SimpleContainer(9), ContainerLevelAccess.NULL);
     }
 
-    // 服务端构造
-    public EggBreakingMachineMenu(int containerId, Inventory playerInventory, ContainerLevelAccess access) {
-        this(containerId, playerInventory, new SimpleContainer(9), access);
-    }
-
-    private EggBreakingMachineMenu(int containerId, Inventory playerInventory,
-                                   SimpleContainer craftContainer, ContainerLevelAccess access) {
+    // 服务端构造 — 传入 BlockEntity 的库存
+    public EggBreakingMachineMenu(int containerId, Inventory playerInventory,
+                                  SimpleContainer craftContainer, ContainerLevelAccess access) {
         super(FlavorImmersedDaily.EGG_BREAKING_MACHINE_MENU.get(), containerId);
         this.craftContainer = craftContainer;
         this.access = access;
         this.player = playerInventory.player;
         craftContainer.startOpen(player);
-        // 注册监听器，让 SimpleContainer 在物品变化时立即调用 slotsChanged
         craftContainer.addListener(container -> EggBreakingMachineMenu.this.slotsChanged(container));
 
-        // 3×3 输入网格 — 在 craftContainer 上
+        // 3×3 输入网格 — 引用 craftContainer（即 BlockEntity 的库存）
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 3; col++) {
                 this.addSlot(new Slot(craftContainer, col + row * 3, 30 + col * 18, 17 + row * 18));
@@ -82,13 +76,15 @@ public class EggBreakingMachineMenu extends AbstractContainerMenu {
     @Override
     public boolean clickMenuButton(Player player, int id) {
         if (id >= 0 && id < matchingRecipes.size()) {
-            // 只有服务端才执行实际操作
             if (!player.level().isClientSide()) {
                 access.execute((level, pos) -> {
-                    EggBreakingRecipe recipe = matchingRecipes.get(id).value();
-                    consumeInputs(recipe);
                     if (level.getBlockEntity(pos) instanceof EggBreakingMachineBlockEntity be) {
-                        be.startProcessing(recipe);
+                        EggBreakingRecipe recipe = matchingRecipes.get(id).value();
+                        int sets = be.countCompleteSets(recipe);
+                        if (sets > 0) {
+                            be.consumeSets(recipe, sets);
+                            be.startProcessing(recipe, sets);
+                        }
                     }
                 });
                 player.closeContainer();
@@ -100,7 +96,6 @@ public class EggBreakingMachineMenu extends AbstractContainerMenu {
 
     @Override
     public void slotsChanged(Container container) {
-        // 只响应 craftContainer 的变化
         if (container != this.craftContainer) {
             super.slotsChanged(container);
             return;
@@ -139,16 +134,6 @@ public class EggBreakingMachineMenu extends AbstractContainerMenu {
         super.slotsChanged(container);
     }
 
-    private void consumeInputs(EggBreakingRecipe recipe) {
-        List<Ingredient> ingredients = recipe.getIngredients();
-        int count = Math.min(ingredients.size(), 9);
-        for (int i = 0; i < count; i++) {
-            if (!ingredients.get(i).isEmpty()) {
-                craftContainer.removeItem(i, 1);
-            }
-        }
-    }
-
     @Override
     public ItemStack quickMoveStack(Player player, int index) {
         ItemStack result = ItemStack.EMPTY;
@@ -184,8 +169,6 @@ public class EggBreakingMachineMenu extends AbstractContainerMenu {
     @Override
     public void removed(Player player) {
         super.removed(player);
-        if (!player.level().isClientSide()) {
-            clearContainer(player, craftContainer);
-        }
+        // 物品存储在 BlockEntity 的库存中，不丢弃
     }
 }

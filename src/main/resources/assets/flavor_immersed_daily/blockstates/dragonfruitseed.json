@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "age=0": { "model": "flavor_immersed_daily:block/dragonfruitseed_stage0" },
+    "age=1": { "model": "flavor_immersed_daily:block/dragonfruitseed_stage1" },
+    "age=2": { "model": "flavor_immersed_daily:block/dragonfruitseed_stage2" },
+    "age=3": { "model": "flavor_immersed_daily:block/dragonfruitseed_stage3" }
+  }
+}

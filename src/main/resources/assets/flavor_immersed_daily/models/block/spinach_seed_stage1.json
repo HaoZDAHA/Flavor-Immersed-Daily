@@ -1,0 +1,38 @@
+{
+    "parent": "block/block",
+    "render_type": "minecraft:cutout",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "flavor_immersed_daily:block/spinach_seed0",
+		"particle": "flavor_immersed_daily:block/spinach_seed0"
+	},
+	"elements": [
+		{
+			"from": [7.87868, -1, 5.12132],
+			"to": [7.87868, 4, 11.12132],
+			"rotation": {"angle": 45, "axis": "y", "origin": [7.87868, 6.5, 8.12132]},
+			"faces": {
+				"north": {"uv": [0, 0, 0, 4], "texture": "#0"},
+				"east": {"uv": [0, 2, 6, 7], "texture": "#0"},
+				"south": {"uv": [0, 0, 0, 4], "texture": "#0"},
+				"west": {"uv": [0, 2, 6, 7], "texture": "#0"},
+				"up": {"uv": [0, 16, 0, 0], "texture": "#0"},
+				"down": {"uv": [0, 0, 0, 16], "texture": "#0"}
+			}
+		},
+		{
+			"from": [7.87868, -1, 5.12132],
+			"to": [7.87868, 4, 11.12132],
+			"rotation": {"angle": -45, "axis": "y", "origin": [7.87868, 1.5, 8.12132]},
+			"faces": {
+				"north": {"uv": [0, 0, 0, 4], "texture": "#0"},
+				"east": {"uv": [0, 2, 6, 7], "texture": "#0"},
+				"south": {"uv": [0, 0, 0, 4], "texture": "#0"},
+				"west": {"uv": [0, 2, 6, 7], "texture": "#0"},
+				"up": {"uv": [0, 16, 0, 0], "texture": "#0"},
+				"down": {"uv": [0, 0, 0, 16], "texture": "#0"}
+			}
+		}
+	],
+	"format_version": "1.21.11"
+}

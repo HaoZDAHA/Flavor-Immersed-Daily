@@ -1,0 +1,37 @@
+{
+    "parent": "block/block",
+    "render_type": "minecraft:cutout",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "flavor_immersed_daily:block/scallion_seed",
+		"particle": "flavor_immersed_daily:block/scallion_seed"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 1],
+			"to": [22, 6, 1],
+			"rotation": {"angle": -45, "axis": "y", "origin": [1, 1, 1]},
+			"faces": {
+				"north": {"uv": [0, 0, 5.5, 5.5], "texture": "#0"},
+				"east": {"uv": [0, 0, 0, 16], "texture": "#0"},
+				"south": {"uv": [0, 0, 5.5, 5.5], "texture": "#0"},
+				"west": {"uv": [0, 0, 0, 16], "texture": "#0"},
+				"up": {"uv": [0, 0, 16, 0], "texture": "#0"},
+				"down": {"uv": [0, 0, 16, 0], "texture": "#0"}
+			}
+		},
+		{
+			"from": [-2.92893, 0, 8.07107],
+			"to": [19.07107, 6, 8.07107],
+			"rotation": {"angle": 45, "axis": "y", "origin": [8.07107, 11, 8.07107]},
+			"faces": {
+				"north": {"uv": [0, 0, 5.5, 5.5], "texture": "#0"},
+				"east": {"uv": [0, 0, 0, 16], "texture": "#0"},
+				"south": {"uv": [0, 0, 5.5, 5.5], "texture": "#0"},
+				"west": {"uv": [0, 0, 0, 16], "texture": "#0"},
+				"up": {"uv": [0, 0, 16, 0], "texture": "#0"},
+				"down": {"uv": [0, 0, 16, 0], "texture": "#0"}
+			}
+		}
+	]
+}

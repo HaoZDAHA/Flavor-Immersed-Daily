@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "ripe=true": { "model": "flavor_immersed_daily:block/cinnamonwood_stage0" },
+    "ripe=false": { "model": "flavor_immersed_daily:block/cinnamonwood_stage1" }
+  }
+}

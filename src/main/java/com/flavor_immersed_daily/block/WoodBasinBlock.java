@@ -35,9 +35,9 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * 木盆 — 6px碰撞体积，右键纯净水装水 / bledchicken漂洗 / 放入水果踩踏成果酱
+ * 木盆 — 6px碰撞体积，右键纯净水装水 / chickenwithoutblood漂洗 / 放入水果踩踏成果酱
  * WATERED: false=空盆, true=有水
- * HAS_CHICKEN: false=无鸡, true=盆中有bledchicken
+ * HAS_CHICKEN: false=无鸡, true=盆中有chickenwithoutblood
  * HAS_FRUIT: false=无水果, true=盆中有水果
  */
 public class WoodBasinBlock extends BaseEntityBlock {
@@ -138,8 +138,8 @@ public class WoodBasinBlock extends BaseEntityBlock {
         boolean hasChicken = state.getValue(HAS_CHICKEN);
         boolean hasFruit = state.getValue(HAS_FRUIT);
 
-        // === bledchicken 放上水盆 ===
-        if (watered && !hasChicken && !hasFruit && stack.is(FlavorImmersedDaily.BLEDCHICKEN.get())) {
+        // === chickenwithoutblood 放上水盆 ===
+        if (watered && !hasChicken && !hasFruit && stack.is(FlavorImmersedDaily.CHICKENWITHOUTBLOOD.get())) {
             if (!level.isClientSide) {
                 level.setBlock(pos, state.setValue(HAS_CHICKEN, true), 3);
                 if (!player.getAbilities().instabuild) {
@@ -150,13 +150,13 @@ public class WoodBasinBlock extends BaseEntityBlock {
             return ItemInteractionResult.sidedSuccess(level.isClientSide);
         }
 
-        // === 漂洗完，取回pluckedchicken + 战利品 ===
+        // === 漂洗完，取回chickenwithoutfeather + 战利品 ===
         if (hasChicken) {
             if (!level.isClientSide) {
                 level.setBlock(pos, state.setValue(WATERED, false).setValue(HAS_CHICKEN, false), 3);
                 level.addFreshEntity(new ItemEntity(level,
                         pos.getX() + 0.5, pos.getY() + 0.7, pos.getZ() + 0.5,
-                        new ItemStack(FlavorImmersedDaily.PLUCKEDCHICKEN.get())));
+                        new ItemStack(FlavorImmersedDaily.CHICKENWITHOUTFEATHER.get())));
                 for (String itemId : Config.washedChickenDrops) {
                     Item item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemId));
                     if (item != null) {
@@ -224,7 +224,7 @@ public class WoodBasinBlock extends BaseEntityBlock {
             if (state.getValue(HAS_CHICKEN)) {
                 level.addFreshEntity(new ItemEntity(level,
                         pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
-                        new ItemStack(FlavorImmersedDaily.BLEDCHICKEN.get())));
+                        new ItemStack(FlavorImmersedDaily.CHICKENWITHOUTBLOOD.get())));
             }
             if (state.getValue(HAS_FRUIT)) {
                 BlockEntity be = level.getBlockEntity(pos);

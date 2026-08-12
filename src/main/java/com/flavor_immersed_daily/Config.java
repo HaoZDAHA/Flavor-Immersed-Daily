@@ -18,7 +18,7 @@ public class Config {
             .comment("每个区块内最多同时存在的果实实体数量（包括所有种类的水果）")
             .defineInRange("maxFruitsPerChunk", 5, 1, 100);
 
-    // ===== 香油滑步效果配置 =====
+    //香油滑步效果配置
     public static final ModConfigSpec.BooleanValue SESAME_SLIP_ENABLED = BUILDER
             .comment("香油滑步（sesame_slip）效果总开关，关闭后食用黄油不再获得该效果")
             .define("sesameSlipEnabled", true);
@@ -26,7 +26,7 @@ public class Config {
             .comment("芝麻滑行效果下实体的行走高度（格），默认 2.1")
             .defineInRange("sesameSlipHeight", 2.1, 0.0, 10.0);
 
-    // ===== 醋酸侵蚀效果配置 =====
+    //醋酸侵蚀效果配置
     public static final ModConfigSpec.BooleanValue ACETIC_EROSION_ENABLED = BUILDER
             .comment("醋酸侵蚀（acetic_erosion）效果总开关，关闭后食用醋不再获得该效果")
             .define("aceticErosionEnabled", true);
@@ -34,7 +34,7 @@ public class Config {
             .comment("醋酸侵蚀效果下，被攻击者每次盔甲耐久损耗时额外增加的损耗值，默认 1")
             .defineInRange("aceticErosionExtraDurability", 1, 0, 100);
 
-    // ===== 黄油投手效果配置 =====
+    //黄油投手效果配置
     public static final ModConfigSpec.BooleanValue BUTTER_PITCHER_ENABLED = BUILDER
             .comment("黄油投手（butter_pitcher）效果总开关，关闭后弹射物命中不再触发冻结")
             .define("butterPitcherEnabled", true);
@@ -48,7 +48,7 @@ public class Config {
             .comment("黄油投手效果是否跳过Boss实体（末影龙、凋灵、循声守卫），默认 true")
             .define("butterPitcherExcludeBoss", true);
 
-    // ===== 蘸豆，爽！效果配置 =====
+    //蘸豆，爽！效果配置
     public static final ModConfigSpec.BooleanValue BEAN_FURY_ENABLED = BUILDER
             .comment("蘸豆，爽！（bean_fury）效果总开关，关闭后近战攻击不再触发额外暴击")
             .define("beanFuryEnabled", true);
@@ -56,7 +56,7 @@ public class Config {
             .comment("蘸豆，爽！效果下近战攻击触发暴击的概率（0.0-1.0），默认 0.25")
             .defineInRange("beanFuryCritChance", 0.25, 0.0, 1.0);
 
-    // ===== 百味之基效果配置 =====
+    //百味之基效果配置
     public static final ModConfigSpec.BooleanValue FLAVOR_BASE_ENABLED = BUILDER
             .comment("百味之基（flavor_base）效果总开关，关闭后不再触发与生效")
             .define("flavorBaseEnabled", true);
@@ -70,7 +70,7 @@ public class Config {
             .comment("百味之基效果下，加成最多叠加的次数，默认 10")
             .defineInRange("flavorBaseMaxStacks", 10, 1, 100);
 
-    // ===== 晒足一百八十天效果配置 =====
+    //晒足一百八十天效果配置
     public static final ModConfigSpec.BooleanValue SOLAR_BREW_ENABLED = BUILDER
             .comment("晒足一百八十天（solar_brew）效果总开关，关闭后不再触发与生效")
             .define("solarBrewEnabled", true);
@@ -81,12 +81,12 @@ public class Config {
             .comment("晒足一百八十天效果下，攻击亡灵生物时的额外火焰伤害，默认 0.5")
             .defineInRange("solarBrewUndeadFireDamage", 0.5, 0.0, 100.0);
 
-    // ===== 浩克大葱效果配置 =====
+    //浩克大葱效果配置
     public static final ModConfigSpec.BooleanValue HULK_LEEK_ENABLED = BUILDER
             .comment("浩克大葱（hulk_leek）效果总开关，关闭后不再触发与生效")
             .define("hulkLeekEnabled", true);
 
-    // ===== 火爆狂攻效果配置 =====
+    //火爆狂攻效果配置
     public static final ModConfigSpec.BooleanValue FURY_ASSAULT_ENABLED = BUILDER
             .comment("火爆狂攻（fury_assault）效果总开关，关闭后不再触发与生效")
             .define("furyAssaultEnabled", true);
@@ -100,7 +100,7 @@ public class Config {
             .comment("火爆狂攻效果下，范围内生物受到的火焰伤害，默认 2.0")
             .defineInRange("furyAssaultFireDamage", 2.0, 0.0, 100.0);
 
-    // ===== 屠宰战利品配置 =====
+    //屠宰战利品配置 butcher item
     private static final String DROP_COMMENT =
             "屠宰阶段掉落物，逗号分隔的物品ID（格式: modid:item_id）。空字符串表示不掉落。";
 
@@ -155,12 +155,12 @@ public class Config {
             .comment("猪 - stage5→0 (sharpknife切肉)")
             .define("pigDrop5", "flavor_immersed_daily:rawpigtenderloin,flavor_immersed_daily:rawpigstreakypork,flavor_immersed_daily:rawpigstreakypork,minecraft:porkchop,minecraft:porkchop,minecraft:porkchop,flavor_immersed_daily:rawpigsparerib,flavor_immersed_daily:rawpigsparerib");
 
-    // 鸡 chicken（特殊：deadchicken→1→2→右键, pluckedchicken→5→6→0）
+    // 鸡 chicken（特殊：deadchicken→1→2→右键, chickenwithoutfeather→5→6→0）
     public static final ModConfigSpec.ConfigValue<String> CHICKEN_DROP_1 = BUILDER
             .comment("鸡 - deadchicken→stage1→2 (wideedgedknife放血)")
             .define("chickenDrop1", "flavor_immersed_daily:rawchickenblood");
     public static final ModConfigSpec.ConfigValue<String> CHICKEN_DROP_5 = BUILDER
-            .comment("鸡 - pluckedchicken→stage5→6 (sharpknife掏空)")
+            .comment("鸡 - chickenwithoutfeather→stage5→6 (sharpknife掏空)")
             .define("chickenDrop5", "flavor_immersed_daily:rawchickenliver,flavor_immersed_daily:rawchickenheart");
     public static final ModConfigSpec.ConfigValue<String> CHICKEN_DROP_6 = BUILDER
             .comment("鸡 - stage6→0 (sharpknife切割)")
@@ -168,7 +168,7 @@ public class Config {
 
     // ===== 木盆漂洗战利品 =====
     public static final ModConfigSpec.ConfigValue<String> WASHED_CHICKEN_DROPS = BUILDER
-            .comment("bledchicken在木盆中漂洗后的额外战利品，逗号分隔的物品ID", DROP_COMMENT)
+            .comment("chickenwithoutblood在木盆中漂洗后的额外战利品，逗号分隔的物品ID", DROP_COMMENT)
             .define("washedChickenDrops", "minecraft:feather,minecraft:feather,minecraft:feather");
 
     // ===== 野生采集物鉴定战利品 =====
@@ -183,22 +183,22 @@ public class Config {
             .define("tropicalWildFruitDrops", "flavor_immersed_daily:pineapple,flavor_immersed_daily:orange,flavor_immersed_daily:hamimelon,flavor_immersed_daily:dragonfruit,flavor_immersed_daily:lychee,flavor_immersed_daily:durian,flavor_immersed_daily:mango,flavor_immersed_daily:pawpaw,flavor_immersed_daily:banana,flavor_immersed_daily:carambola,flavor_immersed_daily:mangosteen,flavor_immersed_daily:coconut,minecraft:melon");
     public static final ModConfigSpec.ConfigValue<String> WILDFLOWERANDLEAF_DROPS = BUILDER
             .comment("野花花叶鉴定掉落物", WILD_COMMENT)
-            .define("wildFlowerAndLeafDrops", "flavor_immersed_daily:chineseleaves,flavor_immersed_daily:spinach,flavor_immersed_daily:sacllion,flavor_immersed_daily:cucumber,flavor_immersed_daily:chinesechives,flavor_immersed_daily:waxgourd,flavor_immersed_daily:greentealeaves,flavor_immersed_daily:redtealeaves,flavor_immersed_daily:cauliflower,flavor_immersed_daily:zucchini,flavor_immersed_daily:brocoil,flavor_immersed_daily:cowpea,flavor_immersed_daily:loofah,flavor_immersed_daily:kidneybean,flavor_immersed_daily:tomato,flavor_immersed_daily:aubergine,flavor_immersed_daily:celery,flavor_immersed_daily:gumbo,flavor_immersed_daily:oilseedrape,flavor_immersed_daily:cabbage");
+            .define("wildFlowerAndLeafDrops", "flavor_immersed_daily:chineseleaves,flavor_immersed_daily:spinach,flavor_immersed_daily:sacllion,flavor_immersed_daily:cucumber,flavor_immersed_daily:chinesechives,flavor_immersed_daily:waxgourd,flavor_immersed_daily:greentealeaves,flavor_immersed_daily:redtealeaves,flavor_immersed_daily:cauliflower,flavor_immersed_daily:zucchini,flavor_immersed_daily:broccoil,flavor_immersed_daily:cowpea,flavor_immersed_daily:loofah,flavor_immersed_daily:kidneybean,flavor_immersed_daily:tomato,flavor_immersed_daily:aubergine,flavor_immersed_daily:celery,flavor_immersed_daily:gumbo,flavor_immersed_daily:oilseedrape,flavor_immersed_daily:cabbage");
     public static final ModConfigSpec.ConfigValue<String> WILDFRUITINCOLDZONE_DROPS = BUILDER
             .comment("寒带野果鉴定掉落物", WILD_COMMENT)
             .define("wildFruitInColdZoneDrops", "flavor_immersed_daily:blueberry,flavor_immersed_daily:greenplum,flavor_immersed_daily:hawthorn,flavor_immersed_daily:cherry,flavor_immersed_daily:reddate,flavor_immersed_daily:walnut,flavor_immersed_daily:pistachionut");
     public static final ModConfigSpec.ConfigValue<String> WILDGRAINPLANT_DROPS = BUILDER
             .comment("野生谷物鉴定掉落物", WILD_COMMENT)
-            .define("wildGrainPlantDrops", "flavor_immersed_daily:paddyseeds,flavor_immersed_daily:milletgrain,flavor_immersed_daily:oat,flavor_immersed_daily:glutinousseeds,flavor_immersed_daily:redbeanshrub_0,flavor_immersed_daily:mungbean_0,flavor_immersed_daily:peanut,flavor_immersed_daily:kaolianggarin,flavor_immersed_daily:soybean_0,flavor_immersed_daily:buckwheat,flavor_immersed_daily:corn,flavor_immersed_daily:pea,flavor_immersed_daily:coffeebean,minecraft:wheat_seeds");
+            .define("wildGrainPlantDrops", "flavor_immersed_daily:paddyseeds,flavor_immersed_daily:millet,flavor_immersed_daily:oat,flavor_immersed_daily:glutinousseeds,flavor_immersed_daily:red_bean_block,flavor_immersed_daily:mungbean,flavor_immersed_daily:peanut,flavor_immersed_daily:kao_liang_seed,flavor_immersed_daily:soybean,flavor_immersed_daily:buckwheat,flavor_immersed_daily:corn,flavor_immersed_daily:pea,flavor_immersed_daily:coffeebeanseed,minecraft:wheat_seeds");
     public static final ModConfigSpec.ConfigValue<String> WILDMUSHROOMPLANT_DROPS = BUILDER
             .comment("野生菌菇鉴定掉落物", WILD_COMMENT)
             .define("wildMushroomPlantDrops", "minecraft:red_mushroom,minecraft:brown_mushroom,flavor_immersed_daily:whitemushroom,flavor_immersed_daily:enokimushroom,flavor_immersed_daily:tremella,flavor_immersed_daily:blackfungus,flavor_immersed_daily:fragrantmushroom,flavor_immersed_daily:pleurotuseryngii");
     public static final ModConfigSpec.ConfigValue<String> WILDSEEDPLANT_DROPS = BUILDER
             .comment("野生籽叶鉴定掉落物", WILD_COMMENT)
-            .define("wildSeedPlantDrops", "flavor_immersed_daily:aniseed_0,flavor_immersed_daily:lilac_seed,flavor_immersed_daily:cinnamon,flavor_immersed_daily:si_chuan_pepper_seed,flavor_immersed_daily:fennel,flavor_immersed_daily:greenpepper,flavor_immersed_daily:redrepper,flavor_immersed_daily:sweetgreenpepper,flavor_immersed_daily:nutmeg,flavor_immersed_daily:sesame,flavor_immersed_daily:cumin,flavor_immersed_daily:garlic,flavor_immersed_daily:ginger");
+            .define("wildSeedPlantDrops", "flavor_immersed_daily:aniseed_0,flavor_immersed_daily:lilac_seed,flavor_immersed_daily:cinnamon,flavor_immersed_daily:si_chuan_pepper_seed,flavor_immersed_daily:fennel,flavor_immersed_daily:greenpepper,flavor_immersed_daily:redrepper,flavor_immersed_daily:sweetgreenpepper,flavor_immersed_daily:nutmeg,flavor_immersed_daily:sesame,flavor_immersed_daily:cumin,flavor_immersed_daily:garlic,flavor_immersed_daily:ginger,flavor_immersed_daily:onion,flavor_immersed_daily:nutmegseed");
     public static final ModConfigSpec.ConfigValue<String> WILDTUBERPLANTS_DROPS = BUILDER
             .comment("野生块茎鉴定掉落物", WILD_COMMENT)
-            .define("wildTuberPlantsDrops", "flavor_immersed_daily:sweetpotato,flavor_immersed_daily:cassava_2,flavor_immersed_daily:radish,flavor_immersed_daily:lotusroot,flavor_immersed_daily:chineseyam,flavor_immersed_daily:purplesweetpotato,flavor_immersed_daily:onion,minecraft:potato,minecraft:carrot");
+            .define("wildTuberPlantsDrops", "flavor_immersed_daily:sweetpotato,flavor_immersed_daily:cassava,flavor_immersed_daily:radish,flavor_immersed_daily:lotusroot,flavor_immersed_daily:chineseyam,flavor_immersed_daily:purplesweetpotato,flavor_immersed_daily:mustard,flavor_immersed_daily:onion,minecraft:potato,minecraft:carrot");
 
     static final ModConfigSpec SPEC = BUILDER.build();
 

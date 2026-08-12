@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "flavor_immersed_daily:wheatflour",
+    "bakeries:flour",
+    "kaleidoscope_cookery:flour",
+    "farm_and_charm:flour"
+  ]
+}

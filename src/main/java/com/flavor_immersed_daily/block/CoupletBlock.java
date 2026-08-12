@@ -1,7 +1,7 @@
 package com.flavor_immersed_daily.block;
 
+import com.flavor_immersed_daily.client.ClientGuiHelper;
 import com.mojang.serialization.MapCodec;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionResult;
@@ -16,7 +16,6 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import com.flavor_immersed_daily.screen.CoupletEditScreen;
 
 /**
  * 对联方块 — 贴墙挂放，可编辑文字（类似原版告示牌）
@@ -74,7 +73,7 @@ public class CoupletBlock extends BaseEntityBlock {
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
         if (level.getBlockEntity(pos) instanceof CoupletBlockEntity blockEntity) {
             if (level.isClientSide) {
-                Minecraft.getInstance().setScreen(new CoupletEditScreen(blockEntity));
+                ClientGuiHelper.openCoupletEdit(blockEntity);
             }
             return InteractionResult.sidedSuccess(level.isClientSide);
         }

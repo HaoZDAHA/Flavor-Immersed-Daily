@@ -16,9 +16,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.function.Supplier;
 
-/**
- * 椰子树苗 — 手动生成弯曲树干 + 顶端小簇树叶的椰子树
- */
+//椰子树苗，树形并不好看，大家不要参考形状
+
 public class CoconutSaplingBlock extends BushBlock implements BonemealableBlock {
 
     private static final VoxelShape SHAPE = Block.box(2, 0, 2, 14, 12, 14);

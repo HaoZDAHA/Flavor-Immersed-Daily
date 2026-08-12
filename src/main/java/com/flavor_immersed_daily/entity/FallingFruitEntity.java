@@ -38,7 +38,7 @@ public class FallingFruitEntity extends Entity {
         FRUIT_CONFIGS.put("flavor_immersed_daily:apricot", new FruitConfig(0.2f, 0.15f));
         FRUIT_CONFIGS.put("flavor_immersed_daily:cherry", new FruitConfig(0.15f, 0.15f));
         FRUIT_CONFIGS.put("flavor_immersed_daily:honeypeach", new FruitConfig(0.3f, 0.15f));
-        FRUIT_CONFIGS.put("flavor_immersed_daily:honeypeach_1", new FruitConfig(0.3f, 0.15f));
+        FRUIT_CONFIGS.put("flavor_immersed_daily:lifepeach", new FruitConfig(0.3f, 0.15f));
         FRUIT_CONFIGS.put("flavor_immersed_daily:nectarine", new FruitConfig(0.28f, 0.15f));
         FRUIT_CONFIGS.put("flavor_immersed_daily:winterjujube", new FruitConfig(0.2f, 0.15f));
         

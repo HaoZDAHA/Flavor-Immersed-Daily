@@ -1,1 +1,16 @@
-{"key":{"F":{"item":"flavor_immersed_daily:cherry"}},"result":{"count":1,"id":"flavor_immersed_daily:cherrysapling"},"pattern":["FF","FF"],"type":"minecraft:crafting_shaped"}
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:cherry"
+    },
+    {
+      "tag": "flavor_immersed_daily:base_saplings"
+    }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:cherrysapling",
+    "count": 1
+  }
+}

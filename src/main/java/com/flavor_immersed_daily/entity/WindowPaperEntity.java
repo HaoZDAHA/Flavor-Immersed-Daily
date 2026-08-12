@@ -1,8 +1,8 @@
 package com.flavor_immersed_daily.entity;
 
 import com.flavor_immersed_daily.FlavorImmersedDaily;
+import com.flavor_immersed_daily.client.ClientGuiHelper;
 import com.flavor_immersed_daily.network.WindowPaperSyncPayload;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -24,7 +24,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.Nullable;
-import com.flavor_immersed_daily.screen.WindowPaperScreen;
 
 /**
  * 窗纸实体 — 贴墙挂画，可编辑像素涂鸦
@@ -138,7 +137,7 @@ public class WindowPaperEntity extends HangingEntity {
     @Override
     public InteractionResult interact(Player player, InteractionHand hand) {
         if (level().isClientSide) {
-            Minecraft.getInstance().setScreen(new WindowPaperScreen(this));
+            ClientGuiHelper.openWindowPaper(this);
         }
         return InteractionResult.sidedSuccess(level().isClientSide);
     }

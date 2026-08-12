@@ -1,0 +1,6 @@
+{
+  "type": "flavor_immersed_daily:fridge_freezing",
+  "ingredient": { "tag": "fid:rawsheep" },
+  "result": { "id": "flavor_immersed_daily:lambroll", "count": 1 },
+  "cookingTime": 80
+}

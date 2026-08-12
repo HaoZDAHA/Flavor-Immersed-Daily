@@ -14,11 +14,11 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
 /**
- * 木盆渲染器 — 渲染bledchicken浮动 / 水果小堆
+ * 木盆渲染器 — 渲染chickenwithoutblood浮动 / 水果小堆
  */
 public class WoodBasinBlockEntityRenderer implements BlockEntityRenderer<WoodBasinBlockEntity> {
 
-    private static final ItemStack BLEDCHICKEN_STACK = new ItemStack(FlavorImmersedDaily.BLEDCHICKEN.get());
+    private static final ItemStack BLEDCHICKEN_STACK = new ItemStack(FlavorImmersedDaily.CHICKENWITHOUTBLOOD.get());
 
     public WoodBasinBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
     }

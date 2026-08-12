@@ -36,6 +36,7 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipeCategories(new FridgeTemperingCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new FridgeFreezingCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new EggBreakingMachineCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new AgriculturalAppraisalMachineCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -66,10 +67,10 @@ public class JEIPlugin implements IModPlugin {
         // 鸡（特殊流程）
         addDropRecipe(recipes, FlavorImmersedDaily.DEADCHICKEN.get(), 4, 1,
                 FlavorImmersedDaily.WIDEEDGEDKNIFE.get(), "放血");
-        addDropRecipe(recipes, FlavorImmersedDaily.PLUCKEDCHICKEN.get(), 4, 5,
-                FlavorImmersedDaily.SHARPKNIFE.get(), "切肉");
+        addDropRecipe(recipes, FlavorImmersedDaily.CHICKENWITHOUTFEATHER.get(), 4, 5,
+                FlavorImmersedDaily.SHARPKNIFE.get(), "掏空");
         addDropRecipe(recipes, FlavorImmersedDaily.DEADCHICKEN.get(), 4, 6,
-                FlavorImmersedDaily.SHARPKNIFE.get(), "回收");
+                FlavorImmersedDaily.SHARPKNIFE.get(), "切割");
 
         registration.addRecipes(ButcheringRecipeCategory.TYPE, recipes);
 
@@ -92,6 +93,11 @@ public class JEIPlugin implements IModPlugin {
         List<EggBreakingRecipe> eggBreakingRecipes = new ArrayList<>();
         buildEggBreakingRecipes(eggBreakingRecipes);
         registration.addRecipes(EggBreakingMachineCategory.TYPE, eggBreakingRecipes);
+
+        // ===== 农产鉴定机 =====
+        List<AgriculturalAppraisalMachineRecipe> appraisalRecipes = new ArrayList<>();
+        buildAgriculturalAppraisalRecipes(appraisalRecipes);
+        registration.addRecipes(AgriculturalAppraisalMachineCategory.TYPE, appraisalRecipes);
     }
 
     @Override
@@ -102,11 +108,13 @@ public class JEIPlugin implements IModPlugin {
                 FridgeFreezingCategory.TYPE);
         registration.addRecipeCatalyst(new ItemStack(FlavorImmersedDaily.EGGBREAKINGMACHINE_ITEM.get()),
                 EggBreakingMachineCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(FlavorImmersedDaily.AGRICULTURALAPPRAISALMACHINE_ITEM.get()),
+                AgriculturalAppraisalMachineCategory.TYPE);
     }
 
     private void buildBasinRecipes(List<WoodBasinInfoRecipe> recipes) {
         List<ItemStack> washOutputs = new ArrayList<>();
-        washOutputs.add(new ItemStack(FlavorImmersedDaily.PLUCKEDCHICKEN.get()));
+        washOutputs.add(new ItemStack(FlavorImmersedDaily.CHICKENWITHOUTFEATHER.get()));
         for (String itemId : Config.washedChickenDrops) {
             Item item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemId));
             if (item != null) {
@@ -192,6 +200,30 @@ public class JEIPlugin implements IModPlugin {
         for (var holder : level.getRecipeManager().getRecipes()) {
             if (holder.value() instanceof EggBreakingRecipe r) {
                 recipes.add(r);
+            }
+        }
+    }
+
+    private void buildAgriculturalAppraisalRecipes(List<AgriculturalAppraisalMachineRecipe> recipes) {
+        Map<String, List<String>> wildDrops = Config.getWildDropsMap();
+        for (Map.Entry<String, List<String>> entry : wildDrops.entrySet()) {
+            String inputId = entry.getKey();
+            List<String> dropIds = entry.getValue();
+            if (dropIds.isEmpty()) continue;
+
+            Item inputItem = BuiltInRegistries.ITEM.get(ResourceLocation.parse(inputId));
+            if (inputItem == null) continue;
+
+            List<ItemStack> outputs = new ArrayList<>();
+            for (String dropId : dropIds) {
+                Item item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(dropId));
+                if (item != null) {
+                    outputs.add(new ItemStack(item));
+                }
+            }
+            if (!outputs.isEmpty()) {
+                recipes.add(new AgriculturalAppraisalMachineRecipe(
+                        new ItemStack(inputItem), outputs));
             }
         }
     }

@@ -1,1 +1,16 @@
-{"key":{"F":{"item":"flavor_immersed_daily:reddate"}},"result":{"count":1,"id":"flavor_immersed_daily:reddatesapling"},"pattern":["FF","FF"],"type":"minecraft:crafting_shaped"}
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:reddate"
+    },
+    {
+      "tag": "flavor_immersed_daily:base_saplings"
+    }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:reddatesapling",
+    "count": 1
+  }
+}

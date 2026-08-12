@@ -1,1 +1,16 @@
-{"key":{"F":{"item":"flavor_immersed_daily:greenplum"}},"result":{"count":1,"id":"flavor_immersed_daily:greenplumsapling"},"pattern":["FF","FF"],"type":"minecraft:crafting_shaped"}
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:greenplum"
+    },
+    {
+      "tag": "flavor_immersed_daily:base_saplings"
+    }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:greenplumsapling",
+    "count": 1
+  }
+}

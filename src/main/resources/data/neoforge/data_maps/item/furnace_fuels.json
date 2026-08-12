@@ -49,6 +49,7 @@
     "flavor_immersed_daily:orchardchair": {"burn_time": 300},
     "flavor_immersed_daily:stonebarkchair": {"burn_time": 300},
     "flavor_immersed_daily:vineheartchair": {"burn_time": 300},
-    "flavor_immersed_daily:verdantgracechair": {"burn_time": 300}
+    "flavor_immersed_daily:verdantgracechair": {"burn_time": 300},
+    "flavor_immersed_daily:honeycombbriquet": {"burn_time": 800}
   }
 }

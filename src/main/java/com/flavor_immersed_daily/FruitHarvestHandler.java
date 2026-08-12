@@ -7,7 +7,9 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -65,12 +67,19 @@ public class FruitHarvestHandler {
                     level.setBlock(immutablePos, searchState.setValue(FruitingLeavesBlock.FRUITING, false), 3);
                     Block.popResource(level, immutablePos, new ItemStack(leavesBlock.getFruitItem()));
                     harvested = true;
+                    // 小概率掉落稀有水果变种
+                    tryDropVariantFruit(level, immutablePos, searchBlock);
                 }
             } else if (searchBlock instanceof FallingFruitBlock fallingBlock) {
                 // 采摘悬挂的果子
                 level.removeBlock(immutablePos, false);
                 Block.popResource(level, immutablePos, new ItemStack(fallingBlock.getFruitItem()));
                 harvested = true;
+                // 小概率掉落稀有水果变种（检查上方是否有结果子树叶）
+                Block aboveBlock = findFruitingLeavesAbove(level, immutablePos);
+                if (aboveBlock != null) {
+                    tryDropVariantFruit(level, immutablePos, aboveBlock);
+                }
             }
         }
 
@@ -87,5 +96,55 @@ public class FruitHarvestHandler {
         }
 
         event.setCanceled(true);
+    }
+
+    /**
+     * 向上查找结果子树叶（用于悬挂果实掉落稀有变种）
+     */
+    private static Block findFruitingLeavesAbove(Level level, BlockPos pos) {
+        for (int i = 0; i < 5; i++) {
+            pos = pos.above();
+            BlockState state = level.getBlockState(pos);
+            if (state.getBlock() instanceof FruitingLeavesBlock) {
+                return state.getBlock();
+            }
+            if (!state.isAir() && !(state.getBlock() instanceof FruitingLeavesBlock)) {
+                // 遇到非空气非树叶方块，停止查找
+                return null;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 小概率掉落稀有水果变种（用于树叶收获事件）
+     */
+    public static void tryDropVariantFruit(Level level, BlockPos pos, Block block) {
+        RandomSource random = level.getRandom();
+        float chance = 0.15f; // 15%概率
+
+        if (block == FlavorImmersedDaily.ORANGELEAVE_FRUITING_LEAVES.get()) {
+            if (random.nextFloat() < chance) {
+                Block.popResource(level, pos, new ItemStack(FlavorImmersedDaily.BLOODORANGE.get()));
+            }
+        } else if (block == FlavorImmersedDaily.TANGERINELEAVE_FRUITING_LEAVES.get()) {
+            if (random.nextFloat() < chance) {
+                // 丑橘或枳，各50%随机
+                Item variant = random.nextBoolean() ? FlavorImmersedDaily.UGLYORANGE.get() : FlavorImmersedDaily.TANGERINE_1.get();
+                Block.popResource(level, pos, new ItemStack(variant));
+            }
+        } else if (block == FlavorImmersedDaily.SWEETMELONLEAVE_FRUITING_LEAVES.get()) {
+            if (random.nextFloat() < chance) {
+                Block.popResource(level, pos, new ItemStack(FlavorImmersedDaily.SWEETMELON_1.get()));
+            }
+        } else if (block == FlavorImmersedDaily.APPLELEAVE_FRUITING_LEAVES.get()) {
+            if (random.nextFloat() < chance) {
+                Block.popResource(level, pos, new ItemStack(FlavorImmersedDaily.GREENAPPLE.get()));
+            }
+        } else if (block == FlavorImmersedDaily.HONEYPEACHLEAVE_FRUITING_LEAVES.get()) {
+            if (random.nextFloat() < chance) {
+                Block.popResource(level, pos, new ItemStack(FlavorImmersedDaily.LIFEPEACH.get()));
+            }
+        }
     }
 }

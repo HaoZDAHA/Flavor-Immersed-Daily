@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "#fid:rawpig",
+    "#fid:rawcattle",
+    "#fid:rawsheep",
+    "flavor_immersed_daily:rawchickenblood",
+    "flavor_immersed_daily:rawchickenhead",
+    "flavor_immersed_daily:rawchickenneck",
+    "flavor_immersed_daily:rawchickenpiecepiece",
+    "flavor_immersed_daily:rawchickenbreast",
+    "flavor_immersed_daily:rawchickenpiece",
+    "flavor_immersed_daily:rawchickenwing",
+    "flavor_immersed_daily:rawchickenwingtip",
+    "flavor_immersed_daily:rawchickenfeet",
+    "flavor_immersed_daily:rawhalfofchickenleg",
+    "flavor_immersed_daily:rawsheeptail"
+  ]
+}

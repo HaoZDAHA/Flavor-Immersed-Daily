@@ -34,8 +34,8 @@ public class RawBananaBlock extends Block implements BonemealableBlock {
     public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 1);
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
-    private static final VoxelShape SHAPE_STAGE0 = Block.box(4, 0, 12, 12, 14, 16);
-    private static final VoxelShape SHAPE_STAGE1 = Block.box(4, 0, 12, 12, 15, 16);
+    private static final VoxelShape SHAPE_STAGE0 = Block.box(0, 0, 0, 16, 16, 16);
+    private static final VoxelShape SHAPE_STAGE1 = Block.box(0, 0, 0, 16, 16, 16);
 
     private final Supplier<? extends Block> woodSupplier;
     private final Supplier<? extends Item> fruitItem;

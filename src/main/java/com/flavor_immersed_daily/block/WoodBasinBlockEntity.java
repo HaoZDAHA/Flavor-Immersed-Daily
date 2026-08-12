@@ -28,7 +28,7 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * 木盆方块实体 — 存储bledchicken/水果类型，驱动浮动动画和踩踏计数
+ * 木盆方块实体 — 存储chickenwithoutblood/水果类型，驱动浮动动画和踩踏计数
  */
 public class WoodBasinBlockEntity extends BlockEntity {
 

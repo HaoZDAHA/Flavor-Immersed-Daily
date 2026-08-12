@@ -30,9 +30,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import java.util.List;
 import java.util.Random;
 
-/**
- * 农产鉴定机 — 玩家手持野生采集物右键，消耗物品，根据配置战利品表生成掉落物
- */
+//农产鉴定机 玩家手持野生采集物右键，消耗物品，根据配置战利品表生成掉落物
 public class AgriculturalAppraisalMachineBlock extends HorizontalDirectionalBlock {
 
     public static final MapCodec<AgriculturalAppraisalMachineBlock> CODEC =
@@ -119,7 +117,7 @@ public class AgriculturalAppraisalMachineBlock extends HorizontalDirectionalBloc
             }
         }
 
-        // 末影珍珠传送音效
+        // 音效
         level.playSound(null, pos, SoundEvents.ENDERMAN_TELEPORT, SoundSource.BLOCKS, 0.8f, 1.0f);
 
         return ItemInteractionResult.SUCCESS;

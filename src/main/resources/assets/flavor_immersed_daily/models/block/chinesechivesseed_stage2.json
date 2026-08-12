@@ -4,8 +4,8 @@
 	"credit": "Made with Blockbench",
 		"render_type": "minecraft:cutout",
 	"textures": {
-		"0": "flavor_immersed_daily:block/chinesechivesseed1",
-		"particle": "flavor_immersed_daily:block/chinesechivesseed1"
+		"0": "flavor_immersed_daily:block/chinesechivesseed0",
+		"particle": "flavor_immersed_daily:block/chinesechivesseed0"
 	},
 	"elements": [
 		{

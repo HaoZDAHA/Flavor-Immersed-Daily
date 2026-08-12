@@ -1,0 +1,12 @@
+{
+  "type": "flavor_immersed_daily:egg_breaking",
+  "shaped": false,
+  "ingredients": [
+    { "item": "flavor_immersed_daily:rawnoodles" },
+    { "item": "flavor_immersed_daily:brownsugarsyrup" }
+  ],
+  "results": [
+    { "id": "flavor_immersed_daily:noodleswrappedinsyrup", "count": 1 }
+  ],
+  "cookingTime": 60
+}

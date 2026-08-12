@@ -1,6 +1,12 @@
 {
   "variants": {
-    "stage=0": { "model": "flavor_immersed_daily:block/eggbreakingmachine" },
-    "stage=1": { "model": "flavor_immersed_daily:block/eggbreakingmachine_state1" }
+    "facing=east,stage=0": { "model": "flavor_immersed_daily:block/eggbreakingmachine", "y": 90 },
+    "facing=north,stage=0": { "model": "flavor_immersed_daily:block/eggbreakingmachine" },
+    "facing=south,stage=0": { "model": "flavor_immersed_daily:block/eggbreakingmachine", "y": 180 },
+    "facing=west,stage=0": { "model": "flavor_immersed_daily:block/eggbreakingmachine", "y": 270 },
+    "facing=east,stage=1": { "model": "flavor_immersed_daily:block/eggbreakingmachine_state1", "y": 90 },
+    "facing=north,stage=1": { "model": "flavor_immersed_daily:block/eggbreakingmachine_state1" },
+    "facing=south,stage=1": { "model": "flavor_immersed_daily:block/eggbreakingmachine_state1", "y": 180 },
+    "facing=west,stage=1": { "model": "flavor_immersed_daily:block/eggbreakingmachine_state1", "y": 270 }
   }
 }

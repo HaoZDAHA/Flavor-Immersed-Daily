@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aa"
+  ],
+  "key": {
+    "a": {
+      "item": "flavor_immersed_daily:dried_tofu_skin"
+    }
+  },
+  "result": {
+    "id": "flavor_immersed_daily:yuba",
+    "count": 1
+  }
+}

@@ -14,9 +14,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-/**
- * 中国结 — 挂墙装饰方块
- */
+//中国结，这个做的比较早，所以用的单独的一个java类，没啥特殊的
 public class ChineseKnottingBlock extends HorizontalDirectionalBlock {
 
     public static final MapCodec<ChineseKnottingBlock> CODEC = simpleCodec(ChineseKnottingBlock::new);

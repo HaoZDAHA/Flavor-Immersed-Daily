@@ -3,13 +3,10 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "flavor_immersed_daily:whitebrownsugarsyrup"
+      "item": "flavor_immersed_daily:hawthorn"
     },
     {
-      "item": "flavor_immersed_daily:cookedhawthorn"
-    },
-    {
-      "item": "flavor_immersed_daily:crystalsugar"
+      "item": "flavor_immersed_daily:whitesugarsyrup"
     },
     {
       "item": "minecraft:stick"

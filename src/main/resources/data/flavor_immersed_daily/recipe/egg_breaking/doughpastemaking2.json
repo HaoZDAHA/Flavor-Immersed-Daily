@@ -1,0 +1,11 @@
+{
+  "type": "flavor_immersed_daily:egg_breaking",
+  "shaped": false,
+  "ingredients": [
+    { "tag": "c:dough" }
+  ],
+  "results": [
+    { "id": "flavor_immersed_daily:flourpaste", "count": 6 }
+  ],
+  "cookingTime": 60
+}

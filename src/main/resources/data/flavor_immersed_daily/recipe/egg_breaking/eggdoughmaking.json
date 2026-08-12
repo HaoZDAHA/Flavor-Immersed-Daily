@@ -1,0 +1,12 @@
+{
+  "type": "flavor_immersed_daily:egg_breaking",
+  "shaped": false,
+  "ingredients": [
+    { "tag": "c:flour" },
+    { "item": "flavor_immersed_daily:eggliquid" }
+  ],
+  "results": [
+    { "id": "flavor_immersed_daily:eggdough", "count": 1 }
+  ],
+  "cookingTime": 60
+}

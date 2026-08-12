@@ -19,7 +19,9 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -38,14 +40,11 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.function.Supplier;
 
-/**
- * 大挂钩方块 — 悬挂动物胴体进行屠宰加工
- * ANIMAL: 0=none, 1=cattle, 2=sheep, 3=pig, 4=chicken
- * STAGE: 0(空) → 1(挂上) → 2 → 3 → 4 → 5 → 回收回0
- * 鸡特殊：deadchicken→1→2→右键→0(bledchicken); pluckedchicken→5→6→0
- * FACING: 挂钩朝向
- */
-public class BighookBlock extends Block implements SimpleWaterloggedBlock {
+//大挂钩方块 — 悬挂动物胴体进行屠宰加工
+//动物: 0=none, 1=cattle, 2=sheep, 3=pig, 4=chicken
+//屠宰的阶段: 0(空) → 1(挂上) → 2 → 3 → 4 → 5 → 回收回0
+
+public class BighookBlock extends Block implements SimpleWaterloggedBlock, EntityBlock {
 
     public static final IntegerProperty ANIMAL = IntegerProperty.create("animal", 0, 4);
     public static final IntegerProperty STAGE = IntegerProperty.create("stage", 0, 6);
@@ -134,7 +133,7 @@ public class BighookBlock extends Block implements SimpleWaterloggedBlock {
         int stage = state.getValue(STAGE);
         int animal = state.getValue(ANIMAL);
 
-        // === 空挂钩：挂上动物 ===
+        //空挂钩：挂上动物
         if (stage == 0) {
             if (stack.is(deadCattle.get())) {
                 return hangAnimal(level, pos, state, player, stack, 1, 1);
@@ -154,7 +153,7 @@ public class BighookBlock extends Block implements SimpleWaterloggedBlock {
             return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         }
 
-        // === 鸡特殊：stage2 右键取回 bledchicken ===
+        //鸡特殊：stage2 右键取回
         if (animal == 4 && stage == 2) {
             if (!level.isClientSide) {
                 level.setBlock(pos, state.setValue(STAGE, 0).setValue(ANIMAL, 0), 3);
@@ -166,15 +165,15 @@ public class BighookBlock extends Block implements SimpleWaterloggedBlock {
             return ItemInteractionResult.sidedSuccess(level.isClientSide);
         }
 
-        // === 有动物：刀具屠宰处理 ===
+        //有动物：刀具屠宰
         if (stage >= 1 && stage <= 6) {
             Item tool = stack.getItem();
 
-            // 鸡 stage5→6 (sharpknife)
+            // 鸡 stage5→6 (切割刀)
             if (animal == 4 && stage == 5 && tool == FlavorImmersedDaily.SHARPKNIFE.get()) {
                 return processStage(level, pos, state, player, animal, 5);
             }
-            // 鸡 stage6→0 (sharpknife)
+            // 鸡 stage6→0 (切割刀)
             if (animal == 4 && stage == 6 && tool == FlavorImmersedDaily.SHARPKNIFE.get()) {
                 if (!level.isClientSide) {
                     spawnDrops(level, pos, animal, 6);
@@ -183,23 +182,23 @@ public class BighookBlock extends Block implements SimpleWaterloggedBlock {
                 return ItemInteractionResult.sidedSuccess(level.isClientSide);
             }
 
-            // 通用 stage1→2 (wideedgedknife)
+            //放血（鸡猪牛羊） stage1→2 (宽刃刀)
             if (stage == 1 && tool == FlavorImmersedDaily.WIDEEDGEDKNIFE.get()) {
                 return processStage(level, pos, state, player, animal, 1);
             }
-            // 非鸡 stage2→3 (sharpknife)
+            //猪牛羊 stage2→3 (切割刀)
             if (stage == 2 && animal != 4 && tool == FlavorImmersedDaily.SHARPKNIFE.get()) {
                 return processStage(level, pos, state, player, animal, 2);
             }
-            // 非鸡 stage3→4 (bonecutterknife)
+            //猪牛羊 stage3→4 (斩骨刀)
             if (stage == 3 && tool == FlavorImmersedDaily.BONECUTTERKNIFE.get()) {
                 return processStage(level, pos, state, player, animal, 3);
             }
-            // 非鸡 stage4→5 (sharpknife)
+            //猪牛羊 stage4→5 (切割刀)
             if (stage == 4 && tool == FlavorImmersedDaily.SHARPKNIFE.get()) {
                 return processStage(level, pos, state, player, animal, 4);
             }
-            // 非鸡 stage5→0 (sharpknife)
+            //猪牛羊 stage5→0 (切割刀)
             if (stage == 5 && animal != 4 && tool == FlavorImmersedDaily.SHARPKNIFE.get()) {
                 if (!level.isClientSide) {
                     spawnDrops(level, pos, animal, 5);
@@ -232,9 +231,7 @@ public class BighookBlock extends Block implements SimpleWaterloggedBlock {
         return ItemInteractionResult.sidedSuccess(level.isClientSide);
     }
 
-    /**
-     * 从 Config 读取可配置的掉落物并生成掉落
-     */
+//从config弄掉落物，玩家可以自行添加哦
     private void spawnDrops(Level level, BlockPos pos, int animal, int stage) {
         List<String> dropIds = Config.getDrops(animal, stage);
         for (String itemId : dropIds) {
@@ -246,5 +243,11 @@ public class BighookBlock extends Block implements SimpleWaterloggedBlock {
                 level.addFreshEntity(entity);
             }
         }
+    }
+
+    @Override
+    @Nullable
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new BighookBlockEntity(pos, state);
     }
 }

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:banana"
+    },
+    {
+      "tag": "flavor_immersed_daily:base_saplings"
+    }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:bananasapling",
+    "count": 1
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:redrepper"
+    },
+    {
+      "item": "flavor_immersed_daily:pea_nut_seed"
+    },
+    {
+      "item": "flavor_immersed_daily:cookingoil"
+    }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:spicypeanut",
+    "count": 1
+  }
+}

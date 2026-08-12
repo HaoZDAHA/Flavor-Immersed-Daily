@@ -13,7 +13,7 @@ import java.util.Optional;
  * 调味料物品 — 在 tooltip 中附加对应 buff 的效果组件（图标 + 名称 + 时效）
  * 对应关系：butter → butter_pitcher，sesameoil → sesame_slip，vinegar → acetic_erosion，
  *           thickbroadbeansauce → bean_fury，salt → flavor_base，soy → solar_brew，
- *           onionpowder → hulk_leek，chillipowder → fury_assault
+ *           onionpowder → hulk_leek，chillipowder → fury_assault，brownsugarsyrup → crimson_mamba
  */
 public class SeasoningItem extends Item {
 
@@ -40,6 +40,8 @@ public class SeasoningItem extends Item {
             effect = new MobEffectInstance(FlavorImmersedDaily.HULK_LEEK, 45 * 20);
         } else if (stack.is(FlavorImmersedDaily.CHILLIPOWDER.get())) {
             effect = new MobEffectInstance(FlavorImmersedDaily.FURY_ASSAULT, 45 * 20);
+        } else if (stack.is(FlavorImmersedDaily.BROWNSUGARSYRUP.get())) {
+            effect = new MobEffectInstance(FlavorImmersedDaily.CRIMSON_MAMBA, 45 * 20);
         }
         if (effect == null) {
             return Optional.empty();

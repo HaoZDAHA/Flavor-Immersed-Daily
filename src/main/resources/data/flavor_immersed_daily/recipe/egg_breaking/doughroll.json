@@ -1,0 +1,12 @@
+{
+  "type": "flavor_immersed_daily:egg_breaking",
+  "shaped": false,
+  "ingredients": [
+    { "item": "flavor_immersed_daily:flourpaste" },
+    { "item": "flavor_immersed_daily:flourpaste" }
+  ],
+  "results": [
+    { "id": "flavor_immersed_daily:rawflourroll", "count": 1 }
+  ],
+  "cookingTime": 60
+}

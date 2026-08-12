@@ -5,7 +5,6 @@
 		"0": "flavor_immersed_daily:block/stone_lion",
 		"particle": "flavor_immersed_daily:block/stone_lion"
 	},
-	"render_type": "minecraft:cutout",
 	"elements": [
 		{
 			"from": [7, 12.84776, 17.76537],

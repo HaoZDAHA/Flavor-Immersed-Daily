@@ -3,7 +3,7 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "forge:egg"
+      "tag": "c:egg"
     },
     {
       "item": "flavor_immersed_daily:gravelpaste"

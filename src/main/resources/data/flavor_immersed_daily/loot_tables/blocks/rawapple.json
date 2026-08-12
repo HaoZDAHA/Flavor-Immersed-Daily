@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "flavor_immersed_daily:apple"
+          "name": "minecraft:apple"
         }
       ]
     }

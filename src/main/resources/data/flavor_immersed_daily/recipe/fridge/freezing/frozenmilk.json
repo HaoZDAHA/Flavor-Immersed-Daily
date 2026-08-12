@@ -1,0 +1,6 @@
+{
+  "type": "flavor_immersed_daily:fridge_freezing",
+  "ingredient": { "item": "flavor_immersed_daily:milkbottle" },
+  "result": { "id": "flavor_immersed_daily:frozenmilk", "count": 1 },
+  "cookingTime": 80
+}

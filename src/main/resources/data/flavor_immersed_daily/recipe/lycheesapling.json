@@ -1,1 +1,16 @@
-{"key":{"F":{"item":"flavor_immersed_daily:lychee"}},"result":{"count":1,"id":"flavor_immersed_daily:lycheesapling"},"pattern":["FF","FF"],"type":"minecraft:crafting_shaped"}
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:lychee"
+    },
+    {
+      "tag": "flavor_immersed_daily:base_saplings"
+    }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:lycheesapling",
+    "count": 1
+  }
+}

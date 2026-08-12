@@ -1,9 +1,0 @@
-{
-  "variants": {
-    "age=0": { "model": "flavor_immersed_daily:block/whitemushroom_stage0" },
-    "age=1": { "model": "flavor_immersed_daily:block/whitemushroom_stage1" },
-    "age=2": { "model": "flavor_immersed_daily:block/whitemushroom_stage2" },
-    "age=3": { "model": "flavor_immersed_daily:block/whitemushroom_stage3" },
-    "age=4": { "model": "flavor_immersed_daily:block/whitemushroom_stage4" }
-  }
-}

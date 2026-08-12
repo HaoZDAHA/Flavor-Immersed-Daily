@@ -1,0 +1,23 @@
+{
+  "replace": false,
+  "values": [
+    "flavor_immersed_daily:meatpaste",
+    "flavor_immersed_daily:vegetablepaste",
+    "flavor_immersed_daily:meatandvegetablestuffing",
+    "flavor_immersed_daily:meatandeggpaste",
+    "flavor_immersed_daily:meatandeggfilling",
+    "flavor_immersed_daily:meatandvegetablefilling",
+    "flavor_immersed_daily:eggstuffing",
+    "flavor_immersed_daily:vegetableandeggstuffing",
+    "flavor_immersed_daily:fruitflavoredmooncakestuffing",
+    "flavor_immersed_daily:peastuffing",
+    "flavor_immersed_daily:uncommonstuffing",
+    "flavor_immersed_daily:jujubepaste",
+    "flavor_immersed_daily:waxgroudpaste",
+    "flavor_immersed_daily:waxgourdpaste",
+    "flavor_immersed_daily:redbeanpaste",
+    "flavor_immersed_daily:mungbeanpaste",
+    "flavor_immersed_daily:peapaste",
+    "flavor_immersed_daily:peanutjam"
+  ]
+}

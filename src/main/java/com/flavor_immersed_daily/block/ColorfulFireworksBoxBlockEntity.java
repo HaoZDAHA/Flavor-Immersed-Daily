@@ -31,9 +31,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/**
- * 箱装烟花 — 存储烟花配置，处理红石触发与烟花飞行粒子
- */
+//箱装烟花 存储烟花配置，处理红石触发与烟花飞行粒子
+
 public class ColorfulFireworksBoxBlockEntity extends BlockEntity {
 
     // 原版烟花形状（对应烟火之星的Type）
@@ -55,7 +54,7 @@ public class ColorfulFireworksBoxBlockEntity extends BlockEntity {
     private static final String TAG_CURVE_B = "fw_curve_b";
     private static final String TAG_FADE_COLOR = "fw_fade_color";
 
-    // ===== 配置 =====
+    //配置
     private int color = 0xFF0000;
     private int fadeColor = 0xFFFFFF;
     private int shape = SHAPE_SMALL_BALL;
@@ -66,10 +65,10 @@ public class ColorfulFireworksBoxBlockEntity extends BlockEntity {
     private float curveA = 0.0f;
     private float curveB = 0.0f;
 
-    // ===== 红石边沿检测 =====
+    //红石检测
     private boolean wasPowered = false;
 
-    // ===== 烟花飞行状态（支持多次并发）=====
+    //烟花飞行状态（支持多次并发）
     private final List<FlightState> activeFlights = new ArrayList<>();
 
     private static class FlightState {
@@ -90,7 +89,7 @@ public class ColorfulFireworksBoxBlockEntity extends BlockEntity {
         super(FlavorImmersedDaily.COLORFUL_FIREWORKS_BOX_ENTITY.get(), pos, state);
     }
 
-    // ==================== 配置访问 ====================
+    //配置访问
 
     public int getColor() { return color; }
     public int getFadeColor() { return fadeColor; }
@@ -102,9 +101,8 @@ public class ColorfulFireworksBoxBlockEntity extends BlockEntity {
     public float getCurveA() { return curveA; }
     public float getCurveB() { return curveB; }
 
-    /**
-     * 从网络包应用配置
-     */
+//从网络包应用配置
+
     public void applyConfig(ColorfulFireworksBoxSyncPayload payload) {
         CompoundTag tag = payload.config();
         this.color = tag.getInt(TAG_COLOR);
@@ -123,7 +121,7 @@ public class ColorfulFireworksBoxBlockEntity extends BlockEntity {
         }
     }
 
-    // ==================== Tick ====================
+//TICK触发相关的
 
     public static void serverTick(Level level, BlockPos pos, BlockState state, ColorfulFireworksBoxBlockEntity be) {
         if (level.isClientSide) return;
@@ -141,9 +139,8 @@ public class ColorfulFireworksBoxBlockEntity extends BlockEntity {
         }
     }
 
-    /**
-     * 触发发射烟花（每次调用都添加新的飞行任务，不打断已有的）
-     */
+//触发发射烟花（每次调用都添加新的飞行任务，不打断已有的）
+
     public void launch(Level level, Direction dir) {
         if (level.isClientSide) return;
         int totalTicks = Math.max(4, Math.round(20.0f / Math.max(0.1f, speed)));
@@ -178,10 +175,9 @@ public class ColorfulFireworksBoxBlockEntity extends BlockEntity {
         }
     }
 
-    /**
-     * 飞行位置计算：倾斜角度 + 曲线公式 y = a*x² + b*x
-     * angleDeg=0 时垂直升空，A/B=0 时按倾斜角度直线飞行
-     */
+//飞行位置计算：倾斜角度 + 曲线公式 y = a*x² + b*x
+//angleDeg=0 时垂直升空，A/B=0 时按倾斜角度直线飞行
+
     private Vec3 getFlightPosition(FlightState flight, double progress) {
         double t = progress * flight.launchTicks;
         double angleRad = Math.toRadians(angleDeg);
@@ -198,6 +194,7 @@ public class ColorfulFireworksBoxBlockEntity extends BlockEntity {
     }
 
     private void spawnExplosion(ServerLevel level, Vec3 center) {
+
         // 使用原版 FireworkExplosion 创建真正的烟花爆炸效果
         FireworkExplosion.Shape fireworkShape = FireworkExplosion.Shape.values()[shape];
         FireworkExplosion explosion = new FireworkExplosion(
@@ -225,7 +222,7 @@ public class ColorfulFireworksBoxBlockEntity extends BlockEntity {
         level.playSound(null, worldPosition, SoundEvents.FIREWORK_ROCKET_BLAST, SoundSource.BLOCKS, 1.2f, 1.0f);
     }
 
-    // ==================== NBT / 同步 ====================
+    //NBT / 同步
 
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {

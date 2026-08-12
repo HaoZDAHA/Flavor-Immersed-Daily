@@ -1,6 +1,13 @@
 {
   "replace": false,
   "values": [
-    "flavor_immersed_daily:trellis"
+    "#minecraft:logs_that_burn",
+    "#minecraft:planks",
+    "#minecraft:wooden_stairs",
+    "#minecraft:wooden_slabs",
+    "#minecraft:wooden_fences",
+    "#minecraft:wooden_buttons",
+    "#minecraft:wooden_pressure_plates",
+    "flavor_immersed_daily:cinnamonwood"
   ]
 }

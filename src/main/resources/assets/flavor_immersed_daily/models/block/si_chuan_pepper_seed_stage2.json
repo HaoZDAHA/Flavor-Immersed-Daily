@@ -1,0 +1,38 @@
+{
+    "parent": "block/block",
+    "render_type": "minecraft:cutout",
+	"credit": "Made with Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "flavor_immersed_daily:block/si_chuan_pepper_seed2",
+		"particle": "flavor_immersed_daily:block/si_chuan_pepper_seed2"
+	},
+	"elements": [
+		{
+			"from": [7.94975, 0, -3.05025],
+			"to": [7.94975, 16, 18.94975],
+			"rotation": {"angle": 45, "axis": "y", "origin": [7.94975, 8, 7.94975]},
+			"faces": {
+				"north": {"uv": [0, 0, 0, 8], "texture": "#0"},
+				"east": {"uv": [0, 0, 11, 8], "texture": "#0"},
+				"south": {"uv": [0, 0, 0, 8], "texture": "#0"},
+				"west": {"uv": [0, 0, 11, 8], "texture": "#0"},
+				"up": {"uv": [0, 11, 0, 0], "texture": "#0"},
+				"down": {"uv": [0, 0, 0, 11], "texture": "#0"}
+			}
+		},
+		{
+			"from": [-3.05025, 0, 7.94975],
+			"to": [18.94975, 16, 7.94975],
+			"rotation": {"angle": 45, "axis": "y", "origin": [7.94975, 8, 7.94975]},
+			"faces": {
+				"north": {"uv": [0, 0, 11, 8], "texture": "#0"},
+				"east": {"uv": [0, 0, 0, 8], "texture": "#0"},
+				"south": {"uv": [0, 0, 11, 8], "texture": "#0"},
+				"west": {"uv": [0, 0, 0, 8], "texture": "#0"},
+				"up": {"uv": [0, 11, 0, 0], "rotation": 270, "texture": "#0"},
+				"down": {"uv": [0, 0, 0, 11], "rotation": 90, "texture": "#0"}
+			}
+		}
+	]
+}

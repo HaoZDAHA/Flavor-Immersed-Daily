@@ -83,7 +83,7 @@ public class BananaSaplingBlock extends BushBlock implements BonemealableBlock {
 
     @Override
     public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
-        // When on bananawood crown, destroy silently without drops
+        //香蕉生长的时候 没有依靠的方块就破坏掉
         if (!level.isClientSide) {
             BlockState below = level.getBlockState(pos.below());
             if (below.is(woodSupplier.get())) {
@@ -96,7 +96,7 @@ public class BananaSaplingBlock extends BushBlock implements BonemealableBlock {
 
     @Override
     protected void spawnAfterBreak(BlockState state, ServerLevel level, BlockPos pos, ItemStack tool, boolean dropExperience) {
-        // No drops when on bananawood crown
+        //香蕉木
         BlockState below = level.getBlockState(pos.below());
         if (!below.is(woodSupplier.get())) {
             super.spawnAfterBreak(state, level, pos, tool, dropExperience);
@@ -108,7 +108,7 @@ public class BananaSaplingBlock extends BushBlock implements BonemealableBlock {
         Block fruit = fruitSupplier.get();
         BlockState woodState = wood.defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y);
 
-        // Check space: need 3 blocks above for trunk+leaves, plus horizontal space for fruits
+        //检查生长有没有足够的空间
         for (int i = 1; i <= 4; i++) {
             BlockPos abovePos = pos.above(i);
             BlockState aboveState = level.getBlockState(abovePos);
@@ -116,12 +116,12 @@ public class BananaSaplingBlock extends BushBlock implements BonemealableBlock {
             if (i == 4 && !aboveState.isAir()) return;
         }
 
-        // Place the trunk blocks
-        level.setBlock(pos, woodState, 3);            // Base of trunk
-        level.setBlock(pos.above(1), woodState, 3);   // Second trunk block
-        level.setBlock(pos.above(2), woodState, 3);   // Third trunk block
+        //生成木头
+        level.setBlock(pos, woodState, 3);            //第一层
+        level.setBlock(pos.above(1), woodState, 3);   //第二层
+        level.setBlock(pos.above(2), woodState, 3);   //第三层
 
-        // Raw banana fruits on all 4 horizontal sides of the third trunk block
+        //四边的生成
         BlockPos fruitBase = pos.above(2);
         for (Direction dir : Direction.Plane.HORIZONTAL) {
             BlockPos fruitPos = fruitBase.relative(dir);
@@ -131,7 +131,7 @@ public class BananaSaplingBlock extends BushBlock implements BonemealableBlock {
             }
         }
 
-        // Banana leaves crown on top
+        //顶上的叶子
         level.setBlock(pos.above(3), this.defaultBlockState(), 3);
     }
 }

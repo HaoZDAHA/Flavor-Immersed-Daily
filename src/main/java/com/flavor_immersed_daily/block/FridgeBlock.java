@@ -118,7 +118,9 @@ public class FridgeBlock extends HorizontalDirectionalBlock implements EntityBlo
 
     @Override
     public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
-        if (!level.isClientSide() && player.isCreative()) {
+        // 所有模式下都先移除伙伴方块（带 SUPPRESS_DROPS），
+        // 避免伙伴方块随后因失去支撑变为空气时触发第二次掉落（导致一台冰箱掉两份）
+        if (!level.isClientSide()) {
             DoubleBlockHalf half = state.getValue(HALF);
             if (half == DoubleBlockHalf.LOWER) {
                 BlockPos upperPos = pos.above();

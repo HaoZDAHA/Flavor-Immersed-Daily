@@ -1,1 +1,1 @@
-{"pools":[{"conditions":[{"condition":"minecraft:survives_explosion"}],"entries":[{"name":"flavor_immersed_daily:apple","type":"minecraft:item"}],"rolls":1}],"type":"minecraft:block"}
+{"pools":[{"conditions":[{"condition":"minecraft:survives_explosion"}],"entries":[{"name":"minecraft:apple","type":"minecraft:item"}],"rolls":1}],"type":"minecraft:block"}

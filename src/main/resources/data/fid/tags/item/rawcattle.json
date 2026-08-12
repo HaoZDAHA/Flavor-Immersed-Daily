@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "flavor_immersed_daily:rawcattleblood",
+    "flavor_immersed_daily:rawcattleface",
+    "flavor_immersed_daily:rawcattlejoint",
+    "flavor_immersed_daily:rawcattlestomach",
+    "flavor_immersed_daily:rawcattlelung",
+    "flavor_immersed_daily:rawcattleliver",
+    "flavor_immersed_daily:rawcattleintestine",
+    "flavor_immersed_daily:rawcattleheart",
+    "flavor_immersed_daily:rawcattlefat",
+    "flavor_immersed_daily:rawdicedcattlemeat",
+    "flavor_immersed_daily:rawsnowflakebeef",
+    "flavor_immersed_daily:rawcattleleg",
+    "flavor_immersed_daily:rawcattlefeet",
+    "flavor_immersed_daily:rawcattletendon",
+    "flavor_immersed_daily:bullhorn",
+    "flavor_immersed_daily:bovinebone"
+  ]
+}

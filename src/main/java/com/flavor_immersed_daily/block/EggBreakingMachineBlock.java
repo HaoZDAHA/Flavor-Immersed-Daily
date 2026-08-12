@@ -3,11 +3,13 @@ package com.flavor_immersed_daily.block;
 import com.flavor_immersed_daily.FlavorImmersedDaily;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -17,9 +19,11 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -27,28 +31,48 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class EggBreakingMachineBlock extends Block implements EntityBlock {
+public class EggBreakingMachineBlock extends HorizontalDirectionalBlock implements EntityBlock {
 
     public static final MapCodec<EggBreakingMachineBlock> CODEC =
             simpleCodec(EggBreakingMachineBlock::new);
 
     public static final IntegerProperty STAGE = IntegerProperty.create("stage", 0, 1);
+    public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
-    private static final VoxelShape SHAPE = Shapes.box(0, 0, 0, 1, 1, 1);
+    private static final VoxelShape SHAPE = Shapes.join(
+            Shapes.box(0.25, 0, 0.1875, 0.75, 0.4375, 0.8125),
+            Shapes.box(0.375, 0.4375, 0.3125, 0.625, 0.90625, 0.5625),
+            BooleanOp.OR
+    );
 
     public EggBreakingMachineBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(STAGE, 0));
+        this.registerDefaultState(this.stateDefinition.any().setValue(STAGE, 0).setValue(FACING, Direction.NORTH));
     }
 
     @Override
-    protected MapCodec<? extends Block> codec() {
+    protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
         return CODEC;
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(STAGE);
+        builder.add(STAGE, FACING);
+    }
+
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
+    }
+
+    @Override
+    protected BlockState rotate(BlockState state, Rotation rot) {
+        return state.setValue(FACING, rot.rotate(state.getValue(FACING)));
+    }
+
+    @Override
+    protected BlockState mirror(BlockState state, Mirror mirror) {
+        return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 
     @Override
@@ -66,9 +90,12 @@ public class EggBreakingMachineBlock extends Block implements EntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        if (level.isClientSide()) return null;
         if (type == FlavorImmersedDaily.EGG_BREAKING_MACHINE_ENTITY.get()) {
-            return (lvl, pos, st, be) -> EggBreakingMachineBlockEntity.serverTick(lvl, pos, st, (EggBreakingMachineBlockEntity) be);
+            if (level.isClientSide()) {
+                return (lvl, pos, st, be) -> EggBreakingMachineBlockEntity.clientTick(lvl, pos, st, (EggBreakingMachineBlockEntity) be);
+            } else {
+                return (lvl, pos, st, be) -> EggBreakingMachineBlockEntity.serverTick(lvl, pos, st, (EggBreakingMachineBlockEntity) be);
+            }
         }
         return null;
     }
@@ -81,11 +108,14 @@ public class EggBreakingMachineBlock extends Block implements EntityBlock {
         if (state.getValue(STAGE) != 0) return InteractionResult.PASS;
         if (level.isClientSide()) return InteractionResult.SUCCESS;
         if (player instanceof ServerPlayer sp) {
-            sp.openMenu(new SimpleMenuProvider(
-                    (containerId, inv, p) -> new com.flavor_immersed_daily.screen.EggBreakingMachineMenu(
-                            containerId, inv, ContainerLevelAccess.create(level, pos)),
-                    Component.translatable("block.flavor_immersed_daily.eggbreakingmachine")
-            ), buf -> buf.writeBlockPos(pos));
+            BlockEntity be = level.getBlockEntity(pos);
+            if (be instanceof EggBreakingMachineBlockEntity machine) {
+                sp.openMenu(new SimpleMenuProvider(
+                        (containerId, inv, p) -> new com.flavor_immersed_daily.screen.EggBreakingMachineMenu(
+                                containerId, inv, machine.getInventory(), ContainerLevelAccess.create(level, pos)),
+                        Component.translatable("block.flavor_immersed_daily.eggbreakingmachine")
+                ), buf -> buf.writeBlockPos(pos));
+            }
         }
         return InteractionResult.CONSUME;
     }
@@ -102,7 +132,7 @@ public class EggBreakingMachineBlock extends Block implements EntityBlock {
         if (!state.is(newState.getBlock())) {
             BlockEntity be = level.getBlockEntity(pos);
             if (be instanceof EggBreakingMachineBlockEntity machine) {
-                machine.dropProcessingResults(level, pos);
+                machine.dropAllItems(level, pos);
             }
             super.onRemove(state, level, pos, newState, moved);
         }

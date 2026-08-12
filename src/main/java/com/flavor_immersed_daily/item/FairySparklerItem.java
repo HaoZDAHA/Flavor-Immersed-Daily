@@ -1,7 +1,6 @@
 package com.flavor_immersed_daily.item;
 
-import com.flavor_immersed_daily.screen.FairySparklerConfigScreen;
-import net.minecraft.client.Minecraft;
+import com.flavor_immersed_daily.client.ClientGuiHelper;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.nbt.CompoundTag;
@@ -15,9 +14,13 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 import org.joml.Vector3f;
 
 public class FairySparklerItem extends Item {
@@ -62,6 +65,14 @@ public class FairySparklerItem extends Item {
 
     public FairySparklerItem(Properties properties) {
         super(properties);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<net.minecraft.network.chat.Component> tooltip, TooltipFlag flag) {
+        super.appendHoverText(stack, context, tooltip, flag);
+        tooltip.add(net.minecraft.network.chat.Component.translatable("tooltip.flavor_immersed_daily.fairy_sparkler.desc1").withStyle(net.minecraft.ChatFormatting.RED, net.minecraft.ChatFormatting.BOLD));
+        tooltip.add(net.minecraft.network.chat.Component.translatable("tooltip.flavor_immersed_daily.fairy_sparkler.desc2").withStyle(net.minecraft.ChatFormatting.GRAY));
+        tooltip.add(net.minecraft.network.chat.Component.translatable("tooltip.flavor_immersed_daily.fairy_sparkler.desc3").withStyle(net.minecraft.ChatFormatting.GRAY));
     }
 
     private static CompoundTag getData(ItemStack stack) {
@@ -139,13 +150,19 @@ public class FairySparklerItem extends Item {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
 
+        // 潜行右键：打开配置界面（仅客户端）。
+        // 关键：必须返回 PASS 而不是 sidedSuccess——PASS 不会向服务端发送使用数据包，
+        // 服务端因此完全不参与这次右键。若返回 SUCCESS/CONSUME，服务端会因无法感知
+        // 潜行状态（isShiftKeyDown 在服务端恒为 false）而误入非潜行分支，双持时执行
+        // startUsingItem 把玩家置入"持续使用"状态，造成客户端/服务端状态错乱。
         if (player.isShiftKeyDown()) {
             if (level.isClientSide) {
-                Minecraft.getInstance().setScreen(new FairySparklerConfigScreen());
+                ClientGuiHelper.openFairySparklerConfig();
             }
-            return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
+            return InteractionResultHolder.pass(stack);
         }
 
+        // 非潜行：主手 + 副手双持时进入持续使用状态（绽放烟花粒子）
         ItemStack offhand = player.getOffhandItem();
         if (offhand.is(this) && hand == InteractionHand.MAIN_HAND) {
             player.startUsingItem(hand);

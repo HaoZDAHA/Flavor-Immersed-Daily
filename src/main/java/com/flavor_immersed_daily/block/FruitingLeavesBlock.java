@@ -1,5 +1,6 @@
 package com.flavor_immersed_daily.block;
 
+import com.flavor_immersed_daily.FruitHarvestHandler;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -143,6 +144,10 @@ public class FruitingLeavesBlock extends LeavesBlock {
             level.setBlock(pos, state.setValue(FRUITING, false), 3);
             level.playSound(player, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 1.0F);
             level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
+            // 小概率掉落稀有水果变种
+            if (!level.isClientSide) {
+                FruitHarvestHandler.tryDropVariantFruit(level, pos, this);
+            }
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
         return InteractionResult.PASS;

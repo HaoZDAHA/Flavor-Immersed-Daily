@@ -1,13 +1,16 @@
 package com.flavor_immersed_daily.block;
 
 import com.flavor_immersed_daily.FlavorImmersedDaily;
-import com.flavor_immersed_daily.screen.ColorfulFireworksBoxConfigScreen;
+import com.flavor_immersed_daily.client.ClientGuiHelper;
 import com.mojang.serialization.MapCodec;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.item.component.CustomData;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -21,12 +24,12 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
-/**
- * 箱装烟花 — 带四个水平方向转向，潜行右键配置，右键/红石触发发射烟花
- */
+//箱装烟花
+
 public class ColorfulFireworksBoxBlock extends HorizontalDirectionalBlock implements EntityBlock {
 
     public static final MapCodec<ColorfulFireworksBoxBlock> CODEC =
@@ -64,15 +67,33 @@ public class ColorfulFireworksBoxBlock extends HorizontalDirectionalBlock implem
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 
-    // ==================== 交互 ====================
+    // 交互————————————————————————————————————————————————————————————————————————
+
+//无论是生存模式还是创造模式都有掉落物
+
+    @Override
+    public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {
+        if (!level.isClientSide) {
+            BlockEntity be = level.getBlockEntity(pos);
+            if (be instanceof ColorfulFireworksBoxBlockEntity fwBe) {
+                CompoundTag beTag = fwBe.saveWithId(level.registryAccess());
+                if (!beTag.isEmpty()) {
+                    ItemStack drop = new ItemStack(this);
+                    drop.set(DataComponents.BLOCK_ENTITY_DATA, CustomData.of(beTag));
+                    popResource(level, pos, drop);
+                }
+            }
+        }
+        return super.onDestroyedByPlayer(state, level, pos, player, willHarvest, fluid);
+    }
 
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos,
                                                Player player, BlockHitResult hit) {
         if (player.isShiftKeyDown()) {
-            // 潜行右键：打开配置界面
+            // 潜行右键：打开配置界面（仅客户端）
             if (level.isClientSide) {
-                Minecraft.getInstance().setScreen(new ColorfulFireworksBoxConfigScreen(pos));
+                ClientGuiHelper.openColorfulFireworksBoxConfig(pos);
             }
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
@@ -86,7 +107,7 @@ public class ColorfulFireworksBoxBlock extends HorizontalDirectionalBlock implem
         return InteractionResult.sidedSuccess(level.isClientSide);
     }
 
-    // ==================== BlockEntity ====================
+    //方块实体————————————————————————————————————————
 
     @Nullable
     @Override

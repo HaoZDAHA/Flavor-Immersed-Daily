@@ -1,0 +1,6 @@
+{
+  "type": "flavor_immersed_daily:fridge_freezing",
+  "ingredient": { "tag": "fid:rawpig" },
+  "result": { "id": "flavor_immersed_daily:normalmeatroll", "count": 1 },
+  "cookingTime": 80
+}
