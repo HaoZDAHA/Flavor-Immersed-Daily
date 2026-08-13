@@ -100,12 +100,12 @@ public class EggBreakingRecipe implements Recipe<CraftingInput> {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return com.flavor_immersed_daily.FlavorImmersedDaily.EGG_BREAKING_SERIALIZER.get();
+        return ModRecipes.EGG_BREAKING_SERIALIZER.get();
     }
 
     @Override
     public RecipeType<?> getType() {
-        return com.flavor_immersed_daily.FlavorImmersedDaily.EGG_BREAKING_TYPE.get();
+        return ModRecipes.EGG_BREAKING_TYPE.get();
     }
 
     @Override

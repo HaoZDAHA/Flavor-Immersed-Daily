@@ -28,7 +28,7 @@ public class FridgeMenu extends AbstractContainerMenu {
     }
 
     public FridgeMenu(int containerId, Inventory playerInventory, Container fridgeContainer) {
-        super(FlavorImmersedDaily.FRIDGE_MENU.get(), containerId);
+        super(com.flavor_immersed_daily.all.ModMenus.FRIDGE_MENU.get(), containerId);
         this.fridgeContainer = fridgeContainer;
         fridgeContainer.startOpen(playerInventory.player);
 

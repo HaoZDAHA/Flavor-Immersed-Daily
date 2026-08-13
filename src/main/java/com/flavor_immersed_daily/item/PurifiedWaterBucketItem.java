@@ -1,19 +1,18 @@
 package com.flavor_immersed_daily.item;
 
+import com.flavor_immersed_daily.all.ModItems;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.TooltipFlag;
@@ -78,7 +77,7 @@ public class PurifiedWaterBucketItem extends Item {
                         stack.hurtAndBreak(1, player, net.minecraft.world.entity.EquipmentSlot.MAINHAND);
 
                         // 给玩家纯净水
-                        ItemStack drinkingWater = new ItemStack(com.flavor_immersed_daily.FlavorImmersedDaily.TIDYWATER.get());
+                        ItemStack drinkingWater = new ItemStack(ModItems.TIDYWATER.get());
                         if (!player.getInventory().add(drinkingWater)) {
                             // 如果背包满了，掉落在玩家脚下
                             player.drop(drinkingWater, false);

@@ -1,6 +1,6 @@
 package com.flavor_immersed_daily.item;
-
-import com.flavor_immersed_daily.FlavorImmersedDaily;
+import com.flavor_immersed_daily.all.ModItems;
+import com.flavor_immersed_daily.client.tooltip.HarvestTooltip;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.Item;
@@ -21,14 +21,14 @@ public class KitchenScissorsItem extends Item {
     private static List<ItemStack> getWildItems() {
         if (wildItems == null) {
             List<ItemStack> list = new ArrayList<>();
-            list.add(new ItemStack(FlavorImmersedDaily.TEMPERATEWILDFRUIT.get()));
-            list.add(new ItemStack(FlavorImmersedDaily.TROPICALWILD_FRUIT.get()));
-            list.add(new ItemStack(FlavorImmersedDaily.WILDFRUITINCOLDZONE.get()));
-            list.add(new ItemStack(FlavorImmersedDaily.WILDFLOWERANDLEAF.get()));
-            list.add(new ItemStack(FlavorImmersedDaily.WILDGRAINPLANT.get()));
-            list.add(new ItemStack(FlavorImmersedDaily.WILDMUSHROOMPLANT.get()));
-            list.add(new ItemStack(FlavorImmersedDaily.WILDSEEDPLANT.get()));
-            list.add(new ItemStack(FlavorImmersedDaily.WILDTUBERPLANTS.get()));
+            list.add(new ItemStack(ModItems.TEMPERATEWILDFRUIT.get()));
+            list.add(new ItemStack(ModItems.TROPICALWILD_FRUIT.get()));
+            list.add(new ItemStack(ModItems.WILDFRUITINCOLDZONE.get()));
+            list.add(new ItemStack(ModItems.WILDFLOWERANDLEAF.get()));
+            list.add(new ItemStack(ModItems.WILDGRAINPLANT.get()));
+            list.add(new ItemStack(ModItems.WILDMUSHROOMPLANT.get()));
+            list.add(new ItemStack(ModItems.WILDSEEDPLANT.get()));
+            list.add(new ItemStack(ModItems.WILDTUBERPLANTS.get()));
             wildItems = List.copyOf(list);
         }
         return wildItems;
@@ -43,3 +43,4 @@ public class KitchenScissorsItem extends Item {
         return Optional.of(new HarvestTooltip(TOOLTIP_TEXT, getWildItems()));
     }
 }
+

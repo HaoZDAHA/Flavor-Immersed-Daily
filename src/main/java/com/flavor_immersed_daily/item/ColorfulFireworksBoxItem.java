@@ -1,6 +1,6 @@
 package com.flavor_immersed_daily.item;
 
-import com.flavor_immersed_daily.block.ColorfulFireworksBoxBlockEntity;
+import com.flavor_immersed_daily.block.blockentity.ColorfulFireworksBoxBlockEntity;
 import net.minecraft.ChatFormatting;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.core.component.DataComponents;

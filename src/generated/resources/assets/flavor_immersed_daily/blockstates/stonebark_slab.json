@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "flavor_immersed_daily:block/stonebark_slab"
+    },
+    "type=double": {
+      "model": "flavor_immersed_daily:block/stonebark_planks"
+    },
+    "type=top": {
+      "model": "flavor_immersed_daily:block/stonebark_slab_top"
+    }
+  }
+}

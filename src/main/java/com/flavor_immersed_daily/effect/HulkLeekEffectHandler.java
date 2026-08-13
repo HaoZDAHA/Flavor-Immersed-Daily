@@ -1,6 +1,12 @@
 package com.flavor_immersed_daily.effect;
 
-import com.flavor_immersed_daily.Config;
+import com.flavor_immersed_daily.datagen.tag.FIDItemTags;
+
+import com.flavor_immersed_daily.all.ModEffects;
+
+import com.flavor_immersed_daily.all.ModItems;
+
+import com.flavor_immersed_daily.config.Config;
 import com.flavor_immersed_daily.FlavorImmersedDaily;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
@@ -18,12 +24,12 @@ import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 
 /**
- * 浩克大葱（hulk_leek）效果处理器
- * 触发规则：
- *  - 玩家食用物品后，副手持有 fid:seasoning 标签物品，或食物 NBT 标签 seasoning 非空
- *  - 其中副手为 onionpowder（洋葱粉）或食物 NBT seasoning 为 flavor_immersed_daily:onionpowder 时，
- *    给予 45 秒 hulk_leek 效果，并消耗副手调味料一个
- * 效果：拥有 hulk_leek 的玩家近战攻击幼年实体时，将其转化为成年状态
+ * 娴╁厠澶ц懕锛坔ulk_leek锛夋晥鏋滃鐞嗗櫒
+ * 瑙﹀彂瑙勫垯锛?
+ *  - 鐜╁椋熺敤鐗╁搧鍚庯紝鍓墜鎸佹湁 fid:seasoning 鏍囩鐗╁搧锛屾垨椋熺墿 NBT 鏍囩 seasoning 闈炵┖
+ *  - 鍏朵腑鍓墜涓?onionpowder锛堟磱钁辩矇锛夋垨椋熺墿 NBT seasoning 涓?flavor_immersed_daily:onionpowder 鏃讹紝
+ *    缁欎簣 45 绉?hulk_leek 鏁堟灉锛屽苟娑堣€楀壇鎵嬭皟鍛虫枡涓€涓?
+ * 鏁堟灉锛氭嫢鏈?hulk_leek 鐨勭帺瀹惰繎鎴樻敾鍑诲辜骞村疄浣撴椂锛屽皢鍏惰浆鍖栦负鎴愬勾鐘舵€?
  */
 @EventBusSubscriber(modid = FlavorImmersedDaily.MODID)
 public class HulkLeekEffectHandler {
@@ -36,24 +42,24 @@ public class HulkLeekEffectHandler {
         if (player.level().isClientSide) return;
         if (!Config.hulkLeekEnabled) return;
 
-        // 副手是否为调味料
+        // 鍓墜鏄惁涓鸿皟鍛虫枡
         ItemStack offhand = player.getOffhandItem();
-        boolean offhandIsSeasoning = offhand.is(FlavorImmersedDaily.SEASONING_TAG);
+        boolean offhandIsSeasoning = offhand.is(FIDItemTags.SEASONING);
 
-        // 食用的食物 NBT 文本标签 seasoning（1.21.1 存于 CUSTOM_DATA 组件中）
+        // 椋熺敤鐨勯鐗?NBT 鏂囨湰鏍囩 seasoning锛?.21.1 瀛樹簬 CUSTOM_DATA 缁勪欢涓級
         CompoundTag tag = event.getItem().getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
         boolean foodHasSeasoning = tag.contains("seasoning", Tag.TAG_STRING);
         String foodSeasoning = foodHasSeasoning ? tag.getString("seasoning") : "";
 
-        // 触发条件：副手是调味料 或 食物 seasoning 标签非空
+        // 瑙﹀彂鏉′欢锛氬壇鎵嬫槸璋冨懗鏂?鎴?椋熺墿 seasoning 鏍囩闈炵┖
         if (!offhandIsSeasoning && !foodHasSeasoning) return;
 
-        // 专属 buff：副手是洋葱粉（onionpowder）或 食物 seasoning 标签为 flavor_immersed_daily:onionpowder → 浩克大葱 45 秒
-        boolean isOnionPowder = offhand.is(FlavorImmersedDaily.ONIONPOWDER.get())
+        // 涓撳睘 buff锛氬壇鎵嬫槸娲嬭懕绮夛紙onionpowder锛夋垨 椋熺墿 seasoning 鏍囩涓?flavor_immersed_daily:onionpowder 鈫?娴╁厠澶ц懕 45 绉?
+        boolean isOnionPowder = offhand.is(ModItems.ONIONPOWDER.get())
                 || "flavor_immersed_daily:onionpowder".equals(foodSeasoning);
         if (isOnionPowder) {
-            player.addEffect(new MobEffectInstance(FlavorImmersedDaily.HULK_LEEK, DURATION_TICKS, 0));
-            // 副手持有调味料时，获得 buff 的同时消耗一个
+            player.addEffect(new MobEffectInstance(ModEffects.HULK_LEEK, DURATION_TICKS, 0));
+            // 鍓墜鎸佹湁璋冨懗鏂欐椂锛岃幏寰?buff 鐨勫悓鏃舵秷鑰椾竴涓?
             if (offhandIsSeasoning) {
                 offhand.shrink(1);
             }
@@ -67,12 +73,12 @@ public class HulkLeekEffectHandler {
         if (target.level().isClientSide) return;
 
         DamageSource source = event.getSource();
-        // 仅近战：直接攻击者与伤害来源相同（排除箭矢等投射物）
+        // 浠呰繎鎴橈細鐩存帴鏀诲嚮鑰呬笌浼ゅ鏉ユ簮鐩稿悓锛堟帓闄ょ鐭㈢瓑鎶曞皠鐗╋級
         if (source.getDirectEntity() != source.getEntity()) return;
         if (!(source.getEntity() instanceof Player player)) return;
-        if (!player.hasEffect(FlavorImmersedDaily.HULK_LEEK)) return;
+        if (!player.hasEffect(ModEffects.HULK_LEEK)) return;
 
-        // 幼年实体转化为成年状态
+        // 骞煎勾瀹炰綋杞寲涓烘垚骞寸姸鎬?
         if (target instanceof Mob mob && mob.isBaby()) {
             mob.setBaby(false);
         }

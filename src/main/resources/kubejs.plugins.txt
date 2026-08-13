@@ -1,0 +1,1 @@
+com.flavor_immersed_daily.integration.kubejs.FlavorImmersedDailyKubeJSPlugin

@@ -1,11 +1,15 @@
 package com.flavor_immersed_daily.integration.jei;
 
-import com.flavor_immersed_daily.Config;
+import com.flavor_immersed_daily.all.ModItems;
+import com.flavor_immersed_daily.all.ModBlocks;
+
+import com.flavor_immersed_daily.config.Config;
 import com.flavor_immersed_daily.FlavorImmersedDaily;
-import com.flavor_immersed_daily.block.WoodBasinBlock;
 import com.flavor_immersed_daily.recipe.EggBreakingRecipe;
 import com.flavor_immersed_daily.recipe.FridgeTemperingRecipe;
 import com.flavor_immersed_daily.recipe.FridgeFreezingRecipe;
+import com.flavor_immersed_daily.recipe.ModRecipes;
+import com.flavor_immersed_daily.recipe.WoodBasinRecipe;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
@@ -44,33 +48,33 @@ public class JEIPlugin implements IModPlugin {
         List<ButcheringRecipe> recipes = new ArrayList<>();
 
         // 牛
-        addRecipes(recipes, FlavorImmersedDaily.DEADCATTLE.get(), 1,
-                new Item[]{FlavorImmersedDaily.WIDEEDGEDKNIFE.get(), FlavorImmersedDaily.SHARPKNIFE.get(),
-                        FlavorImmersedDaily.BONECUTTERKNIFE.get(), FlavorImmersedDaily.SHARPKNIFE.get(),
-                        FlavorImmersedDaily.SHARPKNIFE.get()},
+        addRecipes(recipes, ModItems.DEADCATTLE.get(), 1,
+                new Item[]{ModItems.WIDEEDGEDKNIFE.get(), ModItems.SHARPKNIFE.get(),
+                        ModItems.BONECUTTERKNIFE.get(), ModItems.SHARPKNIFE.get(),
+                        ModItems.SHARPKNIFE.get()},
                 new String[]{"放血", "剥皮", "剔骨", "掏空", "切肉"});
 
         // 羊
-        addRecipes(recipes, FlavorImmersedDaily.DEADSHEEP.get(), 2,
-                new Item[]{FlavorImmersedDaily.WIDEEDGEDKNIFE.get(), FlavorImmersedDaily.SHARPKNIFE.get(),
-                        FlavorImmersedDaily.BONECUTTERKNIFE.get(), FlavorImmersedDaily.SHARPKNIFE.get(),
-                        FlavorImmersedDaily.SHARPKNIFE.get()},
+        addRecipes(recipes, ModItems.DEADSHEEP.get(), 2,
+                new Item[]{ModItems.WIDEEDGEDKNIFE.get(), ModItems.SHARPKNIFE.get(),
+                        ModItems.BONECUTTERKNIFE.get(), ModItems.SHARPKNIFE.get(),
+                        ModItems.SHARPKNIFE.get()},
                 new String[]{"放血", "剥皮", "剔骨", "掏空", "切肉"});
 
         // 猪
-        addRecipes(recipes, FlavorImmersedDaily.DEADPIG.get(), 3,
-                new Item[]{FlavorImmersedDaily.WIDEEDGEDKNIFE.get(), FlavorImmersedDaily.SHARPKNIFE.get(),
-                        FlavorImmersedDaily.BONECUTTERKNIFE.get(), FlavorImmersedDaily.SHARPKNIFE.get(),
-                        FlavorImmersedDaily.SHARPKNIFE.get()},
+        addRecipes(recipes, ModItems.DEADPIG.get(), 3,
+                new Item[]{ModItems.WIDEEDGEDKNIFE.get(), ModItems.SHARPKNIFE.get(),
+                        ModItems.BONECUTTERKNIFE.get(), ModItems.SHARPKNIFE.get(),
+                        ModItems.SHARPKNIFE.get()},
                 new String[]{"放血", "剥皮", "剔骨", "掏空", "切肉"});
 
         // 鸡（特殊流程）
-        addDropRecipe(recipes, FlavorImmersedDaily.DEADCHICKEN.get(), 4, 1,
-                FlavorImmersedDaily.WIDEEDGEDKNIFE.get(), "放血");
-        addDropRecipe(recipes, FlavorImmersedDaily.CHICKENWITHOUTFEATHER.get(), 4, 5,
-                FlavorImmersedDaily.SHARPKNIFE.get(), "掏空");
-        addDropRecipe(recipes, FlavorImmersedDaily.DEADCHICKEN.get(), 4, 6,
-                FlavorImmersedDaily.SHARPKNIFE.get(), "切割");
+        addDropRecipe(recipes, ModItems.DEADCHICKEN.get(), 4, 1,
+                ModItems.WIDEEDGEDKNIFE.get(), "放血");
+        addDropRecipe(recipes, ModItems.CHICKENWITHOUTFEATHER.get(), 4, 5,
+                ModItems.SHARPKNIFE.get(), "掏空");
+        addDropRecipe(recipes, ModItems.DEADCHICKEN.get(), 4, 6,
+                ModItems.SHARPKNIFE.get(), "切割");
 
         registration.addRecipes(ButcheringRecipeCategory.TYPE, recipes);
 
@@ -102,19 +106,20 @@ public class JEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-        registration.addRecipeCatalyst(new ItemStack(FlavorImmersedDaily.FRIDGE_ITEM.get()),
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.FRIDGE.asItem()),
                 FridgeTemperingCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(FlavorImmersedDaily.FRIDGE_ITEM.get()),
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.FRIDGE.asItem()),
                 FridgeFreezingCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(FlavorImmersedDaily.EGGBREAKINGMACHINE_ITEM.get()),
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.EGGBREAKINGMACHINE.asItem()),
                 EggBreakingMachineCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(FlavorImmersedDaily.AGRICULTURALAPPRAISALMACHINE_ITEM.get()),
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.AGRICULTURALAPPRAISALMACHINE.asItem()),
                 AgriculturalAppraisalMachineCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.WOODBASIN.asItem()), WoodBasinInfoCategory.TYPE);
     }
 
     private void buildBasinRecipes(List<WoodBasinInfoRecipe> recipes) {
         List<ItemStack> washOutputs = new ArrayList<>();
-        washOutputs.add(new ItemStack(FlavorImmersedDaily.CHICKENWITHOUTFEATHER.get()));
+        washOutputs.add(new ItemStack(ModItems.CHICKENWITHOUTFEATHER.get()));
         for (String itemId : Config.washedChickenDrops) {
             Item item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemId));
             if (item != null) {
@@ -124,10 +129,15 @@ public class JEIPlugin implements IModPlugin {
         recipes.add(new WoodBasinInfoRecipe(ItemStack.EMPTY, washOutputs,
                 "jei.flavor_immersed_daily.woodbasin_info.wash_desc"));
 
-        for (Map.Entry<String, String> entry : WoodBasinBlock.getFruitToJamMap().entrySet()) {
-            ItemStack fruitInput = WoodBasinInfoRecipe.itemFromId(entry.getKey());
+        var level = Minecraft.getInstance().level;
+        if (level == null) return;
+        for (var holder : level.getRecipeManager().getAllRecipesFor(ModRecipes.WOOD_BASIN_TYPE.get())) {
+            WoodBasinRecipe recipe = holder.value();
+            ItemStack[] ingredients = recipe.getIngredient().getItems();
+            if (ingredients.length == 0) continue;
+            ItemStack fruitInput = ingredients[0].copy();
             List<ItemStack> jamOutput = new ArrayList<>();
-            ItemStack jam = WoodBasinInfoRecipe.itemFromId(entry.getValue());
+            ItemStack jam = recipe.getResult();
             if (!fruitInput.isEmpty() && !jam.isEmpty()) {
                 jamOutput.add(jam);
                 recipes.add(new WoodBasinInfoRecipe(fruitInput, jamOutput,

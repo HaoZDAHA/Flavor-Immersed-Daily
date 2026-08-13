@@ -1,8 +1,9 @@
 package com.flavor_immersed_daily.client;
 
-import com.flavor_immersed_daily.FlavorImmersedDaily;
-import com.flavor_immersed_daily.block.WoodBasinBlock;
-import com.flavor_immersed_daily.block.WoodBasinBlockEntity;
+import com.flavor_immersed_daily.all.ModItems;
+
+import com.flavor_immersed_daily.block.block.processing.WoodBasinBlock;
+import com.flavor_immersed_daily.block.blockentity.WoodBasinBlockEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
@@ -18,7 +19,7 @@ import net.minecraft.world.item.ItemStack;
  */
 public class WoodBasinBlockEntityRenderer implements BlockEntityRenderer<WoodBasinBlockEntity> {
 
-    private static final ItemStack BLEDCHICKEN_STACK = new ItemStack(FlavorImmersedDaily.CHICKENWITHOUTBLOOD.get());
+    private static final ItemStack BLEDCHICKEN_STACK = new ItemStack(ModItems.CHICKENWITHOUTBLOOD.get());
 
     public WoodBasinBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
     }

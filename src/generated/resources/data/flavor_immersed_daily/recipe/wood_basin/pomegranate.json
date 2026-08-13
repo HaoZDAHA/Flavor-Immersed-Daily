@@ -1,0 +1,10 @@
+{
+  "type": "flavor_immersed_daily:wood_basin",
+  "ingredient": {
+    "item": "flavor_immersed_daily:pomegranate"
+  },
+  "result": {
+    "count": 1,
+    "id": "flavor_immersed_daily:pomegranatejam"
+  }
+}

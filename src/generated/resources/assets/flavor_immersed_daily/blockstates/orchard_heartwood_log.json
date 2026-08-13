@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "flavor_immersed_daily:block/orchard_heartwood_log_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "flavor_immersed_daily:block/orchard_heartwood_log"
+    },
+    "axis=z": {
+      "model": "flavor_immersed_daily:block/orchard_heartwood_log_horizontal",
+      "x": 90
+    }
+  }
+}

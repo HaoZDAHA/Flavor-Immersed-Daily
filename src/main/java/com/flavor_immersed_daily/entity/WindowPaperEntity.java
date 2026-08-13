@@ -1,6 +1,7 @@
 package com.flavor_immersed_daily.entity;
 
-import com.flavor_immersed_daily.FlavorImmersedDaily;
+import com.flavor_immersed_daily.all.ModItems;
+
 import com.flavor_immersed_daily.client.ClientGuiHelper;
 import com.flavor_immersed_daily.network.WindowPaperSyncPayload;
 import net.minecraft.core.BlockPos;
@@ -149,7 +150,7 @@ public class WindowPaperEntity extends HangingEntity {
 
     @Override
     public void dropItem(@Nullable Entity brokenEntity) {
-        this.spawnAtLocation(new ItemStack(FlavorImmersedDaily.WINDOW_PAPER_ITEM.get()));
+        this.spawnAtLocation(new ItemStack(ModItems.WINDOW_PAPER_ITEM.get()));
     }
 
     @Override

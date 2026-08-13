@@ -1,6 +1,7 @@
 package com.flavor_immersed_daily.integration.jei;
 
 import com.flavor_immersed_daily.FlavorImmersedDaily;
+import com.flavor_immersed_daily.all.ModBlocks;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
@@ -33,7 +34,7 @@ public class WoodBasinInfoCategory implements IRecipeCategory<WoodBasinInfoRecip
 
     public WoodBasinInfoCategory(IGuiHelper helper) {
         this.background = helper.createBlankDrawable(WIDTH, HEIGHT);
-        this.icon = helper.createDrawableItemStack(new ItemStack(FlavorImmersedDaily.WOODBASIN_ITEM.get()));
+        this.icon = helper.createDrawableItemStack(new ItemStack(ModBlocks.WOODBASIN.asItem()));
     }
 
     @Override

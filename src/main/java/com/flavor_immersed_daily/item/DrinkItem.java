@@ -1,6 +1,9 @@
 package com.flavor_immersed_daily.item;
 
-import com.flavor_immersed_daily.FlavorImmersedDaily;
+import com.flavor_immersed_daily.all.ModItems;
+
+import com.flavor_immersed_daily.all.ModEffects;
+import com.flavor_immersed_daily.client.tooltip.SeasoningTooltip;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.Item;
@@ -27,8 +30,8 @@ public class DrinkItem extends Item {
 
     @Override
     public Optional<TooltipComponent> getTooltipImage(ItemStack stack) {
-        if (stack.is(FlavorImmersedDaily.ICEDBLACKTEA.get())) {
-            return Optional.of(new SeasoningTooltip(List.of(new MobEffectInstance(FlavorImmersedDaily.CRIMSON_MAMBA, 60 * 20))));
+        if (stack.is(ModItems.ICEDBLACKTEA.get())) {
+            return Optional.of(new SeasoningTooltip(List.of(new MobEffectInstance(ModEffects.CRIMSON_MAMBA, 60 * 20))));
         }
         return Optional.empty();
     }

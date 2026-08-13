@@ -1,6 +1,6 @@
 package com.flavor_immersed_daily.screen;
 
-import com.flavor_immersed_daily.block.ColorfulFireworksBoxBlockEntity;
+import com.flavor_immersed_daily.block.blockentity.ColorfulFireworksBoxBlockEntity;
 import com.flavor_immersed_daily.network.ColorfulFireworksBoxSyncPayload;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;

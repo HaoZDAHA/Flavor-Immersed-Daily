@@ -27,6 +27,12 @@ sourceSets.main.resources {
     exclude("src/generated/**/.cache") // datagen cache files
 }
 
+tasks.named('processResources', ProcessResources).configure {
+    // Hand-authored assets remain authoritative when Registrate/datagen also emits
+    // the same path; generated resources still contribute every missing file.
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
 repositories {
     exclusiveContent {
         // Registrate's release repository.
@@ -161,6 +167,12 @@ dependencies {
     compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
     localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+
+    // Local runtime mods (such as KubeJS) are supplied separately. Every JAR in
+    // ./lib is usable by compilation and development runs, but is not bundled.
+    def localLibs = fileTree(dir: "lib", include: ["*.jar"])
+    compileOnly localLibs
+    localRuntime localLibs
 
     // Example mod dependency using a mod jar from ./libs with a flat dir repository
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar

@@ -51,12 +51,12 @@ public class FridgeFreezingRecipe implements Recipe<RecipeInput> {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return FlavorImmersedDaily.FRIDGE_FREEZING_SERIALIZER.get();
+        return ModRecipes.FRIDGE_FREEZING_SERIALIZER.get();
     }
 
     @Override
     public RecipeType<?> getType() {
-        return FlavorImmersedDaily.FRIDGE_FREEZING_TYPE.get();
+        return ModRecipes.FRIDGE_FREEZING_TYPE.get();
     }
 
     public Ingredient getIngredient() {

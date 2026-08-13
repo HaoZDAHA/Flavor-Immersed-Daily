@@ -1,6 +1,7 @@
 package com.flavor_immersed_daily.screen;
 
 import com.flavor_immersed_daily.FlavorImmersedDaily;
+import com.flavor_immersed_daily.all.ModItems;
 import com.flavor_immersed_daily.item.FairySparklerItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -36,10 +37,10 @@ public class FairySparklerConfigScreen extends Screen {
         Player player = Minecraft.getInstance().player;
         if (player != null) {
             ItemStack stack = player.getMainHandItem();
-            if (!stack.is(FlavorImmersedDaily.FAIRY_SPARKLER.get())) {
+            if (!stack.is(ModItems.FAIRY_SPARKLER.get())) {
                 stack = player.getOffhandItem();
             }
-            if (stack.is(FlavorImmersedDaily.FAIRY_SPARKLER.get())) {
+            if (stack.is(ModItems.FAIRY_SPARKLER.get())) {
                 this.innerColor = FairySparklerItem.getColor(stack);
                 this.innerShape = FairySparklerItem.getShape(stack);
                 this.outerColor = FairySparklerItem.getColor2(stack);
@@ -187,10 +188,10 @@ public class FairySparklerConfigScreen extends Screen {
         Player player = Minecraft.getInstance().player;
         if (player == null) return;
         ItemStack stack = player.getMainHandItem();
-        if (!stack.is(FlavorImmersedDaily.FAIRY_SPARKLER.get())) {
+        if (!stack.is(ModItems.FAIRY_SPARKLER.get())) {
             stack = player.getOffhandItem();
         }
-        if (stack.is(FlavorImmersedDaily.FAIRY_SPARKLER.get())) {
+        if (stack.is(ModItems.FAIRY_SPARKLER.get())) {
             FairySparklerItem.setColor(stack, innerColor);
             FairySparklerItem.setShape(stack, innerShape);
             FairySparklerItem.setColor2(stack, outerColor);

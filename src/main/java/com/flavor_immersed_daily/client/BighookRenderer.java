@@ -1,7 +1,10 @@
 package com.flavor_immersed_daily.client;
 
-import com.flavor_immersed_daily.FlavorImmersedDaily;
-import com.flavor_immersed_daily.block.BighookBlock;
+import com.flavor_immersed_daily.all.ModBlocks;
+
+import com.flavor_immersed_daily.all.ModItems;
+
+import com.flavor_immersed_daily.block.block.processing.BighookBlock;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
@@ -26,7 +29,7 @@ public class BighookRenderer implements BlockEntityRenderer<BlockEntity> {
     public void render(BlockEntity entity, float partialTick, PoseStack poseStack,
                        MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
         BlockState state = entity.getBlockState();
-        if (state.getBlock() != FlavorImmersedDaily.BIGHOOK.get()) return;
+        if (state.getBlock() != ModBlocks.BIGHOOK.get()) return;
 
         int stage = state.getValue(BighookBlock.STAGE);
         int animal = state.getValue(BighookBlock.ANIMAL);
@@ -65,12 +68,12 @@ public class BighookRenderer implements BlockEntityRenderer<BlockEntity> {
     private static ItemStack getToolForStage(int stage, int animal) {
         boolean isChicken = animal == 4;
         return switch (stage) {
-            case 1 -> new ItemStack(FlavorImmersedDaily.WIDEEDGEDKNIFE.get());
-            case 2 -> isChicken ? ItemStack.EMPTY : new ItemStack(FlavorImmersedDaily.SHARPKNIFE.get());
-            case 3 -> new ItemStack(FlavorImmersedDaily.BONECUTTERKNIFE.get());
-            case 4 -> new ItemStack(FlavorImmersedDaily.SHARPKNIFE.get());
-            case 5 -> new ItemStack(FlavorImmersedDaily.SHARPKNIFE.get());
-            case 6 -> new ItemStack(FlavorImmersedDaily.SHARPKNIFE.get());
+            case 1 -> new ItemStack(ModItems.WIDEEDGEDKNIFE.get());
+            case 2 -> isChicken ? ItemStack.EMPTY : new ItemStack(ModItems.SHARPKNIFE.get());
+            case 3 -> new ItemStack(ModItems.BONECUTTERKNIFE.get());
+            case 4 -> new ItemStack(ModItems.SHARPKNIFE.get());
+            case 5 -> new ItemStack(ModItems.SHARPKNIFE.get());
+            case 6 -> new ItemStack(ModItems.SHARPKNIFE.get());
             default -> ItemStack.EMPTY;
         };
     }

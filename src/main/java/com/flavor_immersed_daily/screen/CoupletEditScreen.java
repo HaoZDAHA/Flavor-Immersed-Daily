@@ -1,6 +1,6 @@
 package com.flavor_immersed_daily.screen;
 
-import com.flavor_immersed_daily.block.CoupletBlockEntity;
+import com.flavor_immersed_daily.block.blockentity.CoupletBlockEntity;
 import com.flavor_immersed_daily.network.CoupletSyncPayload;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;

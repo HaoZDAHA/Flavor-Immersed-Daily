@@ -5,7 +5,7 @@ import net.minecraft.world.effect.MobEffectCategory;
 
 /**
  * 冻结 — 标记实体处于冻结状态（AI 行为暂停，只能被攻击）
- * 实际 AI 暂停逻辑由 {@link FrozenEffectHandler} 在实体 tick 中执行
+ * 实际逻辑由 Mixin 实现：MobMixin 暂停 serverAiStep，LivingEntityMixin 禁止移动
  */
 public class FrozenEffect extends MobEffect {
 

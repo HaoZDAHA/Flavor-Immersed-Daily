@@ -51,12 +51,12 @@ public class FridgeTemperingRecipe implements Recipe<RecipeInput> {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return FlavorImmersedDaily.FRIDGE_TEMPERING_SERIALIZER.get();
+        return ModRecipes.FRIDGE_TEMPERING_SERIALIZER.get();
     }
 
     @Override
     public RecipeType<?> getType() {
-        return FlavorImmersedDaily.FRIDGE_TEMPERING_TYPE.get();
+        return ModRecipes.FRIDGE_TEMPERING_TYPE.get();
     }
 
     public Ingredient getIngredient() {

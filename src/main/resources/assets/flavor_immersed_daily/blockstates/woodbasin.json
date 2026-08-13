@@ -1,8 +1,0 @@
-{
-  "variants": {
-    "watered=false,has_chicken=false,has_fruit=false": { "model": "flavor_immersed_daily:block/woodbasin" },
-    "watered=true,has_chicken=false,has_fruit=false":  { "model": "flavor_immersed_daily:block/woodbasinwater" },
-    "watered=true,has_chicken=true,has_fruit=false":   { "model": "flavor_immersed_daily:block/woodbasinwater" },
-    "watered=false,has_chicken=false,has_fruit=true":  { "model": "flavor_immersed_daily:block/woodbasin" }
-  }
-}

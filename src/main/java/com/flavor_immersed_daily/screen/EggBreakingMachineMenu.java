@@ -1,7 +1,9 @@
 package com.flavor_immersed_daily.screen;
 
+import com.flavor_immersed_daily.all.ModBlocks;
+
 import com.flavor_immersed_daily.FlavorImmersedDaily;
-import com.flavor_immersed_daily.block.EggBreakingMachineBlockEntity;
+import com.flavor_immersed_daily.block.blockentity.EggBreakingMachineBlockEntity;
 import com.flavor_immersed_daily.recipe.EggBreakingRecipe;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
@@ -37,7 +39,7 @@ public class EggBreakingMachineMenu extends AbstractContainerMenu {
     // 服务端构造 — 传入 BlockEntity 的库存
     public EggBreakingMachineMenu(int containerId, Inventory playerInventory,
                                   SimpleContainer craftContainer, ContainerLevelAccess access) {
-        super(FlavorImmersedDaily.EGG_BREAKING_MACHINE_MENU.get(), containerId);
+        super(com.flavor_immersed_daily.all.ModMenus.EGG_BREAKING_MACHINE_MENU.get(), containerId);
         this.craftContainer = craftContainer;
         this.access = access;
         this.player = playerInventory.player;
@@ -112,7 +114,7 @@ public class EggBreakingMachineMenu extends AbstractContainerMenu {
         Level level = player.level();
         matchingRecipes = new ArrayList<>();
         for (RecipeHolder<?> holder : level.getRecipeManager()
-                .getAllRecipesFor(FlavorImmersedDaily.EGG_BREAKING_TYPE.get())) {
+                .getAllRecipesFor(com.flavor_immersed_daily.recipe.ModRecipes.EGG_BREAKING_TYPE.get())) {
             if (holder.value() instanceof EggBreakingRecipe recipe && recipe.matches(input, level)) {
                 @SuppressWarnings("unchecked")
                 RecipeHolder<EggBreakingRecipe> typed = (RecipeHolder<EggBreakingRecipe>) holder;
@@ -163,7 +165,7 @@ public class EggBreakingMachineMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player player) {
-        return stillValid(access, player, FlavorImmersedDaily.EGGBREAKINGMACHINE.get());
+        return stillValid(access, player, ModBlocks.EGGBREAKINGMACHINE.get());
     }
 
     @Override

@@ -1,9 +1,10 @@
 package com.flavor_immersed_daily.entity;
 
 import com.flavor_immersed_daily.FlavorImmersedDaily;
+import com.flavor_immersed_daily.all.ModEntities;
+import com.flavor_immersed_daily.all.ModItems;
 import com.flavor_immersed_daily.item.FirecrackerHelper;
 import it.unimi.dsi.fastutil.ints.IntList;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -21,8 +22,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
-import java.util.List;
-
 public class FirecrackerEntity extends ThrowableItemProjectile {
 
     private ItemStack firecrackerStack = ItemStack.EMPTY;
@@ -32,13 +31,13 @@ public class FirecrackerEntity extends ThrowableItemProjectile {
     }
 
     public FirecrackerEntity(Level level, LivingEntity shooter, ItemStack stack) {
-        super(FlavorImmersedDaily.FIRECRACKER_ENTITY.get(), shooter, level);
+        super(ModEntities.FIRECRACKER_ENTITY.get(), shooter, level);
         this.firecrackerStack = stack.copy();
     }
 
     @Override
     protected Item getDefaultItem() {
-        return FlavorImmersedDaily.WRESTLING_GUN.get();
+        return ModItems.WRESTLING_GUN.get();
     }
 
     @Override

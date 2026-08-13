@@ -1,5 +1,5 @@
 package com.flavor_immersed_daily.event;
-
+import com.flavor_immersed_daily.all.ModItems;
 import com.flavor_immersed_daily.FlavorImmersedDaily;
 import com.flavor_immersed_daily.item.KitchenScissorsItem;
 import net.minecraft.core.BlockPos;
@@ -33,11 +33,11 @@ public class KitchenScissorsEventHandler {
     private static List<ItemStack> getWildCrops() {
         if (wildCrops == null) {
             List<ItemStack> list = new ArrayList<>();
-            list.add(new ItemStack(FlavorImmersedDaily.WILDFLOWERANDLEAF.get()));
-            list.add(new ItemStack(FlavorImmersedDaily.WILDGRAINPLANT.get()));
-            list.add(new ItemStack(FlavorImmersedDaily.WILDMUSHROOMPLANT.get()));
-            list.add(new ItemStack(FlavorImmersedDaily.WILDSEEDPLANT.get()));
-            list.add(new ItemStack(FlavorImmersedDaily.WILDTUBERPLANTS.get()));
+            list.add(new ItemStack(ModItems.WILDFLOWERANDLEAF.get()));
+            list.add(new ItemStack(ModItems.WILDGRAINPLANT.get()));
+            list.add(new ItemStack(ModItems.WILDMUSHROOMPLANT.get()));
+            list.add(new ItemStack(ModItems.WILDSEEDPLANT.get()));
+            list.add(new ItemStack(ModItems.WILDTUBERPLANTS.get()));
             wildCrops = List.copyOf(list);
         }
         return wildCrops;
@@ -46,9 +46,9 @@ public class KitchenScissorsEventHandler {
     private static List<ItemStack> getWildFruits() {
         if (wildFruits == null) {
             List<ItemStack> list = new ArrayList<>();
-            list.add(new ItemStack(FlavorImmersedDaily.TEMPERATEWILDFRUIT.get()));
-            list.add(new ItemStack(FlavorImmersedDaily.TROPICALWILD_FRUIT.get()));
-            list.add(new ItemStack(FlavorImmersedDaily.WILDFRUITINCOLDZONE.get()));
+            list.add(new ItemStack(ModItems.TEMPERATEWILDFRUIT.get()));
+            list.add(new ItemStack(ModItems.TROPICALWILD_FRUIT.get()));
+            list.add(new ItemStack(ModItems.WILDFRUITINCOLDZONE.get()));
             wildFruits = List.copyOf(list);
         }
         return wildFruits;
@@ -76,7 +76,7 @@ public class KitchenScissorsEventHandler {
                 spawnItem(level, pos, drop);
             }
             if (RANDOM.nextDouble() < REEDLEAF_CHANCE) {
-                spawnItem(level, pos, new ItemStack(FlavorImmersedDaily.REEDLEAF.get()));
+                spawnItem(level, pos, new ItemStack(ModItems.REEDLEAF.get()));
             }
         } else if (isLeaves(state)) {
             if (RANDOM.nextDouble() < CHANCE) {
@@ -107,3 +107,4 @@ public class KitchenScissorsEventHandler {
         level.addFreshEntity(itemEntity);
     }
 }
+

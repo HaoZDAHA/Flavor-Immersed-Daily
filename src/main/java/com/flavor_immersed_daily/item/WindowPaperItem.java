@@ -1,6 +1,6 @@
 package com.flavor_immersed_daily.item;
 
-import com.flavor_immersed_daily.FlavorImmersedDaily;
+import com.flavor_immersed_daily.all.ModEntities;
 import com.flavor_immersed_daily.entity.WindowPaperEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -17,15 +17,11 @@ import net.minecraft.world.level.gameevent.GameEvent;
 
 import java.util.List;
 
-/**
- * 窗纸物品 — 右键墙面放置实体（参考原版画 PaintingItem 的放置逻辑）
- */
 public class WindowPaperItem extends HangingEntityItem {
-
     private static final Component TOOLTIP = Component.translatable("tooltip.flavor_immersed_daily.windowpaper");
 
     public WindowPaperItem(Item.Properties properties) {
-        super(FlavorImmersedDaily.WINDOW_PAPER_ENTITY.get(), properties);
+        super(ModEntities.WINDOW_PAPER_ENTITY.get(), properties);
     }
 
     @Override
@@ -36,30 +32,20 @@ public class WindowPaperItem extends HangingEntityItem {
 
     @Override
     public InteractionResult useOn(UseOnContext context) {
-        BlockPos blockpos = context.getClickedPos();
-        Direction direction = context.getClickedFace();
-        BlockPos blockpos1 = blockpos.relative(direction);
+        BlockPos target = context.getClickedPos().relative(context.getClickedFace());
         Player player = context.getPlayer();
-        ItemStack itemstack = context.getItemInHand();
-
-        if (player != null && !this.mayPlace(player, direction, itemstack, blockpos1)) {
-            return InteractionResult.FAIL;
-        }
-
+        ItemStack itemStack = context.getItemInHand();
+        Direction direction = context.getClickedFace();
+        if (player != null && !mayPlace(player, direction, itemStack, target)) return InteractionResult.FAIL;
         Level level = context.getLevel();
-        WindowPaperEntity entity = new WindowPaperEntity(
-                FlavorImmersedDaily.WINDOW_PAPER_ENTITY.get(), level, blockpos1, direction);
-
-        if (entity.survives()) {
-            if (!level.isClientSide) {
-                entity.playPlacementSound();
-                level.gameEvent(player, GameEvent.ENTITY_PLACE, entity.position());
-                level.addFreshEntity(entity);
-            }
-            itemstack.shrink(1);
-            return InteractionResult.sidedSuccess(level.isClientSide);
+        WindowPaperEntity entity = new WindowPaperEntity(ModEntities.WINDOW_PAPER_ENTITY.get(), level, target, direction);
+        if (!entity.survives()) return InteractionResult.CONSUME;
+        if (!level.isClientSide) {
+            entity.playPlacementSound();
+            level.gameEvent(player, GameEvent.ENTITY_PLACE, entity.position());
+            level.addFreshEntity(entity);
         }
-
-        return InteractionResult.CONSUME;
+        itemStack.shrink(1);
+        return InteractionResult.sidedSuccess(level.isClientSide);
     }
 }

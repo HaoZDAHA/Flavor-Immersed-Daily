@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "flavor_immersed_daily:reddate"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "flavor_immersed_daily:blocks/rawreddate"
+}

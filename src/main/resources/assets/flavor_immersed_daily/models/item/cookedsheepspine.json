@@ -1,6 +1,0 @@
-{
-  "textures": {
-    "layer0": "flavor_immersed_daily:item/cookedsheepspine"
-  },
-  "parent": "minecraft:item/generated"
-}

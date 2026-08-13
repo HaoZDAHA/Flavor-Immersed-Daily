@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "has_chicken=false,has_fruit=false,watered=false": {
+      "model": "flavor_immersed_daily:block/woodbasin"
+    },
+    "has_chicken=false,has_fruit=false,watered=true": {
+      "model": "flavor_immersed_daily:block/woodbasinwater"
+    },
+    "has_chicken=false,has_fruit=true,watered=false": {
+      "model": "flavor_immersed_daily:block/woodbasin"
+    },
+    "has_chicken=false,has_fruit=true,watered=true": {
+      "model": "flavor_immersed_daily:block/woodbasinwater"
+    },
+    "has_chicken=true,has_fruit=false,watered=false": {
+      "model": "flavor_immersed_daily:block/woodbasin"
+    },
+    "has_chicken=true,has_fruit=false,watered=true": {
+      "model": "flavor_immersed_daily:block/woodbasinwater"
+    },
+    "has_chicken=true,has_fruit=true,watered=false": {
+      "model": "flavor_immersed_daily:block/woodbasin"
+    },
+    "has_chicken=true,has_fruit=true,watered=true": {
+      "model": "flavor_immersed_daily:block/woodbasinwater"
+    }
+  }
+}

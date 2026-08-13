@@ -1,6 +1,12 @@
 package com.flavor_immersed_daily.effect;
 
-import com.flavor_immersed_daily.Config;
+import com.flavor_immersed_daily.datagen.tag.FIDItemTags;
+
+import com.flavor_immersed_daily.all.ModEffects;
+
+import com.flavor_immersed_daily.all.ModItems;
+
+import com.flavor_immersed_daily.config.Config;
 import com.flavor_immersed_daily.FlavorImmersedDaily;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleTypes;
@@ -24,23 +30,23 @@ import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import java.util.List;
 
 /**
- * 火爆狂攻（fury_assault）效果处理器
- * 触发规则：
- *  - 玩家食用物品后，副手持有 fid:seasoning 标签物品，或食物 NBT 标签 seasoning 非空
- *  - 其中副手为 chillipowder（辣椒粉）或食物 NBT seasoning 为 flavor_immersed_daily:chillipowder 时，
- *    给予 45 秒 fury_assault 效果，并消耗副手调味料一个
- * 效果：拥有 fury_assault 的玩家每进行一次近战攻击：
- *  - 消耗玩家 config 点生命值（默认 1）
- *  - 玩家前方 config 格扇形范围（半角 30°）内的生物被点燃，并受到 config 点火焰伤害（默认 2）
- *  - 触发冲击粒子特效
+ * 鐏垎鐙傛敾锛坒ury_assault锛夋晥鏋滃鐞嗗櫒
+ * 瑙﹀彂瑙勫垯锛?
+ *  - 鐜╁椋熺敤鐗╁搧鍚庯紝鍓墜鎸佹湁 fid:seasoning 鏍囩鐗╁搧锛屾垨椋熺墿 NBT 鏍囩 seasoning 闈炵┖
+ *  - 鍏朵腑鍓墜涓?chillipowder锛堣荆妞掔矇锛夋垨椋熺墿 NBT seasoning 涓?flavor_immersed_daily:chillipowder 鏃讹紝
+ *    缁欎簣 45 绉?fury_assault 鏁堟灉锛屽苟娑堣€楀壇鎵嬭皟鍛虫枡涓€涓?
+ * 鏁堟灉锛氭嫢鏈?fury_assault 鐨勭帺瀹舵瘡杩涜涓€娆¤繎鎴樻敾鍑伙細
+ *  - 娑堣€楃帺瀹?config 鐐圭敓鍛藉€硷紙榛樿 1锛?
+ *  - 鐜╁鍓嶆柟 config 鏍兼墖褰㈣寖鍥达紙鍗婅 30掳锛夊唴鐨勭敓鐗╄鐐圭噧锛屽苟鍙楀埌 config 鐐圭伀鐒颁激瀹筹紙榛樿 2锛?
+ *  - 瑙﹀彂鍐插嚮绮掑瓙鐗规晥
  */
 @EventBusSubscriber(modid = FlavorImmersedDaily.MODID)
 public class FuryAssaultEffectHandler {
 
     private static final int DURATION_TICKS = 45 * 20;
-    /** 扇形半角 30° 的余弦值（用于角度过滤） */
+    /** 鎵囧舰鍗婅 30掳 鐨勪綑寮﹀€硷紙鐢ㄤ簬瑙掑害杩囨护锛?*/
     private static final double CONE_COS = Math.cos(Math.toRadians(30.0));
-    /** 点燃持续时间（tick） */
+    /** 鐐圭噧鎸佺画鏃堕棿锛坱ick锛?*/
     private static final int FIRE_TICKS = 100;
 
     @SubscribeEvent
@@ -49,24 +55,24 @@ public class FuryAssaultEffectHandler {
         if (player.level().isClientSide) return;
         if (!Config.furyAssaultEnabled) return;
 
-        // 副手是否为调味料
+        // 鍓墜鏄惁涓鸿皟鍛虫枡
         ItemStack offhand = player.getOffhandItem();
-        boolean offhandIsSeasoning = offhand.is(FlavorImmersedDaily.SEASONING_TAG);
+        boolean offhandIsSeasoning = offhand.is(FIDItemTags.SEASONING);
 
-        // 食用的食物 NBT 文本标签 seasoning（1.21.1 存于 CUSTOM_DATA 组件中）
+        // 椋熺敤鐨勯鐗?NBT 鏂囨湰鏍囩 seasoning锛?.21.1 瀛樹簬 CUSTOM_DATA 缁勪欢涓級
         CompoundTag tag = event.getItem().getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
         boolean foodHasSeasoning = tag.contains("seasoning", Tag.TAG_STRING);
         String foodSeasoning = foodHasSeasoning ? tag.getString("seasoning") : "";
 
-        // 触发条件：副手是调味料 或 食物 seasoning 标签非空
+        // 瑙﹀彂鏉′欢锛氬壇鎵嬫槸璋冨懗鏂?鎴?椋熺墿 seasoning 鏍囩闈炵┖
         if (!offhandIsSeasoning && !foodHasSeasoning) return;
 
-        // 专属 buff：副手是辣椒粉（chillipowder）或 食物 seasoning 标签为 flavor_immersed_daily:chillipowder → 火爆狂攻 45 秒
-        boolean isChiliPowder = offhand.is(FlavorImmersedDaily.CHILLIPOWDER.get())
+        // 涓撳睘 buff锛氬壇鎵嬫槸杈ｆ绮夛紙chillipowder锛夋垨 椋熺墿 seasoning 鏍囩涓?flavor_immersed_daily:chillipowder 鈫?鐏垎鐙傛敾 45 绉?
+        boolean isChiliPowder = offhand.is(ModItems.CHILLIPOWDER.get())
                 || "flavor_immersed_daily:chillipowder".equals(foodSeasoning);
         if (isChiliPowder) {
-            player.addEffect(new MobEffectInstance(FlavorImmersedDaily.FURY_ASSAULT, DURATION_TICKS, 0));
-            // 副手持有调味料时，获得 buff 的同时消耗一个
+            player.addEffect(new MobEffectInstance(ModEffects.FURY_ASSAULT, DURATION_TICKS, 0));
+            // 鍓墜鎸佹湁璋冨懗鏂欐椂锛岃幏寰?buff 鐨勫悓鏃舵秷鑰椾竴涓?
             if (offhandIsSeasoning) {
                 offhand.shrink(1);
             }
@@ -79,15 +85,15 @@ public class FuryAssaultEffectHandler {
         if (event.getEntity().level().isClientSide) return;
 
         DamageSource source = event.getSource();
-        // 仅近战：直接攻击者与伤害来源相同（排除箭矢等投射物）
+        // 浠呰繎鎴橈細鐩存帴鏀诲嚮鑰呬笌浼ゅ鏉ユ簮鐩稿悓锛堟帓闄ょ鐭㈢瓑鎶曞皠鐗╋級
         if (source.getDirectEntity() != source.getEntity()) return;
         if (!(source.getEntity() instanceof Player player)) return;
-        if (!player.hasEffect(FlavorImmersedDaily.FURY_ASSAULT)) return;
+        if (!player.hasEffect(ModEffects.FURY_ASSAULT)) return;
 
         Level level = player.level();
         if (!(level instanceof ServerLevel serverLevel)) return;
 
-        // 1. 消耗玩家生命值（精确扣血，无视护甲；若不足则直接击杀）
+        // 1. 娑堣€楃帺瀹剁敓鍛藉€硷紙绮剧‘鎵ｈ锛屾棤瑙嗘姢鐢诧紱鑻ヤ笉瓒冲垯鐩存帴鍑绘潃锛?
         float health = player.getHealth() - (float) Config.furyAssaultHealthCost;
         if (health <= 0.0F) {
             player.hurt(player.damageSources().genericKill(), Float.MAX_VALUE);
@@ -95,7 +101,7 @@ public class FuryAssaultEffectHandler {
             player.setHealth(health);
         }
 
-        // 2. 前方扇形范围（距离 ≤ 范围，半角 30°）内的生物：点燃 + 火焰伤害
+        // 2. 鍓嶆柟鎵囧舰鑼冨洿锛堣窛绂?鈮?鑼冨洿锛屽崐瑙?30掳锛夊唴鐨勭敓鐗╋細鐐圭噧 + 鐏劙浼ゅ
         double range = Config.furyAssaultRange;
         Vec3 facing = player.getLookAngle();
         Vec3 eye = player.getEyePosition();
@@ -114,7 +120,7 @@ public class FuryAssaultEffectHandler {
             target.hurt(serverLevel.damageSources().onFire(), (float) Config.furyAssaultFireDamage);
         }
 
-        // 3. 扇形火焰粒子标识：在扇形范围内覆盖火焰特效
+        // 3. 鎵囧舰鐏劙绮掑瓙鏍囪瘑锛氬湪鎵囧舰鑼冨洿鍐呰鐩栫伀鐒扮壒鏁?
         double yaw = Math.toRadians(player.getYRot());
         double baseX = -Math.sin(yaw);
         double baseZ = Math.cos(yaw);

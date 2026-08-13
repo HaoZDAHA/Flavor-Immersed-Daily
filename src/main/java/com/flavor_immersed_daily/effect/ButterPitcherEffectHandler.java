@@ -1,6 +1,12 @@
 package com.flavor_immersed_daily.effect;
 
-import com.flavor_immersed_daily.Config;
+import com.flavor_immersed_daily.datagen.tag.FIDItemTags;
+
+import com.flavor_immersed_daily.all.ModEffects;
+
+import com.flavor_immersed_daily.all.ModItems;
+
+import com.flavor_immersed_daily.config.Config;
 import com.flavor_immersed_daily.FlavorImmersedDaily;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
@@ -23,15 +29,15 @@ import net.neoforged.neoforge.event.entity.ProjectileImpactEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 
 /**
- * 黄油投手效果处理器
- * 触发规则：
- *  - 玩家食用物品后，副手持有 fid:seasoning 标签物品，或食物 NBT 标签 seasoning 非空
- *  - 其中副手为 butter（黄油）或食物 NBT seasoning 为 flavor_immersed_daily:butter 时，
- *    给予 45 秒 butter_pitcher 效果，并消耗副手调味料一个
- * 效果：持有 butter_pitcher 效果的玩家发射弹射物命中目标时：
- *  - 目标非玩家（绝对不能是玩家）
- *  - 目标非 Boss（可配置开关，默认开启）
- *  - 按配置概率（默认 25%）将目标游戏冻结（冰冻）数秒（默认 5 秒）
+ * 榛勬补鎶曟墜鏁堟灉澶勭悊鍣?
+ * 瑙﹀彂瑙勫垯锛?
+ *  - 鐜╁椋熺敤鐗╁搧鍚庯紝鍓墜鎸佹湁 fid:seasoning 鏍囩鐗╁搧锛屾垨椋熺墿 NBT 鏍囩 seasoning 闈炵┖
+ *  - 鍏朵腑鍓墜涓?butter锛堥粍娌癸級鎴栭鐗?NBT seasoning 涓?flavor_immersed_daily:butter 鏃讹紝
+ *    缁欎簣 45 绉?butter_pitcher 鏁堟灉锛屽苟娑堣€楀壇鎵嬭皟鍛虫枡涓€涓?
+ * 鏁堟灉锛氭寔鏈?butter_pitcher 鏁堟灉鐨勭帺瀹跺彂灏勫脊灏勭墿鍛戒腑鐩爣鏃讹細
+ *  - 鐩爣闈炵帺瀹讹紙缁濆涓嶈兘鏄帺瀹讹級
+ *  - 鐩爣闈?Boss锛堝彲閰嶇疆寮€鍏筹紝榛樿寮€鍚級
+ *  - 鎸夐厤缃鐜囷紙榛樿 25%锛夊皢鐩爣娓告垙鍐荤粨锛堝啺鍐伙級鏁扮锛堥粯璁?5 绉掞級
  */
 @EventBusSubscriber(modid = FlavorImmersedDaily.MODID)
 public class ButterPitcherEffectHandler {
@@ -44,24 +50,24 @@ public class ButterPitcherEffectHandler {
         if (player.level().isClientSide) return;
         if (!Config.butterPitcherEnabled) return;
 
-        // 副手是否为调味料
+        // 鍓墜鏄惁涓鸿皟鍛虫枡
         ItemStack offhand = player.getOffhandItem();
-        boolean offhandIsSeasoning = offhand.is(FlavorImmersedDaily.SEASONING_TAG);
+        boolean offhandIsSeasoning = offhand.is(FIDItemTags.SEASONING);
 
-        // 食用的食物 NBT 文本标签 seasoning（1.21.1 存于 CUSTOM_DATA 组件中）
+        // 椋熺敤鐨勯鐗?NBT 鏂囨湰鏍囩 seasoning锛?.21.1 瀛樹簬 CUSTOM_DATA 缁勪欢涓級
         CompoundTag tag = event.getItem().getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
         boolean foodHasSeasoning = tag.contains("seasoning", Tag.TAG_STRING);
         String foodSeasoning = foodHasSeasoning ? tag.getString("seasoning") : "";
 
-        // 触发条件：副手是调味料 或 食物 seasoning 标签非空
+        // 瑙﹀彂鏉′欢锛氬壇鎵嬫槸璋冨懗鏂?鎴?椋熺墿 seasoning 鏍囩闈炵┖
         if (!offhandIsSeasoning && !foodHasSeasoning) return;
 
-        // 专属 buff：副手是黄油 或 食物 seasoning 标签为 flavor_immersed_daily:butter → 黄油投手 45 秒
-        boolean isButter = offhand.is(FlavorImmersedDaily.BUTTER.get())
+        // 涓撳睘 buff锛氬壇鎵嬫槸榛勬补 鎴?椋熺墿 seasoning 鏍囩涓?flavor_immersed_daily:butter 鈫?榛勬补鎶曟墜 45 绉?
+        boolean isButter = offhand.is(ModItems.BUTTER.get())
                 || "flavor_immersed_daily:butter".equals(foodSeasoning);
         if (isButter) {
-            player.addEffect(new MobEffectInstance(FlavorImmersedDaily.BUTTER_PITCHER, DURATION_TICKS, 0));
-            // 副手持有调味料时，获得 buff 的同时消耗一个
+            player.addEffect(new MobEffectInstance(ModEffects.BUTTER_PITCHER, DURATION_TICKS, 0));
+            // 鍓墜鎸佹湁璋冨懗鏂欐椂锛岃幏寰?buff 鐨勫悓鏃舵秷鑰椾竴涓?
             if (offhandIsSeasoning) {
                 offhand.shrink(1);
             }
@@ -78,30 +84,30 @@ public class ButterPitcherEffectHandler {
         Projectile projectile = event.getProjectile();
         if (projectile.level().isClientSide) return;
 
-        // 投掷者必须是持有效果的玩家
+        // 鎶曟幏鑰呭繀椤绘槸鎸佹湁鏁堟灉鐨勭帺瀹?
         if (!(projectile.getOwner() instanceof Player player)) return;
-        if (!player.hasEffect(FlavorImmersedDaily.BUTTER_PITCHER)) return;
+        if (!player.hasEffect(ModEffects.BUTTER_PITCHER)) return;
 
-        // 目标绝不能是玩家
+        // 鐩爣缁濅笉鑳芥槸鐜╁
         Entity target = entityHit.getEntity();
         if (target instanceof Player) return;
         if (!(target instanceof LivingEntity livingTarget)) return;
 
-        // 非 Boss 检测（可开关）
+        // 闈?Boss 妫€娴嬶紙鍙紑鍏筹級
         if (Config.butterPitcherExcludeBoss && isBoss(target)) return;
 
-        // 概率判定
+        // 姒傜巼鍒ゅ畾
         if (player.getRandom().nextDouble() >= Config.butterPitcherFreezeChance) return;
 
-        // 施加冻结效果：暂停目标 AI 行为指定秒数
+        // 鏂藉姞鍐荤粨鏁堟灉锛氭殏鍋滅洰鏍?AI 琛屼负鎸囧畾绉掓暟
         livingTarget.addEffect(new MobEffectInstance(
-                FlavorImmersedDaily.FROZEN,
+                ModEffects.FROZEN,
                 (int) (Config.butterPitcherFreezeDuration * 20),
                 0), player);
     }
 
     /**
-     * 判定实体是否为 Boss：末影龙、凋灵、循声守卫
+     * 鍒ゅ畾瀹炰綋鏄惁涓?Boss锛氭湯褰遍緳銆佸噵鐏点€佸惊澹板畧鍗?
      */
     private static boolean isBoss(Entity entity) {
         return entity instanceof EnderDragon

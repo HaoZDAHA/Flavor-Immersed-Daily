@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "flavor_immersed_daily:block/verdant_grace_leaves"
+  }
+}

@@ -1,6 +1,12 @@
 package com.flavor_immersed_daily.effect;
 
-import com.flavor_immersed_daily.Config;
+import com.flavor_immersed_daily.datagen.tag.FIDItemTags;
+
+import com.flavor_immersed_daily.all.ModEffects;
+
+import com.flavor_immersed_daily.all.ModItems;
+
+import com.flavor_immersed_daily.config.Config;
 import com.flavor_immersed_daily.FlavorImmersedDaily;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
@@ -18,14 +24,14 @@ import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 
 /**
- * 晒足一百八十天（solar_brew）效果处理器
- * 触发规则：
- *  - 玩家食用物品后，副手持有 fid:seasoning 标签物品，或食物 NBT 标签 seasoning 非空
- *  - 其中副手为 soy（酱油）或食物 NBT seasoning 为 flavor_immersed_daily:soy 时，
- *    给予 45 秒 solar_brew 效果，并消耗副手调味料一个
- * 效果：拥有 solar_brew 的玩家近战攻击生物时：
- *  - 被攻击生物处于露天环境（头顶能看见天空）→ 额外受到 config 点火焰伤害（默认 0.5）
- *  - 被攻击生物为亡灵生物 → 再额外受到 config 点火焰伤害（默认 0.5）
+ * 鏅掕冻涓€鐧惧叓鍗佸ぉ锛坰olar_brew锛夋晥鏋滃鐞嗗櫒
+ * 瑙﹀彂瑙勫垯锛?
+ *  - 鐜╁椋熺敤鐗╁搧鍚庯紝鍓墜鎸佹湁 fid:seasoning 鏍囩鐗╁搧锛屾垨椋熺墿 NBT 鏍囩 seasoning 闈炵┖
+ *  - 鍏朵腑鍓墜涓?soy锛堥叡娌癸級鎴栭鐗?NBT seasoning 涓?flavor_immersed_daily:soy 鏃讹紝
+ *    缁欎簣 45 绉?solar_brew 鏁堟灉锛屽苟娑堣€楀壇鎵嬭皟鍛虫枡涓€涓?
+ * 鏁堟灉锛氭嫢鏈?solar_brew 鐨勭帺瀹惰繎鎴樻敾鍑荤敓鐗╂椂锛?
+ *  - 琚敾鍑荤敓鐗╁浜庨湶澶╃幆澧冿紙澶撮《鑳界湅瑙佸ぉ绌猴級鈫?棰濆鍙楀埌 config 鐐圭伀鐒颁激瀹筹紙榛樿 0.5锛?
+ *  - 琚敾鍑荤敓鐗╀负浜＄伒鐢熺墿 鈫?鍐嶉澶栧彈鍒?config 鐐圭伀鐒颁激瀹筹紙榛樿 0.5锛?
  */
 @EventBusSubscriber(modid = FlavorImmersedDaily.MODID)
 public class SolarBrewEffectHandler {
@@ -38,24 +44,24 @@ public class SolarBrewEffectHandler {
         if (player.level().isClientSide) return;
         if (!Config.solarBrewEnabled) return;
 
-        // 副手是否为调味料
+        // 鍓墜鏄惁涓鸿皟鍛虫枡
         ItemStack offhand = player.getOffhandItem();
-        boolean offhandIsSeasoning = offhand.is(FlavorImmersedDaily.SEASONING_TAG);
+        boolean offhandIsSeasoning = offhand.is(FIDItemTags.SEASONING);
 
-        // 食用的食物 NBT 文本标签 seasoning（1.21.1 存于 CUSTOM_DATA 组件中）
+        // 椋熺敤鐨勯鐗?NBT 鏂囨湰鏍囩 seasoning锛?.21.1 瀛樹簬 CUSTOM_DATA 缁勪欢涓級
         CompoundTag tag = event.getItem().getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
         boolean foodHasSeasoning = tag.contains("seasoning", Tag.TAG_STRING);
         String foodSeasoning = foodHasSeasoning ? tag.getString("seasoning") : "";
 
-        // 触发条件：副手是调味料 或 食物 seasoning 标签非空
+        // 瑙﹀彂鏉′欢锛氬壇鎵嬫槸璋冨懗鏂?鎴?椋熺墿 seasoning 鏍囩闈炵┖
         if (!offhandIsSeasoning && !foodHasSeasoning) return;
 
-        // 专属 buff：副手是酱油（soy）或 食物 seasoning 标签为 flavor_immersed_daily:soy → 晒足一百八十天 45 秒
-        boolean isSoy = offhand.is(FlavorImmersedDaily.SOY.get())
+        // 涓撳睘 buff锛氬壇鎵嬫槸閰辨补锛坰oy锛夋垨 椋熺墿 seasoning 鏍囩涓?flavor_immersed_daily:soy 鈫?鏅掕冻涓€鐧惧叓鍗佸ぉ 45 绉?
+        boolean isSoy = offhand.is(ModItems.SOY.get())
                 || "flavor_immersed_daily:soy".equals(foodSeasoning);
         if (isSoy) {
-            player.addEffect(new MobEffectInstance(FlavorImmersedDaily.SOLAR_BREW, DURATION_TICKS, 0));
-            // 副手持有调味料时，获得 buff 的同时消耗一个
+            player.addEffect(new MobEffectInstance(ModEffects.SOLAR_BREW, DURATION_TICKS, 0));
+            // 鍓墜鎸佹湁璋冨懗鏂欐椂锛岃幏寰?buff 鐨勫悓鏃舵秷鑰椾竴涓?
             if (offhandIsSeasoning) {
                 offhand.shrink(1);
             }
@@ -69,18 +75,18 @@ public class SolarBrewEffectHandler {
         if (target.level().isClientSide) return;
 
         DamageSource source = event.getSource();
-        // 仅近战：直接攻击者与伤害来源相同（排除箭矢等投射物）
+        // 浠呰繎鎴橈細鐩存帴鏀诲嚮鑰呬笌浼ゅ鏉ユ簮鐩稿悓锛堟帓闄ょ鐭㈢瓑鎶曞皠鐗╋級
         if (source.getDirectEntity() != source.getEntity()) return;
         if (!(source.getEntity() instanceof Player player)) return;
-        if (!player.hasEffect(FlavorImmersedDaily.SOLAR_BREW)) return;
+        if (!player.hasEffect(ModEffects.SOLAR_BREW)) return;
 
-        // 露天环境（头顶能看见天空）
+        // 闇插ぉ鐜锛堝ご椤惰兘鐪嬭澶╃┖锛?
         boolean openSky = target.level().canSeeSky(target.blockPosition());
         if (openSky) {
             target.hurt(target.level().damageSources().onFire(), (float) Config.solarBrewOpenSkyFireDamage);
         }
 
-        // 亡灵生物再额外一次
+        // 浜＄伒鐢熺墿鍐嶉澶栦竴娆?
         if (target.getType().is(EntityTypeTags.UNDEAD)) {
             target.hurt(target.level().damageSources().onFire(), (float) Config.solarBrewUndeadFireDamage);
         }

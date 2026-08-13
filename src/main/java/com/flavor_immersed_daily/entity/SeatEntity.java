@@ -1,6 +1,6 @@
 package com.flavor_immersed_daily.entity;
 
-import com.flavor_immersed_daily.block.ChairBlock;
+import com.flavor_immersed_daily.block.block.furniture.ChairBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.Entity;

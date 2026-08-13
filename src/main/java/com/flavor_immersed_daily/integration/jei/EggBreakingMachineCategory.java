@@ -1,6 +1,7 @@
 package com.flavor_immersed_daily.integration.jei;
 
 import com.flavor_immersed_daily.FlavorImmersedDaily;
+import com.flavor_immersed_daily.all.ModBlocks;
 import com.flavor_immersed_daily.recipe.EggBreakingRecipe;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -25,7 +26,7 @@ public class EggBreakingMachineCategory implements IRecipeCategory<EggBreakingRe
 
     public EggBreakingMachineCategory(IGuiHelper helper) {
         this.background = helper.createBlankDrawable(120, 72);
-        this.icon = helper.createDrawableItemStack(new ItemStack(FlavorImmersedDaily.EGGBREAKINGMACHINE_ITEM.get()));
+        this.icon = helper.createDrawableItemStack(new ItemStack(ModBlocks.EGGBREAKINGMACHINE.asItem()));
     }
 
     @Override

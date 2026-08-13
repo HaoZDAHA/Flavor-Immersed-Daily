@@ -1,6 +1,8 @@
 package com.flavor_immersed_daily.effect;
 
 import com.flavor_immersed_daily.FlavorImmersedDaily;
+import com.flavor_immersed_daily.all.ModEffects;
+import com.flavor_immersed_daily.datagen.tag.FIDItemTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Animal;
@@ -20,9 +22,9 @@ public class FlatulenceEffectHandler {
     public static void onFoodEaten(LivingEntityUseItemEvent.Finish event) {
         if (event.getEntity().level().isClientSide) return;
 
-        if (event.getItem().is(FlavorImmersedDaily.RADISH_TAG)) {
+        if (event.getItem().is(FIDItemTags.RADISH)) {
             event.getEntity().addEffect(new MobEffectInstance(
-                    FlavorImmersedDaily.FLATULENCE, 600, 0));
+                    ModEffects.FLATULENCE, 600, 0));
         }
     }
 
@@ -31,7 +33,7 @@ public class FlatulenceEffectHandler {
         if (!(event.getEntity() instanceof LivingEntity entity)) return;
         if (entity.level().isClientSide) return;
 
-        MobEffectInstance instance = entity.getEffect(FlavorImmersedDaily.FLATULENCE);
+        MobEffectInstance instance = entity.getEffect(ModEffects.FLATULENCE);
         if (instance == null) return;
 
         int amplifier = instance.getAmplifier();

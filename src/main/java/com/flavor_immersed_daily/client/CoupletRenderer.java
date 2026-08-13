@@ -1,6 +1,6 @@
 package com.flavor_immersed_daily.client;
 
-import com.flavor_immersed_daily.block.CoupletBlockEntity;
+import com.flavor_immersed_daily.block.blockentity.CoupletBlockEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.gui.Font;

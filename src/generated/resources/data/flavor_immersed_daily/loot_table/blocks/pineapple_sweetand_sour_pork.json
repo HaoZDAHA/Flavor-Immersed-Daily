@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "flavor_immersed_daily:pineapple_sweetand_sour_pork"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "flavor_immersed_daily:blocks/pineapple_sweetand_sour_pork"
+}

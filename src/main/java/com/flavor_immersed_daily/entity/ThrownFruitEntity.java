@@ -1,6 +1,7 @@
 package com.flavor_immersed_daily.entity;
 
 import com.flavor_immersed_daily.FlavorImmersedDaily;
+import com.flavor_immersed_daily.all.ModEntities;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -47,7 +48,7 @@ public class ThrownFruitEntity extends ThrowableItemProjectile {
                              String dropItem2, int dropCount2,
                              String dropItem3, int dropCount3,
                              float damage) {
-        super(FlavorImmersedDaily.THROWN_FRUIT_ENTITY.get(), shooter, level);
+        super(ModEntities.THROWN_FRUIT_ENTITY.get(), shooter, level);
         this.setItem(stack);
         this.dropItem1 = dropItem1;
         this.dropCount1 = dropCount1;
@@ -71,18 +72,18 @@ public class ThrownFruitEntity extends ThrowableItemProjectile {
         ServerLevel serverLevel = (ServerLevel) this.level();
         Vec3 pos = this.position();
 
-        // 方块破坏音效
+        // 鏂瑰潡鐮村潖闊虫晥
         serverLevel.playSound(null, pos.x, pos.y, pos.z,
                 SoundEvents.STONE_BREAK, SoundSource.PLAYERS, 1.0f, 0.8f + this.random.nextFloat() * 0.4f);
 
-        // 粒子特效（物品纹理破碎）
+        // 绮掑瓙鐗规晥锛堢墿鍝佺汗鐞嗙牬纰庯級
         ItemStack thrownItem = this.getItem();
         if (!thrownItem.isEmpty()) {
             serverLevel.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, thrownItem),
                     pos.x, pos.y, pos.z, 20, 0.5, 0.5, 0.5, 0.1);
         }
 
-        // 伤害和击退
+        // 浼ゅ鍜屽嚮閫€
         if (result instanceof EntityHitResult entityHit && entityHit.getEntity() instanceof LivingEntity target) {
             target.hurt(target.damageSources().thrown(this, this.getOwner()), damage);
             Vec3 knockback = this.getDeltaMovement().normalize().scale(1.5);
@@ -90,7 +91,7 @@ public class ThrownFruitEntity extends ThrowableItemProjectile {
             target.hurtMarked = true;
         }
 
-        // 掉落物
+        // 鎺夎惤鐗?
         spawnDrop(serverLevel, pos, dropItem1, dropCount1);
         spawnDrop(serverLevel, pos, dropItem2, dropCount2);
         spawnDrop(serverLevel, pos, dropItem3, dropCount3);

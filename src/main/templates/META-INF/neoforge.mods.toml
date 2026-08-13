@@ -95,6 +95,14 @@ config="${mod_id}.mixins.json"
     ordering="NONE"
     side="CLIENT"
 
+# KubeJS is a separate runtime mod and is deliberately not bundled into this JAR.
+[[dependencies.${mod_id}]]
+    modId="kubejs"
+    type="optional"
+    versionRange="*"
+    ordering="NONE"
+    side="BOTH"
+
 # Here's another dependency
 [[dependencies.${mod_id}]]
     modId="minecraft"

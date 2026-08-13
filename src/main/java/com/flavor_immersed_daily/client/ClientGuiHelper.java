@@ -1,6 +1,6 @@
 package com.flavor_immersed_daily.client;
 
-import com.flavor_immersed_daily.block.CoupletBlockEntity;
+import com.flavor_immersed_daily.block.blockentity.CoupletBlockEntity;
 import com.flavor_immersed_daily.entity.WindowPaperEntity;
 import com.flavor_immersed_daily.screen.ColorfulFireworksBoxConfigScreen;
 import com.flavor_immersed_daily.screen.CoupletEditScreen;

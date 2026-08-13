@@ -1,6 +1,12 @@
 package com.flavor_immersed_daily.effect;
 
-import com.flavor_immersed_daily.Config;
+import com.flavor_immersed_daily.datagen.tag.FIDItemTags;
+
+import com.flavor_immersed_daily.all.ModEffects;
+
+import com.flavor_immersed_daily.all.ModItems;
+
+import com.flavor_immersed_daily.config.Config;
 import com.flavor_immersed_daily.FlavorImmersedDaily;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
@@ -22,16 +28,16 @@ import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 
 /**
- * 百味之基（flavor_base）效果处理器
- * 触发规则：
- *  - 玩家食用物品后，副手持有 fid:seasoning 标签物品，或食物 NBT 标签 seasoning 非空
- *  - 其中副手为 salt（盐）或食物 NBT seasoning 为 flavor_immersed_daily:salt 时，
- *    给予 45 秒 flavor_base 效果，并消耗副手调味料一个
- * 效果：拥有 flavor_base 期间，玩家身上每同时有 1 种注册名以 "flavor" 开头的
- * 本模组或附属模组 buff，则：
- *  - 攻击伤害 +config（默认 +1）
- *  - 移动速度 +config（默认 +0.1）
- * 最多叠加 config 次（默认 10 次）
+ * 鐧惧懗涔嬪熀锛坒lavor_base锛夋晥鏋滃鐞嗗櫒
+ * 瑙﹀彂瑙勫垯锛?
+ *  - 鐜╁椋熺敤鐗╁搧鍚庯紝鍓墜鎸佹湁 fid:seasoning 鏍囩鐗╁搧锛屾垨椋熺墿 NBT 鏍囩 seasoning 闈炵┖
+ *  - 鍏朵腑鍓墜涓?salt锛堢洂锛夋垨椋熺墿 NBT seasoning 涓?flavor_immersed_daily:salt 鏃讹紝
+ *    缁欎簣 45 绉?flavor_base 鏁堟灉锛屽苟娑堣€楀壇鎵嬭皟鍛虫枡涓€涓?
+ * 鏁堟灉锛氭嫢鏈?flavor_base 鏈熼棿锛岀帺瀹惰韩涓婃瘡鍚屾椂鏈?1 绉嶆敞鍐屽悕浠?"flavor" 寮€澶寸殑
+ * 鏈ā缁勬垨闄勫睘妯＄粍 buff锛屽垯锛?
+ *  - 鏀诲嚮浼ゅ +config锛堥粯璁?+1锛?
+ *  - 绉诲姩閫熷害 +config锛堥粯璁?+0.1锛?
+ * 鏈€澶氬彔鍔?config 娆★紙榛樿 10 娆★級
  */
 @EventBusSubscriber(modid = FlavorImmersedDaily.MODID)
 public class FlavorBaseEffectHandler {
@@ -48,24 +54,24 @@ public class FlavorBaseEffectHandler {
         if (player.level().isClientSide) return;
         if (!Config.flavorBaseEnabled) return;
 
-        // 副手是否为调味料
+        // 鍓墜鏄惁涓鸿皟鍛虫枡
         ItemStack offhand = player.getOffhandItem();
-        boolean offhandIsSeasoning = offhand.is(FlavorImmersedDaily.SEASONING_TAG);
+        boolean offhandIsSeasoning = offhand.is(FIDItemTags.SEASONING);
 
-        // 食用的食物 NBT 文本标签 seasoning（1.21.1 存于 CUSTOM_DATA 组件中）
+        // 椋熺敤鐨勯鐗?NBT 鏂囨湰鏍囩 seasoning锛?.21.1 瀛樹簬 CUSTOM_DATA 缁勪欢涓級
         CompoundTag tag = event.getItem().getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
         boolean foodHasSeasoning = tag.contains("seasoning", Tag.TAG_STRING);
         String foodSeasoning = foodHasSeasoning ? tag.getString("seasoning") : "";
 
-        // 触发条件：副手是调味料 或 食物 seasoning 标签非空
+        // 瑙﹀彂鏉′欢锛氬壇鎵嬫槸璋冨懗鏂?鎴?椋熺墿 seasoning 鏍囩闈炵┖
         if (!offhandIsSeasoning && !foodHasSeasoning) return;
 
-        // 专属 buff：副手是盐（salt）或 食物 seasoning 标签为 flavor_immersed_daily:salt → 百味之基 45 秒
-        boolean isSalt = offhand.is(FlavorImmersedDaily.SALT.get())
+        // 涓撳睘 buff锛氬壇鎵嬫槸鐩愶紙salt锛夋垨 椋熺墿 seasoning 鏍囩涓?flavor_immersed_daily:salt 鈫?鐧惧懗涔嬪熀 45 绉?
+        boolean isSalt = offhand.is(ModItems.SALT.get())
                 || "flavor_immersed_daily:salt".equals(foodSeasoning);
         if (isSalt) {
-            player.addEffect(new MobEffectInstance(FlavorImmersedDaily.FLAVOR_BASE, DURATION_TICKS, 0));
-            // 副手持有调味料时，获得 buff 的同时消耗一个
+            player.addEffect(new MobEffectInstance(ModEffects.FLAVOR_BASE, DURATION_TICKS, 0));
+            // 鍓墜鎸佹湁璋冨懗鏂欐椂锛岃幏寰?buff 鐨勫悓鏃舵秷鑰椾竴涓?
             if (offhandIsSeasoning) {
                 offhand.shrink(1);
             }
@@ -77,13 +83,13 @@ public class FlavorBaseEffectHandler {
         if (!(event.getEntity() instanceof LivingEntity entity)) return;
         if (entity.level().isClientSide) return;
 
-        boolean active = Config.flavorBaseEnabled && entity.hasEffect(FlavorImmersedDaily.FLAVOR_BASE);
+        boolean active = Config.flavorBaseEnabled && entity.hasEffect(ModEffects.FLAVOR_BASE);
         if (!active) {
             removeModifiers(entity);
             return;
         }
 
-        // 统计身上注册名以 "flavor" 开头的 buff 数量（本模组及附属模组），最多叠加 config 上限
+        // 缁熻韬笂娉ㄥ唽鍚嶄互 "flavor" 寮€澶寸殑 buff 鏁伴噺锛堟湰妯＄粍鍙婇檮灞炴ā缁勶級锛屾渶澶氬彔鍔?config 涓婇檺
         int count = 0;
         for (MobEffectInstance instance : entity.getActiveEffects()) {
             ResourceLocation key = instance.getEffect().unwrapKey().map(rk -> rk.location()).orElse(null);
