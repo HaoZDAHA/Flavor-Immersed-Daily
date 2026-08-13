@@ -13,6 +13,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MoverType;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -151,7 +152,8 @@ public class FallingFruitEntity extends Entity {
             // 检查是否落地
             if (this.onGround()) {
                 // 如果已经着地，则停止垂直移动
-                this.setDeltaMovement(0, 0, 0);
+                convertToItemEntity();
+                return;
                 
                 // 可以在这里添加着地音效或其他逻辑
                 //饿啊，但是这部分有一直频繁播放的bug，所以我没弄
@@ -162,9 +164,19 @@ public class FallingFruitEntity extends Entity {
             age++;
             // 5分钟后自动消失 (6000 ticks)
             if (age > 6000) {
-                this.discard();
+                convertToItemEntity();
             }
         }
+    }
+
+    private void convertToItemEntity() {
+        ItemStack drop = getDropItem();
+        if (!drop.isEmpty()) {
+            ItemEntity itemEntity = new ItemEntity(this.level(), getX(), getY(), getZ(), drop.copy());
+            itemEntity.setDeltaMovement(0, 0, 0);
+            this.level().addFreshEntity(itemEntity);
+        }
+        this.discard();
     }
 
     @Override

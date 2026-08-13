@@ -60,6 +60,14 @@ public class FIDLogMushroomBlock extends BushBlock implements BonemealableBlock 
         return maxAge;
     }
 
+    public ItemLike getCropItem() {
+        return cropSupplier.get();
+    }
+
+    public ItemLike getSeedItem() {
+        return seedSupplier.get();
+    }
+
     @Override
     protected MapCodec<? extends BushBlock> codec() {
         return simpleCodec(p -> new FIDLogMushroomBlock(p, maxAge, seedSupplier, cropSupplier));
@@ -100,19 +108,20 @@ public class FIDLogMushroomBlock extends BushBlock implements BonemealableBlock 
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos,
                                                Player player, BlockHitResult hitResult) {
         if (state.getValue(AGE) >= maxAge) {
-            ItemLike crop = cropSupplier.get();
-            if (crop != null) {
-                Block.popResource(level, pos, new ItemStack(crop));
-                // Also drop some seeds
-                ItemLike seed = seedSupplier.get();
-                if (seed != null) {
-                    Block.popResource(level, pos, new ItemStack(seed));
+            if (!level.isClientSide) {
+                ItemLike crop = cropSupplier.get();
+                if (crop != null) {
+                    Block.popResource(level, pos, new ItemStack(crop));
+                    ItemLike seed = seedSupplier.get();
+                    if (seed != null) {
+                        Block.popResource(level, pos, new ItemStack(seed));
+                    }
                 }
+                level.playSound(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+                        SoundEvents.CROP_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
+                level.setBlock(pos, state.setValue(AGE, 0), Block.UPDATE_CLIENTS);
             }
-            level.playSound(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
-                    SoundEvents.CROP_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
-            level.setBlock(pos, state.setValue(AGE, 0), Block.UPDATE_CLIENTS);
-            return InteractionResult.SUCCESS;
+            return InteractionResult.sidedSuccess(level.isClientSide);
         }
         return super.useWithoutItem(state, level, pos, player, hitResult);
     }

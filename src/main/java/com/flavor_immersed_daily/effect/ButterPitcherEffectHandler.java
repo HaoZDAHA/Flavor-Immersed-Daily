@@ -1,16 +1,8 @@
 package com.flavor_immersed_daily.effect;
 
-import com.flavor_immersed_daily.datagen.tag.FIDItemTags;
-
 import com.flavor_immersed_daily.all.ModEffects;
-
-import com.flavor_immersed_daily.all.ModItems;
-
 import com.flavor_immersed_daily.config.Config;
 import com.flavor_immersed_daily.FlavorImmersedDaily;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -19,14 +11,11 @@ import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.ProjectileImpactEvent;
-import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 
 /**
  * 榛勬补鎶曟墜鏁堟灉澶勭悊鍣?
@@ -42,37 +31,6 @@ import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 @EventBusSubscriber(modid = FlavorImmersedDaily.MODID)
 public class ButterPitcherEffectHandler {
 
-    private static final int DURATION_TICKS = 45 * 20;
-
-    @SubscribeEvent
-    public static void onFoodEaten(LivingEntityUseItemEvent.Finish event) {
-        if (!(event.getEntity() instanceof Player player)) return;
-        if (player.level().isClientSide) return;
-        if (!Config.butterPitcherEnabled) return;
-
-        // 鍓墜鏄惁涓鸿皟鍛虫枡
-        ItemStack offhand = player.getOffhandItem();
-        boolean offhandIsSeasoning = offhand.is(FIDItemTags.SEASONING);
-
-        // 椋熺敤鐨勯鐗?NBT 鏂囨湰鏍囩 seasoning锛?.21.1 瀛樹簬 CUSTOM_DATA 缁勪欢涓級
-        CompoundTag tag = event.getItem().getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
-        boolean foodHasSeasoning = tag.contains("seasoning", Tag.TAG_STRING);
-        String foodSeasoning = foodHasSeasoning ? tag.getString("seasoning") : "";
-
-        // 瑙﹀彂鏉′欢锛氬壇鎵嬫槸璋冨懗鏂?鎴?椋熺墿 seasoning 鏍囩闈炵┖
-        if (!offhandIsSeasoning && !foodHasSeasoning) return;
-
-        // 涓撳睘 buff锛氬壇鎵嬫槸榛勬补 鎴?椋熺墿 seasoning 鏍囩涓?flavor_immersed_daily:butter 鈫?榛勬补鎶曟墜 45 绉?
-        boolean isButter = offhand.is(ModItems.BUTTER.get())
-                || "flavor_immersed_daily:butter".equals(foodSeasoning);
-        if (isButter) {
-            player.addEffect(new MobEffectInstance(ModEffects.BUTTER_PITCHER, DURATION_TICKS, 0));
-            // 鍓墜鎸佹湁璋冨懗鏂欐椂锛岃幏寰?buff 鐨勫悓鏃舵秷鑰椾竴涓?
-            if (offhandIsSeasoning) {
-                offhand.shrink(1);
-            }
-        }
-    }
 
     @SubscribeEvent
     public static void onProjectileImpact(ProjectileImpactEvent event) {

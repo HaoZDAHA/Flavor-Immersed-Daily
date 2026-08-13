@@ -13,6 +13,7 @@ import com.flavor_immersed_daily.item.KitchenScissorsItem;
 import com.flavor_immersed_daily.item.ChineseLeavesItem;
 import com.flavor_immersed_daily.item.WrestlingGunItem;
 import com.flavor_immersed_daily.item.SeasoningItem;
+import com.flavor_immersed_daily.config.Config;
 import com.flavor_immersed_daily.client.tooltip.TooltipItem;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
@@ -1179,9 +1180,11 @@ public final class ModItems {
 
     public static final DeferredItem<Item> CRYSTALSUGAR = REGISTRY.register("crystalsugar", () -> new Item(new Item.Properties()));
 
-    public static final DeferredItem<Item> VINEGAR = REGISTRY.register("vinegar", () -> new SeasoningItem(new Item.Properties()));
+    public static final DeferredItem<Item> VINEGAR = REGISTRY.register("vinegar", () -> new SeasoningItem(
+            new Item.Properties(), () -> ModEffects.ACETIC_EROSION, () -> Config.aceticErosionEnabled));
 
-    public static final DeferredItem<Item> THICKBROADBEANSAUCE = REGISTRY.register("thickbroadbeansauce", () -> new SeasoningItem(new Item.Properties()));
+    public static final DeferredItem<Item> THICKBROADBEANSAUCE = REGISTRY.register("thickbroadbeansauce", () -> new SeasoningItem(
+            new Item.Properties(), () -> ModEffects.BEAN_FURY, () -> Config.beanFuryEnabled));
 
     public static final DeferredItem<Item> TOMATO_HOT_POT_BASE = REGISTRY.register("tomato_hot_pot_base", () -> new Item(new Item.Properties()));
 
@@ -1189,9 +1192,11 @@ public final class ModItems {
 
     public static final DeferredItem<Item> BROWNSUGAR = REGISTRY.register("brownsugar", () -> new Item(new Item.Properties()));
 
-    public static final DeferredItem<Item> BUTTER = REGISTRY.register("butter", () -> new SeasoningItem(new Item.Properties()));
+    public static final DeferredItem<Item> BUTTER = REGISTRY.register("butter", () -> new SeasoningItem(
+            new Item.Properties(), () -> ModEffects.BUTTER_PITCHER, () -> Config.butterPitcherEnabled));
 
-    public static final DeferredItem<Item> SOY = REGISTRY.register("soy", () -> new SeasoningItem(new Item.Properties()));
+    public static final DeferredItem<Item> SOY = REGISTRY.register("soy", () -> new SeasoningItem(
+            new Item.Properties(), () -> ModEffects.SOLAR_BREW, () -> Config.solarBrewEnabled));
 
     public static final DeferredItem<Item> CURRY = REGISTRY.register("curry", () -> new Item(new Item.Properties()));
 
@@ -1209,9 +1214,11 @@ public final class ModItems {
 
     public static final DeferredItem<Item> SWEETFLOURASUVE = REGISTRY.register("sweetflourasuve", () -> new Item(new Item.Properties()));
 
-    public static final DeferredItem<Item> SESAMEOIL = REGISTRY.register("sesameoil", () -> new SeasoningItem(new Item.Properties()));
+    public static final DeferredItem<Item> SESAMEOIL = REGISTRY.register("sesameoil", () -> new SeasoningItem(
+            new Item.Properties(), () -> ModEffects.SESAME_SLIP, () -> Config.sesameSlipEnabled));
 
-    public static final DeferredItem<Item> SALT = REGISTRY.register("salt", () -> new SeasoningItem(new Item.Properties()));
+    public static final DeferredItem<Item> SALT = REGISTRY.register("salt", () -> new SeasoningItem(
+            new Item.Properties(), () -> ModEffects.FLAVOR_BASE, () -> Config.flavorBaseEnabled));
 
     public static final DeferredItem<Item> SALTPIECE = REGISTRY.register("saltpiece", () -> new Item(new Item.Properties()));
 
@@ -1219,7 +1226,8 @@ public final class ModItems {
 
     public static final DeferredItem<Item> ANISEEDPOWDER = REGISTRY.register("aniseedpowder", () -> new Item(new Item.Properties()));
 
-    public static final DeferredItem<Item> ONIONPOWDER = REGISTRY.register("onionpowder", () -> new SeasoningItem(new Item.Properties()));
+    public static final DeferredItem<Item> ONIONPOWDER = REGISTRY.register("onionpowder", () -> new SeasoningItem(
+            new Item.Properties(), () -> ModEffects.HULK_LEEK, () -> Config.hulkLeekEnabled));
 
     public static final DeferredItem<Item> LILACPOWDER = REGISTRY.register("lilacpowder", () -> new Item(new Item.Properties()));
 
@@ -1235,7 +1243,8 @@ public final class ModItems {
 
     public static final DeferredItem<Item> PEPPEREDSALT = REGISTRY.register("pepperedsalt", () -> new Item(new Item.Properties()));
 
-    public static final DeferredItem<Item> CHILLIPOWDER = REGISTRY.register("chillipowder", () -> new SeasoningItem(new Item.Properties()));
+    public static final DeferredItem<Item> CHILLIPOWDER = REGISTRY.register("chillipowder", () -> new SeasoningItem(
+            new Item.Properties(), () -> ModEffects.FURY_ASSAULT, () -> Config.furyAssaultEnabled));
 
     public static final DeferredItem<Item> GREENTEAPOWDER = REGISTRY.register("greenteapowder", () -> new Item(new Item.Properties()));
 
@@ -1327,7 +1336,8 @@ public final class ModItems {
 
     public static final DeferredItem<Item> VEGETABLEANDEGGSTUFFING = REGISTRY.register("vegetableandeggstuffing", () -> new Item(new Item.Properties()));
 
-    public static final DeferredItem<Item> BROWNSUGARSYRUP = REGISTRY.register("brownsugarsyrup", () -> new com.flavor_immersed_daily.item.SeasoningItem(new Item.Properties()));
+    public static final DeferredItem<Item> BROWNSUGARSYRUP = REGISTRY.register("brownsugarsyrup", () -> new SeasoningItem(
+            new Item.Properties(), () -> ModEffects.CRIMSON_MAMBA, () -> true));
 
     public static final DeferredItem<Item> HOTPOTBASETEMPLATE = REGISTRY.register("hotpotbasetemplate", () -> new Item(new Item.Properties()));
 

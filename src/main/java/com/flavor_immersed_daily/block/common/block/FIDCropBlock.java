@@ -12,6 +12,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -74,6 +75,11 @@ public class FIDCropBlock extends CropBlock {
     }
 
     @Override
+    public IntegerProperty getAgeProperty() {
+        return super.getAgeProperty();
+    }
+
+    @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         int age = this.getAge(state);
         return SHAPES[Math.min(age, SHAPES.length - 1)];
@@ -86,14 +92,16 @@ public class FIDCropBlock extends CropBlock {
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos,
                                                Player player, BlockHitResult hitResult) {
         if (state.getValue(AGE) >= this.getMaxAge()) {
-            ItemLike crop = cropSupplier.get();
-            if (crop != null) {
-                Block.popResource(level, pos, new ItemStack(crop));
+            if (!level.isClientSide) {
+                ItemLike crop = cropSupplier.get();
+                if (crop != null) {
+                    Block.popResource(level, pos, new ItemStack(crop));
+                }
+                level.playSound(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+                        SoundEvents.CROP_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
+                level.setBlock(pos, this.getStateForAge(0), Block.UPDATE_CLIENTS);
             }
-            level.playSound(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
-                    SoundEvents.CROP_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
-            level.setBlock(pos, this.getStateForAge(0), Block.UPDATE_CLIENTS);
-            return InteractionResult.SUCCESS;
+            return InteractionResult.sidedSuccess(level.isClientSide);
         }
         return super.useWithoutItem(state, level, pos, player, hitResult);
     }

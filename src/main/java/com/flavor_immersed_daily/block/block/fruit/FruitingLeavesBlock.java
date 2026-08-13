@@ -3,6 +3,7 @@ package com.flavor_immersed_daily.block.block.fruit;
 import com.flavor_immersed_daily.gameplay.FruitHarvestHandler;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -27,6 +28,7 @@ import java.util.function.Supplier;
 
 public class FruitingLeavesBlock extends LeavesBlock {
     public static final BooleanProperty FRUITING = BooleanProperty.create("fruiting");
+    private static final int LEGACY_HANGING_FRUIT_SEARCH_DEPTH = 12;
 
     private final Supplier<Item> fruitItem;
     private final Supplier<? extends Block> hangingFruit;
@@ -39,11 +41,12 @@ public class FruitingLeavesBlock extends LeavesBlock {
         this(fruitItem, null, properties);
     }
 
-    public FruitingLeavesBlock(Supplier<Item> fruitItem, Supplier<? extends Block> hangingFruit, BlockBehaviour.Properties properties) {
+    public FruitingLeavesBlock(Supplier<Item> fruitItem, Supplier<? extends Block> hangingFruit,
+                               BlockBehaviour.Properties properties) {
         super(properties);
         this.fruitItem = fruitItem;
         this.hangingFruit = hangingFruit;
-        this.registerDefaultState(this.stateDefinition.any()
+        registerDefaultState(stateDefinition.any()
                 .setValue(DISTANCE, 1)
                 .setValue(PERSISTENT, false)
                 .setValue(WATERLOGGED, false)
@@ -52,7 +55,7 @@ public class FruitingLeavesBlock extends LeavesBlock {
 
     @Override
     public MapCodec<? extends FruitingLeavesBlock> codec() {
-        return simpleCodec(p -> new FruitingLeavesBlock(this.fruitItem, this.hangingFruit, p));
+        return simpleCodec(properties -> new FruitingLeavesBlock(fruitItem, hangingFruit, properties));
     }
 
     @Override
@@ -67,69 +70,71 @@ public class FruitingLeavesBlock extends LeavesBlock {
 
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        // 让原版 LeavesBlock 处理距离计算和腐烂逻辑
         super.randomTick(state, level, pos, random);
 
-        // 获取更新后的方块状态（原版可能已经销毁了方块）
         BlockState currentState = level.getBlockState(pos);
-        if (!(currentState.getBlock() instanceof FruitingLeavesBlock)) return;
-
-        // 处理结果化逻辑
-        if (!currentState.getValue(FRUITING) && !currentState.getValue(PERSISTENT)) {
-            if (random.nextInt(5) == 0) {
-                level.setBlock(pos, currentState.setValue(FRUITING, true), 3);
-                trySpawnHangingFruit(level, pos);
-            }
-        }
-    }
-    
-    private void trySpawnHangingFruit(ServerLevel level, BlockPos pos) {
-        if (hangingFruit == null) return;
-
-        // 找到悬挂果实应该放置的位置
-        BlockPos below = pos.below();
-        BlockState belowState = level.getBlockState(below);
-
-        if (belowState.isAir()) {
-            // 下方是空气，直接放置
-            level.setBlock(below, hangingFruit.get().defaultBlockState(), 3);
-        } else if (belowState.getBlock() instanceof LeavesBlock) {
-            // 下方是树叶，找到最底端的树叶
-            BlockPos bottomPos = findBottomLeaves(level, below);
-            if (bottomPos != null) {
-                BlockPos targetPos = bottomPos.below();
-                if (level.getBlockState(targetPos).isAir()) {
-                    level.setBlock(targetPos, hangingFruit.get().defaultBlockState(), 3);
-                }
-            }
+        if (currentState.is(this)
+                && !currentState.getValue(FRUITING)
+                && !currentState.getValue(PERSISTENT)
+                && random.nextInt(5) == 0) {
+            growFruit(level, pos, currentState);
         }
     }
 
-    private BlockPos findBottomLeaves(ServerLevel level, BlockPos start) {
-        BlockPos.MutableBlockPos mutable = start.mutable();
-        int maxDepth = 20;
-        BlockPos lastLeaf = null;
+    private void growFruit(ServerLevel level, BlockPos pos, BlockState state) {
+        if (hangingFruit == null || trySpawnHangingFruit(level, pos)) {
+            level.setBlock(pos, state.setValue(FRUITING, true), 3);
+        }
+    }
 
-        for (int i = 0; i < maxDepth; i++) {
+    private boolean trySpawnHangingFruit(ServerLevel level, BlockPos pos) {
+        if (hangingFruit == null) return true;
+
+        BlockPos targetPos = pos.below();
+        if (!level.getBlockState(targetPos).isAir()) return false;
+
+        level.setBlock(targetPos, hangingFruit.get().defaultBlockState(), 3);
+        return level.getBlockState(targetPos).is(hangingFruit.get());
+    }
+
+    private BlockPos findHangingFruit(Level level, BlockPos leafPos) {
+        if (hangingFruit == null) return null;
+
+        BlockPos.MutableBlockPos mutable = leafPos.below().mutable();
+        for (int i = 0; i < LEGACY_HANGING_FRUIT_SEARCH_DEPTH; i++) {
             BlockState state = level.getBlockState(mutable);
             if (state.getBlock() instanceof LeavesBlock) {
-                lastLeaf = mutable.immutable();
-                mutable.move(0, -1, 0);
-            } else {
-                break;
+                mutable.move(Direction.DOWN);
+                continue;
             }
+            return state.is(hangingFruit.get()) ? mutable.immutable() : null;
         }
-        return lastLeaf;
+        return null;
+    }
+
+    public boolean harvestFruit(ServerLevel level, BlockPos pos) {
+        BlockState state = level.getBlockState(pos);
+        if (!state.is(this) || !state.getValue(FRUITING)) return false;
+
+        BlockPos hangingFruitPos = findHangingFruit(level, pos);
+        if (hangingFruitPos != null) {
+            level.removeBlock(hangingFruitPos, false);
+        }
+        popResource(level, pos, new ItemStack(fruitItem.get()));
+        level.setBlock(pos, state.setValue(FRUITING, false), 3);
+        FruitHarvestHandler.tryDropVariantFruit(level, pos, this);
+        return true;
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, net.minecraft.world.InteractionHand hand, BlockHitResult hitResult) {
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+                                              Player player, net.minecraft.world.InteractionHand hand,
+                                              BlockHitResult hitResult) {
         if (stack.is(Items.BONE_MEAL) && !state.getValue(FRUITING)) {
-            if (!level.isClientSide) {
-                level.setBlock(pos, state.setValue(FRUITING, true), 3);
-                stack.consume(1, player);
-                if (level instanceof ServerLevel serverLevel) {
-                    trySpawnHangingFruit(serverLevel, pos);
+            if (level instanceof ServerLevel serverLevel) {
+                growFruit(serverLevel, pos, state);
+                if (serverLevel.getBlockState(pos).getValue(FRUITING)) {
+                    stack.consume(1, player);
                 }
             }
             return ItemInteractionResult.sidedSuccess(level.isClientSide);
@@ -138,18 +143,15 @@ public class FruitingLeavesBlock extends LeavesBlock {
     }
 
     @Override
-    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-        if (state.getValue(FRUITING)) {
-            popResource(level, pos, new ItemStack(fruitItem.get()));
-            level.setBlock(pos, state.setValue(FRUITING, false), 3);
-            level.playSound(player, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 1.0F);
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player,
+                                               BlockHitResult hitResult) {
+        if (!state.getValue(FRUITING)) return InteractionResult.PASS;
+
+        if (level instanceof ServerLevel serverLevel && harvestFruit(serverLevel, pos)) {
+            level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES,
+                    SoundSource.BLOCKS, 1.0F, 1.0F);
             level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
-            // 小概率掉落稀有水果变种
-            if (!level.isClientSide) {
-                FruitHarvestHandler.tryDropVariantFruit(level, pos, this);
-            }
-            return InteractionResult.sidedSuccess(level.isClientSide);
         }
-        return InteractionResult.PASS;
+        return InteractionResult.sidedSuccess(level.isClientSide);
     }
 }

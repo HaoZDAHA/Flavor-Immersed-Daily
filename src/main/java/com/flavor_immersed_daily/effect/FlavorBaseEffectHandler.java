@@ -1,17 +1,9 @@
 package com.flavor_immersed_daily.effect;
 
-import com.flavor_immersed_daily.datagen.tag.FIDItemTags;
-
 import com.flavor_immersed_daily.all.ModEffects;
-
-import com.flavor_immersed_daily.all.ModItems;
-
 import com.flavor_immersed_daily.config.Config;
 import com.flavor_immersed_daily.FlavorImmersedDaily;
 import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
@@ -19,12 +11,8 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.CustomData;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 
 /**
@@ -42,41 +30,10 @@ import net.neoforged.neoforge.event.tick.EntityTickEvent;
 @EventBusSubscriber(modid = FlavorImmersedDaily.MODID)
 public class FlavorBaseEffectHandler {
 
-    private static final int DURATION_TICKS = 45 * 20;
     private static final ResourceLocation ATTACK_DAMAGE_MODIFIER_ID =
             ResourceLocation.fromNamespaceAndPath(FlavorImmersedDaily.MODID, "flavor_base_attack_damage");
     private static final ResourceLocation MOVEMENT_SPEED_MODIFIER_ID =
             ResourceLocation.fromNamespaceAndPath(FlavorImmersedDaily.MODID, "flavor_base_movement_speed");
-
-    @SubscribeEvent
-    public static void onFoodEaten(LivingEntityUseItemEvent.Finish event) {
-        if (!(event.getEntity() instanceof Player player)) return;
-        if (player.level().isClientSide) return;
-        if (!Config.flavorBaseEnabled) return;
-
-        // 鍓墜鏄惁涓鸿皟鍛虫枡
-        ItemStack offhand = player.getOffhandItem();
-        boolean offhandIsSeasoning = offhand.is(FIDItemTags.SEASONING);
-
-        // 椋熺敤鐨勯鐗?NBT 鏂囨湰鏍囩 seasoning锛?.21.1 瀛樹簬 CUSTOM_DATA 缁勪欢涓級
-        CompoundTag tag = event.getItem().getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
-        boolean foodHasSeasoning = tag.contains("seasoning", Tag.TAG_STRING);
-        String foodSeasoning = foodHasSeasoning ? tag.getString("seasoning") : "";
-
-        // 瑙﹀彂鏉′欢锛氬壇鎵嬫槸璋冨懗鏂?鎴?椋熺墿 seasoning 鏍囩闈炵┖
-        if (!offhandIsSeasoning && !foodHasSeasoning) return;
-
-        // 涓撳睘 buff锛氬壇鎵嬫槸鐩愶紙salt锛夋垨 椋熺墿 seasoning 鏍囩涓?flavor_immersed_daily:salt 鈫?鐧惧懗涔嬪熀 45 绉?
-        boolean isSalt = offhand.is(ModItems.SALT.get())
-                || "flavor_immersed_daily:salt".equals(foodSeasoning);
-        if (isSalt) {
-            player.addEffect(new MobEffectInstance(ModEffects.FLAVOR_BASE, DURATION_TICKS, 0));
-            // 鍓墜鎸佹湁璋冨懗鏂欐椂锛岃幏寰?buff 鐨勫悓鏃舵秷鑰椾竴涓?
-            if (offhandIsSeasoning) {
-                offhand.shrink(1);
-            }
-        }
-    }
 
     @SubscribeEvent
     public static void onEntityTick(EntityTickEvent.Post event) {
