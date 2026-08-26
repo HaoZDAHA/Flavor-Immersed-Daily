@@ -12,6 +12,7 @@ import com.flavor_immersed_daily.all.ModMenus;
 import com.flavor_immersed_daily.recipe.ModRecipes;
 import com.flavor_immersed_daily.all.ModEffects;
 import com.flavor_immersed_daily.all.ModSounds;
+import com.flavor_immersed_daily.integration.thirst.FIDThirstIntegration;
 import static com.flavor_immersed_daily.all.ModItems.*;
 
 import com.tterrag.registrate.Registrate;
@@ -40,6 +41,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
@@ -83,6 +85,14 @@ public class FlavorImmersedDaily {
 
         NeoForge.EVENT_BUS.register(this);
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+
+        // 可选集成：Thirst Was Reclaimed（软依赖）——仅当玩家装了口渴模组时才注册其事件监听。
+        // 守卫保证未安装时 FIDThirstIntegration 类永远不会被加载（该类硬引用了 thirst 的类），
+        // 注册发生在 mod 构造期，而 thirst 的 RegisterThirstValueEvent 在 ServerStartedEvent 才触发，
+        // 因此这里注册一定赶得上。
+        if (ModList.get().isLoaded("thirst")) {
+            NeoForge.EVENT_BUS.register(FIDThirstIntegration.class);
+        }
     }
 
     @SubscribeEvent
