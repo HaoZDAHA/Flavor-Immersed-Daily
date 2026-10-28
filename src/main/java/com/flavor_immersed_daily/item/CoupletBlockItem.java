@@ -9,9 +9,7 @@ import net.minecraft.world.level.block.Block;
 
 import java.util.List;
 
-/**
- * 对联物品 — 带有红色加粗 tooltip 说明用法
- */
+// 对联物品 — 带有红色加粗 tooltip 说明用法
 public class CoupletBlockItem extends BlockItem {
 
     private static final Component TOOLTIP = Component.translatable("tooltip.flavor_immersed_daily.couplet");

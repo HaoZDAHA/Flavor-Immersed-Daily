@@ -14,7 +14,7 @@ import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import java.util.List;
 import java.util.Set;
 
-/** Server-side block data generation. Model generation remains opt-in through Registrate registrations. */
+// Server-side block data generation. Model generation remains opt-in through Registrate registrations.
 public final class FIDDataGenerators {
     private static final RegistrySetBuilder WORLDGEN = new RegistrySetBuilder()
             .add(Registries.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap);

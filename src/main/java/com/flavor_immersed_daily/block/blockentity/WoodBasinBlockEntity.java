@@ -1,6 +1,8 @@
 package com.flavor_immersed_daily.block.blockentity;
 
 import com.flavor_immersed_daily.FlavorImmersedDaily;
+import com.flavor_immersed_daily.basin.BasinWashDefinition;
+import com.flavor_immersed_daily.basin.BasinWashRegistry;
 import com.flavor_immersed_daily.block.block.processing.WoodBasinBlock;
 import com.flavor_immersed_daily.recipe.ModRecipes;
 import com.flavor_immersed_daily.recipe.WoodBasinRecipe;
@@ -35,25 +37,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-/**
- * 木盆方块实体 — 存储chickenwithoutblood/水果类型，驱动浮动动画和踩踏计数
- */
+// 木盆方块实体 — 存储chickenwithoutblood/水果类型，驱动浮动动画和踩踏计数
 public class WoodBasinBlockEntity extends BlockEntity {
 
     private static final int STOMP_REQUIRED = 5;
     private static final int STOMP_COOLDOWN = 8;
     private static final double MOVE_THRESHOLD = 0.15;
+// 盆上方实体扫描间隔（tick）：每 4 tick 扫一次。踩踏检测需要客户端也在 tick，
+// 否则粒子/音效不会触发，因此改用间隔扫描来降低服务端与每个客户端的实体轮询开销
+    private static final int SCAN_INTERVAL = 4;
 
     private int tickCount;
     private String fruitItemId = "";
-    private int fruitCount;                // 放入的水果数量
+// 放入的水果数量
+    private int fruitCount;
     private int stompCount;
     private int stompCooldown;
     private final Map<UUID, EntityStompData> entityData = new HashMap<>();
-    /** 屠宰掉落的存储：物品id → 数量（挂钩下方有木盆时落入此处） */
+// 屠宰掉落的存储：物品id → 数量（挂钩下方有木盆时落入此处）
     private final Map<String, Integer> butcherStorage = new LinkedHashMap<>();
+// 泡在盆里的物品（服务端权威；数据包 basin_wash 定义的 input）
+    private ItemStack washStack = ItemStack.EMPTY;
+// basin_wash 定义里的 model，客户端渲染用（空串表示无自定义模型）
+    private String washModelId = "";
 
-    /** 每个实体的踩踏状态 */
+// 每个实体的踩踏状态
     private static class EntityStompData {
         Vec3 lastPos = Vec3.ZERO;
         boolean wasOnGround;
@@ -77,6 +85,12 @@ public class WoodBasinBlockEntity extends BlockEntity {
             be.stompCooldown--;
         }
 
+// 间隔扫描：getEntitiesOfClass / new HashSet / removeIf 都是全量轮询，
+// 服务端和每个客户端各跑一遍，4 tick 一次即可覆盖踩踏判定（冷却是逐 tick 扣的，不受影响）
+        if (be.tickCount % SCAN_INTERVAL != 0) {
+            return;
+        }
+
         var entities = level.getEntitiesOfClass(Entity.class,
                 new AABB(pos).move(0, 1, 0), e -> true);
         var currentIds = new java.util.HashSet<UUID>();
@@ -90,15 +104,15 @@ public class WoodBasinBlockEntity extends BlockEntity {
 
             boolean triggered = false;
 
-            // 1) 实体刚进入盆上方区域
+// 1) 实体刚进入盆上方区域
             if (!data.wasAbove) {
                 triggered = true;
             }
-            // 2) 在盆上方，从空中落地（跳跃落地）
+// 2) 在盆上方，从空中落地（跳跃落地）
             else if (!data.wasOnGround && nowOnGround) {
                 triggered = true;
             }
-            // 3) 站在上面，但移动了一定距离（走路经过）
+// 3) 站在上面，但移动了一定距离（走路经过）
             else if (nowOnGround && be.stompCooldown <= 0
                     && currentPos.distanceToSqr(data.lastPos) > MOVE_THRESHOLD * MOVE_THRESHOLD) {
                 triggered = true;
@@ -130,7 +144,7 @@ public class WoodBasinBlockEntity extends BlockEntity {
             }
         }
 
-        // 清理已离开的实体
+// 清理已离开的实体
         be.entityData.keySet().removeIf(id -> !currentIds.contains(id));
     }
 
@@ -141,7 +155,7 @@ public class WoodBasinBlockEntity extends BlockEntity {
         if (recipe.isPresent() && fruitCount > 0) {
             ItemStack jam = recipe.get().value().getResult().copy();
             jam.setCount(jam.getCount() * fruitCount);
-            // 产出的果酱数量 = 放入的水果数量
+// 产出的果酱数量 = 放入的水果数量
             level.addFreshEntity(new ItemEntity(level,
                     pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
                     jam));
@@ -182,9 +196,36 @@ public class WoodBasinBlockEntity extends BlockEntity {
         return tickCount;
     }
 
-    // ===== 屠宰产物存储 =====
+// 泡洗物品（数据包 basin_wash）
 
-    /** 把一批屠宰掉落放入盆中（服务端调用）。 */
+// 当前泡在盆里的物品（可能为空）。
+    public ItemStack getWashStack() {
+        return washStack;
+    }
+
+// 设置泡洗物品：仅记录单个；同时按定义缓存渲染模型，并同步给客户端。
+    public void setWashStack(ItemStack stack) {
+        this.washStack = stack.copyWithCount(stack.isEmpty() ? 0 : 1);
+        this.washModelId = "";
+        if (!stack.isEmpty()) {
+            BasinWashDefinition definition = BasinWashRegistry.getByInput(stack.getItem());
+            if (definition != null && definition.model() != null) {
+                this.washModelId = definition.model().toString();
+            }
+        }
+        setChanged();
+        syncToClient();
+    }
+
+// 泡洗时要替换显示的自定义方块模型；为 null 表示按物品渲染。
+    @Nullable
+    public ResourceLocation getWashModel() {
+        return washModelId.isEmpty() ? null : ResourceLocation.tryParse(washModelId);
+    }
+
+// 屠宰产物存储
+
+// 把一批屠宰掉落放入盆中（服务端调用）。
     public void addDrops(List<String> dropIds) {
         for (String id : dropIds) {
             if (id == null || id.isEmpty()) {
@@ -196,12 +237,12 @@ public class WoodBasinBlockEntity extends BlockEntity {
         syncToClient();
     }
 
-    /** 盆中是否有屠宰产物。 */
+// 盆中是否有屠宰产物。
     public boolean hasStorage() {
         return !butcherStorage.isEmpty();
     }
 
-    /** 以物品栈列表返回内容（每种物品一个栈，数量累加）。 */
+// 以物品栈列表返回内容（每种物品一个栈，数量累加）。
     public List<ItemStack> getStorageStacks() {
         List<ItemStack> stacks = new ArrayList<>();
         for (Map.Entry<String, Integer> e : butcherStorage.entrySet()) {
@@ -213,7 +254,7 @@ public class WoodBasinBlockEntity extends BlockEntity {
         return stacks;
     }
 
-    /** 取出全部内容并清空（服务端调用，返回待生成的掉落）。 */
+// 取出全部内容并清空（服务端调用，返回待生成的掉落）。
     public List<ItemStack> takeAll() {
         List<ItemStack> stacks = getStorageStacks();
         butcherStorage.clear();
@@ -222,14 +263,14 @@ public class WoodBasinBlockEntity extends BlockEntity {
         return stacks;
     }
 
-    /** 把最新数据同步给客户端（用于渲染与悬停显示）。 */
+// 把最新数据同步给客户端（用于渲染与悬停显示）。
     private void syncToClient() {
         if (level != null && !level.isClientSide) {
             level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
         }
     }
 
-    // ===== 网络同步 =====
+// 网络同步
 
     @Nullable
     @Override
@@ -247,7 +288,7 @@ public class WoodBasinBlockEntity extends BlockEntity {
         this.loadWithComponents(tag, registries);
     }
 
-    // ===== NBT持久化 =====
+// NBT持久化
 
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
@@ -257,6 +298,9 @@ public class WoodBasinBlockEntity extends BlockEntity {
         fruitCount = tag.getInt("fruitCount");
         stompCount = tag.getInt("stompCount");
         stompCooldown = tag.getInt("stompCooldown");
+        washStack = tag.contains("washStack")
+                ? ItemStack.parseOptional(registries, tag.getCompound("washStack")) : ItemStack.EMPTY;
+        washModelId = tag.getString("washModelId");
         butcherStorage.clear();
         ListTag storageList = tag.getList("butcherStorage", CompoundTag.TAG_COMPOUND);
         for (int i = 0; i < storageList.size(); i++) {
@@ -273,6 +317,10 @@ public class WoodBasinBlockEntity extends BlockEntity {
         tag.putInt("fruitCount", fruitCount);
         tag.putInt("stompCount", stompCount);
         tag.putInt("stompCooldown", stompCooldown);
+        if (!washStack.isEmpty()) {
+            tag.put("washStack", washStack.save(registries));
+        }
+        tag.putString("washModelId", washModelId);
         ListTag storageList = new ListTag();
         for (Map.Entry<String, Integer> e : butcherStorage.entrySet()) {
             CompoundTag entry = new CompoundTag();

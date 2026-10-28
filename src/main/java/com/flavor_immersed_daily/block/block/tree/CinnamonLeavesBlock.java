@@ -4,7 +4,7 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
-//桂皮树叶
+// 桂皮树叶
 
 public class CinnamonLeavesBlock extends LeavesBlock {
 

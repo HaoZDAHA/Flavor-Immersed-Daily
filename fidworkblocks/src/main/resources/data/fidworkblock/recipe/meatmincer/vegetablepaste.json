@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "meatmincer",
+  "ingredients": [
+    { "tag": "fid:vegetable" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:vegetablepaste",
+    "count": 1
+  },
+  "cookingTime": 40
+}

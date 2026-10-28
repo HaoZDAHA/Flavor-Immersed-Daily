@@ -72,18 +72,18 @@ public class ThrownFruitEntity extends ThrowableItemProjectile {
         ServerLevel serverLevel = (ServerLevel) this.level();
         Vec3 pos = this.position();
 
-        // 鏂瑰潡鐮村潖闊虫晥
+// 鏂瑰潡鐮村潖闊虫晥
         serverLevel.playSound(null, pos.x, pos.y, pos.z,
                 SoundEvents.STONE_BREAK, SoundSource.PLAYERS, 1.0f, 0.8f + this.random.nextFloat() * 0.4f);
 
-        // 绮掑瓙鐗规晥锛堢墿鍝佺汗鐞嗙牬纰庯級
+// 绮掑瓙鐗规晥锛堢墿鍝佺汗鐞嗙牬纰庯級
         ItemStack thrownItem = this.getItem();
         if (!thrownItem.isEmpty()) {
             serverLevel.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, thrownItem),
                     pos.x, pos.y, pos.z, 20, 0.5, 0.5, 0.5, 0.1);
         }
 
-        // 浼ゅ鍜屽嚮閫€
+// 浼ゅ鍜屽嚮閫€
         if (result instanceof EntityHitResult entityHit && entityHit.getEntity() instanceof LivingEntity target) {
             target.hurt(target.damageSources().thrown(this, this.getOwner()), damage);
             Vec3 knockback = this.getDeltaMovement().normalize().scale(1.5);
@@ -91,7 +91,7 @@ public class ThrownFruitEntity extends ThrowableItemProjectile {
             target.hurtMarked = true;
         }
 
-        // 鎺夎惤鐗?
+// 鎺夎惤鐗?
         spawnDrop(serverLevel, pos, dropItem1, dropCount1);
         spawnDrop(serverLevel, pos, dropItem2, dropCount2);
         spawnDrop(serverLevel, pos, dropItem3, dropCount3);

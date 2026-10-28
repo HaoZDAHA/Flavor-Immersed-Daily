@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "III",
+    "ISI",
+    "III"
+  ],
+  "key": {
+    "I": { "item": "minecraft:iron_ingot" },
+    "S": { "item": "minecraft:iron_sword" }
+  },
+  "result": {
+    "id": "fidworkblock:meatmincer",
+    "count": 1
+  }
+}

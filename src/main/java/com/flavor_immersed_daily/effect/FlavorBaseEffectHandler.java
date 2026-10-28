@@ -15,18 +15,16 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 
-/**
- * 鐧惧懗涔嬪熀锛坒lavor_base锛夋晥鏋滃鐞嗗櫒
- * 瑙﹀彂瑙勫垯锛?
- *  - 鐜╁椋熺敤鐗╁搧鍚庯紝鍓墜鎸佹湁 fid:seasoning 鏍囩鐗╁搧锛屾垨椋熺墿 NBT 鏍囩 seasoning 闈炵┖
- *  - 鍏朵腑鍓墜涓?salt锛堢洂锛夋垨椋熺墿 NBT seasoning 涓?flavor_immersed_daily:salt 鏃讹紝
- *    缁欎簣 45 绉?flavor_base 鏁堟灉锛屽苟娑堣€楀壇鎵嬭皟鍛虫枡涓€涓?
- * 鏁堟灉锛氭嫢鏈?flavor_base 鏈熼棿锛岀帺瀹惰韩涓婃瘡鍚屾椂鏈?1 绉嶆敞鍐屽悕浠?"flavor" 寮€澶寸殑
- * 鏈ā缁勬垨闄勫睘妯＄粍 buff锛屽垯锛?
- *  - 鏀诲嚮浼ゅ +config锛堥粯璁?+1锛?
- *  - 绉诲姩閫熷害 +config锛堥粯璁?+0.1锛?
- * 鏈€澶氬彔鍔?config 娆★紙榛樿 10 娆★級
- */
+// 鐧惧懗涔嬪熀锛坒lavor_base锛夋晥鏋滃鐞嗗櫒
+// 瑙﹀彂瑙勫垯锛?
+// - 鐜╁椋熺敤鐗╁搧鍚庯紝鍓墜鎸佹湁 fid:seasoning 鏍囩鐗╁搧锛屾垨椋熺墿 NBT 鏍囩 seasoning 闈炵┖
+// - 鍏朵腑鍓墜涓?salt锛堢洂锛夋垨椋熺墿 NBT seasoning 涓?flavor_immersed_daily:salt 鏃讹紝
+// 缁欎簣 45 绉?flavor_base 鏁堟灉锛屽苟娑堣€楀壇鎵嬭皟鍛虫枡涓€涓?
+// 鏁堟灉锛氭嫢鏈?flavor_base 鏈熼棿锛岀帺瀹惰韩涓婃瘡鍚屾椂鏈?1 绉嶆敞鍐屽悕浠?"flavor" 寮€澶寸殑
+// 鏈ā缁勬垨闄勫睘妯＄粍 buff锛屽垯锛?
+// - 鏀诲嚮浼ゅ +config锛堥粯璁?+1锛?
+// - 绉诲姩閫熷害 +config锛堥粯璁?+0.1锛?
+// 鏈€澶氬彔鍔?config 娆★紙榛樿 10 娆★級
 @EventBusSubscriber(modid = FlavorImmersedDaily.MODID)
 public class FlavorBaseEffectHandler {
 
@@ -46,7 +44,7 @@ public class FlavorBaseEffectHandler {
             return;
         }
 
-        // 缁熻韬笂娉ㄥ唽鍚嶄互 "flavor" 寮€澶寸殑 buff 鏁伴噺锛堟湰妯＄粍鍙婇檮灞炴ā缁勶級锛屾渶澶氬彔鍔?config 涓婇檺
+// 缁熻韬笂娉ㄥ唽鍚嶄互 "flavor" 寮€澶寸殑 buff 鏁伴噺锛堟湰妯＄粍鍙婇檮灞炴ā缁勶級锛屾渶澶氬彔鍔?config 涓婇檺
         int count = 0;
         for (MobEffectInstance instance : entity.getActiveEffects()) {
             ResourceLocation key = instance.getEffect().unwrapKey().map(rk -> rk.location()).orElse(null);

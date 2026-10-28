@@ -40,10 +40,13 @@ public class GrapeBlock extends Block implements SimpleWaterloggedBlock, Bonemea
     public static final IntegerProperty STAGE = IntegerProperty.create("stage", 0, 4);
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
+// 成熟（可收获）阶段
+    public static final int MAX_STAGE = 4;
+
     private static final VoxelShape SHAPE_FULL = Block.box(0, 0, 0, 16, 16, 16);
     private static final VoxelShape SHAPE_STAGE2 = Block.box(0, 13, 0, 16, 15, 16);
 
-    /** Seed-to-crop bindings used by TrellisBlock for planting. */
+// Seed-to-crop bindings used by TrellisBlock for planting.
     public static final List<GrapeBlock> REGISTERED_CROPS = new ArrayList<>();
 
     private final Supplier<? extends ItemLike> seedSupplier;
@@ -95,30 +98,30 @@ public class GrapeBlock extends Block implements SimpleWaterloggedBlock, Bonemea
 
         switch (stage) {
             case 0:
-                // Try to grow upward: convert trellis above
+// Try to grow upward: convert trellis above
                 tryGrowUpward(state, level, pos, random);
                 break;
             case 1:
-                // Spread to surrounding trellis stage2, then try grow upward
+// Spread to surrounding trellis stage2, then try grow upward
                 spreadToSurroundingTrellis(state, level, pos);
                 tryGrowUpward(state, level, pos, random);
                 break;
             case 2:
-                // Spread, then grow to stage 3
+// Spread, then grow to stage 3
                 spreadToSurroundingTrellis(state, level, pos);
                 if (random.nextInt(4) == 0) {
                     level.setBlock(pos, state.setValue(STAGE, 3), 3);
                 }
                 break;
             case 3:
-                // Spread, then grow to stage 4
+// Spread, then grow to stage 4
                 spreadToSurroundingTrellis(state, level, pos);
                 if (random.nextInt(4) == 0) {
                     level.setBlock(pos, state.setValue(STAGE, 4), 3);
                 }
                 break;
             case 4:
-                // Spread only
+// Spread only
                 spreadToSurroundingTrellis(state, level, pos);
                 break;
         }
@@ -130,7 +133,7 @@ public class GrapeBlock extends Block implements SimpleWaterloggedBlock, Bonemea
 
         if (aboveState.getBlock() instanceof TrellisBlock trellis) {
             int trellisDist = aboveState.getValue(TrellisBlock.DISTANCE);
-            // trellis distance=0,1 → grapeblock stage0 (前两层)
+// trellis distance=0,1 → grapeblock stage0 (前两层)
             if (trellisDist == 0 || trellisDist == 1) {
                 if (random.nextInt(4) == 0) {
                     level.setBlock(abovePos, this.defaultBlockState()
@@ -138,7 +141,7 @@ public class GrapeBlock extends Block implements SimpleWaterloggedBlock, Bonemea
                             .setValue(WATERLOGGED, aboveState.getValue(TrellisBlock.WATERLOGGED)), 3);
                 }
             }
-            // trellis distance=2 → grapeblock stage1 (第三层，可横向扩展)
+// trellis distance=2 → grapeblock stage1 (第三层，可横向扩展)
             else if (trellisDist == 2) {
                 if (random.nextInt(4) == 0) {
                     level.setBlock(abovePos, this.defaultBlockState()
@@ -167,7 +170,7 @@ public class GrapeBlock extends Block implements SimpleWaterloggedBlock, Bonemea
                                               Player player, InteractionHand hand, BlockHitResult hitResult) {
         int stage = state.getValue(STAGE);
 
-        // 手持作物架点击侧面 → 在最高层横向拓展一段作物架（distance=3）
+// 手持作物架点击侧面 → 在最高层横向拓展一段作物架（distance=3）
         if (stack.getItem() instanceof net.minecraft.world.item.BlockItem blockItem
                 && blockItem.getBlock() instanceof TrellisBlock) {
             Direction face = hitResult.getDirection();
@@ -190,26 +193,31 @@ public class GrapeBlock extends Block implements SimpleWaterloggedBlock, Bonemea
             }
         }
 
-        // Harvest at stage 4: drop crop item, revert to stage 2
-        if (stage == 4) {
-            if (!level.isClientSide) {
-                ItemLike crop = cropSupplier.get();
-                ItemEntity itemEntity = new ItemEntity(level, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
-                        new ItemStack(crop != null ? crop : seedSupplier.get()));
-                level.addFreshEntity(itemEntity);
-                level.setBlock(pos, state.setValue(STAGE, 2), 3);
-            }
+// Harvest at stage 4: drop crop item, revert to stage 2
+        if (stage == MAX_STAGE) {
+            this.harvest(state, level, pos);
             return ItemInteractionResult.sidedSuccess(level.isClientSide);
         }
 
         return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
     }
 
+// 成熟收获：掉落果实并把方块退回 stage 2（可继续生长）。
+// 该方法为 public，供右键交互与 FTB Ultimine 连锁收获共用。
+    public void harvest(BlockState state, Level level, BlockPos pos) {
+        if (level.isClientSide) return;
+        ItemLike crop = cropSupplier.get();
+        ItemEntity itemEntity = new ItemEntity(level, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+                new ItemStack(crop != null ? crop : seedSupplier.get()));
+        level.addFreshEntity(itemEntity);
+        level.setBlock(pos, state.setValue(STAGE, 2), 3);
+    }
+
     @Override
     protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
         if (!state.is(newState.getBlock())) {
             if (!level.isClientSide) {
-                // 掉落作物架 + 对应种子
+// 掉落作物架 + 对应种子
                 Item trellisItem = BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("flavor_immersed_daily", "trellis"));
                 if (trellisItem != null) {
                     popResource(level, pos, new ItemStack(trellisItem));
@@ -242,11 +250,11 @@ public class GrapeBlock extends Block implements SimpleWaterloggedBlock, Bonemea
         return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
-    // ===== BonemealableBlock =====
+// BonemealableBlock
 
     @Override
     public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
-        return state.getValue(STAGE) < 4;
+        return state.getValue(STAGE) < MAX_STAGE;
     }
 
     @Override
@@ -259,11 +267,11 @@ public class GrapeBlock extends Block implements SimpleWaterloggedBlock, Bonemea
         int stage = state.getValue(STAGE);
 
         if (stage < 2) {
-            // Accelerate upward growth
+// Accelerate upward growth
             tryGrowUpward(state, level, pos, random);
             tryGrowUpward(state, level, pos, random);
-        } else if (stage < 4) {
-            // Grow one stage
+        } else if (stage < MAX_STAGE) {
+// Grow one stage
             level.setBlock(pos, state.setValue(STAGE, stage + 1), 3);
             spreadToSurroundingTrellis(state, level, pos);
         }

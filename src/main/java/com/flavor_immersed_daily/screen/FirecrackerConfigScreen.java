@@ -33,7 +33,7 @@ public class FirecrackerConfigScreen extends Screen {
         guiLeft = (this.width - GUI_WIDTH) / 2;
         guiTop = (this.height - GUI_HEIGHT) / 2;
 
-        // 形状按钮
+// 形状按钮
         addRenderableWidget(Button.builder(
                 Component.translatable("gui.flavor_immersed_daily.firecracker.shape", getShapeName(shape)),
                 btn -> {
@@ -43,7 +43,7 @@ public class FirecrackerConfigScreen extends Screen {
                 }
         ).bounds(guiLeft + 10, guiTop + 10, 180, 20).build());
 
-        // 颜色按钮
+// 颜色按钮
         addRenderableWidget(Button.builder(
                 Component.translatable("gui.flavor_immersed_daily.firecracker.color", String.format("#%06X", color)),
                 btn -> {
@@ -53,7 +53,7 @@ public class FirecrackerConfigScreen extends Screen {
                 }
         ).bounds(guiLeft + 10, guiTop + 40, 180, 20).build());
 
-        // 渐变色按钮
+// 渐变色按钮
         addRenderableWidget(Button.builder(
                 Component.translatable("gui.flavor_immersed_daily.firecracker.fade_color", String.format("#%06X", fadeColor)),
                 btn -> {
@@ -63,7 +63,7 @@ public class FirecrackerConfigScreen extends Screen {
                 }
         ).bounds(guiLeft + 10, guiTop + 70, 180, 20).build());
 
-        // 关闭按钮
+// 关闭按钮
         addRenderableWidget(Button.builder(
                 Component.translatable("gui.flavor_immersed_daily.firecracker.done"),
                 btn -> this.onClose()

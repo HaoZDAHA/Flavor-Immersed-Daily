@@ -5,7 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
-/** 烤全羊方块实体 — 仅用于挂载渲染器，阶段数据存于方块状态中 */
+// 烤全羊方块实体 — 仅用于挂载渲染器，阶段数据存于方块状态中
 public class CookedWholeSheepBlockEntity extends BlockEntity {
 
     public CookedWholeSheepBlockEntity(BlockPos pos, BlockState state) {

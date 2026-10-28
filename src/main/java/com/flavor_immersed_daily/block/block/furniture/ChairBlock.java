@@ -64,17 +64,17 @@ public class ChairBlock extends HorizontalDirectionalBlock {
 
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-        // 如果玩家正潜行，允许正常交互（如放置方块等）
+// 如果玩家正潜行，允许正常交互（如放置方块等）
         if (player.isShiftKeyDown()) {
             return InteractionResult.PASS;
         }
 
-        // 如果已经有玩家坐在椅子上，不允许再坐
+// 如果已经有玩家坐在椅子上，不允许再坐
         if (SeatEntity.hasSeatEntity(level, pos)) {
             return InteractionResult.PASS;
         }
 
-        // 玩家必须在地面上，不能在空中
+// 玩家必须在地面上，不能在空中
         if (!level.isClientSide) {
             SeatEntity seat = new SeatEntity(ModEntities.SEAT_ENTITY.get(), level, pos);
             level.addFreshEntity(seat);

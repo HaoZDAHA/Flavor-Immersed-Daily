@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "teapot",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:polishedglutinousrice_2" },
+    { "item": "flavor_immersed_daily:lemonjam" },
+    { "item": "flavor_immersed_daily:redteapowder" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:lemonteawithglutinousriceflavor",
+    "count": 2
+  },
+  "cookingTime": 40
+}

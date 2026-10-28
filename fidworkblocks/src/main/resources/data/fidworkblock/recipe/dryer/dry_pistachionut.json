@@ -1,0 +1,11 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "dryer",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:pistachionut_0" }],
+  "result": {
+    "id": "flavor_immersed_daily:dry_pistachionut",
+    "count": 1
+  },
+  "cookingTime": 120
+}

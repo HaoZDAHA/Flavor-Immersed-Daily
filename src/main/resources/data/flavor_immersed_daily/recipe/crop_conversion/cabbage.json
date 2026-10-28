@@ -1,0 +1,14 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:cabbage",
+    "kaleidoscope_cookery:lettuce",
+    "croptopia:cabbage",
+    "pamhc2crops:lettuceitem",
+    "pamhc2crops:cabbageitem",
+    "farm_and_charm:lettuce",
+    "concoction:cabbagehead",
+    "farmersdelight:cabbage",
+    "gan_delight_reborn:vegetable"
+  ]
+}

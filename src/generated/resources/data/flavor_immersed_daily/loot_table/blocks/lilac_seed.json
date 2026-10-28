@@ -25,34 +25,10 @@
       ],
       "functions": [
         {
-          "enchantment": "minecraft:fortune",
-          "formula": "minecraft:uniform_bonus_count",
-          "function": "minecraft:apply_bonus",
-          "parameters": {
-            "bonusMultiplier": 2
-          }
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "conditions": [
-        {
-          "block": "flavor_immersed_daily:lilac_seed",
-          "condition": "minecraft:block_state_property",
-          "properties": {
-            "age": "4"
-          }
-        }
-      ],
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "flavor_immersed_daily:lilac_seed"
-        }
-      ],
-      "functions": [
+          "add": false,
+          "count": 2.0,
+          "function": "minecraft:set_count"
+        },
         {
           "enchantment": "minecraft:fortune",
           "formula": "minecraft:uniform_bonus_count",
@@ -60,16 +36,6 @@
           "parameters": {
             "bonusMultiplier": 2
           }
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "flavor_immersed_daily:lilac_seed"
         }
       ],
       "rolls": 1.0

@@ -25,7 +25,7 @@ import java.util.Optional;
 
 public class FridgeBlockEntity extends BlockEntity implements Container {
 
-    // 0-26: 储物间, 27: 变温室输入, 28: 变温室输出, 29: 冷冻室输入, 30: 冷冻室输出
+// 0-26: 储物间, 27: 变温室输入, 28: 变温室输出, 29: 冷冻室输入, 30: 冷冻室输出
     public static final int STORAGE_SLOTS = 27;
     public static final int TEMPERING_INPUT = 27;
     public static final int TEMPERING_OUTPUT = 28;
@@ -35,11 +35,18 @@ public class FridgeBlockEntity extends BlockEntity implements Container {
 
     private NonNullList<ItemStack> items = NonNullList.withSize(TOTAL_SLOTS, ItemStack.EMPTY);
 
-    // 处理进度
+// 处理进度
     private int temperingProgress;
     private int temperingTotalTime;
     private int freezingProgress;
     private int freezingTotalTime;
+
+// 配方缓存：两个处理室都是"输入物品 → 配方"的一对一匹配，
+// 输入不变时直接复用上次查找结果，避免每 tick 全量扫描配方表
+    private ItemStack cachedTemperingInput = ItemStack.EMPTY;
+    private Optional<RecipeHolder<FridgeTemperingRecipe>> cachedTemperingRecipe = Optional.empty();
+    private ItemStack cachedFreezingInput = ItemStack.EMPTY;
+    private Optional<RecipeHolder<FridgeFreezingRecipe>> cachedFreezingRecipe = Optional.empty();
 
     public FridgeBlockEntity(BlockPos pos, BlockState state) {
         super(com.flavor_immersed_daily.all.ModBlockEntities.FRIDGE_ENTITY.get(), pos, state);
@@ -49,7 +56,7 @@ public class FridgeBlockEntity extends BlockEntity implements Container {
         return items;
     }
 
-    // ==================== Container 实现 ====================
+// Container 实现
 
     @Override
     public int getContainerSize() {
@@ -98,7 +105,7 @@ public class FridgeBlockEntity extends BlockEntity implements Container {
         setChanged();
     }
 
-    // ==================== Tick ====================
+// Tick
 
     public static void serverTick(Level level, BlockPos pos, BlockState state, FridgeBlockEntity be) {
         be.processTempering(level);
@@ -113,9 +120,7 @@ public class FridgeBlockEntity extends BlockEntity implements Container {
             return;
         }
 
-        Optional<RecipeHolder<FridgeTemperingRecipe>> recipeOpt = level.getRecipeManager()
-                .getRecipeFor(com.flavor_immersed_daily.recipe.ModRecipes.FRIDGE_TEMPERING_TYPE.get(),
-                        new SingleSlotInput(input), level);
+        Optional<RecipeHolder<FridgeTemperingRecipe>> recipeOpt = getTemperingRecipe(level, input);
 
         if (recipeOpt.isEmpty()) {
             temperingProgress = 0;
@@ -150,6 +155,18 @@ public class FridgeBlockEntity extends BlockEntity implements Container {
         }
     }
 
+// 变温室配方查找（带单条目缓存）
+    private Optional<RecipeHolder<FridgeTemperingRecipe>> getTemperingRecipe(Level level, ItemStack input) {
+        if (ItemStack.isSameItem(cachedTemperingInput, input)) {
+            return cachedTemperingRecipe;
+        }
+        cachedTemperingInput = input.copy();
+        cachedTemperingRecipe = level.getRecipeManager()
+                .getRecipeFor(com.flavor_immersed_daily.recipe.ModRecipes.FRIDGE_TEMPERING_TYPE.get(),
+                        new SingleSlotInput(input), level);
+        return cachedTemperingRecipe;
+    }
+
     private void processFreezing(Level level) {
         ItemStack input = items.get(FREEZING_INPUT);
         if (input.isEmpty()) {
@@ -158,9 +175,7 @@ public class FridgeBlockEntity extends BlockEntity implements Container {
             return;
         }
 
-        Optional<RecipeHolder<FridgeFreezingRecipe>> recipeOpt = level.getRecipeManager()
-                .getRecipeFor(com.flavor_immersed_daily.recipe.ModRecipes.FRIDGE_FREEZING_TYPE.get(),
-                        new SingleSlotInput(input), level);
+        Optional<RecipeHolder<FridgeFreezingRecipe>> recipeOpt = getFreezingRecipe(level, input);
 
         if (recipeOpt.isEmpty()) {
             freezingProgress = 0;
@@ -195,6 +210,18 @@ public class FridgeBlockEntity extends BlockEntity implements Container {
         }
     }
 
+// 冷冻室配方查找（带单条目缓存）
+    private Optional<RecipeHolder<FridgeFreezingRecipe>> getFreezingRecipe(Level level, ItemStack input) {
+        if (ItemStack.isSameItem(cachedFreezingInput, input)) {
+            return cachedFreezingRecipe;
+        }
+        cachedFreezingInput = input.copy();
+        cachedFreezingRecipe = level.getRecipeManager()
+                .getRecipeFor(com.flavor_immersed_daily.recipe.ModRecipes.FRIDGE_FREEZING_TYPE.get(),
+                        new SingleSlotInput(input), level);
+        return cachedFreezingRecipe;
+    }
+
     public int getTemperingProgress() {
         return temperingProgress;
     }
@@ -211,7 +238,7 @@ public class FridgeBlockEntity extends BlockEntity implements Container {
         return freezingTotalTime;
     }
 
-    // ==================== NBT ====================
+// NBT
 
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
@@ -245,7 +272,7 @@ public class FridgeBlockEntity extends BlockEntity implements Container {
         return ClientboundBlockEntityDataPacket.create(this);
     }
 
-    // ==================== RecipeInput 适配 ====================
+// RecipeInput 适配
 
     private record SingleSlotInput(ItemStack item) implements RecipeInput {
         @Override

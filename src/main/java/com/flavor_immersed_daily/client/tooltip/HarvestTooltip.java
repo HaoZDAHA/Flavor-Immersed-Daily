@@ -6,9 +6,7 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 
-/**
- * 收获提示 tooltip 组件 — 携带一段文字 + 一组物品图标
- */
+// 收获提示 tooltip 组件 — 携带一段文字 + 一组物品图标
 public class HarvestTooltip implements TooltipComponent {
 
     private final Component text;

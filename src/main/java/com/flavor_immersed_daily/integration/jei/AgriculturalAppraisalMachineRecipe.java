@@ -4,9 +4,7 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 
-/**
- * 农产鉴定配方 — 一个记录：输入野生采集物 → 掉落物列表
- */
+// 农产鉴定配方 — 一个记录：输入野生采集物 → 掉落物列表
 public class AgriculturalAppraisalMachineRecipe {
 
     private final ItemStack input;

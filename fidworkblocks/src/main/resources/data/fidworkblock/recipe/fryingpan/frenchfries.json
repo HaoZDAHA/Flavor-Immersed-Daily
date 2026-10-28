@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "fryingpan",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:choppedpotato_1" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:frenchfries",
+    "count": 1
+  },
+  "cookingTime": 60
+}

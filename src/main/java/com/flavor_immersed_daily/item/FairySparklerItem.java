@@ -25,7 +25,7 @@ import org.joml.Vector3f;
 
 public class FairySparklerItem extends Item {
 
-    // 颜色常量
+// 颜色常量
     public static final int COLOR_RED = 0xFF0000;
     public static final int COLOR_BLUE = 0x0000FF;
     public static final int COLOR_GREEN = 0x00FF00;
@@ -37,28 +37,28 @@ public class FairySparklerItem extends Item {
 
     public static final int[] COLORS = {COLOR_RED, COLOR_BLUE, COLOR_GREEN, COLOR_YELLOW, COLOR_PURPLE, COLOR_ORANGE, COLOR_WHITE, COLOR_PINK};
 
-    // 形状常量
+// 形状常量
     public static final int SHAPE_CIRCLE = 0;
     public static final int SHAPE_SPIRAL = 1;
     public static final int SHAPE_HEART = 2;
     public static final String[] SHAPE_NAMES = {"circle", "spiral", "heart"};
 
-    // 第一圈（内圈）
+// 第一圈（内圈）
     private static final String TAG_COLOR = "fairy_color";
     private static final String TAG_SHAPE = "fairy_shape";
 
-    // 第二圈（外圈）
+// 第二圈（外圈）
     private static final String TAG_COLOR2 = "fairy_color2";
     private static final String TAG_SHAPE2 = "fairy_shape2";
 
     private static final int PARTICLE_INTERVAL = 2;
 
-    // 内圈参数
+// 内圈参数
     private static final int INNER_PARTICLE_COUNT = 12;
     private static final float INNER_PARTICLE_SIZE = 1.0f;
     private static final double INNER_RADIUS = 1.5;
 
-    // 外圈参数（更大更浓厚）
+// 外圈参数（更大更浓厚）
     private static final int OUTER_PARTICLE_COUNT = 20;
     private static final float OUTER_PARTICLE_SIZE = 1.5f;
     private static final double OUTER_RADIUS = 2.8;
@@ -83,7 +83,7 @@ public class FairySparklerItem extends Item {
         stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
     }
 
-    // ===== 内圈 =====
+// 内圈
     public static int getColor(ItemStack stack) {
         CompoundTag tag = getData(stack);
         if (tag.contains(TAG_COLOR)) {
@@ -112,7 +112,7 @@ public class FairySparklerItem extends Item {
         putData(stack, tag);
     }
 
-    // ===== 外圈 =====
+// 外圈
     public static int getColor2(ItemStack stack) {
         CompoundTag tag = getData(stack);
         if (tag.contains(TAG_COLOR2)) {
@@ -150,11 +150,11 @@ public class FairySparklerItem extends Item {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
 
-        // 潜行右键：打开配置界面（仅客户端）。
-        // 关键：必须返回 PASS 而不是 sidedSuccess——PASS 不会向服务端发送使用数据包，
-        // 服务端因此完全不参与这次右键。若返回 SUCCESS/CONSUME，服务端会因无法感知
-        // 潜行状态（isShiftKeyDown 在服务端恒为 false）而误入非潜行分支，双持时执行
-        // startUsingItem 把玩家置入"持续使用"状态，造成客户端/服务端状态错乱。
+// 潜行右键：打开配置界面（仅客户端）。
+// 关键：必须返回 PASS 而不是 sidedSuccess——PASS 不会向服务端发送使用数据包，
+// 服务端因此完全不参与这次右键。若返回 SUCCESS/CONSUME，服务端会因无法感知
+// 潜行状态（isShiftKeyDown 在服务端恒为 false）而误入非潜行分支，双持时执行
+// startUsingItem 把玩家置入"持续使用"状态，造成客户端/服务端状态错乱。
         if (player.isShiftKeyDown()) {
             if (level.isClientSide) {
                 ClientGuiHelper.openFairySparklerConfig();
@@ -162,7 +162,7 @@ public class FairySparklerItem extends Item {
             return InteractionResultHolder.pass(stack);
         }
 
-        // 非潜行：主手 + 副手双持时进入持续使用状态（绽放烟花粒子）
+// 非潜行：主手 + 副手双持时进入持续使用状态（绽放烟花粒子）
         ItemStack offhand = player.getOffhandItem();
         if (offhand.is(this) && hand == InteractionHand.MAIN_HAND) {
             player.startUsingItem(hand);
@@ -190,20 +190,20 @@ public class FairySparklerItem extends Item {
             Vec3 playerPos = player.position();
             Vec3 look = player.getLookAngle();
 
-            // 计算视线方向的垂直向量
+// 计算视线方向的垂直向量
             Vec3 up = new Vec3(0, 1, 0);
             Vec3 right = Math.abs(look.y) > 0.99
                     ? new Vec3(1, 0, 0).cross(look).normalize()
                     : look.cross(up).normalize();
             Vec3 forward = right.cross(look).normalize();
 
-            // 内圈
+// 内圈
             int innerColor = getColor(stack);
             int innerShape = getShape(stack);
             spawnParticleRing(level, playerPos, look, right, forward, baseAngle,
                     innerColor, innerShape, INNER_PARTICLE_COUNT, INNER_PARTICLE_SIZE, INNER_RADIUS);
 
-            // 外圈（更大更浓厚）
+// 外圈（更大更浓厚）
             int outerColor = getColor2(stack);
             int outerShape = getShape2(stack);
             spawnParticleRing(level, playerPos, look, right, forward, baseAngle + Math.PI,

@@ -14,7 +14,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.concurrent.CompletableFuture;
 
-/** Generates all data-pack recipes owned by Flavor Immersed Daily. */
+// Generates all data-pack recipes owned by Flavor Immersed Daily.
 public final class WoodBasinRecipe extends RecipeProvider {
     public WoodBasinRecipe(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries);

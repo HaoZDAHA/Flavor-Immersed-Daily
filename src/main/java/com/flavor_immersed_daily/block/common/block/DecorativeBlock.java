@@ -8,9 +8,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-/**
- * 通用装饰方块 — 仅需指定碰撞箱
- */
+// 通用装饰方块 — 仅需指定碰撞箱
 public class DecorativeBlock extends Block {
 
     public static final MapCodec<DecorativeBlock> CODEC = simpleCodec(DecorativeBlock::new);

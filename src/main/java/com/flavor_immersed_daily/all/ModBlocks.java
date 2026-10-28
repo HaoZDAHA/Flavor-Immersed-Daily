@@ -3,8 +3,12 @@ package com.flavor_immersed_daily.all;
 import com.flavor_immersed_daily.FlavorImmersedDaily;
 import com.flavor_immersed_daily.block.block.food.MultiStageInteractiveBlock;
 import com.flavor_immersed_daily.block.block.food.CookedWholeSheepBlock;
+import com.flavor_immersed_daily.block.block.food.ColaBlock;
 import com.flavor_immersed_daily.item.ColorfulFireworksBoxItem;
+import com.flavor_immersed_daily.item.ColaBlockItem;
 import com.flavor_immersed_daily.item.CoupletBlockItem;
+import com.flavor_immersed_daily.item.JuiceBlockItem;
+import com.flavor_immersed_daily.item.RaddlesBlockItem;
 import com.flavor_immersed_daily.client.tooltip.TooltipBlockItem;
 import com.flavor_immersed_daily.block.common.block.*;
 import com.tterrag.registrate.util.entry.BlockEntry;
@@ -48,7 +52,7 @@ import static com.flavor_immersed_daily.all.ModItems.*;
 import static com.flavor_immersed_daily.datagen.worldgen.ModConfiguredFeatures.PLUM_TREE;
 
 public final class ModBlocks {
-    /** Forces Registrate block entries to initialize before datagen providers are locked. */
+// Forces Registrate block entries to initialize before datagen providers are locked.
     public static void bootstrap() {
     }
 
@@ -68,12 +72,13 @@ public final class ModBlocks {
         return BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(FlavorImmersedDaily.MODID, id));
     }
 
-    // Block-bound items: plantable seeds, placeable dishes, and juices.
+// Block-bound items: plantable seeds, placeable dishes, and juices.
 
     public static final DeferredItem<ItemNameBlockItem> CHINESE_LEAVES_SEEDS = BLOCK_ITEMS.register("chineseleavesseed",
             () -> new ItemNameBlockItem(block("chineseleavesseed"), new Item.Properties()));
 
-public static final DeferredItem<ItemNameBlockItem> ANISEED_0 = BLOCK_ITEMS.register("aniseed_0", // 闂備浇娉曢崰鎰板几婵犳艾绠€瑰嫮澧楅幆鍌炴⒑鐠恒劌鏋戦柡瀣煼楠炲繘鎽庨崒婊呮婵炶揪绲藉锟犲极閹捐妫橀柕鍫濇椤忕Ψniseed_0
+// 闂備浇娉曢崰鎰板几婵犳艾绠€瑰嫮澧楅幆鍌炴⒑鐠恒劌鏋戦柡瀣煼楠炲繘鎽庨崒婊呮婵炶揪绲藉锟犲极閹捐妫橀柕鍫濇椤忕Ψniseed_0
+public static final DeferredItem<ItemNameBlockItem> ANISEED_0 = BLOCK_ITEMS.register("aniseed_0",
             () -> new ItemNameBlockItem(block("aniseed_0"), new Item.Properties()
                     .food(new FoodProperties.Builder()
                             .nutrition(1)
@@ -246,152 +251,158 @@ public static final DeferredItem<ItemNameBlockItem> SI_CHUAN_PEPPER_SEED = BLOCK
 public static final DeferredItem<ItemNameBlockItem> PEA_NUT_SEED = BLOCK_ITEMS.register("pea_nut_seed",
             () -> new ItemNameBlockItem(block("pea_nut_seed"), new Item.Properties()));
 
-    public static final DeferredItem<BlockItem> DRAWNEGGPLANT = BLOCK_ITEMS.register("drawneggplant",             () -> new BlockItem(block("drawneggplant"), new Item.Properties().food(new FoodProperties.Builder()                             .nutrition(4)                             .saturationModifier(0.6f)                             .alwaysEdible()                             .build())));
+    public static final DeferredItem<BlockItem> DRAWNEGGPLANT = BLOCK_ITEMS.register("drawneggplant",             () -> new BlockItem(block("drawneggplant"), new Item.Properties().food(new FoodProperties.Builder()                             .nutrition(8)                             .saturationModifier(0.6f)                             .alwaysEdible()                             .build())));
 
-public static final DeferredItem<BlockItem> LINYIFRIEDCHICKEN = BLOCK_ITEMS.register("linyifriedchicken",             () -> new BlockItem(block("linyifriedchicken"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> LINYIFRIEDCHICKEN = BLOCK_ITEMS.register("linyifriedchicken",             () -> new BlockItem(block("linyifriedchicken"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> MEATBALLSOUP = BLOCK_ITEMS.register("meatballsoup",             () -> new BlockItem(block("meatballsoup"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> MEATBALLSOUP = BLOCK_ITEMS.register("meatballsoup",             () -> new BlockItem(block("meatballsoup"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> PRESERVEDEGGSALAD = BLOCK_ITEMS.register("preservedeggsalad",             () -> new BlockItem(block("preservedeggsalad"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> PRESERVEDEGGSALAD = BLOCK_ITEMS.register("preservedeggsalad",             () -> new BlockItem(block("preservedeggsalad"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> TOMATOSALAD = BLOCK_ITEMS.register("tomatosalad",             () -> new BlockItem(block("tomatosalad"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> TOMATOSALAD = BLOCK_ITEMS.register("tomatosalad",             () -> new BlockItem(block("tomatosalad"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> STEAMED_CHICKENWITH_CHILI_SAUCE = BLOCK_ITEMS.register("steamed_chickenwith_chili_sauce",             () -> new BlockItem(block("steamed_chickenwith_chili_sauce"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> STEAMED_CHICKENWITH_CHILI_SAUCE = BLOCK_ITEMS.register("steamed_chickenwith_chili_sauce",             () -> new BlockItem(block("steamed_chickenwith_chili_sauce"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> COLACHICKENWINGS = BLOCK_ITEMS.register("colachickenwings",             () -> new BlockItem(block("colachickenwings"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> COLACHICKENWINGS = BLOCK_ITEMS.register("colachickenwings",             () -> new BlockItem(block("colachickenwings"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> FOURJOYMEATBALLS = BLOCK_ITEMS.register("fourjoymeatballs",             () -> new BlockItem(block("fourjoymeatballs"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+// 可口可乐（方块物品：放置成可乐罐堆）
+public static final DeferredItem<ColaBlockItem> COLA = BLOCK_ITEMS.register("cola",             () -> new ColaBlockItem(block("cola"), "cola", new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.3f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> STIRFRIEDBOILEDPORKSLICESINHOTSAUCE = BLOCK_ITEMS.register("stirfriedboiledporkslicesinhotsauce",             () -> new BlockItem(block("stirfriedboiledporkslicesinhotsauce"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+// 百事可乐（方块物品：放置成可乐罐堆）
+public static final DeferredItem<ColaBlockItem> BLUE_COLA = BLOCK_ITEMS.register("blue_cola",             () -> new ColaBlockItem(block("blue_cola"), "blue_cola", new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.3f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> SAUTEED_POTATO_GREEN_PEPPER_EGGPLANT = BLOCK_ITEMS.register("sauteed_potato_green_pepper_eggplant",             () -> new BlockItem(block("sauteed_potato_green_pepper_eggplant"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> FOURJOYMEATBALLS = BLOCK_ITEMS.register("fourjoymeatballs",             () -> new BlockItem(block("fourjoymeatballs"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> FRIEDMEATWITHCUMINONION = BLOCK_ITEMS.register("friedmeatwithcuminonion",             () -> new BlockItem(block("friedmeatwithcuminonion"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> STIRFRIEDBOILEDPORKSLICESINHOTSAUCE = BLOCK_ITEMS.register("stirfriedboiledporkslicesinhotsauce",             () -> new BlockItem(block("stirfriedboiledporkslicesinhotsauce"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> KUNGPAOCHICKEN = BLOCK_ITEMS.register("kungpaochicken",             () -> new BlockItem(block("kungpaochicken"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> SAUTEED_POTATO_GREEN_PEPPER_EGGPLANT = BLOCK_ITEMS.register("sauteed_potato_green_pepper_eggplant",             () -> new BlockItem(block("sauteed_potato_green_pepper_eggplant"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> STIRFRIEDSTRINGBEANS = BLOCK_ITEMS.register("stirfriedstringbeans",             () -> new BlockItem(block("stirfriedstringbeans"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> FRIEDMEATWITHCUMINONION = BLOCK_ITEMS.register("friedmeatwithcuminonion",             () -> new BlockItem(block("friedmeatwithcuminonion"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> MIXEDCOLDDISHES = BLOCK_ITEMS.register("mixedcolddishes",             () -> new BlockItem(block("mixedcolddishes"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> KUNGPAOCHICKEN = BLOCK_ITEMS.register("kungpaochicken",             () -> new BlockItem(block("kungpaochicken"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> JAPANESEBRAISEDTOFU = BLOCK_ITEMS.register("japanesebraisedtofu",             () -> new BlockItem(block("japanesebraisedtofu"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> STIRFRIEDSTRINGBEANS = BLOCK_ITEMS.register("stirfriedstringbeans",             () -> new BlockItem(block("stirfriedstringbeans"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> SCRAMBLEDEGGSWITHFUNGUSANDCUCUMBER = BLOCK_ITEMS.register("scrambledeggswithfungusandcucumber",             () -> new BlockItem(block("scrambledeggswithfungusandcucumber"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> MIXEDCOLDDISHES = BLOCK_ITEMS.register("mixedcolddishes",             () -> new BlockItem(block("mixedcolddishes"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> PLEUROTUSERYNGIIWITHSALTANDPEPPER = BLOCK_ITEMS.register("pleurotuseryngiiwithsaltandpepper",             () -> new BlockItem(block("pleurotuseryngiiwithsaltandpepper"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> JAPANESEBRAISEDTOFU = BLOCK_ITEMS.register("japanesebraisedtofu",             () -> new BlockItem(block("japanesebraisedtofu"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> POACHED_SPICY_SLICESOF_PORK = BLOCK_ITEMS.register("poached_spicy_slicesof_pork",             () -> new BlockItem(block("poached_spicy_slicesof_pork"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> SCRAMBLEDEGGSWITHFUNGUSANDCUCUMBER = BLOCK_ITEMS.register("scrambledeggswithfungusandcucumber",             () -> new BlockItem(block("scrambledeggswithfungusandcucumber"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> SLICED_FISHIN_HOT_CHILI_OIL = BLOCK_ITEMS.register("sliced_fishin_hot_chili_oil",             () -> new BlockItem(block("sliced_fishin_hot_chili_oil"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> PLEUROTUSERYNGIIWITHSALTANDPEPPER = BLOCK_ITEMS.register("pleurotuseryngiiwithsaltandpepper",             () -> new BlockItem(block("pleurotuseryngiiwithsaltandpepper"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> SAUTEEDMUSHROOMSWITHRAPESEED = BLOCK_ITEMS.register("sauteedmushroomswithrapeseed",             () -> new BlockItem(block("sauteedmushroomswithrapeseed"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> POACHED_SPICY_SLICESOF_PORK = BLOCK_ITEMS.register("poached_spicy_slicesof_pork",             () -> new BlockItem(block("poached_spicy_slicesof_pork"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> STEAMEDFISH = BLOCK_ITEMS.register("steamedfish",             () -> new BlockItem(block("steamedfish"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> SLICED_FISHIN_HOT_CHILI_OIL = BLOCK_ITEMS.register("sliced_fishin_hot_chili_oil",             () -> new BlockItem(block("sliced_fishin_hot_chili_oil"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> FRIEDCOWPEA = BLOCK_ITEMS.register("friedcowpea",             () -> new BlockItem(block("friedcowpea"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> SAUTEEDMUSHROOMSWITHRAPESEED = BLOCK_ITEMS.register("sauteedmushroomswithrapeseed",             () -> new BlockItem(block("sauteedmushroomswithrapeseed"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> FRIEDSPICYCHICKEN = BLOCK_ITEMS.register("friedspicychicken",             () -> new BlockItem(block("friedspicychicken"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> STEAMEDFISH = BLOCK_ITEMS.register("steamedfish",             () -> new BlockItem(block("steamedfish"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> BOILED_CHICKENWITH_SAUCE = BLOCK_ITEMS.register("boiled_chickenwith_sauce",             () -> new BlockItem(block("boiled_chickenwith_sauce"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> FRIEDCOWPEA = BLOCK_ITEMS.register("friedcowpea",             () -> new BlockItem(block("friedcowpea"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> STEWEDPORKWITHBROWNSAUCE = BLOCK_ITEMS.register("stewedporkwithbrownsauce",             () -> new BlockItem(block("stewedporkwithbrownsauce"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> FRIEDSPICYCHICKEN = BLOCK_ITEMS.register("friedspicychicken",             () -> new BlockItem(block("friedspicychicken"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> FRIEDLIVERTIPWITHSPINACH = BLOCK_ITEMS.register("friedlivertipwithspinach",             () -> new BlockItem(block("friedlivertipwithspinach"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> BOILED_CHICKENWITH_SAUCE = BLOCK_ITEMS.register("boiled_chickenwith_sauce",             () -> new BlockItem(block("boiled_chickenwith_sauce"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> PINEAPPLE_SWEETAND_SOUR_PORK = BLOCK_ITEMS.register("pineapple_sweetand_sour_pork",             () -> new BlockItem(block("pineapple_sweetand_sour_pork"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> STEWEDPORKWITHBROWNSAUCE = BLOCK_ITEMS.register("stewedporkwithbrownsauce",             () -> new BlockItem(block("stewedporkwithbrownsauce"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> CHICKENWITH_SCALLION_OIL = BLOCK_ITEMS.register("chickenwith_scallion_oil",             () -> new BlockItem(block("chickenwith_scallion_oil"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> FRIEDLIVERTIPWITHSPINACH = BLOCK_ITEMS.register("friedlivertipwithspinach",             () -> new BlockItem(block("friedlivertipwithspinach"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> SALTEDEGGYOLKFRIEDCAULIFLOWER = BLOCK_ITEMS.register("saltedeggyolkfriedcauliflower",             () -> new BlockItem(block("saltedeggyolkfriedcauliflower"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> PINEAPPLE_SWEETAND_SOUR_PORK = BLOCK_ITEMS.register("pineapple_sweetand_sour_pork",             () -> new BlockItem(block("pineapple_sweetand_sour_pork"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> ZUCCHINISNACKMEAT = BLOCK_ITEMS.register("zucchinisnackmeat",             () -> new BlockItem(block("zucchinisnackmeat"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> CHICKENWITH_SCALLION_OIL = BLOCK_ITEMS.register("chickenwith_scallion_oil",             () -> new BlockItem(block("chickenwith_scallion_oil"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> BOILED_FISHWITH_PICKLED_CABBAGEAND_CHILI = BLOCK_ITEMS.register("boiled_fishwith_pickled_cabbageand_chili",             () -> new BlockItem(block("boiled_fishwith_pickled_cabbageand_chili"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> SALTEDEGGYOLKFRIEDCAULIFLOWER = BLOCK_ITEMS.register("saltedeggyolkfriedcauliflower",             () -> new BlockItem(block("saltedeggyolkfriedcauliflower"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> FRIEDSHREDDEDPORKWITHSWEETANDSOURSAUCE = BLOCK_ITEMS.register("friedshreddedporkwithsweetandsoursauce",             () -> new BlockItem(block("friedshreddedporkwithsweetandsoursauce"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> ZUCCHINISNACKMEAT = BLOCK_ITEMS.register("zucchinisnackmeat",             () -> new BlockItem(block("zucchinisnackmeat"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> SPICYTOFU = BLOCK_ITEMS.register("spicytofu",             () -> new BlockItem(block("spicytofu"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> BOILED_FISHWITH_PICKLED_CABBAGEAND_CHILI = BLOCK_ITEMS.register("boiled_fishwith_pickled_cabbageand_chili",             () -> new BlockItem(block("boiled_fishwith_pickled_cabbageand_chili"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> BEANWITHSESAMESAUCE = BLOCK_ITEMS.register("beanwithsesamesauce",             () -> new BlockItem(block("beanwithsesamesauce"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> FRIEDSHREDDEDPORKWITHSWEETANDSOURSAUCE = BLOCK_ITEMS.register("friedshreddedporkwithsweetandsoursauce",             () -> new BlockItem(block("friedshreddedporkwithsweetandsoursauce"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> SPICYCABBAGE = BLOCK_ITEMS.register("spicycabbage",             () -> new BlockItem(block("spicycabbage"), new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).alwaysEdible().build())));
+public static final DeferredItem<BlockItem> SPICYTOFU = BLOCK_ITEMS.register("spicytofu",             () -> new BlockItem(block("spicytofu"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-    public static final DeferredItem<BlockItem> HAMIMELONJUICE = BLOCK_ITEMS.register("hamimelonjuice",             () -> new BlockItem(block("hamimelonjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> BEANWITHSESAMESAUCE = BLOCK_ITEMS.register("beanwithsesamesauce",             () -> new BlockItem(block("beanwithsesamesauce"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> HAWTHORNJUIVE = BLOCK_ITEMS.register("hawthornjuive",             () -> new BlockItem(block("hawthornjuive"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> SPICYCABBAGE = BLOCK_ITEMS.register("spicycabbage",             () -> new BlockItem(block("spicycabbage"), new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).alwaysEdible().build())));
 
-public static final DeferredItem<BlockItem> DRAGONFRUIEJUICE = BLOCK_ITEMS.register("dragonfruiejuice",             () -> new BlockItem(block("dragonfruiejuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+    public static final DeferredItem<BlockItem> HAMIMELONJUICE = BLOCK_ITEMS.register("hamimelonjuice",             () -> new JuiceBlockItem(block("hamimelonjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> CARAMBOLAJUICE = BLOCK_ITEMS.register("carambolajuice",             () -> new BlockItem(block("carambolajuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> HAWTHORNJUIVE = BLOCK_ITEMS.register("hawthornjuive",             () -> new JuiceBlockItem(block("hawthornjuive"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> WINTERJUJUBEJUICE = BLOCK_ITEMS.register("winterjujubejuice",             () -> new BlockItem(block("winterjujubejuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> DRAGONFRUIEJUICE = BLOCK_ITEMS.register("dragonfruiejuice",             () -> new JuiceBlockItem(block("dragonfruiejuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> POMEGRANATEJUICE = BLOCK_ITEMS.register("pomegranatejuice",             () -> new BlockItem(block("pomegranatejuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> CARAMBOLAJUICE = BLOCK_ITEMS.register("carambolajuice",             () -> new JuiceBlockItem(block("carambolajuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> SWEETBERRYJUICE = BLOCK_ITEMS.register("sweetberryjuice",             () -> new BlockItem(block("sweetberryjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> WINTERJUJUBEJUICE = BLOCK_ITEMS.register("winterjujubejuice",             () -> new JuiceBlockItem(block("winterjujubejuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> DURIANJUICE = BLOCK_ITEMS.register("durianjuice",             () -> new BlockItem(block("durianjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> POMEGRANATEJUICE = BLOCK_ITEMS.register("pomegranatejuice",             () -> new JuiceBlockItem(block("pomegranatejuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> LEMONJUICE = BLOCK_ITEMS.register("lemonjuice",             () -> new BlockItem(block("lemonjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> SWEETBERRYJUICE = BLOCK_ITEMS.register("sweetberryjuice",             () -> new JuiceBlockItem(block("sweetberryjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> BLUEBERRYJUICE = BLOCK_ITEMS.register("blueberryjuice",             () -> new BlockItem(block("blueberryjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> DURIANJUICE = BLOCK_ITEMS.register("durianjuice",             () -> new JuiceBlockItem(block("durianjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> SWEETMELONJUICE = BLOCK_ITEMS.register("sweetmelonjuice",             () -> new BlockItem(block("sweetmelonjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> LEMONJUICE = BLOCK_ITEMS.register("lemonjuice",             () -> new JuiceBlockItem(block("lemonjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> GREENGRAPEJUICE = BLOCK_ITEMS.register("greengrapejuice",             () -> new BlockItem(block("greengrapejuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> BLUEBERRYJUICE = BLOCK_ITEMS.register("blueberryjuice",             () -> new JuiceBlockItem(block("blueberryjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> TANGERINEJUICE = BLOCK_ITEMS.register("tangerinejuice",             () -> new BlockItem(block("tangerinejuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> SWEETMELONJUICE = BLOCK_ITEMS.register("sweetmelonjuice",             () -> new JuiceBlockItem(block("sweetmelonjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> MANGOSTEENJUICE = BLOCK_ITEMS.register("mangosteenjuice",             () -> new BlockItem(block("mangosteenjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> GREENGRAPEJUICE = BLOCK_ITEMS.register("greengrapejuice",             () -> new JuiceBlockItem(block("greengrapejuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> CHERRYJUICE = BLOCK_ITEMS.register("cherryjuice",             () -> new BlockItem(block("cherryjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> TANGERINEJUICE = BLOCK_ITEMS.register("tangerinejuice",             () -> new JuiceBlockItem(block("tangerinejuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> STRAWBERRYJUICE = BLOCK_ITEMS.register("strawberryjuice",             () -> new BlockItem(block("strawberryjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> MANGOSTEENJUICE = BLOCK_ITEMS.register("mangosteenjuice",             () -> new JuiceBlockItem(block("mangosteenjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> ORANGEJUICE = BLOCK_ITEMS.register("orangejuice",             () -> new BlockItem(block("orangejuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> CHERRYJUICE = BLOCK_ITEMS.register("cherryjuice",             () -> new JuiceBlockItem(block("cherryjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> GREENPLUMJUICE = BLOCK_ITEMS.register("greenplumjuice",             () -> new BlockItem(block("greenplumjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> STRAWBERRYJUICE = BLOCK_ITEMS.register("strawberryjuice",             () -> new JuiceBlockItem(block("strawberryjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> APPLEJUICE = BLOCK_ITEMS.register("applejuice",             () -> new BlockItem(block("applejuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> ORANGEJUICE = BLOCK_ITEMS.register("orangejuice",             () -> new JuiceBlockItem(block("orangejuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> HONEYPEACHJUIVE = BLOCK_ITEMS.register("honeypeachjuive",             () -> new BlockItem(block("honeypeachjuive"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> GREENPLUMJUICE = BLOCK_ITEMS.register("greenplumjuice",             () -> new JuiceBlockItem(block("greenplumjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> BANANAJUICE = BLOCK_ITEMS.register("bananajuice",             () -> new BlockItem(block("bananajuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> APPLEJUICE = BLOCK_ITEMS.register("applejuice",             () -> new JuiceBlockItem(block("applejuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> LYCHEEJUICE = BLOCK_ITEMS.register("lycheejuice",             () -> new BlockItem(block("lycheejuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> HONEYPEACHJUIVE = BLOCK_ITEMS.register("honeypeachjuive",             () -> new JuiceBlockItem(block("honeypeachjuive"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> APRICOTJUICE = BLOCK_ITEMS.register("apricotjuice",             () -> new BlockItem(block("apricotjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> BANANAJUICE = BLOCK_ITEMS.register("bananajuice",             () -> new JuiceBlockItem(block("bananajuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> GRAPEJUICE = BLOCK_ITEMS.register("grapejuice",             () -> new BlockItem(block("grapejuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> LYCHEEJUICE = BLOCK_ITEMS.register("lycheejuice",             () -> new JuiceBlockItem(block("lycheejuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> MULBERRYJUIVE = BLOCK_ITEMS.register("mulberryjuive",             () -> new BlockItem(block("mulberryjuive"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> APRICOTJUICE = BLOCK_ITEMS.register("apricotjuice",             () -> new JuiceBlockItem(block("apricotjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> PKUMJUICE = BLOCK_ITEMS.register("pkumjuice",             () -> new BlockItem(block("pkumjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> GRAPEJUICE = BLOCK_ITEMS.register("grapejuice",             () -> new JuiceBlockItem(block("grapejuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> MANGOJUICE = BLOCK_ITEMS.register("mangojuice",             () -> new BlockItem(block("mangojuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> MULBERRYJUIVE = BLOCK_ITEMS.register("mulberryjuive",             () -> new JuiceBlockItem(block("mulberryjuive"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> WATERMELONJUICE = BLOCK_ITEMS.register("watermelonjuice",             () -> new BlockItem(block("watermelonjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> PKUMJUICE = BLOCK_ITEMS.register("pkumjuice",             () -> new JuiceBlockItem(block("pkumjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> NECTARINEJUICE = BLOCK_ITEMS.register("nectarinejuice",             () -> new BlockItem(block("nectarinejuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> MANGOJUICE = BLOCK_ITEMS.register("mangojuice",             () -> new JuiceBlockItem(block("mangojuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> PINEAPPLEJUICE = BLOCK_ITEMS.register("pineapplejuice",             () -> new BlockItem(block("pineapplejuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> WATERMELONJUICE = BLOCK_ITEMS.register("watermelonjuice",             () -> new JuiceBlockItem(block("watermelonjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> LOQUATJUICE = BLOCK_ITEMS.register("loquatjuice",             () -> new BlockItem(block("loquatjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> NECTARINEJUICE = BLOCK_ITEMS.register("nectarinejuice",             () -> new JuiceBlockItem(block("nectarinejuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> KIWIFRUITJUICE = BLOCK_ITEMS.register("kiwifruitjuice",             () -> new BlockItem(block("kiwifruitjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> PINEAPPLEJUICE = BLOCK_ITEMS.register("pineapplejuice",             () -> new JuiceBlockItem(block("pineapplejuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> PEARJUICE = BLOCK_ITEMS.register("pearjuice",             () -> new BlockItem(block("pearjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> LOQUATJUICE = BLOCK_ITEMS.register("loquatjuice",             () -> new JuiceBlockItem(block("loquatjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> PAWPAWJUICE = BLOCK_ITEMS.register("pawpawjuice",             () -> new BlockItem(block("pawpawjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> KIWIFRUITJUICE = BLOCK_ITEMS.register("kiwifruitjuice",             () -> new JuiceBlockItem(block("kiwifruitjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
-public static final DeferredItem<BlockItem> COCONUTJUICE = BLOCK_ITEMS.register("coconutjuice",             () -> new BlockItem(block("coconutjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+public static final DeferredItem<BlockItem> PEARJUICE = BLOCK_ITEMS.register("pearjuice",             () -> new JuiceBlockItem(block("pearjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+
+public static final DeferredItem<BlockItem> PAWPAWJUICE = BLOCK_ITEMS.register("pawpawjuice",             () -> new JuiceBlockItem(block("pawpawjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
+
+public static final DeferredItem<BlockItem> COCONUTJUICE = BLOCK_ITEMS.register("coconutjuice",             () -> new JuiceBlockItem(block("coconutjuice"), new Item.Properties()                     .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).alwaysEdible().build())                     .stacksTo(16)));
 
 
     private static BlockBehaviour.Properties woodProps() {
         return BlockBehaviour.Properties.of().strength(2.0f, 3.0f).sound(SoundType.WOOD);
     }
 
-    // Registrate block entries migrated from FlavorImmersedDaily.
+// Registrate block entries migrated from FlavorImmersedDaily.
     public static final BlockEntry<WoodBasinBlock> WOODBASIN = REGISTRATE
             .block("woodbasin", WoodBasinBlock::new)
             .initialProperties(() -> net.minecraft.world.level.block.Blocks.OAK_PLANKS)
@@ -786,30 +797,30 @@ public static final DeferredItem<BlockItem> COCONUTJUICE = BLOCK_ITEMS.register(
             "lamp_cabinet", LampCabinetBlock::new, net.minecraft.world.level.block.Blocks.GLASS,
             properties -> properties.strength(1.5f).sound(SoundType.GLASS).lightLevel(state -> 15));
 
-    public static final BlockEntry<DecorativeBlock> CANVAS_SCREEN_1 = REGISTRATE
-            .block("canvas_screen_1", DecorativeBlock::new)
+    public static final BlockEntry<HorizontalDecorativeBlock> CANVAS_SCREEN_1 = REGISTRATE
+            .block("canvas_screen_1", HorizontalDecorativeBlock::new)
             .initialProperties(() -> net.minecraft.world.level.block.Blocks.WHITE_WOOL)
             .properties(properties -> properties.instabreak().noCollission().sound(SoundType.WOOL))
             .item().build()
-            .blockstate((ctx, provider) -> provider.simpleBlock(ctx.get(), provider.models().getExistingFile(provider.modLoc("block/canvas_screen_1"))))
+            .blockstate((ctx, provider) -> provider.horizontalBlock(ctx.get(), provider.models().getExistingFile(provider.modLoc("block/canvas_screen_1"))))
             .loot((loot, block) -> loot.dropSelf(block))
             .register();
 
-    public static final BlockEntry<DecorativeBlock> CANVAS_SCREEN_2 = REGISTRATE
-            .block("canvas_screen_2", DecorativeBlock::new)
+    public static final BlockEntry<HorizontalDecorativeBlock> CANVAS_SCREEN_2 = REGISTRATE
+            .block("canvas_screen_2", HorizontalDecorativeBlock::new)
             .initialProperties(() -> net.minecraft.world.level.block.Blocks.WHITE_WOOL)
             .properties(properties -> properties.instabreak().noCollission().sound(SoundType.WOOL))
             .item().build()
-            .blockstate((ctx, provider) -> provider.simpleBlock(ctx.get(), provider.models().getExistingFile(provider.modLoc("block/canvas_screen_2"))))
+            .blockstate((ctx, provider) -> provider.horizontalBlock(ctx.get(), provider.models().getExistingFile(provider.modLoc("block/canvas_screen_2"))))
             .loot((loot, block) -> loot.dropSelf(block))
             .register();
 
-    public static final BlockEntry<DecorativeBlock> INCENSE_BURNER = REGISTRATE
-            .block("incense_burner", properties -> new DecorativeBlock(properties, Block.box(3, 0, 3, 13, 10, 13)))
+    public static final BlockEntry<HorizontalDecorativeBlock> INCENSE_BURNER = REGISTRATE
+            .block("incense_burner", properties -> new HorizontalDecorativeBlock(properties, Block.box(3, 0, 3, 13, 10, 13)))
             .initialProperties(() -> net.minecraft.world.level.block.Blocks.STONE)
             .properties(properties -> properties.strength(1.5f).sound(SoundType.STONE))
             .item().build()
-            .blockstate((ctx, provider) -> provider.simpleBlock(ctx.get(), provider.models().getExistingFile(provider.modLoc("block/incense_burner"))))
+            .blockstate((ctx, provider) -> provider.horizontalBlock(ctx.get(), provider.models().getExistingFile(provider.modLoc("block/incense_burner"))))
             .loot((loot, block) -> loot.dropSelf(block))
             .register();
 
@@ -846,11 +857,37 @@ public static final DeferredItem<BlockItem> COCONUTJUICE = BLOCK_ITEMS.register(
             .loot((loot, block) -> loot.dropSelf(block))
             .register();
 
+// 青玉灯笼 — 发光方块，可自由放置（模型自身不受阴影影响）
+    public static final BlockEntry<DecorativeBlock> JADE_LANTERN = REGISTRATE
+            .block("jade_lantern", properties -> new DecorativeBlock(
+                    properties.lightLevel(state -> 15), Block.box(2, 0, 2, 14, 16, 14)))
+            .initialProperties(() -> net.minecraft.world.level.block.Blocks.GLASS)
+            .properties(properties -> properties.strength(1.5f).noOcclusion().sound(SoundType.GLASS))
+            .item()
+            .build()
+            .blockstate((ctx, provider) -> provider.simpleBlock(ctx.get(),
+                    provider.models().getExistingFile(provider.modLoc("block/jade_lantern"))))
+            .loot((loot, block) -> loot.dropSelf(block))
+            .register();
+
+// 灯谜牌 — 悬挂方块，牌面可写四个竖排汉字
+    public static final BlockEntry<RaddlesBlock> RADDLES = REGISTRATE
+            .block("raddles", RaddlesBlock::new)
+            .initialProperties(() -> net.minecraft.world.level.block.Blocks.OAK_PLANKS)
+            .properties(properties -> properties.strength(1.0f).noOcclusion().sound(SoundType.WOOD))
+            .item(RaddlesBlockItem::new)
+            .build()
+            .blockstate((ctx, provider) -> provider.horizontalBlock(ctx.get(),
+                    provider.models().getExistingFile(provider.modLoc("block/raddles"))))
+            .loot((loot, block) -> loot.dropSelf(block))
+            .register();
+
     public static final BlockEntry<HorizontalDecorativeBlock> STONE_LION = horizontalDecorativeBlock(
             "stone_lion",
             properties -> new HorizontalDecorativeBlock(properties, Block.box(0, 0, 0, 16, 29, 16)),
             net.minecraft.world.level.block.Blocks.STONE,
-            properties -> properties.strength(2.0f).sound(SoundType.STONE));
+// noOcclusion：与桂皮树木一致，把遮挡形状置空，避免石狮子（不完整方块）使相邻方块面被错误剔除而变透明
+            properties -> properties.strength(2.0f).noOcclusion().sound(SoundType.STONE));
 
     public static final DeferredBlock<FIDCropBlock> CHINESE_LEAVES_CROP = REGISTRY.register("chineseleavesseed",
             () -> new FIDCropBlock(cropProperties(), 4, () -> CHINESE_LEAVES_SEEDS.get(), () -> CHINESE_LEAVES.get()));
@@ -862,7 +899,7 @@ public static final DeferredItem<BlockItem> COCONUTJUICE = BLOCK_ITEMS.register(
             () -> new FIDCropBlock(cropProperties(), 4, () -> RADISHSEED.get(), () -> RADISH.get()));
 
     public static final DeferredBlock<MultiStageInteractiveBlock> DRAWNEGGPLANT_BLOCK = REGISTRY.register("drawneggplant",
-            () -> new MultiStageInteractiveBlock(2, 0.3f, "drawneggplant", 
+            () -> new MultiStageInteractiveBlock(2, 0.3f, "drawneggplant",
                     BlockBehaviour.Properties.of()
                             .mapColor(MapColor.COLOR_PURPLE)
                             .forceSolidOn()
@@ -883,6 +920,12 @@ public static final DeferredItem<BlockItem> COCONUTJUICE = BLOCK_ITEMS.register(
 
     public static final DeferredBlock<MultiStageInteractiveBlock> STEAMED_CHICKENWITH_CHILI_SAUCE_BLOCK = REGISTRY.register("steamed_chickenwith_chili_sauce",
             () -> new MultiStageInteractiveBlock(2, 0.3f, "steamed_chickenwith_chili_sauce", BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).forceSolidOn().strength(0.2F).sound(net.minecraft.world.level.block.SoundType.CROP)));
+
+    public static final DeferredBlock<ColaBlock> COLA_BLOCK = REGISTRY.register("cola",
+            () -> new ColaBlock("cola", BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).forceSolidOn().strength(0.5F)));
+
+    public static final DeferredBlock<ColaBlock> BLUE_COLA_BLOCK = REGISTRY.register("blue_cola",
+            () -> new ColaBlock("blue_cola", BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).forceSolidOn().strength(0.5F)));
 
     public static final DeferredBlock<MultiStageInteractiveBlock> COLACHICKENWINGS_BLOCK = REGISTRY.register("colachickenwings",
             () -> new MultiStageInteractiveBlock(2, 0.3f, "colachickenwings", BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).forceSolidOn().strength(0.2F).sound(net.minecraft.world.level.block.SoundType.CROP)));
@@ -1747,7 +1790,9 @@ public static final DeferredItem<BlockItem> COCONUTJUICE = BLOCK_ITEMS.register(
             properties -> new ColorfulFireworksBoxBlock(properties
                     .strength(1.5f)
                     .sound(SoundType.WOOD)
-                    .noOcclusion()))
+                    .noOcclusion()
+// 关闭方块自带战利品：掉落物完全由 onDestroyedByPlayer 自定义产出（带方块实体 NBT），防止双掉落
+                    .noLootTable()))
             .setData(ProviderType.BLOCKSTATE, (ctx, provider) -> {})
             .item(ColorfulFireworksBoxItem::new).build()
             .register();

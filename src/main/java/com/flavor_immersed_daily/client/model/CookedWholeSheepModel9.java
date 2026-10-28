@@ -75,6 +75,6 @@ public class CookedWholeSheepModel9 extends CookedWholeSheepModel {
 		.texOffs(94, 103).addBox(18.0F, -3.0F, -1.5F, 4.0F, 6.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-4.0F, 5.0F, -0.5F, -0.3927F, 0.0F, 0.0F));
 
 		return LayerDefinition.create(meshdefinition, 128, 128);
-	
+
     }
 }

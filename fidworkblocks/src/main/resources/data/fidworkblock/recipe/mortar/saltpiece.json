@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "mortar",
+  "ingredients": [
+    { "item": "minecraft:cobblestone" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:saltpiece",
+    "count": 1
+  },
+  "cookingTime": 0
+}

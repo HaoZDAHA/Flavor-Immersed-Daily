@@ -14,10 +14,8 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 
-/**
- * 猪踩踏成熟作物时自动收割（类似 Farmer's Delight 的猪收获机制）。
- * 猪站在成熟的作物上时触发，掉落作物产物并重置生长阶段。
- */
+// 猪踩踏成熟作物时自动收割（类似 Farmer's Delight 的猪收获机制）。
+// 猪站在成熟的作物上时触发，掉落作物产物并重置生长阶段。
 @EventBusSubscriber(modid = FlavorImmersedDaily.MODID)
 public class PigHarvestHandler {
 
@@ -37,7 +35,7 @@ public class PigHarvestHandler {
                 && state.getValue(FIDCropBlock.AGE) >= crop.getMaxAge()) {
             level.setBlock(pos, crop.getStateForAge(0), Block.UPDATE_CLIENTS);
 
-            // 掉落作物产物和种子
+// 掉落作物产物和种子
             Block.popResource(level, pos, new ItemStack(crop.getCropItem()));
             Block.popResource(level, pos, new ItemStack(crop.getSeedItem()));
 

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PPP",
+    "PAP",
+    "SSS"
+  ],
+  "key": {
+    "P": { "item": "minecraft:iron_nugget" },
+    "A": { "item": "minecraft:furnace" },
+    "S": { "item": "minecraft:iron_ingot" }
+  },
+  "result": {
+    "id": "fidworkblock:dryer",
+    "count": 1
+  }
+}

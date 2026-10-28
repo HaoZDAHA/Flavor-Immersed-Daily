@@ -1,0 +1,16 @@
+{
+  "name": "坛子",
+  "category": "fidworkblock:blocks",
+  "icon": "fidworkblock:jar",
+  "sortnum": 7,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)坛子$()：手持物品右键依次放入 4 个槽位，配方需要按顺序摆放。$(br)配方正确后，$(bold)空手右键$()密封，开始腌制/发酵。$(br2)密封后无法再操作；一批完成后会自动开始下一批，输出槽满了才停下。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)潜行右键$()开封，会返还所有材料、产物。$(br)开封后$(bold)空手右键$()取出产物。$(br2)$(bold)配方不正确$()时密封不会生效，并会有提示，检查一下摆放顺序吧。"
+    }
+  ]
+}

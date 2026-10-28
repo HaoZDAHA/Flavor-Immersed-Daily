@@ -43,7 +43,7 @@ public class ThrowableFruitItem extends Item {
         ItemStack stack = player.getItemInHand(hand);
 
         if (player.isShiftKeyDown()) {
-            // 潜行右键：投掷
+// 潜行右键：投掷
             if (!level.isClientSide) {
                 ThrownFruitEntity entity = new ThrownFruitEntity(
                         level, player, stack,
@@ -61,7 +61,7 @@ public class ThrowableFruitItem extends Item {
             return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
         }
 
-        // 非潜行右键：正常食用
+// 非潜行右键：正常食用
         return super.use(level, player, hand);
     }
 

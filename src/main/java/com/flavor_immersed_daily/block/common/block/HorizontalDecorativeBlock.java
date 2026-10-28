@@ -14,9 +14,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-/**
- * 通用水平朝向装饰方块 — 放置时随玩家朝向旋转，可指定碰撞箱
- */
+// 通用水平朝向装饰方块 — 放置时随玩家朝向旋转，可指定碰撞箱
 public class HorizontalDecorativeBlock extends HorizontalDirectionalBlock {
 
     public static final MapCodec<HorizontalDecorativeBlock> CODEC = simpleCodec(HorizontalDecorativeBlock::new);

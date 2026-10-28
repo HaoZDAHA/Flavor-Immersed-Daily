@@ -1,0 +1,11 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "dryer",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:si_chuan_pepper_seed" }],
+  "result": {
+    "id": "flavor_immersed_daily:drysichuanpepper",
+    "count": 1
+  },
+  "cookingTime": 120
+}

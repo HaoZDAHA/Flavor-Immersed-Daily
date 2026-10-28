@@ -49,7 +49,7 @@ public class TrellisBlock extends Block implements SimpleWaterloggedBlock {
 
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        // 所有形态的点击指示区均为整方块，避免误触
+// 所有形态的点击指示区均为整方块，避免误触
         return SHAPE_FULL;
     }
 
@@ -68,12 +68,12 @@ public class TrellisBlock extends Block implements SimpleWaterloggedBlock {
         Level level = context.getLevel();
         BlockPos pos = context.getClickedPos();
 
-        // Check what's below
+// Check what's below
         BlockPos belowPos = pos.below();
         BlockState belowState = level.getBlockState(belowPos);
         boolean bottom = belowState.isFaceSturdy(level, belowPos, Direction.UP);
 
-        // Count consecutive trellis or grape blocks below
+// Count consecutive trellis or grape blocks below
         int dist = 0;
         BlockPos checkPos = pos.below();
         while (true) {
@@ -101,7 +101,7 @@ public class TrellisBlock extends Block implements SimpleWaterloggedBlock {
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
                                               Player player, InteractionHand hand, BlockHitResult hitResult) {
-        // Any registered seed on trellis stage0 → convert to corresponding GrapeBlock stage0
+// Any registered seed on trellis stage0 → convert to corresponding GrapeBlock stage0
         if (state.getValue(DISTANCE) == 0) {
             for (GrapeBlock grapeBlock : GrapeBlock.REGISTERED_CROPS) {
                 if (grapeBlock.isSeed(stack)) {
@@ -122,7 +122,7 @@ public class TrellisBlock extends Block implements SimpleWaterloggedBlock {
             Direction face = hitResult.getDirection();
             int currentDist = state.getValue(DISTANCE);
 
-            // Horizontal extension: from layer 3 (distance=2) or other horizontal pieces (distance=3)
+// Horizontal extension: from layer 3 (distance=2) or other horizontal pieces (distance=3)
             if (face.getAxis().isHorizontal() && (currentDist == 2 || currentDist == 3)) {
                 BlockPos sidePos = pos.relative(face);
                 if (level.isEmptyBlock(sidePos) || level.getBlockState(sidePos).canBeReplaced()) {
@@ -142,7 +142,7 @@ public class TrellisBlock extends Block implements SimpleWaterloggedBlock {
                 return ItemInteractionResult.SUCCESS;
             }
 
-            // Stack upward: any face click, if distance < 2
+// Stack upward: any face click, if distance < 2
             if (currentDist < 2) {
                 BlockPos abovePos = pos.above();
                 if (level.isEmptyBlock(abovePos) || level.getBlockState(abovePos).canBeReplaced()) {
@@ -177,7 +177,7 @@ public class TrellisBlock extends Block implements SimpleWaterloggedBlock {
 
     @Override
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        // 作物架不受重力影响：可浮空放置、自由拆解，不会因支撑消失而掉落
+// 作物架不受重力影响：可浮空放置、自由拆解，不会因支撑消失而掉落
         return true;
     }
 

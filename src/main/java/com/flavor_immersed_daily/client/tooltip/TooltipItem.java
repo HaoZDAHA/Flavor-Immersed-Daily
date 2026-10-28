@@ -9,9 +9,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 
-/**
- * 通用 tooltip 物品 — 显示文字 + 一组物品图标（可为空）
- */
+// 通用 tooltip 物品 — 显示文字 + 一组物品图标（可为空）
 public class TooltipItem extends Item {
 
     private final Component tooltipText;

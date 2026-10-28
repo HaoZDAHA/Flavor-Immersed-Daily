@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "teapot",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:tidywater" },
+    { "item": "flavor_immersed_daily:dryredtea" },
+    { "item": "flavor_immersed_daily:dryredtea" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:redtea",
+    "count": 2
+  },
+  "cookingTime": 40
+}

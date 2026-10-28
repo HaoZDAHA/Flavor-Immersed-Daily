@@ -1,0 +1,10 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:lemon",
+    "croptopia:lemon",
+    "fruitsdelight:lemon",
+    "braziliandelight:lemon",
+    "bountifulfares:lemon"
+  ]
+}

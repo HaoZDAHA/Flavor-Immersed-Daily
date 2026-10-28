@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "flavor_immersed_daily:item/congee_with_minced_pork_and_preserved_egg"
+  }
+}

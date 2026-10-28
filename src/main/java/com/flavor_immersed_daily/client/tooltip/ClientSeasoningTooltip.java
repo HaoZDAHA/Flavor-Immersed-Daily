@@ -18,10 +18,8 @@ import org.joml.Matrix4f;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 调味料 tooltip 渲染 — 类似原版药水效果：
- * 渲染 buff 图标 + 效果名 + 时效；按住 Shift 显示 buff 详细描述
- */
+// 调味料 tooltip 渲染 — 类似原版药水效果：
+// 渲染 buff 图标 + 效果名 + 时效；按住 Shift 显示 buff 详细描述
 public class ClientSeasoningTooltip implements ClientTooltipComponent {
 
     private static final int MARGIN = 4;
@@ -55,14 +53,14 @@ public class ClientSeasoningTooltip implements ClientTooltipComponent {
             }
             name = name.withStyle(instance.getEffect().value().getCategory().getTooltipFormatting());
             this.effectLines.add(name.getVisualOrderText());
-            // Shift 详情：效果描述
+// Shift 详情：效果描述
             Component desc = Component.translatable(instance.getDescriptionId() + ".description")
                     .withStyle(ChatFormatting.GRAY);
             for (FormattedCharSequence line : font.split(desc, MAX_DESC_WIDTH)) {
                 this.descriptionLines.add(line);
             }
         }
-        // 未按 Shift 时显示提示，引导玩家查看详情
+// 未按 Shift 时显示提示，引导玩家查看详情
         this.holdShiftLine = this.descriptionLines.isEmpty()
                 ? null
                 : Component.translatable("tooltip.flavor_immersed_daily.hold_shift")

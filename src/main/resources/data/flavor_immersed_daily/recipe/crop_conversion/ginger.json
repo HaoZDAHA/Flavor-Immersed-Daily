@@ -1,0 +1,9 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:ginger",
+    "croptopia:ginger",
+    "pamhc2crops:gingeritem",
+    "extradelight:ginger"
+  ]
+}

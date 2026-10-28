@@ -4,6 +4,9 @@
     "age=1": { "model": "flavor_immersed_daily:block/cauliflower_seed_stage1" },
     "age=2": { "model": "flavor_immersed_daily:block/cauliflower_seed_stage2" },
     "age=3": { "model": "flavor_immersed_daily:block/cauliflower_seed_stage3" },
-    "age=4": { "model": "flavor_immersed_daily:block/cauliflower_seed_stage4" }
+    "age=4": { "model": "flavor_immersed_daily:block/cauliflower_seed_stage4" },
+    "age=5": { "model": "flavor_immersed_daily:block/cauliflower_seed_stage4" },
+    "age=6": { "model": "flavor_immersed_daily:block/cauliflower_seed_stage4" },
+    "age=7": { "model": "flavor_immersed_daily:block/cauliflower_seed_stage4" }
   }
 }

@@ -1,0 +1,12 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:paddygrain",
+    "kaleidoscope_cookery:rice",
+    "croptopia:rice",
+    "sushigocrafting:rice",
+    "farmersdelight:rice",
+    "concoction:rice",
+    "sushigocrafting:rice"
+  ]
+}

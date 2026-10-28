@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pressurecooker",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:buckwheat" },
+    { "item": "flavor_immersed_daily:tidywater" }],
+  "result": {
+    "id": "flavor_immersed_daily:buckwheatrice",
+    "count": 1
+  },
+  "cookingTime": 120
+}

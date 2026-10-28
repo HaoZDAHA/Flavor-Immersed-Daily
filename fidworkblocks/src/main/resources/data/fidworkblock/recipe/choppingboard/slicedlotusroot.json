@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "choppingboard",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:dicedlotusroot" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:slicedlotusroot",
+    "count": 3
+  },
+  "cookingTime": 0
+}

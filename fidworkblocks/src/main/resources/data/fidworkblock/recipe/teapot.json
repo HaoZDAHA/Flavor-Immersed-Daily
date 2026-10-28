@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PSP",
+    "PPP"
+  ],
+  "key": {
+    "P": { "item": "minecraft:iron_nugget" },
+    "S": { "item": "flavor_immersed_daily:tidywater" }
+  },
+  "result": {
+    "id": "fidworkblock:teapot",
+    "count": 1
+  }
+}

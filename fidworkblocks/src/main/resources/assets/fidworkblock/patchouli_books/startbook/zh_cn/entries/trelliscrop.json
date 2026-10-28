@@ -1,0 +1,16 @@
+{
+  "name": "爬架作物",
+  "category": "fidworkblock:crops",
+  "icon": "minecraft:vine",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "首先制作$(bold)作物架$()（$(item)flavor_immersed_daily:trellis$()），在泥土上$(bold)搭建 3 格高$()。$(br2)然后在$(bold)最高层$()作物架的侧面继续$(bold)横向放置$()作物架，可以$(bold)无限延伸$()。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "结构搭好后，手持$(bold)爬架作物的种子$()，$(bold)右键最低层$()的作物架。$(br2)种子会慢慢生长，并在最高层开始向周围的作物架$(bold)横向蔓延$()。$(br2)$(bold)果实会结在最高层那些横向的作物架上$()，$(bold)右键即可摘取$()！"
+    }
+  ]
+}

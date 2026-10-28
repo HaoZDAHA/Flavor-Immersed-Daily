@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "steambox",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:raw_dumpling"
+    }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:cookeddumpling",
+    "count": 1
+  },
+  "cookingTime": 200
+}

@@ -51,7 +51,7 @@ public class FridgeBlock extends HorizontalDirectionalBlock implements EntityBlo
         builder.add(FACING, HALF);
     }
 
-    // ==================== EntityBlock ====================
+// EntityBlock
 
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
@@ -71,7 +71,7 @@ public class FridgeBlock extends HorizontalDirectionalBlock implements EntityBlo
         return null;
     }
 
-    // ==================== 放置逻辑 ====================
+// 放置逻辑
 
     @Override
     @Nullable
@@ -118,8 +118,8 @@ public class FridgeBlock extends HorizontalDirectionalBlock implements EntityBlo
 
     @Override
     public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
-        // 所有模式下都先移除伙伴方块（带 SUPPRESS_DROPS），
-        // 避免伙伴方块随后因失去支撑变为空气时触发第二次掉落（导致一台冰箱掉两份）
+// 所有模式下都先移除伙伴方块（带 SUPPRESS_DROPS），
+// 避免伙伴方块随后因失去支撑变为空气时触发第二次掉落（导致一台冰箱掉两份）
         if (!level.isClientSide()) {
             DoubleBlockHalf half = state.getValue(HALF);
             if (half == DoubleBlockHalf.LOWER) {
@@ -152,7 +152,7 @@ public class FridgeBlock extends HorizontalDirectionalBlock implements EntityBlo
         super.onRemove(state, level, pos, newState, moved);
     }
 
-    // ==================== 交互 ====================
+// 交互
 
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos,
@@ -161,7 +161,7 @@ public class FridgeBlock extends HorizontalDirectionalBlock implements EntityBlo
             return InteractionResult.SUCCESS;
         }
 
-        // 找到下半部分的BlockEntity
+// 找到下半部分的BlockEntity
         BlockPos bePos = pos;
         if (state.getValue(HALF) == DoubleBlockHalf.UPPER) {
             bePos = pos.below();
@@ -180,7 +180,7 @@ public class FridgeBlock extends HorizontalDirectionalBlock implements EntityBlo
         return InteractionResult.PASS;
     }
 
-    // ==================== 旋转 ====================
+// 旋转
 
     @Override
     protected BlockState rotate(BlockState state, Rotation rot) {

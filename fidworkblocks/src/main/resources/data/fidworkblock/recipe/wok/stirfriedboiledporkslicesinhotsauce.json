@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "wok",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:cookeddicedpigmeat" },
+    { "item": "flavor_immersed_daily:cookedpigstreakmeat" },
+    { "item": "flavor_immersed_daily:dicedsweetpepper" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:stirfriedboiledporkslicesinhotsauce",
+    "count": 1
+  },
+  "cookingTime": 0
+}

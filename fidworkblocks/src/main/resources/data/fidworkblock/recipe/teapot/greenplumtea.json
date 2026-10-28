@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "teapot",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:tidywater" },
+    { "item": "flavor_immersed_daily:drygreentea" },
+    { "item": "flavor_immersed_daily:greenplum" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:greenplumtea",
+    "count": 2
+  },
+  "cookingTime": 40
+}

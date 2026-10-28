@@ -13,9 +13,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 
-/**
- * 冰箱·冷冻室配方 — 单物品输入，处理后输出
- */
+// 冰箱·冷冻室配方 — 单物品输入，处理后输出
 public class FridgeFreezingRecipe implements Recipe<RecipeInput> {
 
     private final Ingredient ingredient;
@@ -71,7 +69,7 @@ public class FridgeFreezingRecipe implements Recipe<RecipeInput> {
         return cookingTime;
     }
 
-    // ==================== 序列化 ====================
+// 序列化
 
     public static final MapCodec<FridgeFreezingRecipe> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(

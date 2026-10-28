@@ -10,9 +10,7 @@ import net.minecraft.world.item.ItemStack;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * 野生作物物品 — 在 tooltip 中显示厨房剪刀图标和获取方式
- */
+// 野生作物物品 — 在 tooltip 中显示厨房剪刀图标和获取方式
 public class WildHarvestItem extends Item {
 
     private final Component tooltipText;

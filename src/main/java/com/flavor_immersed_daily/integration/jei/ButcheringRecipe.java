@@ -4,9 +4,7 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 
-/**
- * 屠宰配方 — 一个记录：输入死动物 + 所需刀具 → 掉落物列表
- */
+// 屠宰配方 — 一个记录：输入死动物 + 所需刀具 → 掉落物列表
 public class ButcheringRecipe {
 
     private final ItemStack input;

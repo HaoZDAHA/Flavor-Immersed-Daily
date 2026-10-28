@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "mortar",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:dicedwaxgourd" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:waxgroudpaste",
+    "count": 2
+  },
+  "cookingTime": 0
+}

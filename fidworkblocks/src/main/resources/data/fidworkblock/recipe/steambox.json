@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SPS",
+    "P P",
+    "SPS"
+  ],
+  "key": {
+    "P": { "tag": "minecraft:planks" },
+    "S": { "item": "minecraft:iron_nugget" }
+  },
+  "result": {
+    "id": "fidworkblock:steambox",
+    "count": 1
+  }
+}

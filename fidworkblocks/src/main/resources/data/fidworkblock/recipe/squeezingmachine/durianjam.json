@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "squeezingmachine",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:durianmeat" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:durianjam",
+    "count": 2
+  },
+  "cookingTime": 80
+}

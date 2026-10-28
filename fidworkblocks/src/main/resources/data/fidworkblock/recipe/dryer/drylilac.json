@@ -1,0 +1,11 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "dryer",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:lilac_seed" }],
+  "result": {
+    "id": "flavor_immersed_daily:drylilac",
+    "count": 1
+  },
+  "cookingTime": 120
+}

@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pressurecooker",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:rawchickenliver" },
+    { "item": "flavor_immersed_daily:tidywater" },
+{ "item": "flavor_immersed_daily:halogenbag" }],
+  "result": {
+    "id": "flavor_immersed_daily:stewedchickenlivers",
+    "count": 1
+  },
+  "cookingTime": 180
+}

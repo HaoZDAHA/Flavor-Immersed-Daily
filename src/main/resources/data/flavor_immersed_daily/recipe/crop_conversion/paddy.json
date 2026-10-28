@@ -1,0 +1,9 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:paddyseeds",
+    "kaleidoscope_cookery:rice_panicle",
+    "pamhc2crops:riceitem",
+    "farmersdelight:rice_panicle"
+  ]
+}

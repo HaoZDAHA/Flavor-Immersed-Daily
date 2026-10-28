@@ -14,9 +14,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-/**
- * 格栅灯 — 发光方块
- */
+// 格栅灯 — 发光方块
 public class LampCabinetBlock extends HorizontalDirectionalBlock {
 
     public static final MapCodec<LampCabinetBlock> CODEC = simpleCodec(LampCabinetBlock::new);

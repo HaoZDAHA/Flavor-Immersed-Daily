@@ -1,0 +1,12 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:sweetgreenpepper",
+    "croptopia:bellpepper",
+    "pamhc2crops:bellpepperitem",
+    "rusticdelight:bell_pepper_green",
+    "rusticdelight:bell_pepper_yellow",
+    "rusticdelight:bell_pepper_red",
+    "veggiesdelight:bellpepper"
+  ]
+}

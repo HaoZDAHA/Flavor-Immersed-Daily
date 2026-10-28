@@ -8,10 +8,8 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 
-/**
- * 对联文字同步包 — 客户端 → 服务端
- * 发送 4 行文字和颜色选择
- */
+// 对联文字同步包 — 客户端 → 服务端
+// 发送 4 行文字和颜色选择
 public record CoupletSyncPayload(BlockPos pos, String[] lines, int color) implements CustomPacketPayload {
 
     public static final Type<CoupletSyncPayload> TYPE =

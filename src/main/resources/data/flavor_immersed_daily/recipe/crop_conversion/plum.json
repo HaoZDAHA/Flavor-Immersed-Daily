@@ -1,0 +1,8 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:plum",
+    "croptopia:plum",
+    "bountifulfares:plum"
+  ]
+}

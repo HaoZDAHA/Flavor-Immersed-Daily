@@ -1,0 +1,12 @@
+{
+  "name": "Squeezing Machine",
+  "category": "fidworkblock:blocks",
+  "icon": "fidworkblock:squeezingmachine",
+  "sortnum": 6,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Squeezing Machine$(): right-click with squeezable ingredients to add them (stacks of 64).$(br)$(bold)Right-click$() with an empty hand to start squeezing - it takes a fixed 4 seconds.$(br2)When done, right-click with an empty hand to collect the results; extra results drop beside the machine when the output is full.$(br)$(bold)Shift-right-click$() to take out the ingredients."
+    }
+  ]
+}

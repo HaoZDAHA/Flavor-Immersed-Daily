@@ -1,0 +1,14 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:soy_bean_seed",
+    "croptopia:soybean",
+    "pamhc2crops:soybeanitem",
+    "braziliandelight:bean_pod",
+    "youkaishomecoming:soybean",
+    "youkaisfeasts:soybean",
+    "sushigocrafting:soy_bean",
+    "gan_delight_reborn:soya_bean",
+    "vegandelight:soybean"
+  ]
+}

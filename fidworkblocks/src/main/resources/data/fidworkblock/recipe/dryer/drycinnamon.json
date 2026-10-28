@@ -1,0 +1,11 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "dryer",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:cinnamon" }],
+  "result": {
+    "id": "flavor_immersed_daily:drycinnamon",
+    "count": 1
+  },
+  "cookingTime": 120
+}

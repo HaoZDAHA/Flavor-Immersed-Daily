@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "choppingboard",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:steamedbread" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:dicedsteamedbread",
+    "count": 3
+  },
+  "cookingTime": 0
+}

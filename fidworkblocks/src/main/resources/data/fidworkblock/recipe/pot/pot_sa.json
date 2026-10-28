@@ -1,0 +1,16 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pot",
+  "ingredients": [
+    { "item": "minecraft:wheat" },
+    { "item": "flavor_immersed_daily:rawdicedcattlemeat" },
+    { "item": "flavor_immersed_daily:tidywater" },
+    { "item": "flavor_immersed_daily:halogenbag" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:sa",
+    "count": 1
+  },
+  "cookingTime": 120,
+  "experience": 0.5
+}

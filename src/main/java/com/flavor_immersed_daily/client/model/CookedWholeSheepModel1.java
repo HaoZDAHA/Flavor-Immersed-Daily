@@ -97,6 +97,6 @@ public class CookedWholeSheepModel1 extends CookedWholeSheepModel {
 		PartDefinition cube_r8 = bb_main.addOrReplaceChild("cube_r8", CubeListBuilder.create().texOffs(120, 25).addBox(-1.0F, -1.0F, -1.0F, 2.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(3.0F, -11.0F, 2.0F, 0.0F, -0.7854F, 0.0F));
 
 		return LayerDefinition.create(meshdefinition, 128, 128);
-	
+
     }
 }

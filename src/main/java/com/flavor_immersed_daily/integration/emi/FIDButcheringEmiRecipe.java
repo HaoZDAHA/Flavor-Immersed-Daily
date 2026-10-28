@@ -9,9 +9,7 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 
-/**
- * EMI 屠宰配方 — 显示 死动物 + 刀具 → 掉落物，每行4个产物自动换行。
- */
+// EMI 屠宰配方 — 显示 死动物 + 刀具 → 掉落物，每行4个产物自动换行。
 final class FIDButcheringEmiRecipe extends BasicEmiRecipe {
 
     private static final int OUTPUTS_PER_ROW = 4;

@@ -5,10 +5,8 @@ import com.mojang.blaze3d.vertex.VertexFormat;
 import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
 
-/**
- * 窗纸自定义 RenderType — 逐像素渲染，无需纹理
- * 参照 MCPaint 的 CANVAS RenderType 实现
- */
+// 窗纸自定义 RenderType — 逐像素渲染，无需纹理
+// 参照 MCPaint 的 CANVAS RenderType 实现
 public class WindowPaperRenderType extends RenderStateShard {
 
     public static final RenderType WINDOWPAPER = RenderType.create(

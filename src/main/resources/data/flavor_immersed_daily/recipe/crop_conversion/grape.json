@@ -1,0 +1,11 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:grape",
+    "kaleidoscope_tavern:grape",
+    "vinery:red_grape",
+    "croptopia:grape",
+    "pamhc2crops:grapeitem",
+    "youkaisfeasts:red_grape"
+  ]
+}

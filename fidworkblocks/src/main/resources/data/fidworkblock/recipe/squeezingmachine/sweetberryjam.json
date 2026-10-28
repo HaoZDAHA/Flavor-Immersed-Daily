@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "squeezingmachine",
+  "ingredients": [
+    { "item": "minecraft:sweet_berries" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:sweetberryjam",
+    "count": 2
+  },
+  "cookingTime": 80
+}

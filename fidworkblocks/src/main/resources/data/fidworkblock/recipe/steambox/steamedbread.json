@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "steambox",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:dough"
+    }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:steamedbread",
+    "count": 1
+  },
+  "cookingTime": 200
+}

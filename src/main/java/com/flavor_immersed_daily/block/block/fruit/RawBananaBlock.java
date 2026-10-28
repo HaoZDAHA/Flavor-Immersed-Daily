@@ -71,12 +71,12 @@ public class RawBananaBlock extends Block implements BonemealableBlock {
 
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        // Growth from stage 0 → stage 1
+// Growth from stage 0 → stage 1
         if (state.getValue(AGE) == 0 && random.nextInt(4) == 0) {
             level.setBlock(pos, state.setValue(AGE, 1), 3);
         }
 
-        // Check support: if no bananawood adjacent, break naturally with no drops
+// Check support: if no bananawood adjacent, break naturally with no drops
         if (!hasSupport(level, pos)) {
             level.destroyBlock(pos, false);
         }
@@ -102,14 +102,14 @@ public class RawBananaBlock extends Block implements BonemealableBlock {
         Block wood = woodSupplier.get();
         BlockState state = level.getBlockState(pos);
         Direction facing = state.getValue(FACING);
-        // FACING points toward the supporting bananawood
+// FACING points toward the supporting bananawood
         BlockPos supportPos = pos.relative(facing);
         return level.getBlockState(supportPos).is(wood);
     }
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        // Banana faces toward the block it's placed against (toward the wood)
+// Banana faces toward the block it's placed against (toward the wood)
         return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
 
@@ -118,7 +118,7 @@ public class RawBananaBlock extends Block implements BonemealableBlock {
                                               Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (state.getValue(AGE) == 1) {
             if (!level.isClientSide) {
-                // Drop banana and reset to stage 0
+// Drop banana and reset to stage 0
                 ItemEntity itemEntity = new ItemEntity(level, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
                         new ItemStack(fruitItem.get()));
                 level.addFreshEntity(itemEntity);
@@ -131,7 +131,7 @@ public class RawBananaBlock extends Block implements BonemealableBlock {
 
     @Override
     public float getDestroyProgress(BlockState state, Player player, BlockGetter level, BlockPos pos) {
-        // Only shears can break rawbanana
+// Only shears can break rawbanana
         if (player.getMainHandItem().is(Items.SHEARS) || player.getOffhandItem().is(Items.SHEARS)) {
             return super.getDestroyProgress(state, player, level, pos);
         }
@@ -140,11 +140,11 @@ public class RawBananaBlock extends Block implements BonemealableBlock {
 
     @Override
     public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
-        // No loot drops
+// No loot drops
         return super.playerWillDestroy(level, pos, state, player);
     }
 
-    // ===== BonemealableBlock =====
+// BonemealableBlock
 
     @Override
     public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {

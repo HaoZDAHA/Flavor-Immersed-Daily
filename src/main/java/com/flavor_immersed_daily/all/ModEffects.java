@@ -27,6 +27,11 @@ public final class ModEffects {
     public static final DeferredHolder<MobEffect, YiDeRoarEffect> YI_DE_ROAR = REGISTRY.register("yi_de_roar", YiDeRoarEffect::new);
     public static final DeferredHolder<MobEffect, GuanYuStrikeEffect> GUAN_YU_STRIKE = REGISTRY.register("guan_yu_strike", GuanYuStrikeEffect::new);
     public static final DeferredHolder<MobEffect, AniseedWardEffect> ANISEED_WARD = REGISTRY.register("aniseed_ward", AniseedWardEffect::new);
+// 月饼系列
+    public static final DeferredHolder<MobEffect, ReunionRecoveryEffect> REUNION_RECOVERY = REGISTRY.register("reunion_recovery", ReunionRecoveryEffect::new);
+    public static final DeferredHolder<MobEffect, CrumblyCrustEffect> CRUMBLY_CRUST = REGISTRY.register("crumbly_crust", CrumblyCrustEffect::new);
+    public static final DeferredHolder<MobEffect, EclipseDevourEffect> ECLIPSE_DEVOUR = REGISTRY.register("eclipse_devour", EclipseDevourEffect::new);
+    public static final DeferredHolder<MobEffect, CoolSkinEffect> COOL_SKIN = REGISTRY.register("cool_skin", CoolSkinEffect::new);
 
     private ModEffects() {}
 

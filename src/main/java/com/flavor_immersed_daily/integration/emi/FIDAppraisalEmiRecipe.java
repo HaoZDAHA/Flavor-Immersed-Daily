@@ -8,9 +8,7 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 
-/**
- * EMI 农产鉴定配方 — 显示 野生采集物 → 掉落物，每行4个产物自动换行。
- */
+// EMI 农产鉴定配方 — 显示 野生采集物 → 掉落物，每行4个产物自动换行。
 final class FIDAppraisalEmiRecipe extends BasicEmiRecipe {
 
     private static final int OUTPUTS_PER_ROW = 4;

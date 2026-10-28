@@ -17,9 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-/**
- * 厨房剪刀事件 — 破坏草和树叶时概率掉落野生作物
- */
+// 厨房剪刀事件 — 破坏草和树叶时概率掉落野生作物
 @EventBusSubscriber(modid = FlavorImmersedDaily.MODID)
 public class KitchenScissorsEventHandler {
 

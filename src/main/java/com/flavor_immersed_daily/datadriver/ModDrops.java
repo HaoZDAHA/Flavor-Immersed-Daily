@@ -13,12 +13,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 基础掉落物表格加载器。
- *
- * <p>屠宰、木盆漂洗、农产鉴定机的"默认产物"统一从模组自带的 JSON 中读取，随模组打包并随更新自动生效，
- * 玩家不再需要手动更新掉落物配置。Config 中仅保留玩家在此基础上额外添加的产物。</p>
- */
+// 基础掉落物表格加载器。
+// 屠宰、木盆漂洗、农产鉴定机的"默认产物"统一从模组自带的 JSON 中读取，随模组打包并随更新自动生效，
+// 玩家不再需要手动更新掉落物配置。Config 中仅保留玩家在此基础上额外添加的产物。
 public final class ModDrops {
 
     private static final String ROOT = "data/flavor_immersed_daily/drop_tables/";
@@ -36,7 +33,7 @@ public final class ModDrops {
     private ModDrops() {
     }
 
-    /** 惰性加载一次，服务端（生成掉落）与客户端（JEI 展示）共用同一份数据。 */
+// 惰性加载一次，服务端（生成掉落）与客户端（JEI 展示）共用同一份数据。
     public static synchronized void init() {
         if (initialized) {
             return;
@@ -50,7 +47,7 @@ public final class ModDrops {
         washedChickenDefaults = loadWashedChicken();
     }
 
-    /** 屠宰掉落表，格式：{"阶段数字": ["modid:item", ...]} */
+// 屠宰掉落表，格式：{"阶段数字": ["modid:item", ...]}
     private static Map<Integer, List<String>> loadButcher(String animal) {
         Map<Integer, List<String>> result = new HashMap<>();
         JsonElement root = readJson(BUTCHER_DIR + animal + ".json");
@@ -69,7 +66,7 @@ public final class ModDrops {
         return result;
     }
 
-    /** 农产鉴定掉落表，格式：{"输入物品id": ["modid:item", ...]} */
+// 农产鉴定掉落表，格式：{"输入物品id": ["modid:item", ...]}
     private static Map<String, List<String>> loadAppraisal() {
         Map<String, List<String>> result = new HashMap<>();
         JsonElement root = readJson(ROOT + "appraisal.json");
@@ -82,7 +79,7 @@ public final class ModDrops {
         return result;
     }
 
-    /** 木盆漂洗额外产物，格式：["modid:item", ...] */
+// 木盆漂洗额外产物，格式：["modid:item", ...]
     private static List<String> loadWashedChicken() {
         JsonElement root = readJson(ROOT + "washed_chicken.json");
         if (root == null || !root.isJsonArray()) {
@@ -107,7 +104,7 @@ public final class ModDrops {
         return list;
     }
 
-    /** 从模组资源（classpath）读取 JSON，客户端与服务端均可访问。 */
+// 从模组资源（classpath）读取 JSON，客户端与服务端均可访问。
     private static JsonElement readJson(String path) {
         try (InputStream in = ModDrops.class.getClassLoader().getResourceAsStream(path)) {
             if (in == null) {

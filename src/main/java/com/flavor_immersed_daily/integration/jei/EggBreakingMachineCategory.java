@@ -14,6 +14,7 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
 public class EggBreakingMachineCategory implements IRecipeCategory<EggBreakingRecipe> {
@@ -21,11 +22,17 @@ public class EggBreakingMachineCategory implements IRecipeCategory<EggBreakingRe
     public static final RecipeType<EggBreakingRecipe> TYPE =
             RecipeType.create(FlavorImmersedDaily.MODID, "egg_breaking", EggBreakingRecipe.class);
 
+// 分类背景贴图（含槽位底图）
+    private static final ResourceLocation BACKGROUND_TEXTURE =
+            ResourceLocation.fromNamespaceAndPath(FlavorImmersedDaily.MODID, "textures/jei/egg_breaking.png");
+
     private final IDrawable background;
     private final IDrawable icon;
 
     public EggBreakingMachineCategory(IGuiHelper helper) {
-        this.background = helper.createBlankDrawable(120, 72);
+        this.background = helper.drawableBuilder(BACKGROUND_TEXTURE, 0, 0, 120, 72)
+                .setTextureSize(120, 72)
+                .build();
         this.icon = helper.createDrawableItemStack(new ItemStack(ModBlocks.EGGBREAKINGMACHINE.asItem()));
     }
 
@@ -51,7 +58,7 @@ public class EggBreakingMachineCategory implements IRecipeCategory<EggBreakingRe
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, EggBreakingRecipe recipe, IFocusGroup focuses) {
-        // 3x3 输入网格
+// 3x3 输入网格
         var ingredients = recipe.getIngredients();
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 3; col++) {
@@ -65,7 +72,7 @@ public class EggBreakingMachineCategory implements IRecipeCategory<EggBreakingRe
             }
         }
 
-        // 输出产物（最多2个）
+// 输出产物（最多2个）
         var results = recipe.getResults();
         for (int i = 0; i < results.size(); i++) {
             builder.addSlot(RecipeIngredientRole.OUTPUT, 83 + i * 18, 19)

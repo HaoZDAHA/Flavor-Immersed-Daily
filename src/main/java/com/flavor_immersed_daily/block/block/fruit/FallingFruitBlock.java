@@ -122,13 +122,17 @@ public class FallingFruitBlock extends Block {
     }
 
     public boolean harvestFruit(ServerLevel level, BlockPos pos) {
+        return harvestFruit(level, pos, pos);
+    }
+
+    public boolean harvestFruit(ServerLevel level, BlockPos pos, BlockPos dropAt) {
         if (!level.getBlockState(pos).is(this)) return false;
 
         FruitingLeavesBlock supportingLeaf = clearSupportingLeaf(level, pos);
-        popResource(level, pos, new ItemStack(fruitItem.get()));
+        popResource(level, dropAt, new ItemStack(fruitItem.get()));
         level.removeBlock(pos, false);
         if (supportingLeaf != null) {
-            FruitHarvestHandler.tryDropVariantFruit(level, pos, supportingLeaf);
+            FruitHarvestHandler.tryDropVariantFruit(level, dropAt, supportingLeaf);
         }
         return true;
     }

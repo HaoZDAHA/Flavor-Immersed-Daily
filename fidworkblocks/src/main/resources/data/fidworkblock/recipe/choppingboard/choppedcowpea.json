@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "choppingboard",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:cowpea" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:choppedcowpea",
+    "count": 3
+  },
+  "cookingTime": 0
+}

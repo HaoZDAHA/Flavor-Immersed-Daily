@@ -30,7 +30,7 @@ public class EggBreakingMachineBlockEntity extends BlockEntity {
     private int totalTime;
     private final List<ItemStack> processingResults = new ArrayList<>();
 
-    /** 内部9格库存 */
+// 内部9格库存
     private final SimpleContainer inventory = new SimpleContainer(9) {
         @Override
         public void setChanged() {
@@ -55,15 +55,13 @@ public class EggBreakingMachineBlockEntity extends BlockEntity {
         return totalTime;
     }
 
-    /**
-     * 计算库存中能凑出多少组完整的配方
-     */
+// 计算库存中能凑出多少组完整的配方
     public int countCompleteSets(EggBreakingRecipe recipe) {
         List<Ingredient> ingredients = recipe.getIngredientList();
         if (ingredients.isEmpty()) return 0;
 
         if (recipe.isShaped()) {
-            // 有序配方：每个格子对应一个原料位置
+// 有序配方：每个格子对应一个原料位置
             int minSets = Integer.MAX_VALUE;
             for (int i = 0; i < ingredients.size() && i < inventory.getContainerSize(); i++) {
                 Ingredient ing = ingredients.get(i);
@@ -72,12 +70,13 @@ public class EggBreakingMachineBlockEntity extends BlockEntity {
                 if (!stack.isEmpty() && ing.test(stack)) {
                     minSets = Math.min(minSets, stack.getCount());
                 } else {
-                    return 0; // 该格没有匹配物品，无法制作任何一组
+// 该格没有匹配物品，无法制作任何一组
+                    return 0;
                 }
             }
             return minSets == Integer.MAX_VALUE ? 0 : minSets;
         } else {
-            // 无序配方：原料可以在任意格子
+// 无序配方：原料可以在任意格子
             int minSets = Integer.MAX_VALUE;
             for (Ingredient ing : ingredients) {
                 if (ing.isEmpty()) continue;
@@ -94,9 +93,7 @@ public class EggBreakingMachineBlockEntity extends BlockEntity {
         }
     }
 
-    /**
-     * 从库存中消耗指定组数的原料
-     */
+// 从库存中消耗指定组数的原料
     public void consumeSets(EggBreakingRecipe recipe, int sets) {
         List<Ingredient> ingredients = recipe.getIngredientList();
 
@@ -128,9 +125,7 @@ public class EggBreakingMachineBlockEntity extends BlockEntity {
         setChanged();
     }
 
-    /**
-     * 开始加工，一次性处理 sets 组
-     */
+// 开始加工，一次性处理 sets 组
     public void startProcessing(EggBreakingRecipe recipe, int sets) {
         if (level == null || level.isClientSide() || recipe == null || sets <= 0) return;
 
@@ -154,13 +149,13 @@ public class EggBreakingMachineBlockEntity extends BlockEntity {
         setChanged();
     }
 
-    // ---- Ticks ----
+// Ticks
 
     public static void serverTick(Level level, BlockPos pos, BlockState state, EggBreakingMachineBlockEntity be) {
         if (be.totalTime > 0) {
             be.progress++;
 
-            // 每 5 tick 播放搅拌声
+// 每 5 tick 播放搅拌声
             if (be.progress % 5 == 0) {
                 level.playSound(null, pos, SoundEvents.BREWING_STAND_BREW, SoundSource.BLOCKS, 0.5f, 1.0f);
             }
@@ -177,7 +172,7 @@ public class EggBreakingMachineBlockEntity extends BlockEntity {
 
     public static void clientTick(Level level, BlockPos pos, BlockState state, EggBreakingMachineBlockEntity be) {
         if (state.getValue(EggBreakingMachineBlock.STAGE) == 1) {
-            // 每 tick 产生 2-3 个白色粒子模拟搅拌/打蛋效果
+// 每 tick 产生 2-3 个白色粒子模拟搅拌/打蛋效果
             int count = 2 + level.random.nextInt(2);
             for (int i = 0; i < count; i++) {
                 double x = pos.getX() + 0.2 + level.random.nextDouble() * 0.6;
@@ -192,7 +187,7 @@ public class EggBreakingMachineBlockEntity extends BlockEntity {
         }
     }
 
-    // ---- 产出 ----
+// 产出
 
     private void spawnResults(Level level, BlockPos pos) {
         for (ItemStack stack : processingResults) {
@@ -207,11 +202,9 @@ public class EggBreakingMachineBlockEntity extends BlockEntity {
         processingResults.clear();
     }
 
-    /**
-     * 掉落所有物品（加工结果 + 库存）
-     */
+// 掉落所有物品（加工结果 + 库存）
     public void dropAllItems(Level level, BlockPos pos) {
-        // 加工结果
+// 加工结果
         for (ItemStack stack : processingResults) {
             if (!stack.isEmpty()) {
                 Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), stack.copy());
@@ -219,7 +212,7 @@ public class EggBreakingMachineBlockEntity extends BlockEntity {
         }
         processingResults.clear();
 
-        // 库存物品
+// 库存物品
         for (int i = 0; i < inventory.getContainerSize(); i++) {
             ItemStack stack = inventory.getItem(i);
             if (!stack.isEmpty()) {
@@ -229,7 +222,7 @@ public class EggBreakingMachineBlockEntity extends BlockEntity {
         inventory.clearContent();
     }
 
-    // ---- NBT ----
+// NBT
 
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
@@ -237,7 +230,7 @@ public class EggBreakingMachineBlockEntity extends BlockEntity {
         tag.putInt("progress", progress);
         tag.putInt("totalTime", totalTime);
 
-        // 保存库存
+// 保存库存
         CompoundTag invTag = new CompoundTag();
         for (int i = 0; i < inventory.getContainerSize(); i++) {
             ItemStack stack = inventory.getItem(i);
@@ -247,7 +240,7 @@ public class EggBreakingMachineBlockEntity extends BlockEntity {
         }
         tag.put("inventory", invTag);
 
-        // 保存加工结果
+// 保存加工结果
         if (!processingResults.isEmpty()) {
             CompoundTag resultsTag = new CompoundTag();
             for (int i = 0; i < processingResults.size(); i++) {
@@ -264,7 +257,7 @@ public class EggBreakingMachineBlockEntity extends BlockEntity {
         progress = tag.getInt("progress");
         totalTime = tag.getInt("totalTime");
 
-        // 加载库存
+// 加载库存
         inventory.clearContent();
         if (tag.contains("inventory")) {
             CompoundTag invTag = tag.getCompound("inventory");
@@ -277,7 +270,7 @@ public class EggBreakingMachineBlockEntity extends BlockEntity {
             }
         }
 
-        // 加载加工结果
+// 加载加工结果
         processingResults.clear();
         if (tag.contains("processingResults")) {
             CompoundTag resultsTag = tag.getCompound("processingResults");

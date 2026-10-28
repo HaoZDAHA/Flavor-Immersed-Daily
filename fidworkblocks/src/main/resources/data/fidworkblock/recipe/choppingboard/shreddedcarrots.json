@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "choppingboard",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:dicedcarrots" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:shreddedcarrots",
+    "count": 2
+  },
+  "cookingTime": 0
+}

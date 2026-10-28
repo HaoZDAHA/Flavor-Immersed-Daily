@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "#fid:rawpig",
+    "#fid:rawcattle",
+    "#fid:rawsheep",
+    "#fid:chicken",
+    "flavor_immersed_daily:rawchickenpiece",
+    "flavor_immersed_daily:rawchickenpiecepiece",
+    "minecraft:chicken"
+  ]
+}

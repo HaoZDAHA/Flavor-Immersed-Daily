@@ -1,0 +1,68 @@
+package com.flavor_immersed_daily.screen;
+
+import com.flavor_immersed_daily.FlavorImmersedDaily;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Inventory;
+
+// 月饼模具 GUI — 双槽位（饼皮 + 馅料）。
+// 面板、压制区与全部槽位底图来自 textures/gui/mooncake_mold.png，代码只负责文字与加号。
+public class MooncakeMoldScreen extends AbstractContainerScreen<MooncakeMoldMenu> {
+
+    private static final ResourceLocation BACKGROUND =
+            ResourceLocation.fromNamespaceAndPath(FlavorImmersedDaily.MODID, "textures/gui/mooncake_mold.png");
+
+// 模具槽位坐标（须与 MooncakeMoldMenu 中的槽位坐标一致）
+    private static final int DOUGH_SLOT_X = 44;
+    private static final int FILLING_SLOT_X = 116;
+    private static final int SLOT_Y = 20;
+
+    private static final int LABEL_COLOR = 0xFF_40_40_40;
+    private static final int PLUS_COLOR = 0xFF_60_60_60;
+
+    public MooncakeMoldScreen(MooncakeMoldMenu menu, Inventory playerInventory, Component title) {
+        super(menu, playerInventory, title);
+        this.imageWidth = 176;
+        this.imageHeight = 166;
+        this.inventoryLabelY = this.imageHeight - 94;
+    }
+
+    @Override
+    protected void init() {
+        super.init();
+// 标题居中，正好落在压制区顶部，避免被面板左边框穿过
+        this.titleLabelX = (this.imageWidth - this.font.width(this.title)) / 2;
+    }
+
+    @Override
+    protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
+// 面板、压制区、两个模具槽位与玩家物品栏槽位底图都在贴图里
+        guiGraphics.blit(BACKGROUND, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight,
+                this.imageWidth, this.imageHeight);
+
+// 两槽之间的加号
+        int plusX = this.leftPos + (DOUGH_SLOT_X + 16 + FILLING_SLOT_X) / 2 - 3;
+        guiGraphics.drawString(this.font, "+", plusX, this.topPos + SLOT_Y + 4, PLUS_COLOR, false);
+    }
+
+    @Override
+    protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+        super.renderLabels(guiGraphics, mouseX, mouseY);
+
+// 槽位标签
+        guiGraphics.drawString(this.font,
+                Component.translatable("gui.flavor_immersed_daily.mooncake_mold.dough"),
+                DOUGH_SLOT_X, SLOT_Y + 22, LABEL_COLOR, false);
+        guiGraphics.drawString(this.font,
+                Component.translatable("gui.flavor_immersed_daily.mooncake_mold.filling"),
+                FILLING_SLOT_X, SLOT_Y + 22, LABEL_COLOR, false);
+    }
+
+    @Override
+    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+        super.render(guiGraphics, mouseX, mouseY, partialTick);
+        this.renderTooltip(guiGraphics, mouseX, mouseY);
+    }
+}

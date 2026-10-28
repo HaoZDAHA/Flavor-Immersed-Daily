@@ -6,7 +6,7 @@
       "item": "flavor_immersed_daily:chinesepicklyashpowder"
     },
     {
-      "item": "flavor_immersed_daily:salt"
+      "tag": "c:salt"
     }
   ],
   "result": {

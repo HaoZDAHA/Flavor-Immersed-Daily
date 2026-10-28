@@ -4,16 +4,22 @@ import com.flavor_immersed_daily.FlavorImmersedDaily;
 import com.flavor_immersed_daily.all.ModBlocks;
 import com.flavor_immersed_daily.all.ModEffects;
 import com.flavor_immersed_daily.all.ModEntities;
+import com.flavor_immersed_daily.block.block.decorative.RaddlesBlock;
+import com.flavor_immersed_daily.block.blockentity.RaddlesBlockEntity;
 import com.flavor_immersed_daily.block.blockentity.WoodBasinBlockEntity;
 import com.flavor_immersed_daily.datagen.tag.FIDItemTags;
 
 import com.flavor_immersed_daily.all.ModItems;
 
 import com.flavor_immersed_daily.item.FirecrackerHelper;
+import com.flavor_immersed_daily.screen.CropConversionScreen;
 import com.flavor_immersed_daily.screen.EggBreakingMachineScreen;
 import com.flavor_immersed_daily.screen.FridgeScreen;
+import com.flavor_immersed_daily.screen.MooncakeMoldScreen;
+import com.flavor_immersed_daily.screen.RaddlesOwnerScreen;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.level.block.state.BlockState;
@@ -29,6 +35,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.ModelEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.event.RenderGuiEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
@@ -61,6 +68,13 @@ public class FlavorImmersedDailyClient {
         container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
         container.getEventBus().addListener(this::registerRenderers);
         container.getEventBus().addListener(this::registerLayerDefinitions);
+        container.getEventBus().addListener(MooncakeFillingColors::register);
+        container.getEventBus().addListener(this::onBakingCompleted);
+    }
+
+// 模型重载完成后：让月饼馅料颜色缓存失效（纹理像素数据已变）
+    private void onBakingCompleted(ModelEvent.BakingCompleted event) {
+        MooncakeFillingColors.onReloaded();
     }
 
     private void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
@@ -76,14 +90,12 @@ public class FlavorImmersedDailyClient {
         event.registerBlockEntityRenderer(com.flavor_immersed_daily.all.ModBlockEntities.WOODBASIN_ENTITY.get(), WoodBasinBlockEntityRenderer::new);
         event.registerEntityRenderer(ModEntities.WINDOW_PAPER_ENTITY.get(), WindowPaperEntityRenderer::new);
         event.registerBlockEntityRenderer(com.flavor_immersed_daily.all.ModBlockEntities.COUPLET_ENTITY.get(), CoupletRenderer::new);
+        event.registerBlockEntityRenderer(com.flavor_immersed_daily.all.ModBlockEntities.RADDLES_ENTITY.get(), RaddlesRenderer::new);
         event.registerBlockEntityRenderer(com.flavor_immersed_daily.all.ModBlockEntities.COOKED_WHOLE_SHEEP_ENTITY.get(), CookedWholeSheepRenderer::new);
     }
 
     @SubscribeEvent
     static void onClientSetup(FMLClientSetupEvent event) {
-        FlavorImmersedDaily.LOGGER.info("???????????????????????");
-        FlavorImmersedDaily.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
-
         RenderType cutout = RenderType.cutout();
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.BLUEBERRY_CROP.get(), cutout);
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.DRAGONFRUIT_CROP.get(), cutout);
@@ -92,11 +104,11 @@ public class FlavorImmersedDailyClient {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.PINEAPPLE_CROP.get(), cutout);
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.RED_TEA_CROP.get(), cutout);
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.STRAWBERRY_CROP.get(), cutout);
-        // ???????
+// ???????
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.LOTUSROOT_CROP.get(), cutout);
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.GLUTINOUSRICE_CROP.get(), cutout);
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.PADDY_CROP.get(), cutout);
-        // ????????
+// ????????
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.GRAPEBLOCK.get(), cutout);
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.CUCUMBERBLOCK.get(), cutout);
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.WAXGOURDBLOCK.get(), cutout);
@@ -106,28 +118,36 @@ public class FlavorImmersedDailyClient {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.COWPEABLOCK.get(), cutout);
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.GREENGRAEBLOCK.get(), cutout);
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.LOOFAHBLOCK.get(), cutout);
-        // ????
+// ????
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.BANANA_SAPLING.get(), cutout);
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.RAWBANANA.get(), cutout);
-        // ?????
+// ?????
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.COCONUT_SAPLING.get(), cutout);
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.RAWCOCONUT.get(), cutout);
-        // ????
+// ????
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.FRIDGE.get(), cutout);
-        // ????
+// ????
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.EGGBREAKINGMACHINE.get(), cutout);
-        // ????
+// ????
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.ANTITHETICAL_COUPLET_1.get(), cutout);
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.ANTITHETICAL_COUPLET_2.get(), cutout);
-        // ???????慰??????
+// ???????慰??????
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.REDLANTERN.get(), cutout);
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.GOLDLANTERN.get(), cutout);
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.JADE_LANTERN.get(), cutout);
+// 灯谜牌：半透明渲染，贴图中的透明区域不再被填黑
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.RADDLES.get(), RenderType.translucent());
+// 石狮子：透明渲染，避免靠墙放置时透视
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.STONE_LION.get(), cutout);
     }
 
     @SubscribeEvent
     static void registerScreens(RegisterMenuScreensEvent event) {
         event.register(com.flavor_immersed_daily.all.ModMenus.FRIDGE_MENU.get(), FridgeScreen::new);
         event.register(com.flavor_immersed_daily.all.ModMenus.EGG_BREAKING_MACHINE_MENU.get(), EggBreakingMachineScreen::new);
+        event.register(com.flavor_immersed_daily.all.ModMenus.CROP_CONVERSION_MENU.get(), CropConversionScreen::new);
+        event.register(com.flavor_immersed_daily.all.ModMenus.MOONCAKE_MOLD_MENU.get(), MooncakeMoldScreen::new);
+        event.register(com.flavor_immersed_daily.all.ModMenus.RADDLES_OWNER_MENU.get(), RaddlesOwnerScreen::new);
     }
 
     @SubscribeEvent
@@ -145,12 +165,12 @@ public class FlavorImmersedDailyClient {
                     .withStyle(ChatFormatting.BLUE);
             event.getToolTip().add(line);
         }
-        // ??味??????斜?????
+// ??味??????斜?????
         if (event.getItemStack().is(FIDItemTags.SEASONING)) {
             event.getToolTip().add(Component.translatable("tooltip.flavor_immersed_daily.seasoning")
                     .withStyle(ChatFormatting.GOLD, ChatFormatting.ITALIC));
         }
-        // ????/?????? tooltip
+// ????/?????? tooltip
         ItemStack tipStack = event.getItemStack();
         if (tipStack.is(ModItems.COCONUTMEAT.get())) {
             event.getToolTip().add(Component.translatable("tooltip.flavor_immersed_daily.coconut_meat.desc").withStyle(ChatFormatting.GRAY));
@@ -162,7 +182,7 @@ public class FlavorImmersedDailyClient {
             event.getToolTip().add(Component.translatable("tooltip.flavor_immersed_daily.durian_shell.desc").withStyle(ChatFormatting.GRAY));
         }
 
-        // ??? tooltip
+// ??? tooltip
         if (event.getItemStack().is(ModItems.WRESTLING_GUN.get())) {
             ItemStack stack = event.getItemStack();
             if (FirecrackerHelper.hasConfig(stack)) {
@@ -179,7 +199,7 @@ public class FlavorImmersedDailyClient {
             }
         }
 
-        // 种子分类 tooltip（只对 fid:seeds 标签内的真种子显示，按种植方式分类）
+// 种子分类 tooltip（只对 fid:seeds 标签内的真种子显示，按种植方式分类）
         if (event.getItemStack().is(FIDItemTags.SEEDS)) {
             String itemId = event.getItemStack().getItemHolder().getKey().location().getPath();
             if (PADDY_SEEDS.contains(itemId)) {
@@ -198,20 +218,44 @@ public class FlavorImmersedDailyClient {
         }
     }
 
-    // 鼠标指向木盆且盆内存有屠宰产物时，屏幕左上显示内容物与数量
+// 鼠标指向木盆且盆内存有屠宰产物时，屏幕左上显示内容物与数量
     @SubscribeEvent
     static void onRenderGui(RenderGuiEvent.Post event) {
         Minecraft mc = Minecraft.getInstance();
         if (mc.level == null || mc.player == null || !(mc.hitResult instanceof BlockHitResult hit)) {
             return;
         }
-        BlockState state = mc.level.getBlockState(hit.getBlockPos());
-        if (!(state.getBlock() instanceof WoodBasinBlock)) {
+        BlockPos hitPos = hit.getBlockPos();
+        BlockState state = mc.level.getBlockState(hitPos);
+
+        if (state.getBlock() instanceof WoodBasinBlock) {
+            if (mc.level.getBlockEntity(hitPos) instanceof WoodBasinBlockEntity be && be.hasStorage()) {
+                renderStorageOverlay(event.getGuiGraphics(), mc, be);
+            }
             return;
         }
-        if (mc.level.getBlockEntity(hit.getBlockPos()) instanceof WoodBasinBlockEntity be && be.hasStorage()) {
-            renderStorageOverlay(event.getGuiGraphics(), mc, be);
+
+// 灯谜牌：未设置谜底时提示无谜底，设置好后提示可以右键答题
+        if (state.getBlock() instanceof RaddlesBlock
+                && mc.level.getBlockEntity(hitPos) instanceof RaddlesBlockEntity be) {
+            renderRaddlesHint(event.getGuiGraphics(), mc, be);
         }
+    }
+
+// 看向灯谜牌时在屏幕下方显示一行提示
+    private static void renderRaddlesHint(GuiGraphics g, Minecraft mc, RaddlesBlockEntity be) {
+        Component hint;
+        if (be.hasRiddle()) {
+            hint = Component.translatable("gui.flavor_immersed_daily.raddles.hint");
+        } else if (be.canEdit(mc.player)) {
+// 放置者自己看着它：提示可以设置谜底与奖励
+            hint = Component.translatable("gui.flavor_immersed_daily.raddles.no_riddle.owner");
+        } else {
+            hint = Component.translatable("gui.flavor_immersed_daily.raddles.no_riddle");
+        }
+        int x = (mc.getWindow().getGuiScaledWidth() - mc.font.width(hint)) / 2;
+        int y = mc.getWindow().getGuiScaledHeight() - 68;
+        g.drawString(mc.font, hint, x, y, 0xFF_FF_FF_55, true);
     }
 
     private static void renderStorageOverlay(GuiGraphics g, Minecraft mc, WoodBasinBlockEntity be) {

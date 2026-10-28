@@ -13,6 +13,7 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
@@ -21,9 +22,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * JEI 农产鉴定分类 — 显示野生采集物→掉落物的配方，每行4个产物自动换行
- */
+// JEI 农产鉴定分类 — 显示野生采集物→掉落物的配方，每行4个产物自动换行
 public class AgriculturalAppraisalMachineCategory implements IRecipeCategory<AgriculturalAppraisalMachineRecipe> {
 
     public static final RecipeType<AgriculturalAppraisalMachineRecipe> TYPE =
@@ -33,11 +32,17 @@ public class AgriculturalAppraisalMachineCategory implements IRecipeCategory<Agr
     private static final int HEIGHT = 150;
     private static final int OUTPUTS_PER_ROW = 4;
 
+// 分类背景贴图（含槽位底图）
+    private static final ResourceLocation BACKGROUND_TEXTURE =
+            ResourceLocation.fromNamespaceAndPath(FlavorImmersedDaily.MODID, "textures/jei/agricultural_appraisal.png");
+
     private final IDrawable background;
     private final IDrawable icon;
 
     public AgriculturalAppraisalMachineCategory(IGuiHelper helper) {
-        this.background = helper.createBlankDrawable(WIDTH, HEIGHT);
+        this.background = helper.drawableBuilder(BACKGROUND_TEXTURE, 0, 0, WIDTH, HEIGHT)
+                .setTextureSize(WIDTH, HEIGHT)
+                .build();
         this.icon = helper.createDrawableItemStack(new ItemStack(ModBlocks.AGRICULTURALAPPRAISALMACHINE.asItem()));
     }
 
@@ -63,11 +68,11 @@ public class AgriculturalAppraisalMachineCategory implements IRecipeCategory<Agr
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, AgriculturalAppraisalMachineRecipe recipe, IFocusGroup focuses) {
-        // 输入：野生采集物
+// 输入：野生采集物
         builder.addSlot(RecipeIngredientRole.INPUT, 3, 20)
                 .addItemStack(recipe.getInput());
 
-        // 输出：合并重复物品，每行4个自动换行
+// 输出：合并重复物品，每行4个自动换行
         List<ItemStack> outputs = mergeDuplicates(recipe.getOutputs());
         int startX = 62;
         int startY = 14;
@@ -85,13 +90,11 @@ public class AgriculturalAppraisalMachineCategory implements IRecipeCategory<Agr
     public void draw(AgriculturalAppraisalMachineRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics,
                      double mouseX, double mouseY) {
         var font = Minecraft.getInstance().font;
-        // 箭头
+// 箭头
         guiGraphics.drawString(font, "→", 28, 22, 0xFF808080, false);
     }
 
-    /**
-     * 合并列表中相同的物品，累加数量
-     */
+// 合并列表中相同的物品，累加数量
     private static List<ItemStack> mergeDuplicates(List<ItemStack> stacks) {
         Map<Item, Integer> merged = new LinkedHashMap<>();
         for (ItemStack stack : stacks) {

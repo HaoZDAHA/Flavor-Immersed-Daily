@@ -9,9 +9,7 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 
-/**
- * 箱装烟花配置同步包 — 客户端 → 服务端
- */
+// 箱装烟花配置同步包 — 客户端 → 服务端
 public record ColorfulFireworksBoxSyncPayload(BlockPos pos, CompoundTag config) implements CustomPacketPayload {
 
     public static final Type<ColorfulFireworksBoxSyncPayload> TYPE =

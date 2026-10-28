@@ -1,0 +1,9 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:cauliflower",
+    "croptopia:cauliflower",
+    "pamhc2crops:caulifloweritem",
+    "veggiesdelight:cauliflower"
+  ]
+}

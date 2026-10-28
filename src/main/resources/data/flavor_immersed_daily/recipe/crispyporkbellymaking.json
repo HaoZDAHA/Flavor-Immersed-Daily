@@ -6,7 +6,7 @@
       "item": "flavor_immersed_daily:rawpigstreakypork"
     },
     {
-      "item": "flavor_immersed_daily:salt"
+      "tag": "c:salt"
     },
     {
       "item": "flavor_immersed_daily:whitesugarsyrup"

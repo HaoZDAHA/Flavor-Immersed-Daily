@@ -1,0 +1,18 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:salt",
+    "kitchenkarrot:sea_salt",
+    "kitchenkarrot:rock_salt",
+    "bakeries:salt",
+    "bakingdelight:sea_salt",
+    "croptopia:salt",
+    "concoction:rock_salt",
+    "concoction:sea_salt",
+    "braziliandelight:salt",
+    "expandeddelight:ground_salt",
+    "meadow:alpine_salt",
+    "kaleidoscope_chinesefood:salt",
+    "vegandelight:salt"
+  ]
+}

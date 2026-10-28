@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pot",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:tofucurd" },
+    { "item": "flavor_immersed_daily:tidywater" },
+    { "item": "flavor_immersed_daily:soy" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:salttofucurd",
+    "count": 1
+  },
+  "cookingTime": 120,
+  "experience": 0.5
+}

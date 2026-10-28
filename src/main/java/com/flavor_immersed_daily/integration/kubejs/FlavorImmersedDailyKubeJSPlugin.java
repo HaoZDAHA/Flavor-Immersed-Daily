@@ -5,7 +5,7 @@ import dev.latvian.mods.kubejs.plugin.KubeJSPlugin;
 import dev.latvian.mods.kubejs.recipe.schema.RecipeSchemaRegistry;
 import net.minecraft.resources.ResourceLocation;
 
-/** Registers KubeJS recipe schemas when KubeJS discovers this optional plugin. */
+// Registers KubeJS recipe schemas when KubeJS discovers this optional plugin.
 public class FlavorImmersedDailyKubeJSPlugin implements KubeJSPlugin {
     @Override
     public void registerRecipeSchemas(RecipeSchemaRegistry event) {

@@ -1,0 +1,9 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:kiwifruit",
+    "croptopia:kiwi",
+    "pamhc2crops:kiwiitem",
+    "fruitsdelight:kiwi"
+  ]
+}

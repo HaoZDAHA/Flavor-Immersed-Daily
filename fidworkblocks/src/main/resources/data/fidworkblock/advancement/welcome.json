@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "id": "fidworkblock:startbook"
+    },
+    "title": {
+      "translate": "advancement.fidworkblock.welcome.title"
+    },
+    "description": {
+      "translate": "advancement.fidworkblock.welcome.description"
+    },
+    "frame": "task",
+    "background": "minecraft:textures/gui/advancements/backgrounds/husbandry.png",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "joined": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

@@ -5,6 +5,8 @@ import com.flavor_immersed_daily.all.ModBlockEntities;
 
 import com.flavor_immersed_daily.block.blockentity.BighookBlockEntity;
 import com.flavor_immersed_daily.block.blockentity.WoodBasinBlockEntity;
+import com.flavor_immersed_daily.butchering.ButcheringDefinition;
+import com.flavor_immersed_daily.butchering.ButcheringRegistry;
 import com.flavor_immersed_daily.config.Config;
 import com.flavor_immersed_daily.gameplay.BighookCarryHandler;
 import net.minecraft.core.BlockPos;
@@ -50,9 +52,9 @@ import net.minecraft.server.level.ServerLevel;
 import java.util.List;
 import java.util.function.Supplier;
 
-//大挂钩方块 — 悬挂动物胴体进行屠宰加工
-//动物: 0=none, 1=cattle, 2=sheep, 3=pig, 4=chicken
-//屠宰的阶段: 0(空) → 1(挂上) → 2 → 3 → 4 → 5 → 回收回0
+// 大挂钩方块 — 悬挂动物胴体进行屠宰加工
+// 动物: 0=none, 1=cattle, 2=sheep, 3=pig, 4=chicken
+// 屠宰的阶段: 0(空) → 1(挂上) → 2 → 3 → 4 → 5 → 回收回0
 
 public class BighookBlock extends Block implements SimpleWaterloggedBlock, EntityBlock {
 
@@ -106,7 +108,7 @@ public class BighookBlock extends Block implements SimpleWaterloggedBlock, Entit
     @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         BlockPos pos = context.getClickedPos();
-        // 登记"该玩家手拿的生物可放到这个挂钩坐标"，供 onPlace 转移使用（不依赖放置后手上是否还有挂钩）
+// 登记"该玩家手拿的生物可放到这个挂钩坐标"，供 onPlace 转移使用（不依赖放置后手上是否还有挂钩）
         BighookCarryHandler.markPendingHang(context.getPlayer(), pos);
         FluidState fluidState = context.getLevel().getFluidState(pos);
         return canSurvive(defaultBlockState(), context.getLevel(), pos)
@@ -142,19 +144,39 @@ public class BighookBlock extends Block implements SimpleWaterloggedBlock, Entit
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
                                               Player player, InteractionHand hand, BlockHitResult hitResult) {
-        // 挂钩上挂着被抓取的生物：其他玩家（或任意玩家）右键即可放下
-        if (level.getBlockEntity(pos) instanceof BighookBlockEntity be && be.hasCarried()) {
+        if (!(level.getBlockEntity(pos) instanceof BighookBlockEntity be)) {
+            return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
+        }
+
+// 挂钩上挂着被抓取的生物：其他玩家（或任意玩家）右键即可放下
+        if (be.hasCarried()) {
             if (!level.isClientSide) {
                 be.releaseCarried();
             }
             return ItemInteractionResult.sidedSuccess(level.isClientSide);
         }
 
+// 数据包自定义屠宰进行中：按定义推进（与内置 4 种动物互不干扰）
+        if (be.hasCustomButchering()) {
+            return handleCustomButchering(level, pos, be, stack);
+        }
+
         int stage = state.getValue(STAGE);
         int animal = state.getValue(ANIMAL);
 
-        //空挂钩：挂上动物
+// 空挂钩：挂上动物
         if (stage == 0) {
+// 数据包自定义定义优先（其他模组 / 数据包的接入点）
+            ButcheringDefinition custom = ButcheringRegistry.getByInput(stack.getItem());
+            if (custom != null) {
+                if (!level.isClientSide) {
+                    if (!player.getAbilities().instabuild) {
+                        stack.shrink(1);
+                    }
+                    be.startCustomButchering(custom);
+                }
+                return ItemInteractionResult.sidedSuccess(level.isClientSide);
+            }
             if (stack.is(deadCattle.get())) {
                 return hangAnimal(level, pos, state, player, stack, 1, 1);
             }
@@ -173,7 +195,7 @@ public class BighookBlock extends Block implements SimpleWaterloggedBlock, Entit
             return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         }
 
-        //鸡特殊：stage2 右键取回
+// 鸡特殊：stage2 右键取回
         if (animal == 4 && stage == 2) {
             if (!level.isClientSide) {
                 level.setBlock(pos, state.setValue(STAGE, 0).setValue(ANIMAL, 0), 3);
@@ -185,15 +207,15 @@ public class BighookBlock extends Block implements SimpleWaterloggedBlock, Entit
             return ItemInteractionResult.sidedSuccess(level.isClientSide);
         }
 
-        //有动物：刀具屠宰
+// 有动物：刀具屠宰
         if (stage >= 1 && stage <= 6) {
             Item tool = stack.getItem();
 
-            // 鸡 stage5→6 (切割刀)
+// 鸡 stage5→6 (切割刀)
             if (animal == 4 && stage == 5 && tool == ModItems.SHARPKNIFE.get()) {
                 return processStage(level, pos, state, player, animal, 5);
             }
-            // 鸡 stage6→0 (切割刀)
+// 鸡 stage6→0 (切割刀)
             if (animal == 4 && stage == 6 && tool == ModItems.SHARPKNIFE.get()) {
                 if (!level.isClientSide) {
                     spawnDrops(level, pos, animal, 6);
@@ -202,23 +224,23 @@ public class BighookBlock extends Block implements SimpleWaterloggedBlock, Entit
                 return ItemInteractionResult.sidedSuccess(level.isClientSide);
             }
 
-            //放血（鸡猪牛羊） stage1→2 (宽刃刀)
+// 放血（鸡猪牛羊） stage1→2 (宽刃刀)
             if (stage == 1 && tool == ModItems.WIDEEDGEDKNIFE.get()) {
                 return processStage(level, pos, state, player, animal, 1);
             }
-            //猪牛羊 stage2→3 (切割刀)
+// 猪牛羊 stage2→3 (切割刀)
             if (stage == 2 && animal != 4 && tool == ModItems.SHARPKNIFE.get()) {
                 return processStage(level, pos, state, player, animal, 2);
             }
-            //猪牛羊 stage3→4 (斩骨刀)
+// 猪牛羊 stage3→4 (斩骨刀)
             if (stage == 3 && tool == ModItems.BONECUTTERKNIFE.get()) {
                 return processStage(level, pos, state, player, animal, 3);
             }
-            //猪牛羊 stage4→5 (切割刀)
+// 猪牛羊 stage4→5 (切割刀)
             if (stage == 4 && tool == ModItems.SHARPKNIFE.get()) {
                 return processStage(level, pos, state, player, animal, 4);
             }
-            //猪牛羊 stage5→0 (切割刀)
+// 猪牛羊 stage5→0 (切割刀)
             if (stage == 5 && animal != 4 && tool == ModItems.SHARPKNIFE.get()) {
                 if (!level.isClientSide) {
                     spawnDrops(level, pos, animal, 5);
@@ -251,8 +273,8 @@ public class BighookBlock extends Block implements SimpleWaterloggedBlock, Entit
         return ItemInteractionResult.sidedSuccess(level.isClientSide);
     }
 
-//从config弄掉落物，玩家可以自行添加哦
-//若挂钩下方有木盆，则产物直接存入木盆；否则在挂钩处生成掉落物
+// 从config弄掉落物，玩家可以自行添加哦
+// 若挂钩下方有木盆，则产物直接存入木盆；否则在挂钩处生成掉落物
     private void spawnDrops(Level level, BlockPos pos, int animal, int stage) {
         List<String> dropIds = Config.getDrops(animal, stage);
         WoodBasinBlockEntity basin = findBasinBelow(level, pos);
@@ -272,7 +294,62 @@ public class BighookBlock extends Block implements SimpleWaterloggedBlock, Entit
         }
     }
 
-    /** 查找挂钩下方的木盆（向下最多4格，遇到非空气非木盆的方块即停止搜索）。 */
+// 数据包自定义屠宰：手持当前阶段所需刀具右键，产出掉落并推进阶段。
+    private ItemInteractionResult handleCustomButchering(Level level, BlockPos pos,
+                                                         BighookBlockEntity be, ItemStack stack) {
+        ButcheringDefinition definition = ButcheringRegistry.get(be.getCustomButcheringId());
+        int index = be.getCustomStage() - 1;
+        if (definition == null || index < 0 || index >= definition.stages().size()) {
+// 定义在数据包重载后消失，或阶段越界：归还显示物并清空，避免卡住
+            if (!level.isClientSide) {
+                dropCustomDisplay(level, pos, be);
+                be.clearCustomButchering();
+            }
+            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+        }
+
+        ButcheringDefinition.Stage current = definition.stages().get(index);
+        if (!current.matches(stack)) {
+            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        }
+        if (!level.isClientSide) {
+            spawnDropItems(level, pos, current.drops());
+            be.advanceCustomButchering(definition);
+        }
+        return ItemInteractionResult.sidedSuccess(level.isClientSide);
+    }
+
+// 按物品列表产出掉落；若挂钩下方有木盆则直接存入木盆。
+    private void spawnDropItems(Level level, BlockPos pos, List<Item> items) {
+        if (items.isEmpty()) {
+            return;
+        }
+        WoodBasinBlockEntity basin = findBasinBelow(level, pos);
+        if (basin != null) {
+            basin.addDrops(items.stream()
+                    .map(item -> BuiltInRegistries.ITEM.getKey(item).toString())
+                    .toList());
+            level.playSound(null, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 0.5f, 0.8f);
+            return;
+        }
+        for (Item item : items) {
+            level.addFreshEntity(new ItemEntity(level,
+                    pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+                    new ItemStack(item)));
+        }
+    }
+
+// 归还当前挂在挂钩上的自定义显示物（拆除挂钩或定义失效时调用）。
+    private void dropCustomDisplay(Level level, BlockPos pos, BighookBlockEntity be) {
+        ItemStack display = be.getCustomDisplay();
+        if (!display.isEmpty()) {
+            level.addFreshEntity(new ItemEntity(level,
+                    pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+                    display.copy()));
+        }
+    }
+
+// 查找挂钩下方的木盆（向下最多4格，遇到非空气非木盆的方块即停止搜索）。
     private WoodBasinBlockEntity findBasinBelow(Level level, BlockPos pos) {
         for (int dy = 1; dy <= 4; dy++) {
             BlockPos p = pos.below(dy);
@@ -305,7 +382,7 @@ public class BighookBlock extends Block implements SimpleWaterloggedBlock, Entit
     @Override
     protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
         super.onPlace(state, level, pos, oldState, movedByPiston);
-        // 玩家拿着被拿起的生物放置挂钩时，把该生物转移到挂钩上挂住
+// 玩家拿着被拿起的生物放置挂钩时，把该生物转移到挂钩上挂住
         if (!level.isClientSide && level instanceof ServerLevel serverLevel) {
             BighookCarryHandler.tryHangOnPlace(serverLevel, pos);
         }
@@ -313,9 +390,14 @@ public class BighookBlock extends Block implements SimpleWaterloggedBlock, Entit
 
     @Override
     protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
-        // 挂钩被拆除时释放挂在上面的被抓取生物，避免实体被永久锁在原地
+// 挂钩被拆除时释放挂在上面的被抓取生物，避免实体被永久锁在原地
         if (!state.is(newState.getBlock()) && !isMoving
                 && level.getBlockEntity(pos) instanceof BighookBlockEntity be) {
+// 拆除时归还自定义屠宰的当前显示物，避免物品丢失
+            if (be.hasCustomButchering() && !level.isClientSide) {
+                dropCustomDisplay(level, pos, be);
+                be.clearCustomButchering();
+            }
             be.releaseCarried();
         }
         super.onRemove(state, level, pos, newState, isMoving);

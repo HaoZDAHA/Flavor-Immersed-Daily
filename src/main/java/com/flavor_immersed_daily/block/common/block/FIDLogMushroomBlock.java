@@ -27,10 +27,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.function.Supplier;
 
-/**
- * 菌菇作物方块 — 种植在木头/原木上，非耕地。
- * 生长阶段 0 到 maxAge，成熟后可右键收获产物并重置。
- */
+// 菌菇作物方块 — 种植在木头/原木上，非耕地。
+// 生长阶段 0 到 maxAge，成熟后可右键收获产物并重置。
 public class FIDLogMushroomBlock extends BushBlock implements BonemealableBlock {
 
     public static final IntegerProperty AGE = BlockStateProperties.AGE_4;
@@ -111,7 +109,7 @@ public class FIDLogMushroomBlock extends BushBlock implements BonemealableBlock 
             if (!level.isClientSide) {
                 ItemLike crop = cropSupplier.get();
                 if (crop != null) {
-                    // 右键收获：一次掉落 3 个作物 + 1 个种子
+// 右键收获：一次掉落 3 个作物 + 1 个种子
                     Block.popResource(level, pos, new ItemStack(crop, 3));
                     ItemLike seed = seedSupplier.get();
                     if (seed != null) {
@@ -127,7 +125,7 @@ public class FIDLogMushroomBlock extends BushBlock implements BonemealableBlock 
         return super.useWithoutItem(state, level, pos, player, hitResult);
     }
 
-    // ===== BonemealableBlock =====
+// BonemealableBlock
 
     @Override
     public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {

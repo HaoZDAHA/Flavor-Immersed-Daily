@@ -2,18 +2,22 @@ package com.flavor_immersed_daily.block.block.machine;
 
 import com.flavor_immersed_daily.config.Config;
 import com.flavor_immersed_daily.FlavorImmersedDaily;
+import com.flavor_immersed_daily.screen.CropConversionMenu;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -30,7 +34,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import java.util.List;
 import java.util.Random;
 
-//农产鉴定机 玩家手持野生采集物右键，消耗物品，根据配置战利品表生成掉落物
+// 农产鉴定机 玩家手持野生采集物右键，消耗物品，根据配置战利品表生成掉落物
 public class AgriculturalAppraisalMachineBlock extends HorizontalDirectionalBlock {
 
     public static final MapCodec<AgriculturalAppraisalMachineBlock> CODEC =
@@ -73,7 +77,10 @@ public class AgriculturalAppraisalMachineBlock extends HorizontalDirectionalBloc
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos,
                                                Player player, BlockHitResult hit) {
-        return InteractionResult.PASS;
+        if (!level.isClientSide) {
+            openConversionGui(player, level, pos);
+        }
+        return InteractionResult.SUCCESS;
     }
 
     @Override
@@ -87,16 +94,18 @@ public class AgriculturalAppraisalMachineBlock extends HorizontalDirectionalBloc
         Item heldItem = stack.getItem();
         String heldId = BuiltInRegistries.ITEM.getKey(heldItem).toString();
 
-        // 检查是否是野生采集物
+// 检查是否是野生采集物
         List<String> dropIds = Config.getWildDrops(heldId);
         if (dropIds == null || dropIds.isEmpty()) {
-            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+// 不是野生采集物：打开作物转换 UI（与空手一致）
+            openConversionGui(player, level, pos);
+            return ItemInteractionResult.SUCCESS;
         }
 
-        // 消耗一个野生采集物
+// 消耗一个野生采集物
         stack.shrink(1);
 
-        // 从战利品表中随机挑选 1-3 次物品掉落
+// 从战利品表中随机挑选 1-3 次物品掉落
         int pickCount = RANDOM.nextInt(3) + 1;
         for (int i = 0; i < pickCount; i++) {
             String itemId = dropIds.get(RANDOM.nextInt(dropIds.size()));
@@ -117,9 +126,17 @@ public class AgriculturalAppraisalMachineBlock extends HorizontalDirectionalBloc
             }
         }
 
-        // 音效
+// 音效
         level.playSound(null, pos, SoundEvents.ENDERMAN_TELEPORT, SoundSource.BLOCKS, 0.8f, 1.0f);
 
         return ItemInteractionResult.SUCCESS;
+    }
+
+// 打开作物转换 UI（布局与交互和原版切石机一致）。
+    private void openConversionGui(Player player, Level level, BlockPos pos) {
+        player.openMenu(new SimpleMenuProvider(
+                (containerId, playerInventory, p) -> new CropConversionMenu(
+                        containerId, playerInventory, ContainerLevelAccess.create(level, pos)),
+                Component.translatable("container.flavor_immersed_daily.crop_conversion")));
     }
 }

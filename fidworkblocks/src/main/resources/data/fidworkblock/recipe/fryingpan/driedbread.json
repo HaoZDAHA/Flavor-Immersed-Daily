@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "fryingpan",
+  "ingredients": [
+    { "item": "minecraft:bread" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:driedbread",
+    "count": 1
+  },
+  "cookingTime": 60
+}

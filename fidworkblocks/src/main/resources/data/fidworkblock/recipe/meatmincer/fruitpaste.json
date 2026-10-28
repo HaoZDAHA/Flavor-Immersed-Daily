@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "meatmincer",
+  "ingredients": [
+    { "tag": "c:fruit" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:fruitflavoredmooncakestuffing",
+    "count": 1
+  },
+  "cookingTime": 80
+}

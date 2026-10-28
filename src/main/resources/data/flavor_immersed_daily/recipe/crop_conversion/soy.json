@@ -1,0 +1,6 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:soy",
+    "youkaishomecoming:soy_sauce_bottle"
+  ]}

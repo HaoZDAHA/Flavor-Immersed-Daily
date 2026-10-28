@@ -25,18 +25,16 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-/**
- * 门纸 — 可贴挂在墙上的装饰方块，类似原版画的放置方式
- * 手持食物右键：消耗一个食物，获得"食物饱食度 × 10 秒"的 buff
- * 左门纸 → 咆哮（yi_de_roar），右门纸 → 武圣（guan_yu_strike）
- */
+// 门纸 — 可贴挂在墙上的装饰方块，类似原版画的放置方式
+// 手持食物右键：消耗一个食物，获得"食物饱食度 × 10 秒"的 buff
+// 左门纸 → 咆哮（yi_de_roar），右门纸 → 武圣（guan_yu_strike）
 public class DoorPaperBlock extends HorizontalDirectionalBlock {
 
     public static final MapCodec<DoorPaperBlock> CODEC = simpleCodec(properties -> new DoorPaperBlock(properties, false));
 
     private final boolean isLeft;
 
-    // 不同朝向的碰撞箱厚度（薄片，贴墙）— 匹配模型 from[0,0,15.99] to[16,24,15.99]
+// 不同朝向的碰撞箱厚度（薄片，贴墙）— 匹配模型 from[0,0,15.99] to[16,24,15.99]
     private static final VoxelShape SHAPE_NORTH = Block.box(0, 0, 15, 16, 16, 16);
     private static final VoxelShape SHAPE_SOUTH = Block.box(0, 0, 0, 16, 16, 1);
     private static final VoxelShape SHAPE_EAST = Block.box(0, 0, 0, 1, 16, 16);
@@ -61,11 +59,11 @@ public class DoorPaperBlock extends HorizontalDirectionalBlock {
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         Direction clickedFace = context.getClickedFace();
-        // 点击水平面时，纸贴在被点击的面上
+// 点击水平面时，纸贴在被点击的面上
         if (clickedFace.getAxis().isHorizontal()) {
             return this.defaultBlockState().setValue(FACING, clickedFace);
         }
-        // 点击顶部或底部时，按玩家朝向
+// 点击顶部或底部时，按玩家朝向
         return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
 
@@ -100,7 +98,7 @@ public class DoorPaperBlock extends HorizontalDirectionalBlock {
         if (!level.isClientSide) {
             held.shrink(1);
             Holder<MobEffect> effect = isLeft ? ModEffects.YI_DE_ROAR : ModEffects.GUAN_YU_STRIKE;
-            // 饱食度 × 10 秒
+// 饱食度 × 10 秒
             player.addEffect(new MobEffectInstance(effect, food.nutrition() * 10 * 20));
         }
         return ItemInteractionResult.sidedSuccess(level.isClientSide);

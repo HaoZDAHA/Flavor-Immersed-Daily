@@ -5,10 +5,8 @@ import net.minecraft.world.inventory.tooltip.TooltipComponent;
 
 import java.util.List;
 
-/**
- * 调味料 tooltip 组件 — 携带调味料对应的 buff 效果列表，
- * 客户端通过 {@link ClientSeasoningTooltip} 渲染图标、名称、时长与详情
- */
+// 调味料 tooltip 组件 — 携带调味料对应的 buff 效果列表，
+// 客户端通过 ClientSeasoningTooltip 渲染图标、名称、时长与详情
 public class SeasoningTooltip implements TooltipComponent {
 
     private final List<MobEffectInstance> effects;

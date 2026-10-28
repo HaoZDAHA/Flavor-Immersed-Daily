@@ -26,18 +26,16 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.Nullable;
 
-/**
- * 窗纸实体 — 贴墙挂画，可编辑像素涂鸦
- * 继承 HangingEntity 复用原版画的放置逻辑，使用 MCPaint 风格逐像素渲染
- */
+// 窗纸实体 — 贴墙挂画，可编辑像素涂鸦
+// 继承 HangingEntity 复用原版画的放置逻辑，使用 MCPaint 风格逐像素渲染
 public class WindowPaperEntity extends HangingEntity {
 
     private static final String TAG_PIXEL_DATA = "pixel_data";
-    // 256个像素，每个为ARGB颜色值 (0x00000000 = 透明, 0xFFFFFFFF = 白色)
+// 256个像素，每个为ARGB颜色值 (0x00000000 = 透明, 0xFFFFFFFF = 白色)
     private int[] pixelData = new int[256];
 
-    // 数据同步器：用于服务端→客户端同步像素数据（解决退出重进后数据重置的问题）
-    // 使用 COMPOUND_TAG 序列化 int[] 数组（原版没有 INT_ARRAY 序列化器）
+// 数据同步器：用于服务端→客户端同步像素数据（解决退出重进后数据重置的问题）
+// 使用 COMPOUND_TAG 序列化 int[] 数组（原版没有 INT_ARRAY 序列化器）
     private static final EntityDataAccessor<CompoundTag> DATA_PIXEL_DATA =
             SynchedEntityData.defineId(WindowPaperEntity.class, EntityDataSerializers.COMPOUND_TAG);
 
@@ -51,7 +49,7 @@ public class WindowPaperEntity extends HangingEntity {
     }
 
     public int[] getPixelData() {
-        // 客户端优先使用数据同步器中的值（与服务端保持一致）
+// 客户端优先使用数据同步器中的值（与服务端保持一致）
         if (this.level() != null && this.level().isClientSide) {
             CompoundTag tag = this.getEntityData().get(DATA_PIXEL_DATA);
             int[] synced = tag.getIntArray("pixels");
@@ -64,7 +62,7 @@ public class WindowPaperEntity extends HangingEntity {
 
     public void setPixelData(int[] data) {
         this.pixelData = data.length == 256 ? data : new int[256];
-        // 更新数据同步器，服务端会自动同步到所有客户端
+// 更新数据同步器，服务端会自动同步到所有客户端
         CompoundTag tag = new CompoundTag();
         tag.putIntArray("pixels", this.pixelData);
         this.getEntityData().set(DATA_PIXEL_DATA, tag);
@@ -115,13 +113,13 @@ public class WindowPaperEntity extends HangingEntity {
         int[] loaded = tag.getIntArray(TAG_PIXEL_DATA);
         if (loaded.length == 256) {
             this.pixelData = loaded;
-            // 同步到数据同步器，确保客户端能收到
+// 同步到数据同步器，确保客户端能收到
             CompoundTag syncTag = new CompoundTag();
             syncTag.putIntArray("pixels", loaded);
             this.getEntityData().set(DATA_PIXEL_DATA, syncTag);
         }
-        // 直接设置 direction 字段并重新计算包围盒，避免调用 setDirection() 触发 setYRot()
-        // 与原版 ItemFrame 的做法一致，防止与实体系统加载时的位置设置冲突
+// 直接设置 direction 字段并重新计算包围盒，避免调用 setDirection() 触发 setYRot()
+// 与原版 ItemFrame 的做法一致，防止与实体系统加载时的位置设置冲突
         if (tag.contains("Facing")) {
             this.direction = Direction.from3DDataValue(tag.getByte("Facing"));
             this.recalculateBoundingBox();
@@ -161,7 +159,7 @@ public class WindowPaperEntity extends HangingEntity {
     @Override
     public void recreateFromPacket(ClientboundAddEntityPacket packet) {
         super.recreateFromPacket(packet);
-        // 直接设置 direction 并重新计算包围盒，避免 setDirection() 覆盖 super 已设置的 yRot
+// 直接设置 direction 并重新计算包围盒，避免 setDirection() 覆盖 super 已设置的 yRot
         this.direction = Direction.from3DDataValue(packet.getData());
         this.recalculateBoundingBox();
     }

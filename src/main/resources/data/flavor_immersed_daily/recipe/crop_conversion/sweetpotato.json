@@ -1,0 +1,14 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:sweetpotato",
+    "croptopia:sweetpotato",
+    "pamhc2crops:sweetpotatoitem",
+    "mystias_izakaya:di_gua",
+    "expandeddelight:sweet_potato",
+    "veggiesdelight:sweet_potato",
+    "spmreborn:red_potato",
+    "spmreborn:white_potato",
+    "bountifulharvest:sweet_potato"
+  ]
+}

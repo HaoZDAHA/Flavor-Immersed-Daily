@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pot",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:raw_tangyuan" },
+    { "item": "flavor_immersed_daily:tidywater" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:tangyuan",
+    "count": 1
+  },
+  "cookingTime": 60,
+  "experience": 0.5
+}

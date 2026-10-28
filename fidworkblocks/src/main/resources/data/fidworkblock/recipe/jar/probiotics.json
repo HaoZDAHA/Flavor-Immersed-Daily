@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "jar",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:milkbottle" },
+    { "item": "flavor_immersed_daily:tidywater" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:probiotics",
+    "count": 1
+  },
+  "cookingTime": 40
+}

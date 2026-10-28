@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "mortar",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:drylilac" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:lilacpowder",
+    "count": 1
+  },
+  "cookingTime": 0
+}

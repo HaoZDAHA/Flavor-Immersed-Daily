@@ -13,9 +13,7 @@ import net.minecraft.world.level.block.Block;
 
 import java.util.List;
 
-/**
- * 箱装烟花物品 — tooltip 显示内部烟花参数
- */
+// 箱装烟花物品 — tooltip 显示内部烟花参数
 public class ColorfulFireworksBoxItem extends BlockItem {
 
     public ColorfulFireworksBoxItem(Block block, Properties properties) {
@@ -28,7 +26,7 @@ public class ColorfulFireworksBoxItem extends BlockItem {
 
         CustomData customData = stack.get(DataComponents.BLOCK_ENTITY_DATA);
         if (customData == null || customData.copyTag().isEmpty()) {
-            // 无数据时显示特色说明
+// 无数据时显示特色说明
             tooltip.add(Component.translatable("tooltip.flavor_immersed_daily.fireworks.desc_line1")
                     .withStyle(ChatFormatting.GRAY));
             tooltip.add(Component.translatable("tooltip.flavor_immersed_daily.fireworks.desc_line2")
@@ -39,14 +37,14 @@ public class ColorfulFireworksBoxItem extends BlockItem {
         }
         CompoundTag beTag = customData.copyTag();
 
-        // 形状
+// 形状
         int shape = beTag.getInt("fw_shape");
         String shapeName = shape >= 0 && shape < ColorfulFireworksBoxBlockEntity.SHAPE_NAMES.length
                 ? ColorfulFireworksBoxBlockEntity.SHAPE_NAMES[shape] : "unknown";
         tooltip.add(Component.translatable("tooltip.flavor_immersed_daily.fireworks.shape", shapeName)
                 .withStyle(ChatFormatting.GRAY));
 
-        // 颜色
+// 颜色
         int color = beTag.getInt("fw_color");
         int fadeColor = beTag.getInt("fw_fade_color");
         tooltip.add(Component.translatable("tooltip.flavor_immersed_daily.fireworks.color",
@@ -56,13 +54,13 @@ public class ColorfulFireworksBoxItem extends BlockItem {
                         String.format("#%06X", fadeColor & 0xFFFFFF))
                 .withStyle(ChatFormatting.GRAY));
 
-        // 轨迹
+// 轨迹
         boolean trail = beTag.getBoolean("fw_trail");
         tooltip.add(Component.translatable("tooltip.flavor_immersed_daily.fireworks.trail",
                         Component.translatable(trail ? "gui.yes" : "gui.no"))
                 .withStyle(ChatFormatting.GRAY));
 
-        // 飞行参数
+// 飞行参数
         float angle = beTag.getFloat("fw_angle");
         float speed = beTag.getFloat("fw_speed");
         float distance = beTag.getFloat("fw_distance");

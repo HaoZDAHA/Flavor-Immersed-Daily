@@ -1,0 +1,9 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:hamimelon",
+    "croptopia:cantaloupe",
+    "pamhc2crops:cantaloupeitem",
+    "pamhc2crops:fruitsdelight:hamimelon"
+  ]
+}

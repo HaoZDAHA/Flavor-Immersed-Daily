@@ -6,10 +6,8 @@ import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.world.entity.Entity;
 
-/**
- * 烤全羊模型基类 — 10 个阶段共用结构：
- * sheep（羊骨架，绕烤叉旋转的动画部分）、roast（烤肉盘）、bb_main（烤架，最后阶段消失）
- */
+// 烤全羊模型基类 — 10 个阶段共用结构：
+// sheep（羊骨架，绕烤叉旋转的动画部分）、roast（烤肉盘）、bb_main（烤架，最后阶段消失）
 public abstract class CookedWholeSheepModel extends EntityModel<Entity> {
 
     protected final ModelPart sheep;
@@ -22,7 +20,7 @@ public abstract class CookedWholeSheepModel extends EntityModel<Entity> {
         this.bbMain = hasStand ? root.getChild("bb_main") : null;
     }
 
-    /** 旋转部分（羊骨架，绕烤叉旋转） */
+// 旋转部分（羊骨架，绕烤叉旋转）
     public ModelPart getSpit() {
         return sheep;
     }

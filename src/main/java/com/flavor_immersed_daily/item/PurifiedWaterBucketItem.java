@@ -24,7 +24,8 @@ public class PurifiedWaterBucketItem extends Item {
     public static final int MAX_DURABILITY = 256;
 
     public PurifiedWaterBucketItem(Properties properties) {
-        super(properties.durability(MAX_DURABILITY));  // 设置耐久
+// 设置耐久
+        super(properties.durability(MAX_DURABILITY));
     }
 
     @Override
@@ -45,48 +46,51 @@ public class PurifiedWaterBucketItem extends Item {
 
     @Override
     public boolean isValidRepairItem(ItemStack stack, ItemStack repairInput) {
-        return false; // 不允许修复
+// 不允许修复
+        return false;
     }
 
     @Override
     public boolean isEnchantable(ItemStack stack) {
-        return false; // 不可附魔
+// 不可附魔
+        return false;
     }
 
     @Override
     public boolean isDamageable(ItemStack stack) {
-        return true; // 设置为可损坏
+// 设置为可损坏
+        return true;
     }
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
-        // 获取玩家准星指向的位置
+// 获取玩家准星指向的位置
         BlockHitResult result = getPlayerPOVHitResult(world, player, net.minecraft.world.level.ClipContext.Fluid.SOURCE_ONLY);
 
         if (result.getType() == net.minecraft.world.phys.HitResult.Type.BLOCK) {
             BlockPos pos = result.getBlockPos();
             BlockState state = world.getBlockState(pos);
 
-            // 检查是否是水源
+// 检查是否是水源
             if (state.getBlock() == Blocks.WATER) {
                 if (!world.isClientSide) {
-                    // 检查是否还有耐久
+// 检查是否还有耐久
                     if (stack.getDamageValue() < stack.getMaxDamage()) {
-                        // 消耗一个耐久
+// 消耗一个耐久
                         stack.hurtAndBreak(1, player, net.minecraft.world.entity.EquipmentSlot.MAINHAND);
 
-                        // 给玩家纯净水
+// 给玩家纯净水
                         ItemStack drinkingWater = new ItemStack(ModItems.TIDYWATER.get());
                         if (!player.getInventory().add(drinkingWater)) {
-                            // 如果背包满了，掉落在玩家脚下
+// 如果背包满了，掉落在玩家脚下
                             player.drop(drinkingWater, false);
                         }
 
-                        // 播放净化声音
+// 播放净化声音
                         world.playSound(null, pos, SoundEvents.BREWING_STAND_BREW, SoundSource.PLAYERS, 1.0F, 1.0F);
                     } else {
-                        // 耐久已用完，播放损坏声音
+// 耐久已用完，播放损坏声音
                         world.playSound(null, pos, SoundEvents.ITEM_BREAK, SoundSource.PLAYERS, 1.0F, 1.0F);
                     }
                 }
@@ -94,7 +98,7 @@ public class PurifiedWaterBucketItem extends Item {
             }
         }
 
-        // 如果没有对着水，就正常处理
+// 如果没有对着水，就正常处理
         return InteractionResultHolder.pass(stack);
     }
 

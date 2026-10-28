@@ -18,9 +18,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.function.Supplier;
 
-/**
- * 桂皮树苗 — 生长为两格高树干 + 顶部一个树叶的桂皮树
- */
+// 桂皮树苗 — 生长为两格高树干 + 顶部一个树叶的桂皮树
 public class CinnamonSaplingBlock extends BushBlock implements BonemealableBlock {
 
     private static final VoxelShape SHAPE = Block.box(2, 0, 2, 14, 12, 14);
@@ -83,17 +81,17 @@ public class CinnamonSaplingBlock extends BushBlock implements BonemealableBlock
         Block leaves = leavesSupplier.get();
         BlockState woodState = wood.defaultBlockState();
 
-        // Check space: 2 blocks for trunk + 1 block for leaves above
+// Check space: 2 blocks for trunk + 1 block for leaves above
         for (int i = 1; i <= 3; i++) {
             BlockPos abovePos = pos.above(i);
             if (!level.getBlockState(abovePos).canBeReplaced()) return;
         }
 
-        // Place 2 trunk blocks
+// Place 2 trunk blocks
         level.setBlock(pos, woodState, 3);
         level.setBlock(pos.above(1), woodState, 3);
 
-        // Place leaf on top
+// Place leaf on top
         level.setBlock(pos.above(2), leaves.defaultBlockState()
                 .setValue(CinnamonLeavesBlock.PERSISTENT, true), 3);
     }

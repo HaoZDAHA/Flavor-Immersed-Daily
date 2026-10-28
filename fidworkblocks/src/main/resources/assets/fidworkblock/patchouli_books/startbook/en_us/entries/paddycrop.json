@@ -1,0 +1,12 @@
+{
+  "name": "Paddy Crops",
+  "category": "fidworkblock:crops",
+  "icon": "minecraft:lily_pad",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Paddy crops$() need to be planted on $(bold)dirt under exactly 1 block of water$().$(br2)After planting, they grow almost exactly like vanilla wheat - the only difference is that they $(bold)grow in water$()."
+    }
+  ]
+}

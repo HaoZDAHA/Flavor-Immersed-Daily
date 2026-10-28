@@ -1,0 +1,9 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:broccoil",
+    "croptopia:broccoil",
+    "pamhc2crops:broccoliitem",
+    "mystia_izakaya:broceoli"
+  ]
+}

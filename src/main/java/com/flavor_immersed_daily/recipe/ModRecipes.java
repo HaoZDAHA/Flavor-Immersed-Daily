@@ -45,6 +45,14 @@ public final class ModRecipes {
             RECIPE_SERIALIZERS.register("wood_basin",
                     () -> serializer(WoodBasinRecipe.CODEC, WoodBasinRecipe.STREAM_CODEC));
 
+// 作物转换组配方（作物鉴定机跨模组转换）
+    public static final DeferredHolder<RecipeType<?>, RecipeType<CropConversionRecipe>> CROP_CONVERSION_TYPE =
+            RECIPE_TYPES.register("crop_conversion", () -> new RecipeType<>() {
+            });
+    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<CropConversionRecipe>> CROP_CONVERSION_SERIALIZER =
+            RECIPE_SERIALIZERS.register("crop_conversion",
+                    () -> serializer(CropConversionRecipe.CODEC, CropConversionRecipe.STREAM_CODEC));
+
     private ModRecipes() {
     }
 

@@ -32,12 +32,10 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-/**
- * 烤全羊 — 2x2x2 连体方块，可食用的放置方块。
- * STAGE 0~9 共 10 个阶段，放置后羊骨架绕烤叉持续旋转；
- * 每次右键食用进入下一个阶段，最后一个阶段再右键即整个消失。
- * ORIGIN 记录该方块在 2x2x2 区域中的位置（bit0=X, bit1=Y, bit2=Z），0 为主方块。
- */
+// 烤全羊 — 2x2x2 连体方块，可食用的放置方块。
+// STAGE 0~9 共 10 个阶段，放置后羊骨架绕烤叉持续旋转；
+// 每次右键食用进入下一个阶段，最后一个阶段再右键即整个消失。
+// ORIGIN 记录该方块在 2x2x2 区域中的位置（bit0=X, bit1=Y, bit2=Z），0 为主方块。
 public class CookedWholeSheepBlock extends Block implements EntityBlock {
 
     public static final IntegerProperty STAGE = IntegerProperty.create("stage", 0, 9);
@@ -59,7 +57,7 @@ public class CookedWholeSheepBlock extends Block implements EntityBlock {
         builder.add(STAGE, ORIGIN, FACING);
     }
 
-    /** 每个 part 的碰撞箱覆盖整个 2x2x2 区域（相对自身位置偏移） */
+// 每个 part 的碰撞箱覆盖整个 2x2x2 区域（相对自身位置偏移）
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return getRegionShape(state.getValue(ORIGIN));
@@ -87,7 +85,7 @@ public class CookedWholeSheepBlock extends Block implements EntityBlock {
     @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         BlockPos pos = context.getClickedPos();
-        // 2x2x2 区域向 +X +Y +Z 延伸，检查 8 格都可放置
+// 2x2x2 区域向 +X +Y +Z 延伸，检查 8 格都可放置
         for (int i = 0; i < 8; i++) {
             BlockPos p = pos.offset(i & 1, (i >> 1) & 1, (i >> 2) & 1);
             if (!context.getLevel().getBlockState(p).canBeReplaced(context)) {
@@ -100,14 +98,14 @@ public class CookedWholeSheepBlock extends Block implements EntityBlock {
     @Override
     public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
         if (level.isClientSide) return;
-        // 填充其余 7 格为连体 part
+// 填充其余 7 格为连体 part
         for (int i = 1; i < 8; i++) {
             BlockPos p = pos.offset(i & 1, (i >> 1) & 1, (i >> 2) & 1);
             level.setBlock(p, state.setValue(ORIGIN, i), 3);
         }
     }
 
-    /** 任意一格被破坏时，连锁破坏其余 7 格 */
+// 任意一格被破坏时，连锁破坏其余 7 格
     private static boolean destroying = false;
 
     @Override
@@ -136,7 +134,7 @@ public class CookedWholeSheepBlock extends Block implements EntityBlock {
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player,
                                                BlockHitResult hitResult) {
-        // 定位主方块
+// 定位主方块
         int origin = state.getValue(ORIGIN);
         BlockPos originPos = pos.offset(-(origin & 1), -((origin >> 1) & 1), -((origin >> 2) & 1));
         BlockState originState = level.getBlockState(originPos);
@@ -147,7 +145,7 @@ public class CookedWholeSheepBlock extends Block implements EntityBlock {
         int stage = originState.getValue(STAGE);
         if (stage < 9) {
             if (!level.isClientSide) {
-                // 吃一口，进入下一阶段
+// 吃一口，进入下一阶段
                 level.setBlock(originPos, originState.setValue(STAGE, stage + 1), 3);
                 level.playSound(null, originPos, SoundEvents.GENERIC_EAT, SoundSource.PLAYERS, 0.8F, 1.0F);
                 player.eat(level, new ItemStack(foodItem()).copyWithCount(1));
@@ -155,7 +153,7 @@ public class CookedWholeSheepBlock extends Block implements EntityBlock {
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
 
-        // 最后一口：整个消失（不掉落）
+// 最后一口：整个消失（不掉落）
         if (!level.isClientSide) {
             level.playSound(null, originPos, SoundEvents.GENERIC_EAT, SoundSource.PLAYERS, 0.8F, 1.0F);
             level.destroyBlock(originPos, false);
@@ -169,7 +167,7 @@ public class CookedWholeSheepBlock extends Block implements EntityBlock {
         return new CookedWholeSheepBlockEntity(pos, state);
     }
 
-    /** 手持物品（带食物属性），用于 player.eat 结算营养 */
+// 手持物品（带食物属性），用于 player.eat 结算营养
     private Item foodItem() {
         ResourceLocation id = ResourceLocation.fromNamespaceAndPath(FlavorImmersedDaily.MODID, "cooked_whole_sheep");
         return BuiltInRegistries.ITEM.getOptional(id).orElse(Items.AIR);

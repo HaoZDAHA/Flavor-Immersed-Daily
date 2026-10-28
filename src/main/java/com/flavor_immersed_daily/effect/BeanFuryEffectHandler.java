@@ -14,21 +14,19 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 
-/**
- * 铇歌眴锛岀埥锛侊紙bean_fury锛夋晥鏋滃鐞嗗櫒
- * 瑙﹀彂瑙勫垯锛?
- *  - 鐜╁椋熺敤鐗╁搧鍚庯紝鍓墜鎸佹湁 fid:seasoning 鏍囩鐗╁搧锛屾垨椋熺墿 NBT 鏍囩 seasoning 闈炵┖
- *  - 鍏朵腑鍓墜涓?thickbroadbeansauce锛堣眴鐡ｉ叡锛夋垨椋熺墿 NBT seasoning 涓?
- *    flavor_immersed_daily:thickbroadbeansauce 鏃讹紝缁欎簣 45 绉?bean_fury 鏁堟灉锛屽苟娑堣€楀壇鎵嬭皟鍛虫枡涓€涓?
- * 鏁堟灉锛氭嫢鏈夎鏁堟灉鐨勭帺瀹惰繘琛岃繎鎴樻敾鍑绘椂锛屾寜閰嶇疆姒傜巼锛堥粯璁?25%锛夎Е鍙戞毚鍑伙細
- *  - 浼ゅ鎻愬崌 1.5 鍊嶏紙涓庡師鐗堣烦璺冩毚鍑荤浉鍚岋級
- *  - 鎾斁鏆村嚮绮掑瓙涓庨煶鏁?
- *  - 鏃犻渶璺宠穬鏀诲嚮
- */
+// 铇歌眴锛岀埥锛侊紙bean_fury锛夋晥鏋滃鐞嗗櫒
+// 瑙﹀彂瑙勫垯锛?
+// - 鐜╁椋熺敤鐗╁搧鍚庯紝鍓墜鎸佹湁 fid:seasoning 鏍囩鐗╁搧锛屾垨椋熺墿 NBT 鏍囩 seasoning 闈炵┖
+// - 鍏朵腑鍓墜涓?thickbroadbeansauce锛堣眴鐡ｉ叡锛夋垨椋熺墿 NBT seasoning 涓?
+// flavor_immersed_daily:thickbroadbeansauce 鏃讹紝缁欎簣 45 绉?bean_fury 鏁堟灉锛屽苟娑堣€楀壇鎵嬭皟鍛虫枡涓€涓?
+// 鏁堟灉锛氭嫢鏈夎鏁堟灉鐨勭帺瀹惰繘琛岃繎鎴樻敾鍑绘椂锛屾寜閰嶇疆姒傜巼锛堥粯璁?25%锛夎Е鍙戞毚鍑伙細
+// - 浼ゅ鎻愬崌 1.5 鍊嶏紙涓庡師鐗堣烦璺冩毚鍑荤浉鍚岋級
+// - 鎾斁鏆村嚮绮掑瓙涓庨煶鏁?
+// - 鏃犻渶璺宠穬鏀诲嚮
 @EventBusSubscriber(modid = FlavorImmersedDaily.MODID)
 public class BeanFuryEffectHandler {
 
-    /** 鍘熺増璺宠穬鏆村嚮鐨勪激瀹冲€嶇巼 */
+// 鍘熺増璺宠穬鏆村嚮鐨勪激瀹冲€嶇巼
     private static final float CRIT_MULTIPLIER = 1.5F;
 
     @SubscribeEvent
@@ -37,18 +35,18 @@ public class BeanFuryEffectHandler {
         if (event.getEntity().level().isClientSide) return;
 
         DamageSource source = event.getSource();
-        // 浠呰繎鎴橈細鐩存帴鏀诲嚮鑰呬笌浼ゅ鏉ユ簮鐩稿悓锛堟帓闄ょ鐭㈢瓑鎶曞皠鐗╋級
+// 浠呰繎鎴橈細鐩存帴鏀诲嚮鑰呬笌浼ゅ鏉ユ簮鐩稿悓锛堟帓闄ょ鐭㈢瓑鎶曞皠鐗╋級
         if (source.getDirectEntity() != source.getEntity()) return;
         if (!(source.getEntity() instanceof Player player)) return;
         if (!player.hasEffect(ModEffects.BEAN_FURY)) return;
 
-        // 姒傜巼鍒ゅ畾
+// 姒傜巼鍒ゅ畾
         if (player.getRandom().nextDouble() >= Config.beanFuryCritChance) return;
 
-        // 鏆村嚮锛?.5 鍊嶄激瀹?
+// 鏆村嚮锛?.5 鍊嶄激瀹?
         event.setAmount(event.getAmount() * CRIT_MULTIPLIER);
 
-        // 鏆村嚮绮掑瓙涓庨煶鏁?
+// 鏆村嚮绮掑瓙涓庨煶鏁?
         LivingEntity target = event.getEntity();
         if (target.level() instanceof ServerLevel serverLevel) {
             serverLevel.sendParticles(ParticleTypes.CRIT,

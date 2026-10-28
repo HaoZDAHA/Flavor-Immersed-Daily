@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=north,oiled=false": { "model": "fidworkblock:block/wok" },
+    "facing=east,oiled=false":  { "model": "fidworkblock:block/wok", "y": 90 },
+    "facing=south,oiled=false": { "model": "fidworkblock:block/wok", "y": 180 },
+    "facing=west,oiled=false":  { "model": "fidworkblock:block/wok", "y": 270 },
+    "facing=north,oiled=true":  { "model": "fidworkblock:block/wok_oiled" },
+    "facing=east,oiled=true":   { "model": "fidworkblock:block/wok_oiled", "y": 90 },
+    "facing=south,oiled=true":  { "model": "fidworkblock:block/wok_oiled", "y": 180 },
+    "facing=west,oiled=true":   { "model": "fidworkblock:block/wok_oiled", "y": 270 }
+  }
+}

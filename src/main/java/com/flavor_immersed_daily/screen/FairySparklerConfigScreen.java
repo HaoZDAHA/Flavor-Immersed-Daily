@@ -22,10 +22,10 @@ public class FairySparklerConfigScreen extends Screen {
     private static final int SHAPE_BUTTON_HEIGHT = 20;
     private static final int SHAPE_SPACING = 55;
 
-    // 内圈
+// 内圈
     private int innerColor;
     private int innerShape;
-    // 外圈
+// 外圈
     private int outerColor;
     private int outerShape;
 
@@ -70,7 +70,7 @@ public class FairySparklerConfigScreen extends Screen {
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         this.renderBackground(guiGraphics, mouseX, mouseY, partialTick);
 
-        // ===== 内圈 =====
+// 内圈
         guiGraphics.drawString(this.font,
                 Component.translatable("gui.flavor_immersed_daily.fairy_sparkler.ring1"),
                 guiLeft + 8, guiTop + 8, 0xFFFFAA, false);
@@ -78,7 +78,7 @@ public class FairySparklerConfigScreen extends Screen {
         renderColorGrid(guiGraphics, guiTop + 24, innerColor, true);
         renderShapeBar(guiGraphics, guiTop + 68, innerShape, true);
 
-        // ===== 外圈 =====
+// 外圈
         guiGraphics.drawString(this.font,
                 Component.translatable("gui.flavor_immersed_daily.fairy_sparkler.ring2"),
                 guiLeft + 8, guiTop + 100, 0xAAFFFF, false);
@@ -128,13 +128,13 @@ public class FairySparklerConfigScreen extends Screen {
 
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
-        // 内圈颜色
+// 内圈颜色
         if (checkColorClick(mouseX, mouseY, guiTop + 24, innerColor, true)) return true;
-        // 内圈形状
+// 内圈形状
         if (checkShapeClick(mouseX, mouseY, guiTop + 68, innerShape, true)) return true;
-        // 外圈颜色
+// 外圈颜色
         if (checkColorClick(mouseX, mouseY, guiTop + 116, outerColor, false)) return true;
-        // 外圈形状
+// 外圈形状
         if (checkShapeClick(mouseX, mouseY, guiTop + 160, outerShape, false)) return true;
 
         return super.mouseClicked(mouseX, mouseY, button);

@@ -1,0 +1,16 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pot",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:rawchickenpiecepiece" },
+    { "item": "flavor_immersed_daily:dicedcarrots" },
+    { "item": "flavor_immersed_daily:water" },
+    { "item": "flavor_immersed_daily:curry" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:currystewedchicken",
+    "count": 1
+  },
+  "cookingTime": 120,
+  "experience": 0.5
+}

@@ -28,22 +28,20 @@ import java.util.Optional;
 import java.util.function.BooleanSupplier;
 import java.util.function.Supplier;
 
-/**
- * 调味料物品 — 持有对应 buff 效果与配置开关。
- * <p>
- * buff 给予逻辑（{@link #onFoodEaten}）：
- * 1. 冰红茶特例：直接给予赤色曼巴 60 秒；
- * 2. 食物自身 NBT 标签 "seasoning"（内容为调味料注册名，如 flavor_immersed_daily:salt）非空时，
- *    给予对应调味料 buff，不消耗任何物品；
- * 3. 否则若副手持有调味料，给予对应 buff 并消耗副手 1 个。
- */
+// 调味料物品 — 持有对应 buff 效果与配置开关。
+//
+// buff 给予逻辑（#onFoodEaten）：
+// 1. 冰红茶特例：直接给予赤色曼巴 60 秒；
+// 2. 食物自身 NBT 标签 "seasoning"（内容为调味料注册名，如 flavor_immersed_daily:salt）非空时，
+// 给予对应调味料 buff，不消耗任何物品；
+// 3. 否则若副手持有调味料，给予对应 buff 并消耗副手 1 个。
 @EventBusSubscriber(modid = FlavorImmersedDaily.MODID)
 public class SeasoningItem extends Item {
     public static final String SEASONING_NBT_KEY = "seasoning";
     private static final int DURATION_TICKS = 45 * 20;
     private static final int ICED_BLACK_TEA_DURATION_TICKS = 60 * 20;
 
-    /** 调味料注册名 -> 调味料物品 的懒加载映射（由 fid:seasoning 标签动态构建，无需硬编码） */
+// 调味料注册名 -> 调味料物品 的懒加载映射（由 fid:seasoning 标签动态构建，无需硬编码）
     private static Map<ResourceLocation, SeasoningItem> seasoningMap;
 
     private final Supplier<? extends Holder<MobEffect>> effect;
@@ -56,7 +54,7 @@ public class SeasoningItem extends Item {
         this.enabled = enabled;
     }
 
-    /** 应用对应 buff；受配置开关限制。返回是否成功施加（未启用时不施放）。 */
+// 应用对应 buff；受配置开关限制。返回是否成功施加（未启用时不施放）。
     public boolean applyEffect(Player player) {
         if (!enabled.getAsBoolean()) return false;
         player.addEffect(new MobEffectInstance(effect.get(), DURATION_TICKS, 0));
@@ -81,7 +79,7 @@ public class SeasoningItem extends Item {
             return;
         }
 
-        // 食物自身 NBT "seasoning" = 调味料注册名时，给予对应 buff（不消耗调味料）
+// 食物自身 NBT "seasoning" = 调味料注册名时，给予对应 buff（不消耗调味料）
         if (tryApplyFromNbt(player, food)) return;
 
         ItemStack offhand = player.getOffhandItem();
@@ -90,7 +88,7 @@ public class SeasoningItem extends Item {
         }
     }
 
-    /** 读取食物 CUSTOM_DATA 中 seasoning 标签，解析注册名并给予对应 buff。 */
+// 读取食物 CUSTOM_DATA 中 seasoning 标签，解析注册名并给予对应 buff。
     private static boolean tryApplyFromNbt(Player player, ItemStack food) {
         CompoundTag tag = food.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
         String seasoningName = tag.getString(SEASONING_NBT_KEY);
@@ -104,7 +102,7 @@ public class SeasoningItem extends Item {
         return seasoning.applyEffect(player);
     }
 
-    /** 懒加载：遍历 fid:seasoning 标签构建 注册名 -> SeasoningItem 映射。 */
+// 懒加载：遍历 fid:seasoning 标签构建 注册名 -> SeasoningItem 映射。
     private static Map<ResourceLocation, SeasoningItem> getSeasoningMap() {
         if (seasoningMap == null) {
             Map<ResourceLocation, SeasoningItem> map = new HashMap<>();

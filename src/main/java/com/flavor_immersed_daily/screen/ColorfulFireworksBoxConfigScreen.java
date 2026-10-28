@@ -16,9 +16,7 @@ import net.neoforged.neoforge.network.PacketDistributor;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
-/**
- * 箱装烟花配置界面 — 纯客户端 Screen，通过网络包同步到服务端 BlockEntity
- */
+// 箱装烟花配置界面 — 纯客户端 Screen，通过网络包同步到服务端 BlockEntity
 public class ColorfulFireworksBoxConfigScreen extends Screen {
 
     private static final int[] COLORS = {
@@ -45,7 +43,7 @@ public class ColorfulFireworksBoxConfigScreen extends Screen {
     private int guiLeft;
     private int guiTop;
 
-    // 配置
+// 配置
     private int color;
     private int fadeColor;
     private int shape;
@@ -56,7 +54,7 @@ public class ColorfulFireworksBoxConfigScreen extends Screen {
     private float curveA;
     private float curveB;
 
-    // 控件
+// 控件
     private EditBox angleBox;
     private EditBox speedBox;
     private EditBox distanceBox;
@@ -67,7 +65,7 @@ public class ColorfulFireworksBoxConfigScreen extends Screen {
         super(Component.translatable("block.flavor_immersed_daily.colorful_fireworks_box"));
         this.pos = pos;
 
-        // 从客户端 BlockEntity 读取当前配置
+// 从客户端 BlockEntity 读取当前配置
         Minecraft mc = Minecraft.getInstance();
         BlockEntity be = mc.level != null ? mc.level.getBlockEntity(pos) : null;
         if (be instanceof ColorfulFireworksBoxBlockEntity box) {
@@ -82,7 +80,8 @@ public class ColorfulFireworksBoxConfigScreen extends Screen {
             this.curveB = box.getCurveB();
         } else {
             this.color = COLORS[0];
-            this.fadeColor = COLORS[6]; // 白色
+// 白色
+            this.fadeColor = COLORS[6];
             this.shape = ColorfulFireworksBoxBlockEntity.SHAPE_SMALL_BALL;
             this.trail = false;
             this.angleDeg = 0.0f;
@@ -108,7 +107,7 @@ public class ColorfulFireworksBoxConfigScreen extends Screen {
         this.curveABox = createNumberBox(inputX, guiTop + 100, inputW, Float.toString(curveA), value -> curveA = value);
         this.curveBBox = createNumberBox(inputX, guiTop + 122, inputW, Float.toString(curveB), value -> curveB = value);
 
-        // 确认按钮
+// 确认按钮
         this.addRenderableWidget(Button.builder(
                 Component.translatable("gui.flavor_immersed_daily.fireworks_box.confirm"),
                 btn -> {
@@ -140,12 +139,12 @@ public class ColorfulFireworksBoxConfigScreen extends Screen {
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         this.renderBackground(guiGraphics, mouseX, mouseY, partialTick);
 
-        // 标题
+// 标题
         guiGraphics.drawString(this.font,
                 Component.translatable("block.flavor_immersed_daily.colorful_fireworks_box"),
                 guiLeft + 8, guiTop + 8, 0xFFFFFF, false);
 
-        // ===== 左列：主颜色 =====
+// 左列：主颜色
         guiGraphics.drawString(this.font,
                 Component.translatable("gui.flavor_immersed_daily.fireworks_box.color"),
                 guiLeft + COL1_X, guiTop + 28, 0xAAAAAA, false);
@@ -154,19 +153,21 @@ public class ColorfulFireworksBoxConfigScreen extends Screen {
         int colorGridY = guiTop + 44;
         drawColorGrid(guiGraphics, colorStartX, colorGridY, color, false);
 
-        // ===== 左列：第二颜色 =====
+// 左列：第二颜色
         guiGraphics.drawString(this.font,
                 Component.translatable("gui.flavor_immersed_daily.fireworks_box.fade_color"),
                 guiLeft + COL1_X, guiTop + 86, 0xAAAAAA, false);
         int fadeColorGridY = guiTop + 102;
         drawColorGrid(guiGraphics, colorStartX, fadeColorGridY, fadeColor, true);
 
-        // ===== 左列：形状（两行：3+2）=====
+// 左列：形状（两行：3+2）
         guiGraphics.drawString(this.font,
                 Component.translatable("gui.flavor_immersed_daily.fireworks_box.shape"),
                 guiLeft + COL1_X, guiTop + 140, 0xAAAAAA, false);
-        int[] shapeRow1 = {0, 1, 2}; // small_ball, large_ball, star
-        int[] shapeRow2 = {3, 4};    // creeper, burst
+// small_ball, large_ball, star
+        int[] shapeRow1 = {0, 1, 2};
+// creeper, burst
+        int[] shapeRow2 = {3, 4};
         int shapeRowY1 = guiTop + 156;
         int shapeRowY2 = shapeRowY1 + SHAPE_BUTTON_HEIGHT + 4;
         int row1Width = (shapeRow1.length - 1) * SHAPE_SPACING + SHAPE_BUTTON_WIDTH;
@@ -182,7 +183,7 @@ public class ColorfulFireworksBoxConfigScreen extends Screen {
             drawShapeButton(guiGraphics, i, x, shapeRowY2);
         }
 
-        // ===== 左列：拖尾 ======
+// 左列：拖尾
         guiGraphics.drawString(this.font,
                 Component.translatable("gui.flavor_immersed_daily.fireworks_box.trail"),
                 guiLeft + COL1_X, guiTop + 196, 0xAAAAAA, false);
@@ -192,14 +193,14 @@ public class ColorfulFireworksBoxConfigScreen extends Screen {
                 Component.translatable(trail ? "gui.flavor_immersed_daily.fireworks_box.on" : "gui.flavor_immersed_daily.fireworks_box.off"),
                 guiLeft + COL1_X + 77, guiTop + 196, 0xFFFFFF, false);
 
-        // ===== 右列：参数 =====
+// 右列：参数
         drawRightLabel(guiGraphics, "gui.flavor_immersed_daily.fireworks_box.angle", 28);
         drawRightLabel(guiGraphics, "gui.flavor_immersed_daily.fireworks_box.speed", 50);
         drawRightLabel(guiGraphics, "gui.flavor_immersed_daily.fireworks_box.distance", 72);
         drawRightLabel(guiGraphics, "gui.flavor_immersed_daily.fireworks_box.curveA", 100);
         drawRightLabel(guiGraphics, "gui.flavor_immersed_daily.fireworks_box.curveB", 122);
 
-        // 手动渲染 EditBox，不调用 super.render() 避免重复渲染背景
+// 手动渲染 EditBox，不调用 super.render() 避免重复渲染背景
         for (var renderable : this.renderables) {
             renderable.render(guiGraphics, mouseX, mouseY, partialTick);
         }
@@ -237,7 +238,7 @@ public class ColorfulFireworksBoxConfigScreen extends Screen {
         int colorGridWidth = (COLORS_PER_ROW - 1) * COLOR_SPACING + COLOR_BUTTON_SIZE;
         int colorStartX = guiLeft + COL1_X + (152 - colorGridWidth) / 2;
 
-        // 主颜色按钮
+// 主颜色按钮
         int colorGridY = guiTop + 44;
         for (int i = 0; i < COLORS.length; i++) {
             int col = i % COLORS_PER_ROW;
@@ -251,7 +252,7 @@ public class ColorfulFireworksBoxConfigScreen extends Screen {
             }
         }
 
-        // 第二颜色按钮
+// 第二颜色按钮
         int fadeColorGridY = guiTop + 102;
         for (int i = 0; i < COLORS.length; i++) {
             int col = i % COLORS_PER_ROW;
@@ -265,7 +266,7 @@ public class ColorfulFireworksBoxConfigScreen extends Screen {
             }
         }
 
-        // 形状按钮（两行）
+// 形状按钮（两行）
         int[] clickRow1 = {0, 1, 2};
         int[] clickRow2 = {3, 4};
         int clickRowY1 = guiTop + 156;
@@ -291,7 +292,7 @@ public class ColorfulFireworksBoxConfigScreen extends Screen {
             }
         }
 
-        // 拖尾开关
+// 拖尾开关
         if (mouseX >= guiLeft + COL1_X + 70 && mouseX < guiLeft + COL1_X + 115 && mouseY >= guiTop + 192 && mouseY < guiTop + 208) {
             trail = !trail;
             sendSync();

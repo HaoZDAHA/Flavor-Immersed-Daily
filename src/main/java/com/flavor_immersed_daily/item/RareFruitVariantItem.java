@@ -7,9 +7,7 @@ import net.minecraft.world.item.TooltipFlag;
 
 import java.util.List;
 
-/**
- * 稀有水果变种物品 — 带有 tooltip 提示
- */
+// 稀有水果变种物品 — 带有 tooltip 提示
 public class RareFruitVariantItem extends Item {
 
     public RareFruitVariantItem(Properties properties) {

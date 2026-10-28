@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "choppingboard",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:hamimelon" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:dicedhamimelon",
+    "count": 6
+  },
+  "cookingTime": 0
+}

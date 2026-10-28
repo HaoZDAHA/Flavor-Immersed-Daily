@@ -1,0 +1,11 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:onion",
+    "croptopia:onion",
+    "pamhc2crops:onionitem",
+    "farm_and_charm:onion",
+    "concoction:onion",
+    "farmersdelight:onion"
+  ]
+}

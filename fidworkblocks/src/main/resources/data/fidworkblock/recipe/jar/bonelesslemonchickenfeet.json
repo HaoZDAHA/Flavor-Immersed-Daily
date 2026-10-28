@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "jar",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:cookedchickenfeet" },
+    { "tag": "c:salt" },
+    { "item": "flavor_immersed_daily:slicedlemon" },
+    { "item": "flavor_immersed_daily:tidywater" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:bonelesslemonchickenfeet",
+    "count": 1
+  },
+  "cookingTime": 40
+}

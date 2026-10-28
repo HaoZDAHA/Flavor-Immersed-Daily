@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "meatmincer",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:peaseed" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:peastuffing",
+    "count": 1
+  },
+  "cookingTime": 80
+}

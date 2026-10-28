@@ -1,0 +1,10 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:oatgrain",
+    "croptopia:oat",
+    "pamhc2crops:oatsitem",
+    "farm_and_charm:oat",
+    "meadow:oat"
+  ]
+}

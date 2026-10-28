@@ -14,6 +14,7 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
 public class FridgeTemperingCategory implements IRecipeCategory<FridgeTemperingRecipe> {
@@ -21,11 +22,17 @@ public class FridgeTemperingCategory implements IRecipeCategory<FridgeTemperingR
     public static final RecipeType<FridgeTemperingRecipe> TYPE =
             RecipeType.create(FlavorImmersedDaily.MODID, "fridge_tempering", FridgeTemperingRecipe.class);
 
+// 分类背景贴图（含槽位底图）
+    private static final ResourceLocation BACKGROUND_TEXTURE =
+            ResourceLocation.fromNamespaceAndPath(FlavorImmersedDaily.MODID, "textures/jei/fridge_tempering.png");
+
     private final IDrawable background;
     private final IDrawable icon;
 
     public FridgeTemperingCategory(IGuiHelper helper) {
-        this.background = helper.createBlankDrawable(120, 36);
+        this.background = helper.drawableBuilder(BACKGROUND_TEXTURE, 0, 0, 120, 36)
+                .setTextureSize(120, 36)
+                .build();
         this.icon = helper.createDrawableItemStack(new ItemStack(ModBlocks.FRIDGE.asItem()));
     }
 

@@ -1,0 +1,16 @@
+{
+  "name": "蒸笼",
+  "category": "fidworkblock:blocks",
+  "icon": "fidworkblock:steambox",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)蒸笼$()无需热源，最高可堆叠 16 层。$(br)手持食材右键放入（每层最多 4 个），放好后$(bold)空手右键$()打包成已打包蒸笼。$(br2)手持已打包蒸笼右键任意一层，可以继续向上堆叠。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "在最底层手持$(bold)净水$()右键即可开始蒸制（净水数量需要不少于堆叠层数）。$(br)工作时每层都会冒出烟雾，完成后所有层同时结束。$(br2)$(bold)空手右键$()可以一次性收获所有层的产物，并回收整摞蒸笼。"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "汤锅",
+  "category": "fidworkblock:blocks",
+  "icon": "fidworkblock:pot",
+  "sortnum": 9,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)汤锅$()：$(bold)空手右键$()打开界面，有 6 个食材槽、1 个容器槽（碗、盘等）和 1 个输出槽。$(br2)放入食材后$(bold)自动烹饪$()，$(bold)无需热源$()；需要容器的配方每批会消耗 1 个容器。完成后从输出槽取出。"
+    }
+  ]
+}

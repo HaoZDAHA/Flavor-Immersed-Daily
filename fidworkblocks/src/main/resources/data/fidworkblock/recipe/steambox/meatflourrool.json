@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "steambox",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:rawmeatloaf"
+    }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:meatflourrool",
+    "count": 1
+  },
+  "cookingTime": 200
+}

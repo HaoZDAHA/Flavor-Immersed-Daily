@@ -1,0 +1,12 @@
+{
+  "name": "Teapot",
+  "category": "fidworkblock:blocks",
+  "icon": "fidworkblock:teapot",
+  "sortnum": 8,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Teapot$(): right-click with items to fill the 4 slots in order.$(br)With the right recipe, $(bold)right-click$() with an empty hand to seal it and start brewing.$(br2)It works automatically and continues batch by batch while sealed; $(bold)shift-right-click$() unseals and refunds all materials, then right-click with an empty hand to collect the results."
+    }
+  ]
+}

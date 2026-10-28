@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "jar",
+  "ingredients": [
+    { "item": "minecraft:cooked_porkchop" },
+    { "tag": "c:salt" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:curedmeat",
+    "count": 1
+  },
+  "cookingTime": 40
+}

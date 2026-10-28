@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "choppingboard",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:rawdicedpigmeat" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:rawdicedpigmeat_2",
+    "count": 2
+  },
+  "cookingTime": 0
+}

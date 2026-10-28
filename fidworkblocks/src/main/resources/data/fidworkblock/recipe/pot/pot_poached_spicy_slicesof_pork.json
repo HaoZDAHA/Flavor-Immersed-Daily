@@ -1,0 +1,16 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pot",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:rawpigtenderloin" },
+    { "item": "flavor_immersed_daily:beansprout" },
+    { "item": "flavor_immersed_daily:cookingoil" },
+    { "item": "flavor_immersed_daily:redrepper" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:poached_spicy_slicesof_pork",
+    "count": 1
+  },
+  "cookingTime": 120,
+  "experience": 0.5
+}

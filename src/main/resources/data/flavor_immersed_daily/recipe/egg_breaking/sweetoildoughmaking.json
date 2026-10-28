@@ -1,0 +1,13 @@
+{
+  "type": "flavor_immersed_daily:egg_breaking",
+  "shaped": false,
+  "ingredients": [
+    { "tag": "c:flour" },
+    { "item": "minecraft:sugar" },
+    { "item": "flavor_immersed_daily:cookingoil" }
+  ],
+  "results": [
+    { "id": "flavor_immersed_daily:sweet_oil_dough", "count": 2 }
+  ],
+  "cookingTime": 60
+}

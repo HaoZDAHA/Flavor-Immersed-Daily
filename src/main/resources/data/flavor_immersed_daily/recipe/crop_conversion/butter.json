@@ -1,0 +1,15 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:butter",
+    "bakeries:butter_cube",
+    "bakingdelight:butter",
+    "croptopia:butter",
+    "farm_and_charm:butter",
+    "extradelight:butter",
+    "concoction:butter",
+    "braziliandelight:butter",
+    "youkaishomecoming:butter",
+    "youkaisfeasts:butter",
+    "vanilladelight:butter"
+  ]}

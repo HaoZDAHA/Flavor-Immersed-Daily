@@ -81,7 +81,7 @@ public class EggBreakingMachineBlock extends HorizontalDirectionalBlock implemen
         return SHAPE;
     }
 
-    // ---- EntityBlock ----
+// EntityBlock
 
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
@@ -101,7 +101,7 @@ public class EggBreakingMachineBlock extends HorizontalDirectionalBlock implemen
         return null;
     }
 
-    // ---- 交互 ----
+// 交互
 
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos,
@@ -121,7 +121,7 @@ public class EggBreakingMachineBlock extends HorizontalDirectionalBlock implemen
         return InteractionResult.CONSUME;
     }
 
-    // ---- 掉落 ----
+// 掉落
 
     @Override
     protected List<ItemStack> getDrops(BlockState state, LootParams.Builder params) {

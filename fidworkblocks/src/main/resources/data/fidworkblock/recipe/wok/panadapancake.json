@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "wok",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:panada" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:panadapancake",
+    "count": 1
+  },
+  "cookingTime": 0
+}

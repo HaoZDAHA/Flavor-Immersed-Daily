@@ -1,0 +1,13 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "farmersdelight:tomato",
+    "flavor_immersed_daily:tomato",
+    "kaleidoscope_cookery:tomato",
+    "bakeries:tomato",
+    "croptopia:tomato",
+    "farm_and_charm:tomato",
+    "pamhc2crops:tomatoitem",
+    "concoction:tomato"
+  ]
+}

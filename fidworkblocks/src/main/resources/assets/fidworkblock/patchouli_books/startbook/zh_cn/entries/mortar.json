@@ -1,0 +1,12 @@
+{
+  "name": "研钵",
+  "category": "fidworkblock:blocks",
+  "icon": "fidworkblock:mortar",
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)研钵$()：手持可捣碎的食材右键放入。$(br)$(bold)空手右键$()立即加工，产物直接掉落在研钵上方，$(bold)即时完成$()、无需热源。$(br2)$(bold)潜行右键$()可取出槽内原料。"
+    }
+  ]
+}

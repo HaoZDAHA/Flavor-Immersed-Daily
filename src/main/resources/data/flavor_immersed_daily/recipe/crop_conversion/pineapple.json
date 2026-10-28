@@ -1,0 +1,10 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:pineapple",
+    "croptopia:pineapple",
+    "pamhc2crops:pineappleitem",
+    "fruitsdelight:pineapple",
+    "pineapple_delight:pineapple"
+  ]
+}

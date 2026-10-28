@@ -4,12 +4,12 @@ import com.flavor_immersed_daily.all.ModItems;
 import com.flavor_immersed_daily.all.ModBlocks;
 import com.tterrag.registrate.providers.RegistrateLangProvider;
 
-/** Generates the English text which does not belong to a registry object. */
+// Generates the English text which does not belong to a registry object.
 public final class ModLangs {
     private ModLangs() {
     }
 
-    /** Adds DeferredRegister object names and all non-registry translations. */
+// Adds DeferredRegister object names and all non-registry translations.
     public static void addTranslations(RegistrateLangProvider provider) {
         ModItems.REGISTRY.getEntries().forEach(entry -> provider.addItem(() -> entry.get()));
         ModBlocks.REGISTRY.getEntries().forEach(entry -> provider.addBlock(() -> entry.get()));
@@ -33,7 +33,13 @@ public final class ModLangs {
         provider.add("itemGroup.flavor_immersed_daily.agriculture", "Flavor Immersed Daily: Agriculture");
         provider.add("itemGroup.flavor_immersed_daily.food", "Flavor Immersed Daily: Food");
         provider.add("itemGroup.flavor_immersed_daily.ingredient", "Flavor Immersed Daily: Ingredients");
-        provider.add("itemGroup.flavor_immersed_daily.fi_dtools", "Flavor Immersed Daily: Tools");
+        provider.add("itemGroup.flavor_immersed_daily.fi_dtools", "Flavor Immersed Daily");
+        provider.add("gui.flavor_immersed_daily.creative_section.kitchen_tools", "Kitchen Tools");
+        provider.add("gui.flavor_immersed_daily.creative_section.farming", "Farming");
+        provider.add("gui.flavor_immersed_daily.creative_section.livestock", "Livestock Produce");
+        provider.add("gui.flavor_immersed_daily.creative_section.food", "Delicacies");
+        provider.add("gui.flavor_immersed_daily.creative_section.ingredient_misc", "Misc Ingredients");
+        provider.add("gui.flavor_immersed_daily.creative_section.building", "Building & Decoration");
     }
 
     private static void addEffects(RegistrateLangProvider provider) {
@@ -67,6 +73,14 @@ public final class ModLangs {
         provider.add("death.attack.flavor_immersed_daily.real_damage", "%1$s was slain by true damage");
         provider.add("effect.flavor_immersed_daily.aniseed_ward", "Aniseed Ward");
         provider.add("effect.flavor_immersed_daily.aniseed_ward.description", "While active, undead creatures within 8 blocks are slowed.");
+        provider.add("effect.flavor_immersed_daily.reunion_recovery", "Reunion");
+        provider.add("effect.flavor_immersed_daily.reunion_recovery.description", "While active, all players within 16 blocks gain Regeneration (radius and level are configurable).");
+        provider.add("effect.flavor_immersed_daily.crumbly_crust", "Crumbly Crust");
+        provider.add("effect.flavor_immersed_daily.crumbly_crust.description", "When attacked, drop mooncake crumbs and lure nearby hostile mobs to that spot for 3 seconds, making them give up hunting you; the effect is then removed.");
+        provider.add("effect.flavor_immersed_daily.eclipse_devour", "Eclipse Devour");
+        provider.add("effect.flavor_immersed_daily.eclipse_devour.description", "Attacking an entity marks it as your combat target; whenever you recover health, deal the same amount of damage to your combat target.");
+        provider.add("effect.flavor_immersed_daily.cool_skin", "Cool Skin");
+        provider.add("effect.flavor_immersed_daily.cool_skin.description", "Immune to fire damage; melee attacks deal +1 damage to hostile mobs that are immune to fire. Removed when you draw near a fire source.");
     }
 
     private static void addConfiguration(RegistrateLangProvider provider) {
@@ -85,6 +99,9 @@ public final class ModLangs {
         provider.add("tooltip.flavor_immersed_daily.hold_shift", "Hold Shift for more information");
         provider.add("tooltip.flavor_immersed_daily.windowpaper", "Right-click a wall to place window paper. It is transparent when put away and can be cut into any shape.");
         provider.add("tooltip.flavor_immersed_daily.couplet", "Right-click a wall to place. Its text can be edited.");
+        provider.add("tooltip.flavor_immersed_daily.raddles", "Right-click the underside of a block to hang it; the four characters on the board can be edited.");
+        provider.add("tooltip.flavor_immersed_daily.raddles.owner", "The placer can set the riddle and its answer, and store up to 16 slots of rewards.");
+        provider.add("tooltip.flavor_immersed_daily.raddles.answer", "Other players can right-click to answer; a correct answer wins one reward (once per player per board).");
         provider.add("tooltip.flavor_immersed_daily.rare_fruit_variant", "Rare fruit variant, obtained with a chance when harvesting.");
         provider.add("tooltip.flavor_immersed_daily.purified_water_bucket", "Right-click a water source to get purified water. Uses 1 durability.");
         provider.add("tooltip.flavor_immersed_daily.kitchen_scissors", "Breaking grass and leaves with scissors can drop wild crops.");
@@ -126,6 +143,10 @@ public final class ModLangs {
         provider.add("tooltip.flavor_immersed_daily.hot_glutinous", "Attacking a creature consumes one, ignites it for 3 seconds and applies Evil Exposure. Attacking a player launches them high into the air with a scream.");
         provider.add("tooltip.flavor_immersed_daily.doorpaper_left", "Right-click with food: consumes 1 food and grants Roar for food saturation x10 seconds (attacks ignore invulnerability frames).");
         provider.add("tooltip.flavor_immersed_daily.doorpaper_right", "Right-click with food: consumes 1 food and grants Martial Saint for food saturation x10 seconds (food attacks deal true damage).");
+        provider.add("tooltip.flavor_immersed_daily.mooncake_mold.desc1", "Right-click to open the mold: put dough and filling into the two slots.");
+        provider.add("tooltip.flavor_immersed_daily.mooncake_mold.desc2", "Right-click again to press out a raw mooncake; leftover materials are returned.");
+        provider.add("tooltip.flavor_immersed_daily.mooncake_mold.stored_dough", "Dough: %s x%s");
+        provider.add("tooltip.flavor_immersed_daily.mooncake_mold.stored_filling", "Filling: %s x%s");
     }
 
     private static void addJei(RegistrateLangProvider provider) {
@@ -139,6 +160,13 @@ public final class ModLangs {
         provider.add("jei.flavor_immersed_daily.egg_breaking", "Egg Breaking Machine");
         provider.add("jei.flavor_immersed_daily.shaped", "Shaped");
         provider.add("jei.flavor_immersed_daily.shapeless", "Shapeless");
+        provider.add("jei.flavor_immersed_daily.mooncake_mold", "Mooncake Mold");
+        provider.add("jei.flavor_immersed_daily.mooncake_mold.info.usage", "Right-click a held Mooncake Mold to open its screen, then put dough and filling into the two slots. Materials are kept in the mold after closing the screen.");
+        provider.add("jei.flavor_immersed_daily.mooncake_mold.info.press", "Right-click again to press: it produces min(dough, filling) raw mooncakes at once, and returns any leftover materials to your inventory.");
+        provider.add("jei.flavor_immersed_daily.mooncake_mold.info.kinds", "Each dough makes a different mooncake: Raw Flour Pancake to Mooncake, Sweet Oil Dough to Cantonese Mooncake, Water Short Dough to Suzhou Mooncake, Syrup Dough to Beijing Mooncake, Glutinous Milk Dough to Snow Skin Mooncake.");
+        provider.add("jei.flavor_immersed_daily.mooncake_mold.info.relation", "The Mooncake Mold is used to press out the matching raw mooncake.");
+        provider.add("jei.flavor_immersed_daily.mooncake_mold.buff_line", "Eating it grants the \"%1$s\" effect: %2$s");
+        provider.add("jei.flavor_immersed_daily.mooncake_mold.desc.plain", "An ordinary mooncake with no special effect when eaten.");
     }
 
     private static void addIntegrations(RegistrateLangProvider provider) {
@@ -148,6 +176,7 @@ public final class ModLangs {
         provider.add("emi.category.flavor_immersed_daily.fridge_freezing", "Fridge - Freezing");
         provider.add("emi.category.flavor_immersed_daily.butchering", "Butchering");
         provider.add("emi.category.flavor_immersed_daily.agricultural_appraisal", "Agricultural Appraisal");
+        provider.add("emi.category.flavor_immersed_daily.crop_conversion", "Crop Conversion");
         provider.add("emi.flavor_immersed_daily.time", "%s s");
         provider.add("jade.flavor_immersed_daily.contents", "Contents");
         provider.add("jade.flavor_immersed_daily.progress", "Processing: %s%%");
@@ -160,6 +189,9 @@ public final class ModLangs {
     }
 
     private static void addGui(RegistrateLangProvider provider) {
+        provider.add("container.flavor_immersed_daily.mooncake_mold", "Mooncake Mold");
+        provider.add("gui.flavor_immersed_daily.mooncake_mold.dough", "Dough");
+        provider.add("gui.flavor_immersed_daily.mooncake_mold.filling", "Filling");
         provider.add("gui.flavor_immersed_daily.fairy_sparkler.color", "Color");
         provider.add("gui.flavor_immersed_daily.fairy_sparkler.shape", "Shape");
         provider.add("gui.flavor_immersed_daily.fairy_sparkler.shape.circle", "Circle");
@@ -171,6 +203,25 @@ public final class ModLangs {
         provider.add("gui.flavor_immersed_daily.couplet.title", "Edit Couplet");
         provider.add("gui.flavor_immersed_daily.couplet.color.0", "Black Text");
         provider.add("gui.flavor_immersed_daily.couplet.color.1", "Yellow Text");
+        provider.add("gui.flavor_immersed_daily.raddles.title", "Edit Riddle Board");
+        provider.add("gui.flavor_immersed_daily.raddles.chars", "Board Text");
+        provider.add("gui.flavor_immersed_daily.raddles.question", "Question");
+        provider.add("gui.flavor_immersed_daily.raddles.answer", "Answer");
+        provider.add("gui.flavor_immersed_daily.raddles.rewards", "Rewards");
+        provider.add("gui.flavor_immersed_daily.raddles.confirm", "Save");
+        provider.add("gui.flavor_immersed_daily.raddles.answer_title", "Answer the Riddle");
+        provider.add("gui.flavor_immersed_daily.raddles.question_prefix", "Riddle:");
+        provider.add("gui.flavor_immersed_daily.raddles.reward_prefix", "Rewards:");
+        provider.add("gui.flavor_immersed_daily.raddles.answer_hint", "Type your answer here");
+        provider.add("gui.flavor_immersed_daily.raddles.submit", "Submit");
+        provider.add("gui.flavor_immersed_daily.raddles.hint", "Right-click to answer~ there may be a reward");
+        provider.add("gui.flavor_immersed_daily.raddles.no_riddle", "This riddle board has no answer yet");
+        provider.add("gui.flavor_immersed_daily.raddles.no_riddle.owner", "This riddle board has no answer yet. Right-click to set the answer and rewards");
+        provider.add("gui.flavor_immersed_daily.raddles.no_riddle.chat", "This riddle board has no answer yet");
+        provider.add("gui.flavor_immersed_daily.raddles.result.success", "Correct! You received a reward");
+        provider.add("gui.flavor_immersed_daily.raddles.result.no_reward", "Correct, but all the rewards have been taken");
+        provider.add("gui.flavor_immersed_daily.raddles.result.wrong", "Wrong answer, try again");
+        provider.add("gui.flavor_immersed_daily.raddles.result.claimed", "You have already claimed this riddle's reward");
         provider.add("gui.flavor_immersed_daily.fireworks_box.color", "Firework Color");
         provider.add("gui.flavor_immersed_daily.fireworks_box.fade_color", "2nd Color");
         provider.add("gui.flavor_immersed_daily.fireworks_box.shape", "Firework Shape");

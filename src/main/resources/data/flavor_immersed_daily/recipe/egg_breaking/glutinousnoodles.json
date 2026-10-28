@@ -2,7 +2,7 @@
   "type": "flavor_immersed_daily:egg_breaking",
   "shaped": false,
   "ingredients": [
-    { "item": "flavor_immersed_daily:rawglutinousdough" }
+    { "tag": "c:dough" }
   ],
   "results": [
     { "id": "flavor_immersed_daily:rawglutinousnoodles", "count": 3 }

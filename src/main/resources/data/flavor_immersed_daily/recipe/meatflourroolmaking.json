@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:meatpaste"
+    },
+    {
+      "item": "flavor_immersed_daily:steamedtwistedroll"
+    }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:meatflourrool",
+    "count": 1
+  }
+}

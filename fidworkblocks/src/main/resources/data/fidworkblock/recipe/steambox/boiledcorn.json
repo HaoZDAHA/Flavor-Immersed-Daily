@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "steambox",
+  "ingredients": [
+    {
+      "tag": "c:corn"
+    }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:boiledcorn",
+    "count": 1
+  },
+  "cookingTime": 200
+}

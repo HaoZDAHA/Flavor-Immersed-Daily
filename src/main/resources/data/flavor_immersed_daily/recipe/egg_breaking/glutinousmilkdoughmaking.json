@@ -1,0 +1,15 @@
+{
+  "type": "flavor_immersed_daily:egg_breaking",
+  "shaped": false,
+  "ingredients": [
+    { "item": "flavor_immersed_daily:gultinousricepowder" },
+    { "tag": "c:flour" },
+    { "item": "flavor_immersed_daily:tidywater" },
+    { "item": "flavor_immersed_daily:cookingoil" },
+    { "item": "flavor_immersed_daily:milkbottle" }
+  ],
+  "results": [
+    { "id": "flavor_immersed_daily:glutinous_milk_dough", "count": 2 }
+  ],
+  "cookingTime": 60
+}

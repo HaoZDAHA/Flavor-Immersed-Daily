@@ -14,6 +14,7 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
 public class FridgeFreezingCategory implements IRecipeCategory<FridgeFreezingRecipe> {
@@ -21,11 +22,17 @@ public class FridgeFreezingCategory implements IRecipeCategory<FridgeFreezingRec
     public static final RecipeType<FridgeFreezingRecipe> TYPE =
             RecipeType.create(FlavorImmersedDaily.MODID, "fridge_freezing", FridgeFreezingRecipe.class);
 
+// 分类背景贴图（含槽位底图）
+    private static final ResourceLocation BACKGROUND_TEXTURE =
+            ResourceLocation.fromNamespaceAndPath(FlavorImmersedDaily.MODID, "textures/jei/fridge_freezing.png");
+
     private final IDrawable background;
     private final IDrawable icon;
 
     public FridgeFreezingCategory(IGuiHelper helper) {
-        this.background = helper.createBlankDrawable(120, 36);
+        this.background = helper.drawableBuilder(BACKGROUND_TEXTURE, 0, 0, 120, 36)
+                .setTextureSize(120, 36)
+                .build();
         this.icon = helper.createDrawableItemStack(new ItemStack(ModBlocks.FRIDGE.asItem()));
     }
 

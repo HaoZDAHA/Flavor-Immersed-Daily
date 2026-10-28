@@ -7,6 +7,7 @@ import com.flavor_immersed_daily.block.blockentity.CookedWholeSheepBlockEntity;
 import com.flavor_immersed_daily.block.blockentity.CoupletBlockEntity;
 import com.flavor_immersed_daily.block.blockentity.EggBreakingMachineBlockEntity;
 import com.flavor_immersed_daily.block.blockentity.FridgeBlockEntity;
+import com.flavor_immersed_daily.block.blockentity.RaddlesBlockEntity;
 import com.flavor_immersed_daily.block.blockentity.WoodBasinBlockEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -39,6 +40,9 @@ public final class ModBlockEntities {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CoupletBlockEntity>> COUPLET_ENTITY =
             REGISTRY.register("couplet_entity", () -> BlockEntityType.Builder.of(CoupletBlockEntity::new,
                     ModBlocks.ANTITHETICAL_COUPLET_1.get(), ModBlocks.ANTITHETICAL_COUPLET_2.get()).build(null));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<RaddlesBlockEntity>> RADDLES_ENTITY =
+            REGISTRY.register("raddles_entity",
+                    () -> BlockEntityType.Builder.of(RaddlesBlockEntity::new, ModBlocks.RADDLES.get()).build(null));
 
     private ModBlockEntities() {
     }

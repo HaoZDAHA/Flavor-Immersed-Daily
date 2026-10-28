@@ -1,0 +1,12 @@
+{
+  "name": "Variable Temperature Oven",
+  "category": "fidworkblock:blocks",
+  "icon": "fidworkblock:dryer",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Variable Temperature Oven$(): $(bold)right-click$() with an empty hand to open the GUI, add ingredients and it dries $(bold)automatically$() - no heat source needed. Take the result from the output slot when done.$(br2)It also serves as the base for the $(bold)Frying Pan$(), which must be placed on top of it."
+    }
+  ]
+}

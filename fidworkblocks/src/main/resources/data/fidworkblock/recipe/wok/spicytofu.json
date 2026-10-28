@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "wok",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:friedtoufu" },
+    { "item": "flavor_immersed_daily:redrepper" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:spicytofu",
+    "count": 1
+  },
+  "cookingTime": 0
+}

@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "jar",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:grape" },
+    { "item": "flavor_immersed_daily:grape" },
+    { "item": "flavor_immersed_daily:grape" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:grapewine",
+    "count": 2
+  },
+  "cookingTime": 80
+}

@@ -5,10 +5,12 @@ import com.flavor_immersed_daily.gameplay.FruitHarvestHandler;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -70,14 +72,14 @@ public class FruitingLeavesBlock extends LeavesBlock {
 
     @Override
     protected boolean isRandomlyTicking(BlockState state) {
-        // 自然树叶（persistent=false）需要随机刻做距离/枯萎检查；
-        // 未挂果的树叶（含玩家手动放置的 persistent 树叶）需要随机刻自然成熟
+// 自然树叶（persistent=false）需要随机刻做距离/枯萎检查；
+// 未挂果的树叶（含玩家手动放置的 persistent 树叶）需要随机刻自然成熟
         return !state.getValue(PERSISTENT) || !state.getValue(FRUITING);
     }
 
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        // 只有非 persistent（自然生成）的树叶参与原版距离/枯萎检查，玩家放置的 persistent 树叶不枯萎
+// 只有非 persistent（自然生成）的树叶参与原版距离/枯萎检查，玩家放置的 persistent 树叶不枯萎
         if (!state.getValue(PERSISTENT)) {
             super.randomTick(state, level, pos, random);
         }
@@ -88,8 +90,8 @@ public class FruitingLeavesBlock extends LeavesBlock {
         }
     }
 
-    private boolean tryMatureFruit(ServerLevel level, BlockPos pos, BlockState state, RandomSource random,
-                                   double maturityChance) {
+    public boolean tryMatureFruit(ServerLevel level, BlockPos pos, BlockState state, RandomSource random,
+                                  double maturityChance) {
         if (random.nextDouble() >= maturityChance) return false;
 
         int maturity = Math.min(MAX_MATURITY, state.getValue(MATURITY) + 1);
@@ -129,6 +131,10 @@ public class FruitingLeavesBlock extends LeavesBlock {
     }
 
     public boolean harvestFruit(ServerLevel level, BlockPos pos) {
+        return harvestFruit(level, pos, pos);
+    }
+
+    public boolean harvestFruit(ServerLevel level, BlockPos pos, BlockPos dropAt) {
         BlockState state = level.getBlockState(pos);
         if (!state.is(this) || !state.getValue(FRUITING)) return false;
 
@@ -136,25 +142,31 @@ public class FruitingLeavesBlock extends LeavesBlock {
         if (hangingFruitPos != null) {
             level.removeBlock(hangingFruitPos, false);
         }
-        popResource(level, pos, new ItemStack(fruitItem.get()));
+        popResource(level, dropAt, new ItemStack(fruitItem.get()));
         level.setBlock(pos, state.setValue(FRUITING, false).setValue(MATURITY, 0), 3);
-        FruitHarvestHandler.tryDropVariantFruit(level, pos, this);
+        FruitHarvestHandler.tryDropVariantFruit(level, dropAt, this);
         return true;
     }
 
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
-                                              Player player, net.minecraft.world.InteractionHand hand,
-                                              BlockHitResult hitResult) {
-        if (stack.is(Items.BONE_MEAL) && !state.getValue(FRUITING)) {
-            if (level instanceof ServerLevel serverLevel) {
-                tryMatureFruit(serverLevel, pos, state, serverLevel.random,
-                        Config.boneMealFruitMaturityChance);
-                stack.consume(1, player);
-            }
-            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+                                              Player player, InteractionHand hand, BlockHitResult hitResult) {
+// 对树叶直接使用骨粉：单独催熟这一块挂果树叶（整树催熟走 FruitTreeRipeningHandler 的树干分支）
+        if (!stack.is(Items.BONE_MEAL)) {
+            return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
         }
-        return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
+
+        if (!state.getValue(FRUITING) && level instanceof ServerLevel serverLevel) {
+            if (tryMatureFruit(serverLevel, pos, state, serverLevel.getRandom(), Config.boneMealFruitMaturityChance)) {
+                stack.consume(1, player);
+                serverLevel.playSound(null, pos, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
+                serverLevel.sendParticles(ParticleTypes.HAPPY_VILLAGER,
+                        pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+                        15, 0.5, 0.5, 0.5, 0.0);
+            }
+        }
+// 手拿骨粉右键树叶即拦截后续交互，避免误触发空手采摘；骨粉仅在催熟成功时消耗
+        return ItemInteractionResult.SUCCESS;
     }
 
     @Override

@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "mortar",
+  "ingredients": [
+    { "item": "minecraft:cocoa_beans" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:cocoapowder",
+    "count": 1
+  },
+  "cookingTime": 0
+}

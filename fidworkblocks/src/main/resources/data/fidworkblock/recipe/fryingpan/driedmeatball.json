@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "fryingpan",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:rawmeatballwitheggball" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:driedmeatball",
+    "count": 1
+  },
+  "cookingTime": 60
+}

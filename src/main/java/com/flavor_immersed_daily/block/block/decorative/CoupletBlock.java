@@ -18,10 +18,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-/**
- * 对联方块 — 贴墙挂放，可编辑文字（类似原版告示牌）
- * 配合 CoupletBlockEntity 存储文字内容和颜色
- */
+// 对联方块 — 贴墙挂放，可编辑文字（类似原版告示牌）
+// 配合 CoupletBlockEntity 存储文字内容和颜色
 public class CoupletBlock extends BaseEntityBlock {
 
     public static final MapCodec<CoupletBlock> CODEC = simpleCodec(CoupletBlock::new);

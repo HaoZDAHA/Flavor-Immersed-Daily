@@ -1,0 +1,9 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:cinnamon",
+    "croptopia:cinnamon",
+    "expandeddelight:raw_cinnamon",
+    "festive_delight:cinnamon_sticks"
+  ]
+}

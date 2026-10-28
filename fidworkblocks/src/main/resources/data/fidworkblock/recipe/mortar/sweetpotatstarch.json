@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "mortar",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:sweetpotato" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:sweetpotatstarch",
+    "count": 2
+  },
+  "cookingTime": 0
+}

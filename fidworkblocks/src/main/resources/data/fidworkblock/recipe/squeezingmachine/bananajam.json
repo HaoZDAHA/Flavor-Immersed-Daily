@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "squeezingmachine",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:apieceofbanana" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:bananajam",
+    "count":1
+  },
+  "cookingTime": 80
+}

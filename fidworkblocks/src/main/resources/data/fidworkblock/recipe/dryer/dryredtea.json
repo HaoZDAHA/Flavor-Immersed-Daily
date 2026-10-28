@@ -1,0 +1,11 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "dryer",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:redtealeaves" }],
+  "result": {
+    "id": "flavor_immersed_daily:dryredtea",
+    "count": 1
+  },
+  "cookingTime": 120
+}

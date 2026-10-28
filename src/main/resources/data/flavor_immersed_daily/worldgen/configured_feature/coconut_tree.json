@@ -35,16 +35,16 @@
       "type": "minecraft:weighted_state_provider",
       "entries": [
         {
+          "weight": 7,
           "data": {
             "Name": "flavor_immersed_daily:orchard_heartwood_leaves"
-          },
-          "weight": 7
+          }
         },
         {
+          "weight": 3,
           "data": {
             "Name": "flavor_immersed_daily:coconutleave_fruiting_leaves"
-          },
-          "weight": 3
+          }
         }
       ]
     },

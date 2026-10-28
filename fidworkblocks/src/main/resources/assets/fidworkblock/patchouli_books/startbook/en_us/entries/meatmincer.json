@@ -1,0 +1,12 @@
+{
+  "name": "Meat Mincer",
+  "category": "fidworkblock:blocks",
+  "icon": "fidworkblock:meatmincer",
+  "sortnum": 11,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Meat Mincer$(): right-click with items to add ingredients (single slot).$(br)With the right recipe, right-click with a $(bold)mincer cover$() to seal it and start mincing - a wrong recipe won't consume the cover.$(br2)Batches continue automatically until the output is full; $(bold)shift-right-click$() unseals and refunds materials and cover, then right-click with an empty hand to collect the results."
+    }
+  ]
+}

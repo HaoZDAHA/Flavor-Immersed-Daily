@@ -19,7 +19,7 @@ public class EggBreakingMachineScreen extends AbstractContainerScreen<EggBreakin
     private static final ResourceLocation GUI_TEXTURE =
             ResourceLocation.fromNamespaceAndPath(FlavorImmersedDaily.MODID, "textures/gui/egg_breaking_machine.png");
 
-    /** 配方列表区域偏移 */
+// 配方列表区域偏移
     private static final int LIST_X = 98;
     private static final int LIST_Y = 17;
     private static final int ENTRY_SIZE = 20;
@@ -46,7 +46,7 @@ public class EggBreakingMachineScreen extends AbstractContainerScreen<EggBreakin
         super.render(guiGraphics, mouseX, mouseY, partialTick);
         this.renderTooltip(guiGraphics, mouseX, mouseY);
 
-        // 配方条目 tooltip
+// 配方条目 tooltip
         List<RecipeHolder<EggBreakingRecipe>> recipes = this.menu.getMatchingRecipes();
         int offset = (int) this.scrollOffset;
         for (int i = offset; i < offset + VISIBLE_ENTRIES && i < recipes.size(); i++) {
@@ -64,7 +64,7 @@ public class EggBreakingMachineScreen extends AbstractContainerScreen<EggBreakin
         int selectedIdx = this.menu.getSelectedRecipeIndex();
         int maxOffset = Math.max(0, recipes.size() - VISIBLE_ENTRIES);
 
-        // clamp scroll
+// clamp scroll
         if (this.scrollOffset > maxOffset) {
             this.scrollOffset = maxOffset;
         }
@@ -77,7 +77,7 @@ public class EggBreakingMachineScreen extends AbstractContainerScreen<EggBreakin
             int x = left + LIST_X;
             int y = top + LIST_Y + (i - offset) * ENTRY_SIZE;
 
-            // 选中高亮
+// 选中高亮
             if (i == selectedIdx) {
                 guiGraphics.fill(x - 1, y - 1, x + 17, y + 17, 0x80_FF_FF_00);
             }
@@ -87,7 +87,7 @@ public class EggBreakingMachineScreen extends AbstractContainerScreen<EggBreakin
             guiGraphics.renderItemDecorations(this.font, result, x, y);
         }
 
-        // 滚动条指示
+// 滚动条指示
         if (recipes.size() > VISIBLE_ENTRIES) {
             int scrollAreaHeight = VISIBLE_ENTRIES * ENTRY_SIZE;
             int barX = left + LIST_X + 20;
@@ -121,7 +121,7 @@ public class EggBreakingMachineScreen extends AbstractContainerScreen<EggBreakin
             }
         }
 
-        // 滚轮区域检测
+// 滚轮区域检测
         int barX = leftPos + LIST_X + 20;
         int barY = topPos + LIST_Y;
         int scrollAreaHeight = VISIBLE_ENTRIES * ENTRY_SIZE;

@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "meatmincer",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:walnutkinnel" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:brokenwalnut",
+    "count": 1
+  },
+  "cookingTime": 80
+}

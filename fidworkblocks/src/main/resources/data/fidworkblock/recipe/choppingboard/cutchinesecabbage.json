@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "choppingboard",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:chineseleaves" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:cutchinesecabbage",
+    "count": 2
+  },
+  "cookingTime": 0
+}

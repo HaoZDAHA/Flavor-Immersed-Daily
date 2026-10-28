@@ -25,7 +25,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import java.util.concurrent.CompletableFuture;
 
-/** Adds semantic block tags only; blockstate and model generation remains explicit in ModBlocks. */
+// Adds semantic block tags only; blockstate and model generation remains explicit in ModBlocks.
 public final class FIDBlockTagsProvider extends BlockTagsProvider {
     public FIDBlockTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
                                 ExistingFileHelper existingFileHelper) {

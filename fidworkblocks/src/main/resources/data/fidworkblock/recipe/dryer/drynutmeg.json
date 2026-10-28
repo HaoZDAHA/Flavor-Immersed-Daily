@@ -1,0 +1,11 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "dryer",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:nutmegseed" }],
+  "result": {
+    "id": "flavor_immersed_daily:drynutmeg",
+    "count": 1
+  },
+  "cookingTime": 120
+}

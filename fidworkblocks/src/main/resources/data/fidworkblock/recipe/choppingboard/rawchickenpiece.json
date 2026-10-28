@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "choppingboard",
+  "ingredients": [
+    { "item": "minecraft:chicken" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:rawchickenpiece",
+    "count": 3
+  },
+  "cookingTime": 0
+}

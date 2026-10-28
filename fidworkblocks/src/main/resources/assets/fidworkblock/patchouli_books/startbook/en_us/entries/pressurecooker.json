@@ -1,0 +1,12 @@
+{
+  "name": "Pressure Cooker",
+  "category": "fidworkblock:blocks",
+  "icon": "fidworkblock:pressurecooker",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The $(bold)Pressure Cooker$() has $(bold)3 input slots$().$(br)$(bold)Right-click$() with an empty hand to open the GUI and add ingredients.$(br2)It starts cooking $(bold)automatically$() once filled, with $(bold)no heat source$() required. Take the result from the output slot when done."
+    }
+  ]
+}

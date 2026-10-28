@@ -17,15 +17,13 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
 
-/**
- * 咆哮（yi_de_roar）与武圣（guan_yu_strike）效果处理器：
- *  - 武圣：拥有者手持食物攻击时，消耗一个食物，将饱食度转化为真实伤害（上限见 Config）
- * 咆哮的"忽略无敌帧"机制由 EntityMixin 内部实现（@Shadow + @Inject isInvulnerableTo），无需在此处理。
- */
+// 咆哮（yi_de_roar）与武圣（guan_yu_strike）效果处理器：
+// - 武圣：拥有者手持食物攻击时，消耗一个食物，将饱食度转化为真实伤害（上限见 Config）
+// 咆哮的"忽略无敌帧"机制由 EntityMixin 内部实现（@Shadow + @Inject isInvulnerableTo），无需在此处理。
 @EventBusSubscriber(modid = FlavorImmersedDaily.MODID)
 public class CombatEffectHandler {
 
-    /** 武圣真实伤害的自定义伤害类型 */
+// 武圣真实伤害的自定义伤害类型
     public static final ResourceKey<DamageType> REAL_DAMAGE = ResourceKey.create(
             Registries.DAMAGE_TYPE, ResourceLocation.fromNamespaceAndPath(FlavorImmersedDaily.MODID, "real_damage"));
 
@@ -35,9 +33,9 @@ public class CombatEffectHandler {
         if (player.level().isClientSide) return;
         if (!(event.getTarget() instanceof LivingEntity target)) return;
 
-        // 咆哮的"忽略目标无敌帧"由 EntityMixin 内部实现（@Inject isInvulnerableTo），这里无需处理
+// 咆哮的"忽略目标无敌帧"由 EntityMixin 内部实现（@Inject isInvulnerableTo），这里无需处理
 
-        // 武圣：手持食物攻击 → 消耗食物，饱食度转化为真实伤害
+// 武圣：手持食物攻击 → 消耗食物，饱食度转化为真实伤害
         if (player.hasEffect(ModEffects.GUAN_YU_STRIKE)) {
             ItemStack held = player.getMainHandItem();
             FoodProperties food = held.getFoodProperties(player);

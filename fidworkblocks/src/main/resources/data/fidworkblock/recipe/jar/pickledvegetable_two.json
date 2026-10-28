@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "jar",
+  "ingredients": [
+    { "tag": "c:lettuce" },
+    { "tag": "c:salt" },
+    { "tag": "c:salt" },
+    { "item": "flavor_immersed_daily:tidywater" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:pickledvegetable",
+    "count": 1
+  },
+  "cookingTime": 40
+}

@@ -6,10 +6,10 @@
       "item": "minecraft:sugar"
     },
     {
-      "item": "flavor_immersed_daily:salt"
+      "tag": "c:salt"
     },
     {
-      "item": "flavor_immersed_daily:wheatflour"
+      "tag": "c:flour"
     },
     {
       "item": "flavor_immersed_daily:tidywater"

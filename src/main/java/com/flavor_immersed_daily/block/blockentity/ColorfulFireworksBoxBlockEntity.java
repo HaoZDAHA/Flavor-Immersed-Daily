@@ -31,12 +31,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-//箱装烟花 存储烟花配置，处理红石触发与烟花飞行粒子
+// 箱装烟花 存储烟花配置，处理红石触发与烟花飞行粒子
 
 public class ColorfulFireworksBoxBlockEntity extends BlockEntity {
 
-    // 原版烟花形状（对应烟火之星的Type）
-    // 0=small_ball 1=large_ball 2=star 3=creeper 4=burst
+// 原版烟花形状（对应烟火之星的Type）
+// 0=small_ball 1=large_ball 2=star 3=creeper 4=burst
     public static final int SHAPE_SMALL_BALL = 0;
     public static final int SHAPE_LARGE_BALL = 1;
     public static final int SHAPE_STAR = 2;
@@ -54,7 +54,7 @@ public class ColorfulFireworksBoxBlockEntity extends BlockEntity {
     private static final String TAG_CURVE_B = "fw_curve_b";
     private static final String TAG_FADE_COLOR = "fw_fade_color";
 
-    //配置
+// 配置
     private int color = 0xFF0000;
     private int fadeColor = 0xFFFFFF;
     private int shape = SHAPE_SMALL_BALL;
@@ -65,10 +65,10 @@ public class ColorfulFireworksBoxBlockEntity extends BlockEntity {
     private float curveA = 0.0f;
     private float curveB = 0.0f;
 
-    //红石检测
+// 红石检测
     private boolean wasPowered = false;
 
-    //烟花飞行状态（支持多次并发）
+// 烟花飞行状态（支持多次并发）
     private final List<FlightState> activeFlights = new ArrayList<>();
 
     private static class FlightState {
@@ -89,7 +89,7 @@ public class ColorfulFireworksBoxBlockEntity extends BlockEntity {
         super(com.flavor_immersed_daily.all.ModBlockEntities.COLORFUL_FIREWORKS_BOX_ENTITY.get(), pos, state);
     }
 
-    //配置访问
+// 配置访问
 
     public int getColor() { return color; }
     public int getFadeColor() { return fadeColor; }
@@ -101,7 +101,7 @@ public class ColorfulFireworksBoxBlockEntity extends BlockEntity {
     public float getCurveA() { return curveA; }
     public float getCurveB() { return curveB; }
 
-//从网络包应用配置
+// 从网络包应用配置
 
     public void applyConfig(ColorfulFireworksBoxSyncPayload payload) {
         CompoundTag tag = payload.config();
@@ -121,25 +121,25 @@ public class ColorfulFireworksBoxBlockEntity extends BlockEntity {
         }
     }
 
-//TICK触发相关的
+// TICK触发相关的
 
     public static void serverTick(Level level, BlockPos pos, BlockState state, ColorfulFireworksBoxBlockEntity be) {
         if (level.isClientSide) return;
 
-        // 红石边沿触发
+// 红石边沿触发
         boolean powered = level.hasNeighborSignal(pos);
         if (powered && !be.wasPowered) {
             be.launch(level, state.getValue(ColorfulFireworksBoxBlock.FACING));
         }
         be.wasPowered = powered;
 
-        // 烟花飞行（所有并发任务）
+// 烟花飞行（所有并发任务）
         if (!be.activeFlights.isEmpty()) {
             be.tickFlights((ServerLevel) level);
         }
     }
 
-//触发发射烟花（每次调用都添加新的飞行任务，不打断已有的）
+// 触发发射烟花（每次调用都添加新的飞行任务，不打断已有的）
 
     public void launch(Level level, Direction dir) {
         if (level.isClientSide) return;
@@ -157,7 +157,7 @@ public class ColorfulFireworksBoxBlockEntity extends BlockEntity {
             double progress = distance / Math.max(1, flight.totalLaunchTicks);
             Vec3 pos = getFlightPosition(flight, progress);
 
-            // 飞行轨迹粒子 — 带颜色的粒子
+// 飞行轨迹粒子 — 带颜色的粒子
             float r = ((color >> 16) & 0xFF) / 255.0f;
             float g = ((color >> 8) & 0xFF) / 255.0f;
             float b = (color & 0xFF) / 255.0f;
@@ -175,8 +175,8 @@ public class ColorfulFireworksBoxBlockEntity extends BlockEntity {
         }
     }
 
-//飞行位置计算：倾斜角度 + 曲线公式 y = a*x2 + b*x
-//angleDeg=0 时垂直升空，A/B=0 时按倾斜角度直线飞行
+// 飞行位置计算：倾斜角度 + 曲线公式 y = a*x2 + b*x
+// angleDeg=0 时垂直升空，A/B=0 时按倾斜角度直线飞行
 
     private Vec3 getFlightPosition(FlightState flight, double progress) {
         double t = progress * flight.launchTicks;
@@ -195,14 +195,16 @@ public class ColorfulFireworksBoxBlockEntity extends BlockEntity {
 
     private void spawnExplosion(ServerLevel level, Vec3 center) {
 
-        // 使用原版 FireworkExplosion 创建真正的烟花爆炸效果
+// 使用原版 FireworkExplosion 创建真正的烟花爆炸效果
         FireworkExplosion.Shape fireworkShape = FireworkExplosion.Shape.values()[shape];
         FireworkExplosion explosion = new FireworkExplosion(
                 fireworkShape,
                 IntList.of(color, fadeColor),
-                IntList.of(), // 无渐变色
+// 无渐变色
+                IntList.of(),
                 trail,
-                false        // 无闪烁
+// 无闪烁
+                false
         );
 
         ItemStack fireworkItem = new ItemStack(Items.FIREWORK_ROCKET);
@@ -222,7 +224,7 @@ public class ColorfulFireworksBoxBlockEntity extends BlockEntity {
         level.playSound(null, worldPosition, SoundEvents.FIREWORK_ROCKET_BLAST, SoundSource.BLOCKS, 1.2f, 1.0f);
     }
 
-    //NBT / 同步
+// NBT / 同步
 
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {

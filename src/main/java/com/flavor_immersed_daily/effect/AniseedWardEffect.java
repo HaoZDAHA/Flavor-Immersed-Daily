@@ -12,15 +12,13 @@ import net.minecraft.world.phys.AABB;
 
 import java.util.List;
 
-/**
- * 八角镇香（aniseed_ward）— 拥有期间，周围半径（Config 可调，默认 8）格内的
- * 亡灵生物被赋予减速效果；每次 tick 刷新减速，离开范围后快速消退。
- * 总开关与半径见 Config。
- */
+// 八角镇香（aniseed_ward）— 拥有期间，周围半径（Config 可调，默认 8）格内的
+// 亡灵生物被赋予减速效果；每 20 tick 刷新一次减速，离开范围后约 1 秒内消退。
+// 总开关与半径见 Config。
 public class AniseedWardEffect extends MobEffect {
 
-    /** 赋予亡灵生物的减速时长（tick），每次 tick 刷新 */
-    private static final int SLOWNESS_TICKS = 40;
+// 赋予亡灵生物的减速时长（tick），与轮询间隔一致，离开范围后至多残留一轮约 1 秒
+    private static final int SLOWNESS_TICKS = 20;
 
     public AniseedWardEffect() {
         super(MobEffectCategory.BENEFICIAL, 0x6B8E23);
@@ -28,7 +26,8 @@ public class AniseedWardEffect extends MobEffect {
 
     @Override
     public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
-        return true;
+// 每 20 tick（约 1 秒）轮询一次周围亡灵，避免每 tick 做 8 格范围实体扫描
+        return duration % 20 == 0;
     }
 
     @Override

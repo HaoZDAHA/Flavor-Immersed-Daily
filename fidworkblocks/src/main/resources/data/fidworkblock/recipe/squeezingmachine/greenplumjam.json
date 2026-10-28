@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "squeezingmachine",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:greenplum" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:greemplumjam",
+    "count": 2
+  },
+  "cookingTime": 80
+}

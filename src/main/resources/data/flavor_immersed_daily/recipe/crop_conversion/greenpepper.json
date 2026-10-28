@@ -1,0 +1,8 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:greenpepper",
+    "kaleidoscope_cookery:green_chili",
+    "gan_delight_reborn:green_peppers"
+  ]
+}

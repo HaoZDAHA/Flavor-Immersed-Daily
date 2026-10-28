@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "choppingboard",
+  "ingredients": [
+    { "item": "minecraft:bread" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:dicedbread",
+    "count": 3
+  },
+  "cookingTime": 0
+}

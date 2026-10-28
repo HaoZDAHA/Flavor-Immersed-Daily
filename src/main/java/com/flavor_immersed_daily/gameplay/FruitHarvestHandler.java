@@ -53,7 +53,7 @@ public class FruitHarvestHandler {
         }
 
         ServerLevel serverLevel = (ServerLevel) level;
-        boolean harvested = harvestConnectedFruit(serverLevel, pos, state.getBlock());
+        boolean harvested = harvestConnectedFruit(serverLevel, pos, state.getBlock(), player.blockPosition());
         if (harvested) {
             player.getFoodData().addExhaustion(EXHAUSTION_COST);
             serverLevel.playSound(null, pos, SoundEvents.PLAYER_ATTACK_SWEEP,
@@ -65,7 +65,7 @@ public class FruitHarvestHandler {
         }
     }
 
-    private static boolean harvestConnectedFruit(ServerLevel level, BlockPos origin, Block trunkBlock) {
+    private static boolean harvestConnectedFruit(ServerLevel level, BlockPos origin, Block trunkBlock, BlockPos dropAt) {
         ArrayDeque<BlockPos> queue = new ArrayDeque<>();
         Set<BlockPos> visited = new HashSet<>();
         List<BlockPos> fruitPositions = new ArrayList<>();
@@ -98,9 +98,9 @@ public class FruitHarvestHandler {
         for (BlockPos fruitPos : fruitPositions) {
             BlockState fruitState = level.getBlockState(fruitPos);
             if (fruitState.getBlock() instanceof FruitingLeavesBlock leavesBlock) {
-                harvested |= leavesBlock.harvestFruit(level, fruitPos);
+                harvested |= leavesBlock.harvestFruit(level, fruitPos, dropAt);
             } else if (fruitState.getBlock() instanceof FallingFruitBlock fallingBlock) {
-                harvested |= fallingBlock.harvestFruit(level, fruitPos);
+                harvested |= fallingBlock.harvestFruit(level, fruitPos, dropAt);
             }
         }
         return harvested;

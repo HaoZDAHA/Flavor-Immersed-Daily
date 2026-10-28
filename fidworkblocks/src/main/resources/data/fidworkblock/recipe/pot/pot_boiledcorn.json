@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pot",
+  "ingredients": [
+    { "tag": "c:corn" },
+    { "item": "flavor_immersed_daily:tidywater" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:boiledcorn",
+    "count": 1
+  },
+  "cookingTime": 120,
+  "experience": 0.5
+}

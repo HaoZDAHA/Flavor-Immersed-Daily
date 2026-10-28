@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pressurecooker",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:paddygrain" },
+    { "item": "flavor_immersed_daily:tidywater" },
+    { "item": "flavor_immersed_daily:cutdiecedpreserveegg" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:congee_with_minced_pork_and_preserved_egg",
+    "count": 1
+  },
+  "cookingTime": 120
+}

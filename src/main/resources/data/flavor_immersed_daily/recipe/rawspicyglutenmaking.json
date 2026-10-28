@@ -12,7 +12,7 @@
       "item": "minecraft:sugar"
     },
     {
-      "item": "flavor_immersed_daily:salt"
+      "tag": "c:salt"
     },
     {
       "item": "flavor_immersed_daily:chillipowder"

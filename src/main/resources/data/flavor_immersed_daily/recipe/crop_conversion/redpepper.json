@@ -1,0 +1,13 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:redrepper",
+    "kaleidoscope_cookery:red_chili",
+    "croptopia:chile_pepper",
+    "pamhc2crops:chilipepperitem",
+    "concoction:spicy_pepper",
+    "expandeddelight:chili_pepper",
+    "barbequesdelight:chilli_powder",
+    "fantasycraft:birdiseyechili"
+  ]
+}

@@ -11,9 +11,7 @@ import net.minecraft.util.FormattedCharSequence;
 
 import java.util.List;
 
-/**
- * 收获提示 tooltip 客户端渲染 — 文字 + 一行物品图标（可为空）
- */
+// 收获提示 tooltip 客户端渲染 — 文字 + 一行物品图标（可为空）
 public class ClientHarvestTooltip implements ClientTooltipComponent {
 
     private static final int MARGIN = 4;

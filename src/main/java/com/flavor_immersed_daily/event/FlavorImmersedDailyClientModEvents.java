@@ -5,8 +5,12 @@ import com.flavor_immersed_daily.all.ModEntities;
 import com.flavor_immersed_daily.client.BighookRenderer;
 import com.flavor_immersed_daily.client.tooltip.ClientSeasoningTooltip;
 import com.flavor_immersed_daily.client.tooltip.ClientHarvestTooltip;
+import com.flavor_immersed_daily.client.tooltip.ClientFillingTooltip;
+import com.flavor_immersed_daily.client.tooltip.ClientMooncakeTooltip;
 import com.flavor_immersed_daily.client.tooltip.SeasoningTooltip;
 import com.flavor_immersed_daily.client.tooltip.HarvestTooltip;
+import com.flavor_immersed_daily.client.tooltip.FillingTooltip;
+import com.flavor_immersed_daily.client.tooltip.MooncakeTooltip;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -14,7 +18,7 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterClientTooltipComponentFactoriesEvent;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 
-//客户端TooltipComponent渲染
+// 客户端TooltipComponent渲染
 
 @EventBusSubscriber(modid = FlavorImmersedDaily.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class FlavorImmersedDailyClientModEvents {
@@ -23,6 +27,8 @@ public class FlavorImmersedDailyClientModEvents {
     static void registerTooltipComponents(RegisterClientTooltipComponentFactoriesEvent event) {
         event.register(SeasoningTooltip.class, ClientSeasoningTooltip::new);
         event.register(HarvestTooltip.class, ClientHarvestTooltip::new);
+        event.register(FillingTooltip.class, ClientFillingTooltip::new);
+        event.register(MooncakeTooltip.class, ClientMooncakeTooltip::new);
     }
 
     @SubscribeEvent

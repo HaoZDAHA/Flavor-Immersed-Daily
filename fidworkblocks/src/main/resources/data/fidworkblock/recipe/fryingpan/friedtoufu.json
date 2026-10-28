@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "fryingpan",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:picedtoufu" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:friedtoufu",
+    "count": 1
+  },
+  "cookingTime": 60
+}

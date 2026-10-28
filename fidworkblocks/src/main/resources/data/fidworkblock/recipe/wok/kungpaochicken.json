@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "wok",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:pea_nut_seed" },
+    { "item": "flavor_immersed_daily:rawchickenpiecepiece" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:kungpaochicken",
+    "count": 1
+  },
+  "cookingTime": 0
+}

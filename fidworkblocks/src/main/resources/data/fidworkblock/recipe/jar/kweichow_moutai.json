@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "jar",
+  "ingredients": [
+    { "item": "minecraft:wheat" },
+    { "item": "flavor_immersed_daily:kaolianggrain" },
+    { "item": "flavor_immersed_daily:kaolianggrain" },
+    { "item": "flavor_immersed_daily:tidywater" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:kweichow_moutai",
+    "count": 1
+  },
+  "cookingTime": 80
+}

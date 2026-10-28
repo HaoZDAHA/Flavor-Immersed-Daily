@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "mortar",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:dryscalion" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:onionpowder",
+    "count": 1
+  },
+  "cookingTime": 0
+}

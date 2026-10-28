@@ -10,17 +10,15 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
-/**
- * 对联方块实体 — 存储文字内容和颜色
- */
+// 对联方块实体 — 存储文字内容和颜色
 public class CoupletBlockEntity extends BlockEntity {
 
     private static final String TAG_LINE_PREFIX = "line_";
     private static final String TAG_COLOR = "color";
 
-    // 4行文字（横幅每行一句，竖联每字一行）
+// 4行文字（横幅每行一句，竖联每字一行）
     private String[] lines = new String[]{"", "", "", ""};
-    // 0=黑色, 1=黄色
+// 0=黑色, 1=黄色
     private int color = 0;
 
     public CoupletBlockEntity(BlockPos pos, BlockState state) {

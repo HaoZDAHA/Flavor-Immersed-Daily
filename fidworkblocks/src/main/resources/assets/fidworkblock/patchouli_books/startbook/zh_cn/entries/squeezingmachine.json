@@ -1,0 +1,12 @@
+{
+  "name": "压榨机",
+  "category": "fidworkblock:blocks",
+  "icon": "fidworkblock:squeezingmachine",
+  "sortnum": 6,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)压榨机$()：手持可压榨的食材右键放入（可叠 64）。$(br)$(bold)空手右键$()开始压榨，固定用时 4 秒。$(br2)完成后空手右键取出产物；输出槽满了多出的会掉落在机器旁。$(br)$(bold)潜行右键$()可取出原料。"
+    }
+  ]
+}

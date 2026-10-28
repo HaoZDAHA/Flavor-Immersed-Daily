@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "teapot",
+  "ingredients": [
+    { "item": "minecraft:sugar" },
+    { "item": "flavor_immersed_daily:redteapowder" },
+    { "item": "flavor_immersed_daily:lemonjam" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:icedblacktea",
+    "count": 2
+  },
+  "cookingTime": 40
+}

@@ -1,0 +1,11 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:dough",
+    "kaleidoscope_cookery:raw_dough",
+    "croptopia:dough",
+    "farm_and_charm:dough",
+    "concoction:dough",
+    "ramadandelight:small_dough"
+  ]
+}

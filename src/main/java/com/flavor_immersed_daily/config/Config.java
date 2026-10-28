@@ -1,6 +1,7 @@
 package com.flavor_immersed_daily.config;
 
 import com.flavor_immersed_daily.FlavorImmersedDaily;
+import com.flavor_immersed_daily.appraisal.AppraisalSupplementRegistry;
 import com.flavor_immersed_daily.datadriver.ModDrops;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -11,6 +12,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -35,7 +38,7 @@ public class Config {
             .comment("悬挂果实生成或失去支撑时转为掉落果实实体的概率（0.0-1.0），默认 0.30")
             .defineInRange("fallingFruitChance", 0.30, 0.0, 1.0);
 
-    //香油滑步效果配置
+// 香油滑步效果配置
     public static final ModConfigSpec.BooleanValue SESAME_SLIP_ENABLED = BUILDER
             .comment("香油滑步（sesame_slip）效果总开关，关闭后食用黄油不再获得该效果")
             .define("sesameSlipEnabled", true);
@@ -43,7 +46,7 @@ public class Config {
             .comment("芝麻滑行效果下实体的行走高度（格），默认 2.1")
             .defineInRange("sesameSlipHeight", 2.1, 0.0, 10.0);
 
-    //醋酸侵蚀效果配置
+// 醋酸侵蚀效果配置
     public static final ModConfigSpec.BooleanValue ACETIC_EROSION_ENABLED = BUILDER
             .comment("醋酸侵蚀（acetic_erosion）效果总开关，关闭后食用醋不再获得该效果")
             .define("aceticErosionEnabled", true);
@@ -51,7 +54,7 @@ public class Config {
             .comment("醋酸侵蚀效果下，被攻击者每次盔甲耐久损耗时额外增加的损耗值，默认 1")
             .defineInRange("aceticErosionExtraDurability", 1, 0, 100);
 
-    //黄油投手效果配置
+// 黄油投手效果配置
     public static final ModConfigSpec.BooleanValue BUTTER_PITCHER_ENABLED = BUILDER
             .comment("黄油投手（butter_pitcher）效果总开关，关闭后弹射物命中不再触发冻结")
             .define("butterPitcherEnabled", true);
@@ -65,7 +68,7 @@ public class Config {
             .comment("黄油投手效果是否跳过Boss实体（末影龙、凋灵、循声守卫），默认 true")
             .define("butterPitcherExcludeBoss", true);
 
-    //蘸豆，爽！效果配置
+// 蘸豆，爽！效果配置
     public static final ModConfigSpec.BooleanValue BEAN_FURY_ENABLED = BUILDER
             .comment("蘸豆，爽！（bean_fury）效果总开关，关闭后近战攻击不再触发额外暴击")
             .define("beanFuryEnabled", true);
@@ -73,7 +76,7 @@ public class Config {
             .comment("蘸豆，爽！效果下近战攻击触发暴击的概率（0.0-1.0），默认 0.25")
             .defineInRange("beanFuryCritChance", 0.25, 0.0, 1.0);
 
-    //百味之基效果配置
+// 百味之基效果配置
     public static final ModConfigSpec.BooleanValue FLAVOR_BASE_ENABLED = BUILDER
             .comment("百味之基（flavor_base）效果总开关，关闭后不再触发与生效")
             .define("flavorBaseEnabled", true);
@@ -87,7 +90,7 @@ public class Config {
             .comment("百味之基效果下，加成最多叠加的次数，默认 10")
             .defineInRange("flavorBaseMaxStacks", 10, 1, 100);
 
-    //晒足一百八十天效果配置
+// 晒足一百八十天效果配置
     public static final ModConfigSpec.BooleanValue SOLAR_BREW_ENABLED = BUILDER
             .comment("晒足一百八十天（solar_brew）效果总开关，关闭后不再触发与生效")
             .define("solarBrewEnabled", true);
@@ -98,12 +101,12 @@ public class Config {
             .comment("晒足一百八十天效果下，攻击亡灵生物时的额外火焰伤害，默认 0.5")
             .defineInRange("solarBrewUndeadFireDamage", 0.5, 0.0, 100.0);
 
-    //浩克大葱效果配置
+// 浩克大葱效果配置
     public static final ModConfigSpec.BooleanValue HULK_LEEK_ENABLED = BUILDER
             .comment("浩克大葱（hulk_leek）效果总开关，关闭后不再触发与生效")
             .define("hulkLeekEnabled", true);
 
-    //火爆狂攻效果配置
+// 火爆狂攻效果配置
     public static final ModConfigSpec.BooleanValue FURY_ASSAULT_ENABLED = BUILDER
             .comment("火爆狂攻（fury_assault）效果总开关，关闭后不再触发与生效")
             .define("furyAssaultEnabled", true);
@@ -117,7 +120,7 @@ public class Config {
             .comment("火爆狂攻效果下，范围内生物受到的火焰伤害，默认 2.0")
             .defineInRange("furyAssaultFireDamage", 2.0, 0.0, 100.0);
 
-    //邪祟暴露效果配置
+// 邪祟暴露效果配置
     public static final ModConfigSpec.BooleanValue EXPOSE_EVIL_ENABLED = BUILDER
             .comment("邪祟暴露（expose_evil）效果总开关，关闭后不再触发与生效")
             .define("exposeEvilEnabled", true);
@@ -128,12 +131,12 @@ public class Config {
             .comment("邪祟暴露效果下，被手持血液攻击时受到的灼烧伤害，默认 4.0")
             .defineInRange("exposeEvilBloodFireDamage", 4.0, 0.0, 100.0);
 
-    //武圣效果配置
+// 武圣效果配置
     public static final ModConfigSpec.DoubleValue GUAN_YU_STRIKE_MAX_REAL_DAMAGE = BUILDER
             .comment("武圣（guan_yu_strike）效果下，食物攻击转化的真实伤害上限，默认 8.0")
             .defineInRange("guanYuStrikeMaxRealDamage", 8.0, 0.0, 100.0);
 
-    //八角镇香效果配置
+// 八角镇香效果配置
     public static final ModConfigSpec.BooleanValue ANISEED_WARD_ENABLED = BUILDER
             .comment("八角镇香（aniseed_ward）效果总开关，关闭后不再触发与生效")
             .define("aniseedWardEnabled", true);
@@ -141,7 +144,39 @@ public class Config {
             .comment("八角镇香效果下，周围亡灵生物被赋予减速的半径范围（格），默认 8")
             .defineInRange("aniseedWardRadius", 8.0, 1.0, 64.0);
 
-    // ===== bighook 抓取生物功能配置 =====
+// 团团圆圆效果配置
+    public static final ModConfigSpec.BooleanValue REUNION_RECOVERY_ENABLED = BUILDER
+            .comment("团团圆圆（reunion_recovery）效果总开关，关闭后食用广式月饼不再获得该效果")
+            .define("reunionRecoveryEnabled", true);
+    public static final ModConfigSpec.DoubleValue REUNION_RECOVERY_RADIUS = BUILDER
+            .comment("团团圆圆效果下，共享生命恢复的半径（格），默认 16")
+            .defineInRange("reunionRecoveryRadius", 16.0, 1.0, 64.0);
+    public static final ModConfigSpec.IntValue REUNION_RECOVERY_LEVEL = BUILDER
+            .comment("团团圆圆效果下，给予的生命恢复等级，默认 1")
+            .defineInRange("reunionRecoveryLevel", 1, 1, 10);
+
+// 酥到掉渣效果配置
+    public static final ModConfigSpec.BooleanValue CRUMBLY_CRUST_ENABLED = BUILDER
+            .comment("酥到掉渣（crumbly_crust）效果总开关，关闭后食用苏式月饼不再获得该效果")
+            .define("crumblyCrustEnabled", true);
+    public static final ModConfigSpec.IntValue CRUMBLY_CRUST_TAUNT_SECONDS = BUILDER
+            .comment("酥到掉渣效果下，月饼渣吸引敌对生物前往的时长（秒），默认 3")
+            .defineInRange("crumblyCrustTauntSeconds", 3, 1, 60);
+
+// 蔽日食月效果配置
+    public static final ModConfigSpec.BooleanValue ECLIPSE_DEVOUR_ENABLED = BUILDER
+            .comment("蔽日食月（eclipse_devour）效果总开关，关闭后食用京式月饼不再获得该效果")
+            .define("eclipseDevourEnabled", true);
+
+// 清凉冰皮效果配置
+    public static final ModConfigSpec.BooleanValue COOL_SKIN_ENABLED = BUILDER
+            .comment("清凉冰皮（cool_skin）效果总开关，关闭后食用冰皮月饼不再获得该效果")
+            .define("coolSkinEnabled", true);
+    public static final ModConfigSpec.DoubleValue COOL_SKIN_FIRE_DAMAGE_BONUS = BUILDER
+            .comment("清凉冰皮效果下，对免疫火焰伤害的敌对生物近战攻击的额外伤害，默认 1.0")
+            .defineInRange("coolSkinFireDamageBonus", 1.0, 0.0, 100.0);
+
+// bighook 抓取生物功能配置
     public static final ModConfigSpec.BooleanValue BIGHOOK_CARRY_ENABLED = BUILDER
             .comment("是否启用 bighook 抓取生物功能：手持挂勾攻击当前生命值低于自己且非敌对/非Boss的生物（含其他玩家）时，可将其拿起",
                     "玩家潜行（shift）无法挣脱时（此开关关闭）只能通过手里不再持有挂勾来放下生物")
@@ -150,13 +185,13 @@ public class Config {
             .comment("是否允许被抓取的生物或者挂在挂钩上的生物通过潜行（shift）挣脱/被放下")
             .define("bighookShiftEscapeEnabled", true);
 
-    // ===== 屠宰战利品配置 =====
-    // 基础掉落物已定义在模组自带 JSON（data/flavor_immersed_daily/drop_tables/butcher/*.json），
-    // 会随模组更新自动生效。下面这些 config 仅用于"额外添加"掉落物，默认留空。
+// 屠宰战利品配置
+// 基础掉落物已定义在模组自带 JSON（data/flavor_immersed_daily/drop_tables/butcher/*.json），
+// 会随模组更新自动生效。下面这些 config 仅用于"额外添加"掉落物，默认留空。
     private static final String DROP_COMMENT =
             "屠宰阶段额外掉落物，逗号分隔的物品ID（格式: modid:item_id）。空字符串表示不额外添加。";
 
-    // 牛 cattle（基础掉落见 butcher/cattle.json，stage1→2 放血 ... stage5→0 切肉）
+// 牛 cattle（基础掉落见 butcher/cattle.json，stage1→2 放血 ... stage5→0 切肉）
     public static final ModConfigSpec.ConfigValue<String> CATTLE_DROP_1 = BUILDER
             .comment("牛 - stage1→2 额外掉落", DROP_COMMENT)
             .define("cattleDrop1", "");
@@ -173,7 +208,7 @@ public class Config {
             .comment("牛 - stage5→0 额外掉落", DROP_COMMENT)
             .define("cattleDrop5", "");
 
-    // 羊 sheep（基础掉落见 butcher/sheep.json）
+// 羊 sheep（基础掉落见 butcher/sheep.json）
     public static final ModConfigSpec.ConfigValue<String> SHEEP_DROP_1 = BUILDER
             .comment("羊 - stage1→2 额外掉落", DROP_COMMENT)
             .define("sheepDrop1", "");
@@ -190,7 +225,7 @@ public class Config {
             .comment("羊 - stage5→0 额外掉落", DROP_COMMENT)
             .define("sheepDrop5", "");
 
-    // 猪 pig（基础掉落见 butcher/pig.json）
+// 猪 pig（基础掉落见 butcher/pig.json）
     public static final ModConfigSpec.ConfigValue<String> PIG_DROP_1 = BUILDER
             .comment("猪 - stage1→2 额外掉落", DROP_COMMENT)
             .define("pigDrop1", "");
@@ -207,7 +242,7 @@ public class Config {
             .comment("猪 - stage5→0 额外掉落", DROP_COMMENT)
             .define("pigDrop5", "");
 
-    // 鸡 chicken（基础掉落见 butcher/chicken.json，特殊：deadchicken→1→2→右键, chickenwithoutfeather→5→6→0）
+// 鸡 chicken（基础掉落见 butcher/chicken.json，特殊：deadchicken→1→2→右键, chickenwithoutfeather→5→6→0）
     public static final ModConfigSpec.ConfigValue<String> CHICKEN_DROP_1 = BUILDER
             .comment("鸡 - deadchicken→stage1→2 额外掉落", DROP_COMMENT)
             .define("chickenDrop1", "");
@@ -218,14 +253,14 @@ public class Config {
             .comment("鸡 - stage6→0 额外掉落", DROP_COMMENT)
             .define("chickenDrop6", "");
 
-    // ===== 木盆漂洗战利品 =====
-    // 基础掉落见 drop_tables/washed_chicken.json
+// 木盆漂洗战利品
+// 基础掉落见 drop_tables/washed_chicken.json
     public static final ModConfigSpec.ConfigValue<String> WASHED_CHICKEN_DROPS = BUILDER
             .comment("chickenwithoutblood在木盆中漂洗后的额外战利品，逗号分隔的物品ID", DROP_COMMENT)
             .define("washedChickenDrops", "");
 
-    // ===== 野生采集物鉴定战利品 =====
-    // 基础掉落见 drop_tables/appraisal.json
+// 野生采集物鉴定战利品
+// 基础掉落见 drop_tables/appraisal.json
     private static final String WILD_COMMENT =
             "野生采集物在农产鉴定机中鉴定时的额外掉落物，逗号分隔的物品ID（格式: modid:item_id）。会随机生成1-3个的掉落物。";
 
@@ -256,7 +291,7 @@ public class Config {
 
     public static final ModConfigSpec SPEC = BUILDER.build();
 
-    // 运行时缓存
+// 运行时缓存
     public static int maxFruitsPerChunk = 5;
     public static double naturalFruitMaturityChance = 0.33;
     public static double boneMealFruitMaturityChance = 0.35;
@@ -290,6 +325,14 @@ public class Config {
     public static double guanYuStrikeMaxRealDamage = 8.0;
     public static boolean aniseedWardEnabled = true;
     public static double aniseedWardRadius = 8.0;
+    public static boolean reunionRecoveryEnabled = true;
+    public static double reunionRecoveryRadius = 16.0;
+    public static int reunionRecoveryLevel = 1;
+    public static boolean crumblyCrustEnabled = true;
+    public static int crumblyCrustTauntSeconds = 3;
+    public static boolean eclipseDevourEnabled = true;
+    public static boolean coolSkinEnabled = true;
+    public static double coolSkinFireDamageBonus = 1.0;
     public static boolean bighookCarryEnabled = true;
     public static boolean bighookShiftEscapeEnabled = true;
     public static Map<Integer, List<String>> cattleDrops = new HashMap<>();
@@ -334,10 +377,18 @@ public class Config {
         guanYuStrikeMaxRealDamage = GUAN_YU_STRIKE_MAX_REAL_DAMAGE.get();
         aniseedWardEnabled = ANISEED_WARD_ENABLED.get();
         aniseedWardRadius = ANISEED_WARD_RADIUS.get();
+        reunionRecoveryEnabled = REUNION_RECOVERY_ENABLED.get();
+        reunionRecoveryRadius = REUNION_RECOVERY_RADIUS.get();
+        reunionRecoveryLevel = REUNION_RECOVERY_LEVEL.get();
+        crumblyCrustEnabled = CRUMBLY_CRUST_ENABLED.get();
+        crumblyCrustTauntSeconds = CRUMBLY_CRUST_TAUNT_SECONDS.get();
+        eclipseDevourEnabled = ECLIPSE_DEVOUR_ENABLED.get();
+        coolSkinEnabled = COOL_SKIN_ENABLED.get();
+        coolSkinFireDamageBonus = COOL_SKIN_FIRE_DAMAGE_BONUS.get();
         bighookCarryEnabled = BIGHOOK_CARRY_ENABLED.get();
         bighookShiftEscapeEnabled = BIGHOOK_SHIFT_ESCAPE_ENABLED.get();
 
-        // 基础掉落物来自模组自带 JSON，config 只做"额外添加"
+// 基础掉落物来自模组自带 JSON，config 只做"额外添加"
         ModDrops.init();
         cattleDrops = buildButcherDrops(ModDrops.cattleDefaults,
                 CATTLE_DROP_1.get(), CATTLE_DROP_2.get(), CATTLE_DROP_3.get(), CATTLE_DROP_4.get(), CATTLE_DROP_5.get());
@@ -367,10 +418,8 @@ public class Config {
                 mergeExtraList(ModDrops.appraisalDefaults.getOrDefault("flavor_immersed_daily:wildtuberplants", List.of()), parseDrops(WILDTUBERPLANTS_DROPS.get())));
     }
 
-    /**
-     * 组装屠宰掉落表：以 JSON 默认为基础，追加 config 额外产物。
-     * 为了兼容老玩家 config 中残留的旧默认值，与默认掉落重复的额外项会被忽略。
-     */
+// 组装屠宰掉落表：以 JSON 默认为基础，追加 config 额外产物。
+// 为了兼容老玩家 config 中残留的旧默认值，与默认掉落重复的额外项会被忽略。
     private static Map<Integer, List<String>> buildButcherDrops(Map<Integer, List<String>> defaults, String... extrasRaw) {
         Map<Integer, List<String>> map = copyButcher(defaults);
         Set<String> defaultsIds = collectIds(map);
@@ -380,7 +429,7 @@ public class Config {
         return map;
     }
 
-    /** 鸡的屠宰流程阶段并不连续（1→2→右键，5→6→回收），逐阶段合并额外产物。 */
+// 鸡的屠宰流程阶段并不连续（1→2→右键，5→6→回收），逐阶段合并额外产物。
     private static Map<Integer, List<String>> buildChickenDrops(String drop1, String drop5, String drop6) {
         Map<Integer, List<String>> map = copyButcher(ModDrops.chickenDefaults);
         Set<String> defaultsIds = collectIds(map);
@@ -411,7 +460,7 @@ public class Config {
                 .addAll(extraOnly(parseDrops(raw), defaultsIds));
     }
 
-    /** 在默认列表基础上追加额外产物，并去除与默认重复的项。 */
+// 在默认列表基础上追加额外产物，并去除与默认重复的项。
     private static List<String> mergeExtraList(List<String> defaults, List<String> extras) {
         List<String> result = new ArrayList<>(defaults);
         Set<String> defaultsIds = new HashSet<>(defaults);
@@ -419,7 +468,7 @@ public class Config {
         return result;
     }
 
-    /** 只保留不在 defaultsIds 中的额外项（空串忽略）。 */
+// 只保留不在 defaultsIds 中的额外项（空串忽略）。
     private static List<String> extraOnly(List<String> extras, Set<String> defaultsIds) {
         List<String> out = new ArrayList<>();
         for (String id : extras) {
@@ -446,10 +495,41 @@ public class Config {
     }
 
     public static List<String> getWildDrops(String itemId) {
-        return wildDrops.getOrDefault(itemId, null);
+        return mergeWildDrops(itemId);
     }
 
     public static Map<String, List<String>> getWildDropsMap() {
-        return Collections.unmodifiableMap(wildDrops);
+        Set<String> keys = new LinkedHashSet<>(wildDrops.keySet());
+        keys.addAll(AppraisalSupplementRegistry.all().keySet());
+        Map<String, List<String>> result = new LinkedHashMap<>();
+        for (String key : keys) {
+            List<String> merged = mergeWildDrops(key);
+            if (merged != null && !merged.isEmpty()) {
+                result.put(key, merged);
+            }
+        }
+        return Collections.unmodifiableMap(result);
+    }
+
+// 合并单个野生采集物的鉴定产物：本模组基础掉落（含玩家 config 额外项）
+// + 数据包 appraisal_supplement 补充产物；与基础掉落重复的补充项忽略。
+// 两者皆空时返回 null，调用方据此判定"不是可鉴定的野生采集物"。
+    private static List<String> mergeWildDrops(String itemId) {
+        List<String> base = wildDrops.get(itemId);
+        List<String> supplements = AppraisalSupplementRegistry.getSupplements(itemId);
+        if ((base == null || base.isEmpty()) && supplements.isEmpty()) {
+            return null;
+        }
+        List<String> merged = new ArrayList<>();
+        if (base != null) {
+            merged.addAll(base);
+        }
+        Set<String> baseIds = base == null ? Collections.emptySet() : new HashSet<>(base);
+        for (String id : supplements) {
+            if (!id.isEmpty() && !baseIds.contains(id)) {
+                merged.add(id);
+            }
+        }
+        return merged;
     }
 }

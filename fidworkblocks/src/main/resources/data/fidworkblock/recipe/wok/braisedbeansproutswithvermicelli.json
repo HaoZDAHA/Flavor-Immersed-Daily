@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "wok",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:beansprout" },
+    { "item": "flavor_immersed_daily:drypowderskin" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:braisedbeansproutswithvermicelli",
+    "count": 1
+  },
+  "cookingTime": 0
+}

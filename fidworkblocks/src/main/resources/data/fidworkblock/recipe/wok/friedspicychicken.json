@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "wok",
+  "ingredients": [
+    { "item": "minecraft:chicken" },
+    { "item": "flavor_immersed_daily:dicedsweetpepper" },
+    { "item": "flavor_immersed_daily:redrepper" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:friedspicychicken",
+    "count": 1
+  },
+  "cookingTime": 0
+}

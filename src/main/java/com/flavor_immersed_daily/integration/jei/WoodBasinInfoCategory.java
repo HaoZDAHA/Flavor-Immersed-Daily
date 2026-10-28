@@ -13,14 +13,13 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 
-/**
- * JEI 木盆信息页 — 输入槽 + 输出槽 + 底部描述文字
- */
+// JEI 木盆信息页 — 输入槽 + 输出槽 + 底部描述文字
 public class WoodBasinInfoCategory implements IRecipeCategory<WoodBasinInfoRecipe> {
 
     public static final RecipeType<WoodBasinInfoRecipe> TYPE =
@@ -29,11 +28,17 @@ public class WoodBasinInfoCategory implements IRecipeCategory<WoodBasinInfoRecip
     private static final int WIDTH = 144;
     private static final int HEIGHT = 72;
 
+// 分类背景贴图（含槽位底图）
+    private static final ResourceLocation BACKGROUND_TEXTURE =
+            ResourceLocation.fromNamespaceAndPath(FlavorImmersedDaily.MODID, "textures/jei/wood_basin_info.png");
+
     private final IDrawable background;
     private final IDrawable icon;
 
     public WoodBasinInfoCategory(IGuiHelper helper) {
-        this.background = helper.createBlankDrawable(WIDTH, HEIGHT);
+        this.background = helper.drawableBuilder(BACKGROUND_TEXTURE, 0, 0, WIDTH, HEIGHT)
+                .setTextureSize(WIDTH, HEIGHT)
+                .build();
         this.icon = helper.createDrawableItemStack(new ItemStack(ModBlocks.WOODBASIN.asItem()));
     }
 
@@ -59,13 +64,13 @@ public class WoodBasinInfoCategory implements IRecipeCategory<WoodBasinInfoRecip
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, WoodBasinInfoRecipe recipe, IFocusGroup focuses) {
-        // 输入槽：左侧居中
+// 输入槽：左侧居中
         if (!recipe.getInput().isEmpty()) {
             builder.addSlot(RecipeIngredientRole.INPUT, 8, 14)
                     .addItemStack(recipe.getInput());
         }
 
-        // 输出槽：右侧排列
+// 输出槽：右侧排列
         List<ItemStack> outputs = recipe.getOutputs();
         int slotSize = 18;
         int startX = 50;
@@ -87,12 +92,12 @@ public class WoodBasinInfoCategory implements IRecipeCategory<WoodBasinInfoRecip
                      double mouseX, double mouseY) {
         var font = Minecraft.getInstance().font;
 
-        // 输入→输出箭头
+// 输入→输出箭头
         if (!recipe.getInput().isEmpty()) {
             guiGraphics.drawString(font, "→", 30, 18, 0xFF808080, false);
         }
 
-        // 底部描述文字
+// 底部描述文字
         String desc = recipe.getDescription();
         if (desc != null && !desc.isEmpty()) {
             int maxWidth = WIDTH - 8;

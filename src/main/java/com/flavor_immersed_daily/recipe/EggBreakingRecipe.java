@@ -57,7 +57,7 @@ public class EggBreakingRecipe implements Recipe<CraftingInput> {
     }
 
     private boolean matchesShapeless(CraftingInput input, List<Ingredient> recipeIngredients) {
-        // 收集输入中的非空物品
+// 收集输入中的非空物品
         java.util.List<ItemStack> inputs = new java.util.ArrayList<>();
         for (int i = 0; i < input.size(); i++) {
             ItemStack stack = input.getItem(i);
@@ -67,7 +67,7 @@ public class EggBreakingRecipe implements Recipe<CraftingInput> {
         }
         if (inputs.size() != recipeIngredients.size()) return false;
 
-        // 简单匹配：每个 recipe ingredient 需要被一个 input item 满足
+// 简单匹配：每个 recipe ingredient 需要被一个 input item 满足
         boolean[] used = new boolean[inputs.size()];
         for (Ingredient recipeIng : recipeIngredients) {
             boolean found = false;

@@ -1,6 +1,14 @@
 {
   "replace": false,
   "values": [
-    "flavor_immersed_daily:dough"
+    "flavor_immersed_daily:dough",
+    "flavor_immersed_daily:sweet_oil_dough",
+    "flavor_immersed_daily:water_short_dough",
+    "flavor_immersed_daily:syrup_dough",
+    "flavor_immersed_daily:glutinous_milk_dough",
+    "flavor_immersed_daily:eggdough",
+    "flavor_immersed_daily:rawaikui",
+    "flavor_immersed_daily:rawglutinousdough",
+    "flavor_immersed_daily:sweetpotatodough"
   ]
 }

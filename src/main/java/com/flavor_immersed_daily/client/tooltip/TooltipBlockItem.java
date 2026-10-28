@@ -10,9 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 
-/**
- * 通用 tooltip 方块物品 — 显示文字 + 多个物品图标
- */
+// 通用 tooltip 方块物品 — 显示文字 + 多个物品图标
 public class TooltipBlockItem extends BlockItem {
 
     private final Component tooltipText;

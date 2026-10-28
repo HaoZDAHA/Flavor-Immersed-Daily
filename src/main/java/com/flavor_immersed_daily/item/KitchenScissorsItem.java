@@ -10,9 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * 厨房剪刀 — 破坏草和树叶时可获得野生作物
- */
+// 厨房剪刀 — 破坏草和树叶时可获得野生作物
 public class KitchenScissorsItem extends Item {
 
     private static final Component TOOLTIP_TEXT = Component.translatable("tooltip.flavor_immersed_daily.kitchen_scissors");

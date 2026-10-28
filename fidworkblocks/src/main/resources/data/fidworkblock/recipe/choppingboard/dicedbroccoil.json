@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "choppingboard",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:broccoil" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:dicedbroccoil",
+    "count": 4
+  },
+  "cookingTime": 0
+}

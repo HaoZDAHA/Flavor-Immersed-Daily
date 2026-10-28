@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "fryingpan",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:pea_nut_seed" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:friedpeanuts",
+    "count": 1
+  },
+  "cookingTime": 60
+}

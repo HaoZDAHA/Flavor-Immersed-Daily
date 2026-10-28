@@ -1,0 +1,11 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:greentealeaves",
+    "croptopia:tea_leaves",
+    "pamhc2crops:tealeafitem",
+    "bountifulfares:tea_leaves",
+    "youkaishomecoming:tea_leaves",
+    "youkaisfeasts:tea_leaves"
+  ]
+}

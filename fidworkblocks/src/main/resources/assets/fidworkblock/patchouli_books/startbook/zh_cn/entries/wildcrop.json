@@ -1,0 +1,16 @@
+{
+  "name": "获取农作物种子",
+  "category": "fidworkblock:seeds",
+  "icon": "minecraft:wheat_seeds",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "首先需要一把$(bold)除草剪刀$()（$(item)flavor_immersed_daily:kitchenscissor$()）。$(br)用它破坏地上的$(bold)草$()，或者$(bold)橡木树叶、白桦木树叶、云杉木树叶、丛林木树叶$()，有概率掉落$(bold)野生作物堆$()。$(br2)不同种类的植物，掉落的野生作物堆可能不一样哦！"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "然后制作一台$(bold)农业鉴定机$()（$(item)flavor_immersed_daily:agricultureagriculturalappraisalmachine$()）并放置好。$(br2)手持刚才得到的$(bold)野生作物堆$()，$(bold)右键$()农业鉴定机，即可获得农作物种子。"
+    }
+  ]
+}

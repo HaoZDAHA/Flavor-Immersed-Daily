@@ -1,0 +1,16 @@
+{
+  "name": "Jar",
+  "category": "fidworkblock:blocks",
+  "icon": "fidworkblock:jar",
+  "sortnum": 7,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Jar$(): right-click with items to fill the 4 slots in order - recipes must be arranged correctly.$(br)When the recipe is right, $(bold)right-click$() with an empty hand to seal it and start pickling/fermenting.$(br2)Nothing can be changed while sealed; when a batch finishes the next one starts automatically until the output slot is full."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Shift-right-click$() to unseal, refunding all materials and results.$(br)After unsealing, $(bold)right-click$() with an empty hand to collect the results.$(br2)If the recipe is wrong the seal won't work and you'll get a hint - check the arrangement."
+    }
+  ]
+}

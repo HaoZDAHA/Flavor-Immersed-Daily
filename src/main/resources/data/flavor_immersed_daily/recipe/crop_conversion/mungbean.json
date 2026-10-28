@@ -1,0 +1,8 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:mungbean",
+    "croptopia:greenbean",
+    "gan_delight_reborn:mung_bean"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "item.fidworkblock.startbook",
+  "landing_text": "patchouli.fidworkblock.startbook.landing",
+  "model": "fidworkblock:startbook",
+  "dont_generate_book": true,
+  "custom_book_item": "fidworkblock:startbook",
+  "use_resource_pack": true,
+  "show_progress": false,
+  "version": 0
+}

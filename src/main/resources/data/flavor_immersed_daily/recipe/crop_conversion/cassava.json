@@ -1,0 +1,10 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:cassava",
+    "createcafe:cassava_root",
+    "pamhc2crops:cassavaitem",
+    "braziliandelight:cassava_root",
+    "create_deepfried:yuca"
+  ]
+}

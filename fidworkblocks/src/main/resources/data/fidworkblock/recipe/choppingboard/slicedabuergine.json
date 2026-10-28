@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "choppingboard",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:aubergine" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:slicedabuergine",
+    "count": 3
+  },
+  "cookingTime": 0
+}

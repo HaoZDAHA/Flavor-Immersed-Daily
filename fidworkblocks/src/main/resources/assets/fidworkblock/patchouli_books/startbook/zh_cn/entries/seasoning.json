@@ -1,0 +1,16 @@
+{
+  "name": "调味料",
+  "category": "fidworkblock:seasonings",
+  "icon": "minecraft:sugar",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "物品信息栏标注有「$(bold)调味料$()」字样，并且将鼠标指针移到物品上按 $(bold)Shift$() 能查看效果的物品，都是调味料。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "当你$(bold)吃东西$()时，如果$(bold)副手$()拿着调味料，那么这次食用就能获得对应调味料的 buff。$(br2)$(bold)炒菜$()时使用的调味料也会影响菜品给予的 buff（仅限自由搭配的工序菜）。"
+    }
+  ]
+}

@@ -48,7 +48,7 @@ public class FirecrackerEntity extends ThrowableItemProjectile {
         ServerLevel serverLevel = (ServerLevel) this.level();
         Vec3 pos = this.position();
 
-        // 读取配置
+// 读取配置
         int shape = 0;
         int color = 0xFF0000;
         int fadeColor = 0xFFFFFF;
@@ -58,7 +58,7 @@ public class FirecrackerEntity extends ThrowableItemProjectile {
             fadeColor = FirecrackerHelper.getFadeColor(firecrackerStack);
         }
 
-        // 创建烟花爆炸效果
+// 创建烟花爆炸效果
         FireworkExplosion.Shape fireworkShape = FireworkExplosion.Shape.values()[shape];
         FireworkExplosion explosion = new FireworkExplosion(
                 fireworkShape,

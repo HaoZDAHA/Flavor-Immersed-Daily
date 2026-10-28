@@ -58,7 +58,7 @@ public class BananaSaplingBlock extends BushBlock implements BonemealableBlock {
 
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        // Only grow when on dirt/grass, not when on bananawood (crown)
+// Only grow when on dirt/grass, not when on bananawood (crown)
         BlockState below = level.getBlockState(pos.below());
         if (!below.is(woodSupplier.get()) && random.nextInt(7) == 0) {
             growTree(level, pos, state, random);
@@ -67,7 +67,7 @@ public class BananaSaplingBlock extends BushBlock implements BonemealableBlock {
 
     @Override
     public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
-        // Can't bonemeal when on bananawood crown
+// Can't bonemeal when on bananawood crown
         BlockState below = level.getBlockState(pos.below());
         return !below.is(woodSupplier.get());
     }
@@ -84,7 +84,7 @@ public class BananaSaplingBlock extends BushBlock implements BonemealableBlock {
 
     @Override
     public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
-        //香蕉生长的时候 没有依靠的方块就破坏掉
+// 香蕉生长的时候 没有依靠的方块就破坏掉
         if (!level.isClientSide) {
             BlockState below = level.getBlockState(pos.below());
             if (below.is(woodSupplier.get())) {
@@ -97,7 +97,7 @@ public class BananaSaplingBlock extends BushBlock implements BonemealableBlock {
 
     @Override
     protected void spawnAfterBreak(BlockState state, ServerLevel level, BlockPos pos, ItemStack tool, boolean dropExperience) {
-        //香蕉木
+// 香蕉木
         BlockState below = level.getBlockState(pos.below());
         if (!below.is(woodSupplier.get())) {
             super.spawnAfterBreak(state, level, pos, tool, dropExperience);
@@ -109,7 +109,7 @@ public class BananaSaplingBlock extends BushBlock implements BonemealableBlock {
         Block fruit = fruitSupplier.get();
         BlockState woodState = wood.defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y);
 
-        //检查生长有没有足够的空间
+// 检查生长有没有足够的空间
         for (int i = 1; i <= 4; i++) {
             BlockPos abovePos = pos.above(i);
             BlockState aboveState = level.getBlockState(abovePos);
@@ -117,12 +117,15 @@ public class BananaSaplingBlock extends BushBlock implements BonemealableBlock {
             if (i == 4 && !aboveState.isAir()) return;
         }
 
-        //生成木头
-        level.setBlock(pos, woodState, 3);            //第一层
-        level.setBlock(pos.above(1), woodState, 3);   //第二层
-        level.setBlock(pos.above(2), woodState, 3);   //第三层
+// 生成木头
+// 第一层
+        level.setBlock(pos, woodState, 3);
+// 第二层
+        level.setBlock(pos.above(1), woodState, 3);
+// 第三层
+        level.setBlock(pos.above(2), woodState, 3);
 
-        //四边的生成
+// 四边的生成
         BlockPos fruitBase = pos.above(2);
         for (Direction dir : Direction.Plane.HORIZONTAL) {
             BlockPos fruitPos = fruitBase.relative(dir);
@@ -132,7 +135,7 @@ public class BananaSaplingBlock extends BushBlock implements BonemealableBlock {
             }
         }
 
-        //顶上的叶子
+// 顶上的叶子
         level.setBlock(pos.above(3), this.defaultBlockState(), 3);
     }
 }

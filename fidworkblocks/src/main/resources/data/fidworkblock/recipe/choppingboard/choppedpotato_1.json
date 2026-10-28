@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "choppingboard",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:slicedpotato" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:choppedpotato_1",
+    "count": 2
+  },
+  "cookingTime": 0
+}

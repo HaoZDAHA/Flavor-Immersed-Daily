@@ -1,0 +1,12 @@
+{
+  "name": "绞肉机",
+  "category": "fidworkblock:blocks",
+  "icon": "fidworkblock:meatmincer",
+  "sortnum": 11,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)绞肉机$()：手持物品右键放入原料（单槽）。$(br)配方正确后，手持$(bold)绞肉机盖子$()右键密封，开始绞肉——配方不对盖子不会消耗。$(br2)一批完成会自动续批，输出满后停下；$(bold)潜行右键$()开封返还材料和盖子，开封后空手右键取出产物。"
+    }
+  ]
+}

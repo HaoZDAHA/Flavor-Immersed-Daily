@@ -4,10 +4,13 @@
   "ingredients": [
     {
       "item": "flavor_immersed_daily:greengrape"
+    },
+    {
+      "item": "flavor_immersed_daily:greengrape"
     }
   ],
   "result": {
     "id": "flavor_immersed_daily:agreengrape",
-    "count": 4
+    "count": 8
   }
 }

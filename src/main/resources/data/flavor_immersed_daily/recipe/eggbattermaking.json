@@ -6,7 +6,7 @@
       "item": "flavor_immersed_daily:eggliquid"
     },
     {
-      "item": "flavor_immersed_daily:wheatflour"
+      "tag": "c:flour"
     },
     {
       "item": "flavor_immersed_daily:tidywater"

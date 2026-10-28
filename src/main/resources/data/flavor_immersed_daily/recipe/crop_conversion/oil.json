@@ -1,0 +1,16 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:cookingoil",
+    "kaleidoscope_cookery:oil",
+    "kitchenkarrot:acorn_oil",
+    "kitchenkarrot:sunflower_oil",
+    "bakingdelight:vegetable_oil_still",
+    "syals_delight:animal_fat",
+    "extradelight:cooking_oil",
+    "concoction:animal_fat",
+    "concoction:corn_oil",
+    "rusticdelight:cooking_oil",
+    "fantasycraft:vegetableoil"
+  ]
+}

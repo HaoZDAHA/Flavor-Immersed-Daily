@@ -13,7 +13,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 
-/** Fruit-to-jam conversion performed by stomping fruit in a wood basin. */
+// Fruit-to-jam conversion performed by stomping fruit in a wood basin.
 public class WoodBasinRecipe implements Recipe<RecipeInput> {
     private final Ingredient ingredient;
     private final ItemStack result;

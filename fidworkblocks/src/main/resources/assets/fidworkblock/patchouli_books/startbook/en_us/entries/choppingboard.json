@@ -1,0 +1,12 @@
+{
+  "name": "Chopping Board",
+  "category": "fidworkblock:blocks",
+  "icon": "fidworkblock:choppingboard",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Chopping Board$(): right-click with ingredients to place them (stacks up to 64).$(br)Right-click with a $(bold)kitchen knife$() to process - results drop on top of the board instantly, no heat source needed.$(br2)Each use costs 1 durability on the knife.$(br)Right-click with an empty hand to take out the stored items."
+    }
+  ]
+}

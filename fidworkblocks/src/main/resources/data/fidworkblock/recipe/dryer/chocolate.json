@@ -1,0 +1,11 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "dryer",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:cocoasauce" }],
+  "result": {
+    "id": "flavor_immersed_daily:chocolate",
+    "count": 1
+  },
+  "cookingTime": 120
+}

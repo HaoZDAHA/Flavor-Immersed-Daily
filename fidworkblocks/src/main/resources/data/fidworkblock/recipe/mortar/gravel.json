@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "mortar",
+  "ingredients": [
+    { "item": "minecraft:gravel" }
+  ],
+  "result": {
+    "id": "flavor_immersed_daily:gravelpaste",
+    "count": 1
+  },
+  "cookingTime": 0
+}

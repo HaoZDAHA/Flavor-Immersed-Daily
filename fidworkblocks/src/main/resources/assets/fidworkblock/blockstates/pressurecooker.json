@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "fidworkblock:block/pressurecooker", "y": 0 },
+    "facing=east":  { "model": "fidworkblock:block/pressurecooker", "y": 90 },
+    "facing=south": { "model": "fidworkblock:block/pressurecooker", "y": 180 },
+    "facing=west":  { "model": "fidworkblock:block/pressurecooker", "y": 270 }
+  }
+}
