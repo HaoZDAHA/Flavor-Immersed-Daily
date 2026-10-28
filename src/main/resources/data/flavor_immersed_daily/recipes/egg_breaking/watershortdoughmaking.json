@@ -1,0 +1,13 @@
+{
+  "type": "flavor_immersed_daily:egg_breaking",
+  "shaped": false,
+  "ingredients": [
+    { "tag": "c:flour" },
+    { "item": "flavor_immersed_daily:cookingoil" },
+    { "item": "flavor_immersed_daily:cookingoil" }
+  ],
+  "results": [
+    { "item": "flavor_immersed_daily:water_short_dough", "count": 2 }
+  ],
+  "cookingTime": 60
+}

@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "mortar",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:walnutkinnel" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:walnutpowder",
+    "count": 1
+  },
+  "cookingTime": 0
+}
+

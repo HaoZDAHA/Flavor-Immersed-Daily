@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "mortar",
+  "ingredients": [
+    { "item": "minecraft:wheat" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:wheatflour",
+    "count": 2
+  },
+  "cookingTime": 0
+}
+

@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "choppingboard",
+  "ingredients": [
+    { "tag": "c:cucumbers" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:dicedcucumber",
+    "count": 3
+  },
+  "cookingTime": 0
+}
+

@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pot",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:bovinebone" },
+    { "item": "flavor_immersed_daily:tidywater" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:bonesoup",
+    "count": 1
+  },
+  "cookingTime": 120,
+  "experience": 0.5
+}

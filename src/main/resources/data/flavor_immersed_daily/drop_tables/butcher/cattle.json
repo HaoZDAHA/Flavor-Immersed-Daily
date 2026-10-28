@@ -1,0 +1,7 @@
+{
+  "1": ["flavor_immersed_daily:rawcattleblood"],
+  "2": ["minecraft:leather", "minecraft:leather", "flavor_immersed_daily:rawcattlejoint", "flavor_immersed_daily:rawcattlefat"],
+  "3": ["flavor_immersed_daily:rawcattlefeet", "flavor_immersed_daily:rawcattleleg", "flavor_immersed_daily:rawcattlefeet", "flavor_immersed_daily:rawcattleleg", "flavor_immersed_daily:rawcattlefeet", "flavor_immersed_daily:rawcattleleg", "flavor_immersed_daily:rawcattlefeet", "flavor_immersed_daily:rawcattleleg", "flavor_immersed_daily:rawcattleface", "flavor_immersed_daily:bullhorn", "flavor_immersed_daily:bullhorn", "flavor_immersed_daily:animalskull"],
+  "4": ["flavor_immersed_daily:rawcattleintestine", "flavor_immersed_daily:rawcattleliver", "flavor_immersed_daily:rawcattlelung", "flavor_immersed_daily:rawcattlestomach", "flavor_immersed_daily:rawcattleheart"],
+  "5": ["minecraft:beef", "minecraft:beef", "minecraft:beef", "flavor_immersed_daily:rawcattletendon", "flavor_immersed_daily:rawcattletendon", "flavor_immersed_daily:rawsnowflakebeef", "flavor_immersed_daily:bovinebone"]
+}

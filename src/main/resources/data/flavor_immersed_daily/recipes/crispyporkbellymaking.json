@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:rawpigstreakypork"
+    },
+    {
+      "tag": "c:salt"
+    },
+    {
+      "item": "flavor_immersed_daily:whitesugarsyrup"
+    },
+    {
+      "item": "flavor_immersed_daily:vinegar"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:crispyporkbelly",
+    "count": 1
+  }
+}

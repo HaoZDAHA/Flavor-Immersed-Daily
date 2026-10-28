@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "mortar",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:corn_0" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:wheatflour",
+    "count": 1
+  },
+  "cookingTime": 0
+}
+

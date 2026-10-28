@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "jar",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:cookedsausage" },
+    { "tag": "c:salt" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:curedsausage",
+    "count": 1
+  },
+  "cookingTime": 40
+}
+

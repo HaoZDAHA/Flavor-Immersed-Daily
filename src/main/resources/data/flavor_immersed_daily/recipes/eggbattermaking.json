@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:eggliquid"
+    },
+    {
+      "tag": "c:flour"
+    },
+    {
+      "item": "flavor_immersed_daily:tidywater"
+    },
+    {
+      "item": "flavor_immersed_daily:tidywater"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:eggbatter",
+    "count": 2
+  }
+}

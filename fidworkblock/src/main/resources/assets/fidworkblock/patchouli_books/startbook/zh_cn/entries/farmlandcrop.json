@@ -1,0 +1,12 @@
+{
+  "name": "耕地作物",
+  "category": "fidworkblock:crops",
+  "icon": "minecraft:wheat_seeds",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)耕地作物$()$(bold)直接耕种在耕地上$()即可。$(br2)它们的生长特性与 Minecraft 原版的小麦$(bold)完全一致$()：需要耕地、光照，成熟后破坏即可收获种子与果实。"
+    }
+  ]
+}

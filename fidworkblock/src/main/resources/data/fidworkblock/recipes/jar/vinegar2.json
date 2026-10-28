@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "jar",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:soybean" },
+    { "item": "flavor_immersed_daily:polishedglutinousrice_2" },
+    { "item": "flavor_immersed_daily:tidywater" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:vinegar",
+    "count": 2
+  },
+  "cookingTime": 40
+}
+

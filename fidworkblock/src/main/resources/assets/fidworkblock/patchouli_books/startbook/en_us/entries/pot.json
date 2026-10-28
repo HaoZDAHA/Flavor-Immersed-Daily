@@ -1,0 +1,12 @@
+{
+  "name": "Pot",
+  "category": "fidworkblock:blocks",
+  "icon": "fidworkblock:pot",
+  "sortnum": 9,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Pot$(): $(bold)right-click$() with an empty hand to open the GUI, which has 6 ingredient slots, 1 container slot (bowl, plate, etc.) and 1 output slot.$(br2)After adding ingredients it cooks $(bold)automatically$() with $(bold)no heat source$() required; recipes that need a container consume 1 per batch. Take the result from the output slot when done."
+    }
+  ]
+}

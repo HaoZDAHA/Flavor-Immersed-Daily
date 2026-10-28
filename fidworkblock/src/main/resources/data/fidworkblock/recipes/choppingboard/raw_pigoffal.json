@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "choppingboard",
+  "ingredients": [
+    { "tag": "fid:pigorgans" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:raw_pigoffal",
+    "count": 1
+  },
+  "cookingTime": 0
+}
+

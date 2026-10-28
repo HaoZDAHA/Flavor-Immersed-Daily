@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "steambox",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:chineseyam"
+    }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:cookedchineseyam",
+    "count": 1
+  },
+  "cookingTime": 200
+}
+

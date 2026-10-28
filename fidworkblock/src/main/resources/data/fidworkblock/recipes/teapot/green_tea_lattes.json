@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "teapot",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:tidywater" },
+    { "item": "flavor_immersed_daily:milkbottle" },
+    { "item": "flavor_immersed_daily:drygreentea" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:green_tea_lattes",
+    "count": 2
+  },
+  "cookingTime": 40
+}
+

@@ -1,0 +1,8 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "particle": "flavor_immersed_daily:block/fridge"
+  },
+  "elements": [
+  ]
+}

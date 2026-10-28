@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:rawglutinousskin"
+    },
+    {
+      "tag": "fid:filling"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:raw_tangyuan",
+    "count": 1
+  }
+}

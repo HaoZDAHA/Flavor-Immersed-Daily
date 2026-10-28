@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pressurecooker",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:paddygrain" },
+    { "item": "flavor_immersed_daily:tidywater" }],
+  "result": {
+    "item": "flavor_immersed_daily:rice",
+    "count": 1
+  },
+  "cookingTime": 120
+}
+

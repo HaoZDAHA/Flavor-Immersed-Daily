@@ -1,0 +1,24 @@
+{
+  "replace": false,
+  "values": [
+    "flavor_immersed_daily:cutcabbage",
+    "flavor_immersed_daily:radish",
+    "flavor_immersed_daily:whitemushroom",
+    "flavor_immersed_daily:blackfungus",
+    "flavor_immersed_daily:dryblackfungus",
+    "flavor_immersed_daily:pleurotuseryngii",
+    "flavor_immersed_daily:enokimushroom",
+    "flavor_immersed_daily:tremella",
+    "flavor_immersed_daily:fragrantmushroom",
+    "flavor_immersed_daily:dryfragrantmushroom",
+    "flavor_immersed_daily:broccoil",
+    "flavor_immersed_daily:cauliflower",
+    "flavor_immersed_daily:spinach",
+    "flavor_immersed_daily:celery",
+    "flavor_immersed_daily:loofah",
+    "flavor_immersed_daily:dicedwaxgourd",
+    "flavor_immersed_daily:zucchini",
+    "flavor_immersed_daily:cowpea",
+    "flavor_immersed_daily:cucumber"
+  ]
+}

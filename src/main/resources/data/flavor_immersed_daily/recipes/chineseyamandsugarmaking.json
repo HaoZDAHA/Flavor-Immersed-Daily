@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:cookedchineseyam"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:chineseyamandsugar",
+    "count": 1
+  }
+}

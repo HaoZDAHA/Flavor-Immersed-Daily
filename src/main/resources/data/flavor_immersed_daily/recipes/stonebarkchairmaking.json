@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "a a"
+  ],
+  "key": {
+    "a": {
+      "item": "flavor_immersed_daily:stonebark_planks"
+    }
+  },
+  "result": { "item": "flavor_immersed_daily:stonebarkchair",
+    "count": 1
+  }
+}

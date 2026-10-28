@@ -1,0 +1,16 @@
+{
+  "name": "Wok",
+  "category": "fidworkblock:blocks",
+  "icon": "fidworkblock:wok",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The first step for the $(bold)Wok$() is $(bold)oiling$(): right-click it with $(bold)cooking oil$(). Until oiled, adding ingredients, stir-frying and seasoning all do nothing.$(br2)Once oiled, right-click with any item to add ingredients (6 slots, 1 per slot)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Right-click with a $(bold)spatula$() to stir-fry - the stir count determines the dish grade: too few stays raw, too many gets burnt, $(bold)5~9$() is perfect.$(br2)Finally right-click with a $(bold)seasoning$() (an item whose tooltip shows a \"Seasoning\" label and a potion effect description) to finish: matching recipes make a dish, otherwise a process dish is made and the seasoning effect is added. Results drop on top of the wok."
+    }
+  ]
+}

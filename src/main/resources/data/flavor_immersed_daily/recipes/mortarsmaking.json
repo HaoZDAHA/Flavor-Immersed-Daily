@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "  a",
+    "aa ",
+    "aa "
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:cobblestone"
+    }
+  },
+  "result": { "item": "fidworkblock:mortar",
+    "count": 1
+  }
+}

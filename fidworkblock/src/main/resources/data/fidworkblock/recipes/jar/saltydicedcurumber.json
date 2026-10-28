@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "jar",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:slicedcucumber" },
+    { "tag": "c:salt" },
+    { "item": "flavor_immersed_daily:tidywater" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:saltydicedcurumber",
+    "count": 1
+  },
+  "cookingTime": 40
+}
+

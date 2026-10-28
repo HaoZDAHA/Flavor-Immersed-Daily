@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pressurecooker",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:kaolianggrain" },
+    { "item": "flavor_immersed_daily:tidywater" },
+    { "item": "flavor_immersed_daily:tidywater" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:kaoliangporridge",
+    "count": 2
+  },
+  "cookingTime": 120
+}
+

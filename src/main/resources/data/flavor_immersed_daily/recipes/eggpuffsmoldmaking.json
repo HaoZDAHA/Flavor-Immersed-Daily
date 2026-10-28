@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "aca",
+    " d "
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:iron_ingot"
+    },
+    "b": {
+      "item": "minecraft:iron_nugget"
+    },
+    "c": {
+      "item": "minecraft:egg"
+    },
+    "d": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": { "item": "flavor_immersed_daily:eeggpuffsmould",
+    "count": 1
+  }
+}

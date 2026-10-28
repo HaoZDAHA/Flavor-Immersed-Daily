@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "steambox",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:raw_baozi"
+    }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:cooked_baozi",
+    "count": 1
+  },
+  "cookingTime": 200
+}
+

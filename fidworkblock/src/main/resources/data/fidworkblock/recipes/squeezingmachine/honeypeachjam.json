@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "squeezingmachine",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:honeypeach" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:honeypeachjam",
+    "count": 2
+  },
+  "cookingTime": 80
+}
+

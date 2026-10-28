@@ -1,0 +1,16 @@
+{
+  "name": "Trellis Crops",
+  "category": "fidworkblock:crops",
+  "icon": "minecraft:vine",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "First craft a $(bold)trellis$() ($(item)flavor_immersed_daily:trellis$()) and build it $(bold)3 blocks tall$() on dirt.$(br2)Then place more trellises $(bold)horizontally on the sides of the top layer$() - they can extend $(bold)infinitely$()."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Once the structure is built, hold a $(bold)trellis crop seed$() and $(bold)right-click the bottom layer$() of the trellis.$(br2)The seed will slowly grow and spread $(bold)horizontally across the trellises at the top layer$().$(br2)$(bold)Fruits grow on those horizontal top trellises$() - $(bold)right-click to harvest$()!"
+    }
+  ]
+}

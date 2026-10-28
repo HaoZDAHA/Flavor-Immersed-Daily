@@ -1,0 +1,16 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pot",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:meatpaste" },
+    { "item": "flavor_immersed_daily:meatpaste" },
+    { "item": "flavor_immersed_daily:meatpaste" },
+    { "item": "flavor_immersed_daily:tidywater" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:meatballsoup",
+    "count": 1
+  },
+  "cookingTime": 120,
+  "experience": 0.5
+}

@@ -1,0 +1,12 @@
+{
+  "name": "变温烤箱",
+  "category": "fidworkblock:blocks",
+  "icon": "fidworkblock:dryer",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)变温烤箱$()：$(bold)空手右键$()打开界面，放入食材后$(bold)自动烘干$()，无需热源。完成后从输出槽取出。$(br2)它同时也是$(bold)炸锅$()的底座，炸锅必须放在变温烤箱上方才能使用。"
+    }
+  ]
+}

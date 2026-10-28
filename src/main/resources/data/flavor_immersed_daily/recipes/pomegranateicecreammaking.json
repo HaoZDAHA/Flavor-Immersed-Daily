@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:pomegranatejam"
+    },
+    {
+      "item": "flavor_immersed_daily:cream"
+    },
+    {
+      "item": "flavor_immersed_daily:sorbet"
+    },
+    {
+      "item": "flavor_immersed_daily:eggpancake"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:pomegranateicecream",
+    "count": 2
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "type": "flavor_immersed_daily:fridge_tempering",
+  "ingredient": { "item": "flavor_immersed_daily:tidywater" },
+  "result": { "item": "flavor_immersed_daily:sorbet", "count": 1 },
+  "cookingTime": 80
+}

@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "fryingpan",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:dicedbread" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:drieddicedbread",
+    "count": 1
+  },
+  "cookingTime": 60
+}
+

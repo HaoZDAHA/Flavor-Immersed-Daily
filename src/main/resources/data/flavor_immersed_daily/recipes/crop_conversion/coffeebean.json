@@ -1,0 +1,13 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:coffeebeanseed",
+    "createcafe:coffee",
+    "bakeries:raw_coffee_bean",
+    "croptopia:coffee_beans",
+    "pamhc2crops:coffeebeanitem",
+    "extradelight:green_coffee",
+    "youkaishomecoming:green_coffee_bean",
+    "rusticdelight:coffee_beans"
+  ]
+}

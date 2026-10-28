@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "squeezingmachine",
+  "ingredients": [
+    { "item": "minecraft:apple" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:applejam",
+    "count": 2
+  },
+  "cookingTime": 80
+}
+

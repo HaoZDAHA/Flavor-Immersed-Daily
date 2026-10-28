@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "squeezingmachine",
+  "ingredients": [
+    { "item": "minecraft:melon" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:watermelonjam",
+    "count": 2
+  },
+  "cookingTime": 80
+}
+

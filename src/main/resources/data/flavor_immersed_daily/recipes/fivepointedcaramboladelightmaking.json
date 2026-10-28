@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:friedhempball"
+    },
+    {
+      "item": "flavor_immersed_daily:electrolytebeverage"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:fivepointedcaramboladelight",
+    "count": 1
+  }
+}

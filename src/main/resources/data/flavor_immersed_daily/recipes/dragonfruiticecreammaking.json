@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:dragonfruitjam"
+    },
+    {
+      "item": "flavor_immersed_daily:cream"
+    },
+    {
+      "item": "flavor_immersed_daily:sorbet"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:dragonfruiticecream",
+    "count": 1
+  }
+}

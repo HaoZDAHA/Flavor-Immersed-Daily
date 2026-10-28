@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " a ",
+    "aba",
+    "cdc"
+  ],
+  "key": {
+    "a": {
+      "tag": "minecraft:planks"
+    },
+    "b": {
+      "item": "minecraft:glowstone"
+    },
+    "c": {
+      "tag": "minecraft:wooden_slabs"
+    },
+    "d": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": { "item": "flavor_immersed_daily:plank_hanging_light",
+    "count": 1
+  }
+}

@@ -1,0 +1,5 @@
+// 1.20.1	2026-08-28T00:46:40.6054844	Tags for minecraft:block mod id flavor_immersed_daily
+65c450d7567d2dcf0f54594c30db0f2e48587e95 data/minecraft/tags/blocks/logs.json
+65c450d7567d2dcf0f54594c30db0f2e48587e95 data/minecraft/tags/blocks/logs_that_burn.json
+65c450d7567d2dcf0f54594c30db0f2e48587e95 data/minecraft/tags/blocks/mineable/axe.json
+e3cda3fe8d6ef819a310378276ad7f9566d0112e data/minecraft/tags/blocks/mineable/hoe.json

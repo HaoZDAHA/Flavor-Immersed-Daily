@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "mortar",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:redrepper" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:chillipowder",
+    "count": 1
+  },
+  "cookingTime": 0
+}
+

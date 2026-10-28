@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=north,sealed=false": { "model": "fidworkblock:block/teapot", "y": 0 },
+    "facing=east,sealed=false":  { "model": "fidworkblock:block/teapot", "y": 90 },
+    "facing=south,sealed=false": { "model": "fidworkblock:block/teapot", "y": 180 },
+    "facing=west,sealed=false":  { "model": "fidworkblock:block/teapot", "y": 270 },
+    "facing=north,sealed=true":  { "model": "fidworkblock:block/teapot_sealed", "y": 0 },
+    "facing=east,sealed=true":   { "model": "fidworkblock:block/teapot_sealed", "y": 90 },
+    "facing=south,sealed=true":  { "model": "fidworkblock:block/teapot_sealed", "y": 180 },
+    "facing=west,sealed=true":   { "model": "fidworkblock:block/teapot_sealed", "y": 270 }
+  }
+}

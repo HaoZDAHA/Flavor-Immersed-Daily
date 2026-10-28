@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "squeezingmachine",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:loquat" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:loquatjam",
+    "count": 2
+  },
+  "cookingTime": 80
+}
+

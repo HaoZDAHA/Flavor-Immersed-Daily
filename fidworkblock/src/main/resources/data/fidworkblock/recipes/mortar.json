@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  P",
+    "PPP",
+    "PPP"
+  ],
+  "key": {
+    "P": { "item": "minecraft:cobblestone" }
+  },
+  "result": {
+    "item": "fidworkblock:mortar",
+    "count": 1
+  }
+}
+

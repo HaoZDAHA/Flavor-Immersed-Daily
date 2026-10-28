@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "mortar",
+  "ingredients": [
+    { "item": "minecraft:ice" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:sorbet",
+    "count": 2
+  },
+  "cookingTime": 0
+}
+

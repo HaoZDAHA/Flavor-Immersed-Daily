@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:flourskin"
+    },
+    {
+      "item": "flavor_immersed_daily:vegetableandeggstuffing"
+    },
+    {
+      "item": "flavor_immersed_daily:flourskin"
+    },
+    {
+      "item": "flavor_immersed_daily:vegetablepaste"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:rawspringroll",
+    "count": 2
+  }
+}

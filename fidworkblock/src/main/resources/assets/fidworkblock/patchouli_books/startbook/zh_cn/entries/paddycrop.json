@@ -1,0 +1,12 @@
+{
+  "name": "水田作物",
+  "category": "fidworkblock:crops",
+  "icon": "minecraft:lily_pad",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)水田作物$()需要种植在$(bold)水深为 1 格的泥土$()上。$(br2)种植后它们的生长特性与原版小麦几乎一致，唯一不同的是它们$(bold)生长在水里$()。"
+    }
+  ]
+}

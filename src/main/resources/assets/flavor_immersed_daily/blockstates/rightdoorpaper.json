@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "flavor_immersed_daily:block/rightdoorpaper" },
+    "facing=south": { "model": "flavor_immersed_daily:block/rightdoorpaper", "y": 180 },
+    "facing=east":  { "model": "flavor_immersed_daily:block/rightdoorpaper", "y": 90 },
+    "facing=west":  { "model": "flavor_immersed_daily:block/rightdoorpaper", "y": 270 }
+  }
+}

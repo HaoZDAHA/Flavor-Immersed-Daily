@@ -1,0 +1,16 @@
+{
+  "name": "Getting Crop Seeds",
+  "category": "fidworkblock:seeds",
+  "icon": "minecraft:wheat_seeds",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "First you need a pair of $(bold)weeding scissors$() ($(item)flavor_immersed_daily:kitchenscissor$()).$(br)Use them to break $(bold)grass$(), or $(bold)oak, birch, spruce and jungle leaves$(), for a chance to drop $(bold)wild crop stacks$().$(br2)Different kinds of plants may drop different wild crops!"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Then craft an $(bold)agricultural appraisal machine$() ($(item)flavor_immersed_daily:agricultureagriculturalappraisalmachine$()) and place it down.$(br2)Hold the $(bold)wild crop stack$() you just got and $(bold)right-click$() the machine to obtain crop seeds."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:flourpaste"
+    },
+    {
+      "item": "flavor_immersed_daily:flourpaste"
+    },
+    {
+      "item": "flavor_immersed_daily:flourpaste"
+    },
+    {
+      "item": "flavor_immersed_daily:nahco_3"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:fermentedflourpaste",
+    "count": 3
+  }
+}

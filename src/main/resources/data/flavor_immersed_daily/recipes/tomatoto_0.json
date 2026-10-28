@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "c:tomato"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:tomatoseed",
+    "count": 2
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pressurecooker",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:paddygrain" },
+    { "item": "flavor_immersed_daily:tidywater" },
+    { "item": "flavor_immersed_daily:tidywater" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:rice_porridge",
+    "count": 2
+  },
+  "cookingTime": 120
+}
+

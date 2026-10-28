@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:strawberry"
+    },
+    {
+      "item": "flavor_immersed_daily:strawberryjam"
+    },
+    {
+      "item": "flavor_immersed_daily:rawflourroll"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:strawberrycakeroll",
+    "count": 1
+  }
+}

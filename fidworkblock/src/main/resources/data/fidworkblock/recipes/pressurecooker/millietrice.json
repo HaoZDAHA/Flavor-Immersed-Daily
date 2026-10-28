@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pressurecooker",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:millet_grain" },
+    { "item": "flavor_immersed_daily:tidywater" }],
+  "result": {
+    "item": "flavor_immersed_daily:millietrice",
+    "count": 1
+  },
+  "cookingTime": 120
+}
+

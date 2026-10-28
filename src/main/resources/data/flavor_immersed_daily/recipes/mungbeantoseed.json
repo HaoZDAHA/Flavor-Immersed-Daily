@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:mungbean"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:mungbeanplant",
+    "count": 2
+  }
+}

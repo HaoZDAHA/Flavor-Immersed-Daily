@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 100,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "flavor_immersed_daily:rawpigear"
+  },
+  "result": { "item": "flavor_immersed_daily:cookedpigear"
+  }
+}

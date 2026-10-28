@@ -1,0 +1,16 @@
+{
+  "jars": [
+    {
+      "identifier": {
+        "group": "com.y271727uy",
+        "artifact": "fidworkblock"
+      },
+      "version": {
+        "range": "[1.0.0,)",
+        "artifactVersion": "1.0.0"
+      },
+      "path": "META-INF/jarjar/fidworkblock-1.0.0.jar",
+      "isObfuscated": false
+    }
+  ]
+}

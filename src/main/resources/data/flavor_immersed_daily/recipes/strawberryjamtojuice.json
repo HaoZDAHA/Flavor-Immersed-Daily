@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:strawberryjam"
+    },
+    {
+      "item": "flavor_immersed_daily:tidywater"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:strawberryjuice",
+    "count": 2
+  }
+}

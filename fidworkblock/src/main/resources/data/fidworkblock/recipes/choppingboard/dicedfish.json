@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "choppingboard",
+  "ingredients": [
+    { "tag": "fid:fish" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:dicedfish",
+    "count": 2
+  },
+  "cookingTime": 0
+}
+

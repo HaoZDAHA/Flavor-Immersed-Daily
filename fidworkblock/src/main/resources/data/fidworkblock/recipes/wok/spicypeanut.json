@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "wok",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:peanut_0" },
+    { "item": "flavor_immersed_daily:redrepper" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:spicypeanut",
+    "count": 1
+  },
+  "cookingTime": 0
+}
+

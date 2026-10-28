@@ -1,0 +1,8 @@
+plugins {
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
+}
+
+// fidworkblock（厨具附属模组）：作为独立构建并入本工作区，一起构建、一起打包。
+// 它仍是独立的 mod（modid 依旧是 fidworkblock，方块/物品命名空间不变），
+// 本工程只是通过 jarJar 把它的产物（SRG 映射 jar）嵌进自己的 jar。
+includeBuild('fidworkblock')

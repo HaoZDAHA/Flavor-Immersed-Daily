@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "wok",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:eggliquid" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:omelette",
+    "count": 1
+  },
+  "cookingTime": 0
+}
+

@@ -1,0 +1,16 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pot",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:cutchinesecabbage" },
+    { "item": "flavor_immersed_daily:tidywater" },
+    { "item": "flavor_immersed_daily:redrepper" },
+    { "item": "flavor_immersed_daily:bonesoupessence" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:chinesecabbageinsoup",
+    "count": 1
+  },
+  "cookingTime": 120,
+  "experience": 0.5
+}

@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "dryer",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:raweggnoodles" }],
+  "result": {
+    "item": "flavor_immersed_daily:eggvermicelli",
+    "count": 1
+  },
+  "cookingTime": 120
+}
+

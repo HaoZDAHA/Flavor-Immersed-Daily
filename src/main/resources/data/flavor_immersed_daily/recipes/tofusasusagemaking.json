@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:thousand_layer_tofu_skin"
+    },
+    {
+      "item": "flavor_immersed_daily:thousand_layer_tofu_skin"
+    },
+    {
+      "item": "flavor_immersed_daily:thousand_layer_tofu_skin"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:tofu_sausage",
+    "count": 3
+  }
+}

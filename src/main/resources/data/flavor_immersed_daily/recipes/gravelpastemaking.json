@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:tidywater"
+    },
+    {
+      "item": "minecraft:gravel"
+    },
+    {
+      "item": "flavor_immersed_daily:mallet"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:gravelpaste",
+    "count": 2
+  }
+}

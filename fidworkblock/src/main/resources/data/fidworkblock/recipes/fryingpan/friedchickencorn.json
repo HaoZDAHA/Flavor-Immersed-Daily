@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "fryingpan",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:rawdicedchickenwithbatter" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:friedchickencorn",
+    "count": 1
+  },
+  "cookingTime": 60
+}
+

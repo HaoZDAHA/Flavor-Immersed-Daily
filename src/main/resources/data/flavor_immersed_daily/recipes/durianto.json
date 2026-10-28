@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:durianshellhat_helmet"
+    }
+  ],
+  "result": { "item": "minecraft:bone_meal",
+    "count": 2
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "jar",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:soy_bean_seed" },
+    { "item": "flavor_immersed_daily:garlicpowder" },
+    { "tag": "c:salt" },
+    { "item": "flavor_immersed_daily:tidywater" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:thickbroadbeansauce",
+    "count": 2
+  },
+  "cookingTime": 40
+}
+

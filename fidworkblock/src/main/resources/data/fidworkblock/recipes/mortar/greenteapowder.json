@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "mortar",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:drygreentea" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:greenteapowder",
+    "count": 1
+  },
+  "cookingTime": 0
+}
+

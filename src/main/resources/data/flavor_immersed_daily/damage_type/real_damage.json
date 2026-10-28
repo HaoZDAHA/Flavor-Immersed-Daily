@@ -1,0 +1,14 @@
+{
+  "exhaustion": 0.0,
+  "message_id": "flavor_immersed_daily.real_damage",
+  "scaling": "when_caused_by_living_non_player",
+  "effects": "hurt",
+  "death_message_type": "default",
+  "bypasses_armor": true,
+  "bypasses_enchantments": true,
+  "bypasses_magic": true,
+  "bypasses_resistance": true,
+  "bypasses_shield": true,
+  "bypasses_effects": true,
+  "bypasses_invulnerability": false
+}

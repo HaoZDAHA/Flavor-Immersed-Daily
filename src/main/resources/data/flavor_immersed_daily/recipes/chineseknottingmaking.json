@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " a ",
+    "aba",
+    " a "
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:string"
+    },
+    "b": {
+      "item": "minecraft:red_dye"
+    }
+  },
+  "result": { "item": "flavor_immersed_daily:chinese_knotting",
+    "count": 1
+  }
+}

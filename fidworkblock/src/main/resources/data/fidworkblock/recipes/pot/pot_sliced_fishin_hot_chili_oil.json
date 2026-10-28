@@ -1,0 +1,16 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pot",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:dicedfish" },
+    { "item": "flavor_immersed_daily:beansprout" },
+    { "item": "flavor_immersed_daily:cookingoil" },
+    { "item": "flavor_immersed_daily:redrepper" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:sliced_fishin_hot_chili_oil",
+    "count": 1
+  },
+  "cookingTime": 120,
+  "experience": 0.5
+}

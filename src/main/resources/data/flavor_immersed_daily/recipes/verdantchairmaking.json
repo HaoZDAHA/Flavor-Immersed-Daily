@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a  ",
+    "aaa",
+    "a a"
+  ],
+  "key": {
+    "a": {
+      "item": "flavor_immersed_daily:verdant_grace_planks"
+    }
+  },
+  "result": { "item": "flavor_immersed_daily:verdantgracechair",
+    "count": 2
+  }
+}

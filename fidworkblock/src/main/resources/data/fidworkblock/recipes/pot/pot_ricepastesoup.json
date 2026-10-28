@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pot",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:rice_porridge" },
+    { "tag": "c:flour" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:ricepastesoup",
+    "count": 1
+  },
+  "cookingTime": 120,
+  "experience": 0.5
+}

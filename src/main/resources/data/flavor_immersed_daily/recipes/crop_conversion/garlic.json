@@ -1,0 +1,12 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:garlic",
+    "bakingdelight:garlic",
+    "croptopia:garlic",
+    "pamhc2crops:garlicitem",
+    "extradelight:garlic",
+    "braziliandelight:garlic_bulb",
+    "veggiesdelight:garlic"
+  ]
+}

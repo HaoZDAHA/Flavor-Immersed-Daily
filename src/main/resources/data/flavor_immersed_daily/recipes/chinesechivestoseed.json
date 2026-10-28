@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:chinesechives"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:chinesechivesseed",
+    "count": 2
+  }
+}

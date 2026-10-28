@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pressurecooker",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:kaolianggrain" },
+    { "item": "flavor_immersed_daily:tidywater" }  ],
+  "result": {
+    "item": "flavor_immersed_daily:kaoliangrice",
+    "count": 1
+  },
+  "cookingTime": 120
+}
+

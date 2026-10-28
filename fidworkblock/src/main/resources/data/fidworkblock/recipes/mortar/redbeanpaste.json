@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "mortar",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:red_bean_block" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:redbeanpaste",
+    "count": 1
+  },
+  "cookingTime": 0
+}
+

@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "choppingboard",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:sweetpotatodough" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:drypowderskin",
+    "count": 3
+  },
+  "cookingTime": 0
+}
+

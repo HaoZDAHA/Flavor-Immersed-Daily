@@ -1,0 +1,20 @@
+{
+  "name": "屠宰设施",
+  "category": "fidworkblock:livestock",
+  "icon": "minecraft:chain",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "准备一个$(bold)大挂钩$()（$(item)flavor_immersed_daily:bighook$()），把它挂在$(bold)固体方块下方$()。$(br2)大挂钩的下方可以放一个$(bold)木盆$()（$(item)flavor_immersed_daily:woodbasin$()）用来盛放接下来的产物——不放也行，只是掉落物会掉得满地都是。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "制作一把$(bold)斩骨刀$()（$(item)flavor_immersed_daily:bonecutterknife$()），用它攻击$(bold)鸡、猪、牛、羊$()以获取对应动物的尸体。$(br2)手持尸体$(bold)右键$()大挂钩即可悬挂。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "悬挂好的尸体会显示你接下来需要用到的刀具：除了斩骨刀以外，还需要制作$(bold)宽刃刀$()（$(item)flavor_immersed_daily:wideedgedknife$()）和$(bold)切割刀$()（$(item)flavor_immersed_daily:sharpknife$()），三把刀轮换进行屠宰。$(br2)值得一提的是，大挂钩还有一个好玩的玩法：用它$(bold)攻击一个血量低于你并且非敌对的生物$()，可以把它牵引住并挂在墙下——当然，你也可以挂你的朋友。"
+    }
+  ]
+}

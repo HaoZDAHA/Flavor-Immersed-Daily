@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "stage=0": { "model": "flavor_immersed_daily:block/sauteed_potato_green_pepper_eggplant_stage0" },
+    "stage=1": { "model": "flavor_immersed_daily:block/sauteed_potato_green_pepper_eggplant_stage1" },
+    "stage=2": { "model": "flavor_immersed_daily:block/sauteed_potato_green_pepper_eggplant_stage2" }
+  }
+}

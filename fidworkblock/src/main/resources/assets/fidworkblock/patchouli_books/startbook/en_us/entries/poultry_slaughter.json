@@ -1,0 +1,16 @@
+{
+  "name": "Poultry Butchering",
+  "category": "fidworkblock:livestock",
+  "icon": "minecraft:feather",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Poultry is butchered differently from livestock$().$(br)After using the $(bold)wide-edged knife$() to get $(bold)chicken blood$(), $(bold)right-click$() to take the chicken down.$(br2)Put $(bold)pure water$() ($(item)flavor_immersed_daily:tidywater$()) into the wood basin, put the chicken back in, then $(bold)right-click to pluck$() it."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "After plucking, hang the chicken back on the $(bold)big hook$() and continue butchering and breaking it down."
+    }
+  ]
+}

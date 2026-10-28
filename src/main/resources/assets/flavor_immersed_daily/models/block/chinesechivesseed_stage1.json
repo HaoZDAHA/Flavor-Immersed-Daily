@@ -1,0 +1,39 @@
+{
+	
+	"parent": "block/block",
+	"credit": "Made with Blockbench",
+		"render_type": "minecraft:cutout",
+	"textures": {
+		"1": "flavor_immersed_daily:block/chinesechivesseed0"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 1],
+			"to": [22, 22, 1],
+			"rotation": {"angle": -45, "axis": "y", "origin": [1, 1, 1]},
+			"faces": {
+				"north": {"uv": [0, 0, 5.5, 5.5], "texture": "#1"},
+				"east": {"uv": [0, 0, 0, 16], "texture": "#1"},
+				"south": {"uv": [0, 0, 5.5, 5.5], "texture": "#1"},
+				"west": {"uv": [0, 0, 0, 16], "texture": "#1"},
+				"up": {"uv": [0, 0, 16, 0], "texture": "#1"},
+				"down": {"uv": [0, 0, 16, 0], "texture": "#1"}
+			}
+		},
+		{
+			"from": [-2.92893, 0, 8.07107],
+			"to": [19.07107, 22, 8.07107],
+			"rotation": {"angle": 45, "axis": "y", "origin": [8.07107, 11, 8.07107]},
+			"faces": {
+				"north": {"uv": [0, 0, 5.5, 5.5], "texture": "#1"},
+				"east": {"uv": [0, 0, 0, 16], "texture": "#1"},
+				"south": {"uv": [0, 0, 5.5, 5.5], "texture": "#1"},
+				"west": {"uv": [0, 0, 0, 16], "texture": "#1"},
+				"up": {"uv": [0, 0, 16, 0], "texture": "#1"},
+				"down": {"uv": [0, 0, 16, 0], "texture": "#1"}
+			}
+		}
+	]
+}
+
+

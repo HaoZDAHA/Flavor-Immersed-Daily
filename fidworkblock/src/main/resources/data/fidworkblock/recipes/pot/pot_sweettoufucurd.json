@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pot",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:tofucurd" },
+    { "item": "flavor_immersed_daily:tidywater" },
+    { "item": "minecraft:sugar" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:sweettoufucurd",
+    "count": 1
+  },
+  "cookingTime": 120,
+  "experience": 0.5
+}

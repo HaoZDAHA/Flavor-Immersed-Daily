@@ -1,0 +1,11 @@
+{
+  "type": "flavor_immersed_daily:egg_breaking",
+  "shaped": false,
+  "ingredients": [
+    { "tag": "c:dough" }
+  ],
+  "results": [
+    { "item": "flavor_immersed_daily:rawflourpancake", "count": 2 }
+  ],
+  "cookingTime": 60
+}

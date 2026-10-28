@@ -1,0 +1,11 @@
+{
+  "type": "flavor_immersed_daily:egg_breaking",
+  "shaped": false,
+  "ingredients": [
+    { "item": "minecraft:ice" }
+  ],
+  "results": [
+    { "item": "flavor_immersed_daily:sorbet", "count": 2 }
+  ],
+  "cookingTime": 60
+}

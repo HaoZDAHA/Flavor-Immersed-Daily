@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    "SAS",
+    "PPP"
+  ],
+  "key": {
+    "P": { "item": "minecraft:glass" },
+    "S": { "item": "minecraft:iron_ingot" },
+    "A": { "item": "minecraft:iron_sword" }
+  },
+  "result": {
+    "item": "fidworkblock:squeezingmachine",
+    "count": 1
+  }
+}
+

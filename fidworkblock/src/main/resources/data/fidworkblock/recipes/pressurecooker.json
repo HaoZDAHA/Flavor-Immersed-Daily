@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PPP",
+    "PSP",
+    "SSS"
+  ],
+  "key": {
+    "P": { "item": "minecraft:iron_ingot" },
+    "S": { "item": "minecraft:smooth_stone" }
+  },
+  "result": {
+    "item": "fidworkblock:pressurecooker",
+    "count": 1
+  }
+}
+

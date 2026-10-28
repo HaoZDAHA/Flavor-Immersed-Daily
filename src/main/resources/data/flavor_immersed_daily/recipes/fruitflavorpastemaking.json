@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:multijam"
+    },
+    {
+      "item": "flavor_immersed_daily:waxgroudpaste"
+    },
+    {
+      "item": "flavor_immersed_daily:waxgroudpaste"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:fruitflavoredmooncakestuffing",
+    "count": 2
+  }
+}

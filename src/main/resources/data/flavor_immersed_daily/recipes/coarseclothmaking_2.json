@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:sheepbread"
+    },
+    {
+      "item": "flavor_immersed_daily:sheepbread"
+    },
+    {
+      "item": "flavor_immersed_daily:sheepbread"
+    },
+    {
+      "item": "flavor_immersed_daily:sheepbread"
+    },
+    {
+      "item": "flavor_immersed_daily:sheepbread"
+    },
+    {
+      "item": "flavor_immersed_daily:sheepbread"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:coarsecloth",
+    "count": 1
+  }
+}

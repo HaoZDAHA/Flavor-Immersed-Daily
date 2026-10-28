@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " a ",
+    "bcd",
+    " a "
+  ],
+  "key": {
+    "a": {
+      "item": "flavor_immersed_daily:dicedbread"
+    },
+    "b": {
+      "item": "flavor_immersed_daily:cutcabbage"
+    },
+    "c": {
+      "item": "flavor_immersed_daily:dicedtomato"
+    },
+    "d": {
+      "item": "minecraft:cooked_beef"
+    }
+  },
+  "result": { "item": "flavor_immersed_daily:hamburgerbread",
+    "count": 1
+  }
+}

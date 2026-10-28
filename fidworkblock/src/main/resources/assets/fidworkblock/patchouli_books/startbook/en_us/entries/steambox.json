@@ -1,0 +1,16 @@
+{
+  "name": "Steambox",
+  "category": "fidworkblock:blocks",
+  "icon": "fidworkblock:steambox",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The $(bold)Steambox$() needs no heat source and can stack up to 16 layers.$(br)Right-click with ingredients to add them (up to 4 per layer), then $(bold)right-click$() with an empty hand to pack the layer.$(br2)Hold a packed steambox and right-click any layer to keep stacking upward."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Right-click the bottom layer with $(bold)pure water$() to start steaming (you need as much water as there are layers).$(br)Every layer emits smoke while working and all layers finish at the same time.$(br2)$(bold)Right-click$() with an empty hand to harvest every layer at once and reclaim the whole stack."
+    }
+  ]
+}

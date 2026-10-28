@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:flourpaste"
+    },
+    {
+      "item": "flavor_immersed_daily:flourpaste"
+    },
+    {
+      "item": "flavor_immersed_daily:flourpaste"
+    },
+    {
+      "item": "flavor_immersed_daily:probiotics"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:fermentedflourpaste",
+    "count": 3
+  }
+}

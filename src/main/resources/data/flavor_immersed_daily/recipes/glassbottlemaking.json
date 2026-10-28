@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a",
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:glass_pane"
+    }
+  },
+  "result": { "item": "flavor_immersed_daily:glass_bottle",
+    "count": 4
+  }
+}

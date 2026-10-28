@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "steambox",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:rawchickenblood"
+    }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:steamedblood",
+    "count": 1
+  },
+  "cookingTime": 200
+}
+

@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "wok",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:shredderabuergine" },
+    { "item": "flavor_immersed_daily:shredderabuergine" },
+    { "item": "minecraft:sugar" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:drawneggplant",
+    "count": 1
+  },
+  "cookingTime": 0
+}
+

@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pressurecooker",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:polishedglutinousrice_2" },
+    { "item": "flavor_immersed_daily:tidywater" }],
+  "result": {
+    "item": "flavor_immersed_daily:cookedglutinousrice",
+    "count": 1
+  },
+  "cookingTime": 120
+}
+

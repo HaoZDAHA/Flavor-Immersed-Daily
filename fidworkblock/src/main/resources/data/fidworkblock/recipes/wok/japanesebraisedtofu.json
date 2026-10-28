@@ -1,0 +1,16 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "wok",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:eggliquid" },
+    { "item": "flavor_immersed_daily:dicedsweetpepper" },
+    { "item": "flavor_immersed_daily:fragrantmushroom" },
+    { "item": "flavor_immersed_daily:dicedcarrots" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:japanesebraisedtofu",
+    "count": 1
+  },
+  "cookingTime": 0
+}
+

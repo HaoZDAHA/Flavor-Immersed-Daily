@@ -1,0 +1,12 @@
+{
+  "name": "Sapling Crops",
+  "category": "fidworkblock:crops",
+  "icon": "minecraft:oak_sapling",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Sapling crops$() are planted $(bold)directly on dirt$()!$(br2)They behave $(bold)exactly like vanilla saplings$(): plant them on dirt or grass and they grow into trees over time. Make sure to leave enough room to grow."
+    }
+  ]
+}

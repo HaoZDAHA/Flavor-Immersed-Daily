@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:greengrapejam"
+    },
+    {
+      "item": "minecraft:ice"
+    },
+    {
+      "item": "minecraft:stick"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:greengrapepopsicle",
+    "count": 2
+  }
+}

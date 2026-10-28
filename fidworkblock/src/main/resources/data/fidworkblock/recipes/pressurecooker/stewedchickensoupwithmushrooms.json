@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pressurecooker",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:rawchickenpiece" },
+    { "item": "flavor_immersed_daily:tidywater" },
+    { "item": "flavor_immersed_daily:whitemushroom" }],
+  "result": {
+    "item": "flavor_immersed_daily:stewedchickensoupwithmushrooms",
+    "count": 1
+  },
+  "cookingTime": 120
+}
+

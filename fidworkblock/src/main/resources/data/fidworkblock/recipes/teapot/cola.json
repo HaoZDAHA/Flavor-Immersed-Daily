@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "teapot",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:concentratedsyrup" },
+    { "item": "flavor_immersed_daily:nahco_3" },
+    { "item": "minecraft:sugar" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:cola",
+    "count": 2
+  },
+  "cookingTime": 40
+}
+

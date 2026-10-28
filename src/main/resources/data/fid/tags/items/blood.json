@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "flavor_immersed_daily:rawcattleblood",
+    "flavor_immersed_daily:rawpigblood",
+    "flavor_immersed_daily:rawsheepblood",
+    "flavor_immersed_daily:rawchickenblood"
+  ]
+}

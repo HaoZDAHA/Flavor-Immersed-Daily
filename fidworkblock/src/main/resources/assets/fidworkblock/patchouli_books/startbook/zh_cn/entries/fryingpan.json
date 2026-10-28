@@ -1,0 +1,16 @@
+{
+  "name": "炸锅",
+  "category": "fidworkblock:blocks",
+  "icon": "fidworkblock:fryingpan",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)炸锅$()只能放在$(bold)变温烤箱$()上方。$(br)先手持$(bold)食用油$()右键加油（最多 64 个），再手持可炸食材右键放入——注意油量必须不少于食材数量。$(br2)准备就绪后$(bold)空手右键$()开始油炸。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "油炸完成后，$(bold)空手右键$()把产物收进背包。$(br)$(bold)潜行右键$()可以取出食材或油。$(br2)工作时不可交互，注意观察油量，油用完了会提示你补充。"
+    }
+  ]
+}

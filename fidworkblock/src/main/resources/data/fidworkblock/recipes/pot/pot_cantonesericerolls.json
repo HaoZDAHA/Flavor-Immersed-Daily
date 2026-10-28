@@ -1,0 +1,17 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pot",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:vermicelliroll" },
+    { "item": "flavor_immersed_daily:tidywater" },
+    { "item": "flavor_immersed_daily:rawdicedcattlemeat" },
+    { "item": "flavor_immersed_daily:ginger" },
+    { "item": "flavor_immersed_daily:soy" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:cantonesericerolls",
+    "count": 1
+  },
+  "cookingTime": 120,
+  "experience": 0.5
+}

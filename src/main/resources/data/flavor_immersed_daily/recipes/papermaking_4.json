@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:paper"
+    },
+    "b": {
+      "item": "minecraft:red_dye"
+    }
+  },
+  "result": { "item": "flavor_immersed_daily:antithetical_couplet_1",
+    "count": 1
+  }
+}

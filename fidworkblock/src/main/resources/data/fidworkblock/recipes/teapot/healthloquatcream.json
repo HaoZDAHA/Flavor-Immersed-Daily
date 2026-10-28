@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "teapot",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:loquatjam" },
+    { "item": "minecraft:sugar" },
+    { "item": "flavor_immersed_daily:brownsugarsyrup" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:healthloquatcream",
+    "count": 2
+  },
+  "cookingTime": 40
+}
+

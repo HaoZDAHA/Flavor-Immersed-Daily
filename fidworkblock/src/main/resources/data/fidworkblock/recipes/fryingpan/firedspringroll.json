@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "fryingpan",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:rawspringroll" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:firedspringroll",
+    "count": 1
+  },
+  "cookingTime": 60
+}
+

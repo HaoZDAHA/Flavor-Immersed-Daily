@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "fryingpan",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:rawchickenlegwithleg" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:friedchickenleg",
+    "count": 1
+  },
+  "cookingTime": 60
+}
+

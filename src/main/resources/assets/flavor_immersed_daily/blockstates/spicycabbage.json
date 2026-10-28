@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "stage=0": { "model": "flavor_immersed_daily:block/spicycabbage_stage0" },
+    "stage=1": { "model": "flavor_immersed_daily:block/spicycabbage_stage1" },
+    "stage=2": { "model": "flavor_immersed_daily:block/spicycabbage_stage2" }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "wok",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:choppedcowpea" },
+    { "item": "flavor_immersed_daily:choppedcowpea" },
+    { "item": "flavor_immersed_daily:sesamepowder" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:beanwithsesamesauce",
+    "count": 1
+  },
+  "cookingTime": 0
+}
+

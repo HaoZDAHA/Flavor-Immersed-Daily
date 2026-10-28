@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "squeezingmachine",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:nectarine" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:nectarinejam",
+    "count": 2
+  },
+  "cookingTime": 80
+}
+

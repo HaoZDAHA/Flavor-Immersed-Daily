@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:gultinousricepowder"
+    },
+    {
+      "item": "flavor_immersed_daily:sesamepowder"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:gultinousricesasamepowder",
+    "count": 2
+  }
+}

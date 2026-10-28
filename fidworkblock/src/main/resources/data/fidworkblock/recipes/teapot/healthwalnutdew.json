@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "teapot",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:walnutkinnel" },
+    { "item": "flavor_immersed_daily:walnutpowder" },
+    { "item": "minecraft:sugar" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:healthwalnutdew",
+    "count": 2
+  },
+  "cookingTime": 40
+}
+

@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pressurecooker",
+  "ingredients": [
+    { "item": "minecraft:leather" },
+    { "item": "flavor_immersed_daily:tidywater" }],
+  "result": {
+    "item": "flavor_immersed_daily:gelatin",
+    "count": 4
+  },
+  "cookingTime": 120
+}
+

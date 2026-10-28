@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:greengrape"
+    },
+    {
+      "item": "flavor_immersed_daily:greengrape"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:agreengrape",
+    "count": 8
+  }
+}

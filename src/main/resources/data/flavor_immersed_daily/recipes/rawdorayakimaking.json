@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:raweggskin"
+    },
+    {
+      "item": "flavor_immersed_daily:redbeanpaste"
+    },
+    {
+      "item": "flavor_immersed_daily:raweggskin"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:rawdorayaki",
+    "count": 2
+  }
+}

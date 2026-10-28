@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "fryingpan",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:noodleswrappedinsyrup" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:frieddoughtwist",
+    "count": 1
+  },
+  "cookingTime": 60
+}
+

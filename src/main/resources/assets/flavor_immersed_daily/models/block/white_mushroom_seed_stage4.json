@@ -1,0 +1,39 @@
+{
+	
+	"parent": "block/block",
+	"credit": "Made with Blockbench",
+    "render_type": "minecraft:cutout",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "flavor_immersed_daily:block/whitemushroom",
+		"particle": "flavor_immersed_daily:block/whitemushroom"
+	},
+	"elements": [
+		{
+			"from": [7.87868, 0, 0.12132],
+			"to": [7.87868, 15, 16.12132],
+			"rotation": {"angle": 45, "axis": "y", "origin": [7.87868, 5.5, 8.12132]},
+			"faces": {
+				"north": {"uv": [0, 0, 0, 8], "texture": "#0"},
+				"east": {"uv": [8, 6, 16, 13.5], "texture": "#0"},
+				"south": {"uv": [8, 0, 8, 8], "texture": "#0"},
+				"west": {"uv": [8, 6, 16, 13.5], "texture": "#0"},
+				"up": {"uv": [8, 0, 0, 0], "rotation": 270, "texture": "#0"},
+				"down": {"uv": [16, 0, 8, 0], "rotation": 90, "texture": "#0"}
+			}
+		},
+		{
+			"from": [-0.12132, 0, 8.12132],
+			"to": [15.87868, 15, 8.12132],
+			"rotation": {"angle": 45, "axis": "y", "origin": [7.87868, 5.5, 8.12132]},
+			"faces": {
+				"north": {"uv": [8, 6, 16, 13.5], "texture": "#0"},
+				"east": {"uv": [8, 0, 8, 8], "texture": "#0"},
+				"south": {"uv": [8, 6, 16, 13.5], "texture": "#0"},
+				"west": {"uv": [0, 0, 0, 8], "texture": "#0"},
+				"up": {"uv": [8, 0, 0, 0], "rotation": 180, "texture": "#0"},
+				"down": {"uv": [16, 0, 8, 0], "rotation": 180, "texture": "#0"}
+			}
+		}
+	]
+}

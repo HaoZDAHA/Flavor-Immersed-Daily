@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "teapot",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:peanutjam" },
+    { "item": "flavor_immersed_daily:peanutpowder" },
+    { "item": "minecraft:sugar" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:healthpeanutmilk",
+    "count": 2
+  },
+  "cookingTime": 40
+}
+

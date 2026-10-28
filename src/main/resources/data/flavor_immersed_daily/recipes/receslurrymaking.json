@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:paddygrain"
+    },
+    {
+      "item": "flavor_immersed_daily:paddygrain"
+    },
+    {
+      "item": "flavor_immersed_daily:tidywater"
+    },
+    {
+      "item": "flavor_immersed_daily:tidywater"
+    },
+    {
+      "item": "flavor_immersed_daily:coarsecloth"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:riceslurrywrappedinfiltercloth",
+    "count": 1
+  }
+}

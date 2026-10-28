@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "wok",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:eggliquid" },
+    { "item": "flavor_immersed_daily:dicedtomato" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:scrambledeggwithtomato",
+    "count": 1
+  },
+  "cookingTime": 0
+}
+

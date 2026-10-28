@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "squeezingmachine",
+  "ingredients": [
+    { "tag": "fid:bone" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:bonesoupessence",
+    "count": 2
+  },
+  "cookingTime": 80
+}
+

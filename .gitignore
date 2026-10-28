@@ -1,0 +1,41 @@
+# eclipse
+bin
+*.launch
+.settings
+.metadata
+.classpath
+.project
+.eclipse
+
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea
+
+# gradle
+build
+.gradle
+repo
+
+# other
+eclipse
+.vscode
+run
+runs
+run-data
+logs
+
+# local reference sources
+fidworkblock/1.21.1main
+fidworkblock/帕秋莉参考
+
+# ai workspace
+.trae
+
+# logs and reports
+*.log
+crash-*.txt
+错误报告-*.txt
+compile-errors*.txt

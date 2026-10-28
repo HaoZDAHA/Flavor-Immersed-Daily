@@ -1,0 +1,12 @@
+{
+  "name": "树苗作物",
+  "category": "fidworkblock:crops",
+  "icon": "minecraft:oak_sapling",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)树苗作物$()$(bold)直接种植在土地$()上即可！$(br2)它们和 Minecraft 原版的$(bold)树苗$()特性完全一致：种在泥土或草方块上，随时间生长成树。记得留出足够的生长空间。"
+    }
+  ]
+}

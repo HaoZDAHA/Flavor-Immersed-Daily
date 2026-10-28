@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:peameal"
+    },
+    {
+      "item": "flavor_immersed_daily:peameal"
+    },
+    {
+      "item": "flavor_immersed_daily:peameal"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "flavor_immersed_daily:tidywater"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "flavor_immersed_daily:tidywater"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:peaflourcake",
+    "count": 1
+  }
+}

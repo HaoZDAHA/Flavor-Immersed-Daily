@@ -1,0 +1,16 @@
+{
+  "name": "Seasonings",
+  "category": "fidworkblock:seasonings",
+  "icon": "minecraft:sugar",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Items whose tooltip shows the \"$(bold)Seasoning$()\" label, and holding $(bold)Shift$() over them reveals their effects, are all seasonings."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "When you $(bold)eat food$() with a seasoning in your $(bold)off hand$(), you gain that seasoning's buff from this meal.$(br2)Seasonings used while $(bold)stir-frying$() also affect the buffs of your dishes (only for freely combined process dishes)."
+    }
+  ]
+}

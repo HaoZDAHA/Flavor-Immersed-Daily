@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "wok",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:blackfungus" },
+    { "item": "flavor_immersed_daily:slicedcucumber" },
+    { "item": "flavor_immersed_daily:eggliquid" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:scrambledeggswithfungusandcucumber",
+    "count": 1
+  },
+  "cookingTime": 0
+}
+

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:onionpowder_2"
+    },
+    {
+      "item": "flavor_immersed_daily:garlicpowder"
+    },
+    {
+      "tag": "c:salt"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:orleanspowder",
+    "count": 3
+  }
+}

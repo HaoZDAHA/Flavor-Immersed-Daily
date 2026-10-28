@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:whitemushroom"
+    },
+    {
+      "item": "flavor_immersed_daily:panada"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:mushroomswrappedinbatter",
+    "count": 1
+  }
+}

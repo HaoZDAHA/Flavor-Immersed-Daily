@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "wok",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:chickenwithoutfeather" },
+    { "item": "flavor_immersed_daily:scallion_2" },
+    { "item": "flavor_immersed_daily:cookingoil" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:chickenwith_scallion_oil",
+    "count": 1
+  },
+  "cookingTime": 0
+}
+

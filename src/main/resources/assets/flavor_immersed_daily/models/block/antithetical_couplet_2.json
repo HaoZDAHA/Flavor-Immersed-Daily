@@ -1,0 +1,22 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "flavor_immersed_daily:block/windowpaper_1",
+		"particle": "flavor_immersed_daily:block/windowpaper_1"
+	},
+	"elements": [
+		{
+			"from": [4, 0, 15.9],
+			"to": [12, 16, 15.9],
+			"rotation": {"angle": 0, "axis": "z", "origin": [8, 8, 16]},
+			"faces": {
+				"north": {"uv": [0, 0, 8, 16], "rotation": 180, "texture": "#0"},
+				"east": {"uv": [0, 0, 0, 16], "rotation": 180, "texture": "#0"},
+				"south": {"uv": [0, 0, 8, 16], "rotation": 180, "texture": "#0"},
+				"west": {"uv": [0, 0, 0, 16], "rotation": 180, "texture": "#0"},
+				"up": {"uv": [0, 0, 8, 0], "rotation": 180, "texture": "#0"},
+				"down": {"uv": [0, 0, 8, 0], "rotation": 180, "texture": "#0"}
+			}
+		}
+	]
+}

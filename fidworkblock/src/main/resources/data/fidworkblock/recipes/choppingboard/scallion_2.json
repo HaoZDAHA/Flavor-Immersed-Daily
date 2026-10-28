@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "choppingboard",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:sacllion" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:scallion_2",
+    "count": 4
+  },
+  "cookingTime": 0
+}
+

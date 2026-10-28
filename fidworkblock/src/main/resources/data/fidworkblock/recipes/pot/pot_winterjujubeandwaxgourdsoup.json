@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pot",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:dicedwaxgourd" },
+    { "item": "flavor_immersed_daily:winterjujube" },
+    { "item": "flavor_immersed_daily:tidywater" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:winterjujubeandwaxgourdsoup",
+    "count": 1
+  },
+  "cookingTime": 120,
+  "experience": 0.5
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "experience": 1,
+  "cookingtime": 20,
+  "ingredient": {
+    "item": "minecraft:sugar"
+  },
+  "result": { "item": "flavor_immersed_daily:whitesugarsyrup"
+  }
+}

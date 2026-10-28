@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:hamimelonjam"
+    },
+    {
+      "item": "flavor_immersed_daily:tidywater"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:hamimelonjuice",
+    "count": 2
+  }
+}

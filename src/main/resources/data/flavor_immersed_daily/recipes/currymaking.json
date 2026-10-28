@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:onionpowder_2"
+    },
+    {
+      "item": "flavor_immersed_daily:lilacpowder"
+    },
+    {
+      "item": "flavor_immersed_daily:groundpowder"
+    },
+    {
+      "item": "flavor_immersed_daily:garlicpowder"
+    },
+    {
+      "item": "flavor_immersed_daily:cuminpowder"
+    },
+    {
+      "item": "flavor_immersed_daily:tidywater"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:curry",
+    "count": 4
+  }
+}

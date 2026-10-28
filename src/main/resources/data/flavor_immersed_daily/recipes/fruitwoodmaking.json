@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:fruitwood"
+    }
+  ],
+  "result": { "item": "minecraft:oak_planks",
+    "count": 4
+  }
+}

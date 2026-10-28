@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "abc",
+    "ded",
+    "fbe"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:red_dye"
+    },
+    "b": {
+      "item": "minecraft:paper"
+    },
+    "c": {
+      "item": "minecraft:white_dye"
+    },
+    "d": {
+      "item": "flavor_immersed_daily:sheepbread"
+    },
+    "e": {
+      "item": "minecraft:blue_dye"
+    },
+    "f": {
+      "item": "minecraft:light_blue_dye"
+    }
+  },
+  "result": { "item": "flavor_immersed_daily:dou_er_dun_helmet",
+    "count": 1
+  }
+}

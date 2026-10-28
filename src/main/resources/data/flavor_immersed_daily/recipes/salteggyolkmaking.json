@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:saltyegg"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:salteggyolk",
+    "count": 1
+  }
+}

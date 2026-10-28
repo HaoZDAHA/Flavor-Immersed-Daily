@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "teapot",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:milkbottle" },
+    { "item": "minecraft:sugar" },
+    { "item": "flavor_immersed_daily:oat" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:wheatmilk",
+    "count": 2
+  },
+  "cookingTime": 40
+}
+

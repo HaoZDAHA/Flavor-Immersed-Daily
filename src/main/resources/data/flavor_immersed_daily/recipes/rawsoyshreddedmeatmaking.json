@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:rawdicedpigmeat_2"
+    },
+    {
+      "item": "flavor_immersed_daily:soy"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:rawsoyshreddedmeat",
+    "count": 1
+  }
+}

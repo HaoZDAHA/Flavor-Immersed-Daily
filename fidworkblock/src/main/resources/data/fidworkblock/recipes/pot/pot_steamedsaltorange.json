@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pot",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:orange" },
+    { "item": "flavor_immersed_daily:tidywater" },
+    { "tag": "c:salt" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:steamedsaltorange",
+    "count": 1
+  },
+  "cookingTime": 120,
+  "experience": 0.5
+}

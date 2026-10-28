@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "flavor_immersed_daily:block/stonebark_pressure_plate"
+    },
+    "powered=true": {
+      "model": "flavor_immersed_daily:block/stonebark_pressure_plate_down"
+    }
+  }
+}

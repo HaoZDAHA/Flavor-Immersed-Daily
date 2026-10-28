@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "squeezingmachine",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:bran" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:cookingoil",
+    "count": 1
+  },
+  "cookingTime": 80
+}
+

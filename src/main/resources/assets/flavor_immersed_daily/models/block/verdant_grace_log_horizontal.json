@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "flavor_immersed_daily:block/verdant_grace_log_top",
+    "side": "flavor_immersed_daily:block/verdant_grace_log"
+  }
+}

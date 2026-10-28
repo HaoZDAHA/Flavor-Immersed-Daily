@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:tidywater"
+    },
+    {
+      "item": "flavor_immersed_daily:peanutsesamepowder"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:sesameandpeanutballs",
+    "count": 1
+  }
+}

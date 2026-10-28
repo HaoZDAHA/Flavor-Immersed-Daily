@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:raweggpaste"
+    },
+    {
+      "item": "flavor_immersed_daily:butter"
+    },
+    {
+      "item": "flavor_immersed_daily:meatfloss"
+    },
+    {
+      "item": "flavor_immersed_daily:raweggpaste"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:rawflourpastewithdriedmeatfloss",
+    "count": 2
+  }
+}

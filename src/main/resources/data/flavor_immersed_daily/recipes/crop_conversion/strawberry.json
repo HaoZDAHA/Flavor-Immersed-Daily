@@ -1,0 +1,9 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:strawberry",
+    "croptopia:strawberry",
+    "pamhc2crops:strawberryitem",
+    "farm_and_charm:strawberry"
+  ]
+}

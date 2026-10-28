@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pot",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:rawchickenwing" },
+    { "item": "flavor_immersed_daily:cola" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:colachickenwings",
+    "count": 1
+  },
+  "cookingTime": 120,
+  "experience": 0.5
+}

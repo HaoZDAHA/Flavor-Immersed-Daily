@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:cream"
+    },
+    {
+      "item": "minecraft:bread"
+    },
+    {
+      "item": "flavor_immersed_daily:cookedsausage"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:hotdog",
+    "count": 1
+  }
+}

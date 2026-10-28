@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:gravelpaste"
+    },
+    {
+      "item": "flavor_immersed_daily:rawsoybeanmilk"
+    },
+    {
+      "item": "flavor_immersed_daily:rawsoybeanmilk"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:tofucurd",
+    "count": 1
+  }
+}

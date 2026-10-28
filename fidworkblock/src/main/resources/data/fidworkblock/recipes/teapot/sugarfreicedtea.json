@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "teapot",
+  "ingredients": [
+    { "tag": "c:salt" },
+    { "item": "flavor_immersed_daily:lemonjam" },
+    { "item": "flavor_immersed_daily:redteapowder" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:sugarfreicedtea",
+    "count": 2
+  },
+  "cookingTime": 40
+}
+

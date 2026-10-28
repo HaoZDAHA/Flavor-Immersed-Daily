@@ -1,0 +1,7 @@
+{
+  "1": ["flavor_immersed_daily:rawsheepblood"],
+  "2": ["flavor_immersed_daily:sheepbread", "flavor_immersed_daily:sheepbread", "minecraft:leather", "minecraft:wool", "minecraft:wool", "minecraft:wool", "flavor_immersed_daily:rawsheepfat"],
+  "3": ["minecraft:bone", "minecraft:bone", "flavor_immersed_daily:rawsheepface", "flavor_immersed_daily:rawsheepfeet", "flavor_immersed_daily:rawsheepfeet", "flavor_immersed_daily:rawsheepfeet", "flavor_immersed_daily:rawsheepfeet", "flavor_immersed_daily:rawsheepleg", "flavor_immersed_daily:rawsheepleg", "flavor_immersed_daily:rawsheepleg", "flavor_immersed_daily:rawsheepleg", "flavor_immersed_daily:rawsheeptail", "flavor_immersed_daily:rawsheepeye"],
+  "4": ["flavor_immersed_daily:rawsheepintestine", "flavor_immersed_daily:rawsheepstomach", "flavor_immersed_daily:rawsheepliver", "flavor_immersed_daily:rawsheepheart", "flavor_immersed_daily:rawsheepkidney", "flavor_immersed_daily:rawsheeptailfat"],
+  "5": ["minecraft:mutton", "minecraft:mutton", "minecraft:mutton", "flavor_immersed_daily:rawsheepsparerib", "flavor_immersed_daily:rawsheepsparerib", "flavor_immersed_daily:rawsheepspine"]
+}

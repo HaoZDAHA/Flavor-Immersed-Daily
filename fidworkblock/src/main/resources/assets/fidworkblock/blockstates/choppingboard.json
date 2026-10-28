@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "fidworkblock:block/choppingboard" },
+    "facing=east":  { "model": "fidworkblock:block/choppingboard", "y": 90 },
+    "facing=south": { "model": "fidworkblock:block/choppingboard", "y": 180 },
+    "facing=west":  { "model": "fidworkblock:block/choppingboard", "y": 270 }
+  }
+}

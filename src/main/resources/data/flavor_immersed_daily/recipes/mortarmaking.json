@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a a",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:cobblestone"
+    }
+  },
+  "result": { "item": "flavor_immersed_daily:deleted_mod_element",
+    "count": 1
+  }
+}

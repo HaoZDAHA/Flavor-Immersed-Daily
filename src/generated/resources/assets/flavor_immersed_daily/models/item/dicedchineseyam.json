@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "flavor_immersed_daily:item/dicedchineseyam"
+  }
+}

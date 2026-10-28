@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:coffeebean"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:coffeebeanseed",
+    "count": 2
+  }
+}

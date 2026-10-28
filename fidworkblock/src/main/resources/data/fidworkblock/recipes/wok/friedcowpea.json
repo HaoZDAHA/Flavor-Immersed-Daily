@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "wok",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:choppedcowpea" },
+    { "item": "flavor_immersed_daily:choppedcowpea" },
+    { "item": "flavor_immersed_daily:choppedcowpea" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:friedcowpea",
+    "count": 1
+  },
+  "cookingTime": 0
+}
+

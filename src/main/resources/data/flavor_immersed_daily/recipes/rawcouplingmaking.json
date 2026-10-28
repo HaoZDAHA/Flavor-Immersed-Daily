@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:panada"
+    },
+    {
+      "item": "flavor_immersed_daily:slicedlotusroot"
+    },
+    {
+      "item": "flavor_immersed_daily:meatpaste"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:rawcoupling",
+    "count": 2
+  }
+}

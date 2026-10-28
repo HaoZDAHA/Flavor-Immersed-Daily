@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "wok",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:oilseedrape" },
+    { "item": "flavor_immersed_daily:fragrantmushroom" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:sauteedmushroomswithrapeseed",
+    "count": 1
+  },
+  "cookingTime": 0
+}
+

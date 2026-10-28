@@ -1,0 +1,17 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:corn",
+    "croptopia:corn",
+    "pamhc2crops:cornitem",
+    "farm_and_charm:corn",
+    "extradelight:unshucked_corn",
+    "concoction:corn",
+    "braziliandelight:corn",
+    "bountifulfares:maize",
+    "brewery:corn",
+    "culturaldelights:corn_cob",
+    "corn_delight:corn",
+    "bountifulharvest:corn"
+  ]
+}

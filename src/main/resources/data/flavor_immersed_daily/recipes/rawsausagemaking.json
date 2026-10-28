@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:casing"
+    },
+    {
+      "item": "flavor_immersed_daily:meatpaste"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:rawsausage",
+    "count": 1
+  }
+}

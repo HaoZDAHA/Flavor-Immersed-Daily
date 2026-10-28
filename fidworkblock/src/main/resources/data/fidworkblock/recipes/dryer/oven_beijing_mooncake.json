@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "dryer",
+  "mode": "oven",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:rawbeijing_mooncake" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:beijing_mooncake",
+    "count": 1
+  },
+  "cookingTime": 200
+}
+

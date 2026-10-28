@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "teapot",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:whitesugarsyrup" },
+    { "item": "flavor_immersed_daily:nahco_3" },
+    { "item": "flavor_immersed_daily:lemonjam" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:sprite",
+    "count": 2
+  },
+  "cookingTime": 40
+}
+

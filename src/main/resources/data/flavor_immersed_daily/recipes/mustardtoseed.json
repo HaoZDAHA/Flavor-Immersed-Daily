@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:mustard"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:mustrad_seed",
+    "count": 2
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "wok",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:rawflourpancake" },
+    { "item": "flavor_immersed_daily:scallion_2" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:scallionoilpancake",
+    "count": 1
+  },
+  "cookingTime": 0
+}
+

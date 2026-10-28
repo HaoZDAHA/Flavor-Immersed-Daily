@@ -1,0 +1,12 @@
+{
+  "name": "茶壶",
+  "category": "fidworkblock:blocks",
+  "icon": "fidworkblock:teapot",
+  "sortnum": 8,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)茶壶$()：手持物品右键依次放入 4 个槽位。$(br)配方正确后，$(bold)空手右键$()密封，开始冲泡。$(br2)密封后自动工作、自动续批；$(bold)潜行右键$()开封返还所有材料，开封后空手右键取出产物。"
+    }
+  ]
+}

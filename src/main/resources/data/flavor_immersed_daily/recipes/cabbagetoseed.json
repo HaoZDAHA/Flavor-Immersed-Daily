@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:cabbage"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:cabbageseed",
+    "count": 2
+  }
+}

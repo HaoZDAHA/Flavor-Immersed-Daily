@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab ",
+    "ab ",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "flavor_immersed_daily:orchard_heartwood_planks"
+    },
+    "b": {
+      "tag": "minecraft:wool"
+    }
+  },
+  "result": { "item": "flavor_immersed_daily:orchardchair",
+    "count": 2
+  }
+}

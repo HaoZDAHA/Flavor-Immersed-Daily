@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:pea"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:peaseed",
+    "count": 2
+  }
+}

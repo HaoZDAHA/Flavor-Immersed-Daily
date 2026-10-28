@@ -1,0 +1,20 @@
+{
+  "name": "Slaughter Setup",
+  "category": "fidworkblock:livestock",
+  "icon": "minecraft:chain",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Craft a $(bold)big hook$() ($(item)flavor_immersed_daily:bighook$()) and hang it under a $(bold)solid block$().$(br2)Below the hook you can place a $(bold)wood basin$() ($(item)flavor_immersed_daily:woodbasin$()) to catch the products - it's optional, but without it the drops will scatter everywhere."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Craft a $(bold)bone cutter knife$() ($(item)flavor_immersed_daily:bonecutterknife$()) and attack $(bold)chickens, pigs, cows and sheep$() to obtain their carcasses.$(br2)Hold the carcass and $(bold)right-click$() the hook to hang it."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The hanging carcass shows which tools you need next: besides the bone cutter knife, you also need a $(bold)wide-edged knife$() ($(item)flavor_immersed_daily:wideedgedknife$()) and a $(bold)sharp knife$() ($(item)flavor_immersed_daily:sharpknife$()) - rotate through all three to butcher.$(br2)Fun fact: attack a $(bold)non-hostile creature weaker than you$() with the big hook to pull it and hang it under the wall - of course, you can also hang your friends."
+    }
+  ]
+}

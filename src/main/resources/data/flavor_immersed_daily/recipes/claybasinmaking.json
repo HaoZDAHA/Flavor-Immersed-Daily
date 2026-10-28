@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a a",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:clay_ball"
+    }
+  },
+  "result": { "item": "flavor_immersed_daily:claybasin",
+    "count": 1
+  }
+}

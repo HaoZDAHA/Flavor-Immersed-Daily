@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "mortar",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:glutinousseeds" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:polishedglutinousrice_2",
+    "count": 1
+  },
+  "cookingTime": 0
+}
+

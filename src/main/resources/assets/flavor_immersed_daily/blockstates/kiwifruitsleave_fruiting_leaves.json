@@ -1,0 +1,20 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "fruiting": "false"
+      },
+      "apply": {
+        "model": "flavor_immersed_daily:block/kiwifruitsleave_fruiting_leaves"
+      }
+    },
+    {
+      "when": {
+        "fruiting": "true"
+      },
+      "apply": {
+        "model": "flavor_immersed_daily:block/kiwifruitsleave_fruiting_leaves_mature"
+      }
+    }
+  ]
+}

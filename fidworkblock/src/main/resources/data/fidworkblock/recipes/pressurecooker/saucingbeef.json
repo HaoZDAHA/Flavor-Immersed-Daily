@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pressurecooker",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:rawcattletendon" },
+    { "item": "flavor_immersed_daily:tidywater" },
+{ "item": "flavor_immersed_daily:halogenbag" }],
+  "result": {
+    "item": "flavor_immersed_daily:saucingbeef",
+    "count": 1
+  },
+  "cookingTime": 180
+}
+

@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "wok",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:eggbatter" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:eggpancake",
+    "count": 1
+  },
+  "cookingTime": 0
+}
+

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:coarsecloth"
+    },
+    {
+      "item": "flavor_immersed_daily:dryaniseed"
+    },
+    {
+      "item": "flavor_immersed_daily:drylilac"
+    },
+    {
+      "item": "flavor_immersed_daily:drycinnamon"
+    },
+    {
+      "item": "flavor_immersed_daily:fennel"
+    },
+    {
+      "item": "flavor_immersed_daily:drynutmeg"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:halogenbag",
+    "count": 1
+  }
+}

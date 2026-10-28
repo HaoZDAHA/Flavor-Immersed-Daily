@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=north,half=lower": { "model": "flavor_immersed_daily:block/fridge", "y": 0 },
+    "facing=east,half=lower":  { "model": "flavor_immersed_daily:block/fridge", "y": 90 },
+    "facing=south,half=lower": { "model": "flavor_immersed_daily:block/fridge", "y": 180 },
+    "facing=west,half=lower":  { "model": "flavor_immersed_daily:block/fridge", "y": 270 },
+    "facing=north,half=upper": { "model": "flavor_immersed_daily:block/fridge_upper" },
+    "facing=east,half=upper":  { "model": "flavor_immersed_daily:block/fridge_upper" },
+    "facing=south,half=upper": { "model": "flavor_immersed_daily:block/fridge_upper" },
+    "facing=west,half=upper":  { "model": "flavor_immersed_daily:block/fridge_upper" }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aa"
+  ],
+  "key": {
+    "a": {
+      "item": "kaleidoscope_cookery:green_chili"
+    }
+  },
+  "result": { "item": "flavor_immersed_daily:greenpepper",
+    "count": 2
+  }
+}

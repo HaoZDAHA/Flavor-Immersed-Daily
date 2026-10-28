@@ -1,0 +1,263 @@
+package com.flavor_immersed_daily.block.block.processing;
+
+import com.flavor_immersed_daily.block.blockentity.WoodBasinBlockEntity;
+import com.flavor_immersed_daily.basin.BasinWashDefinition;
+import com.flavor_immersed_daily.basin.BasinWashRegistry;
+import com.flavor_immersed_daily.config.Config;
+import com.flavor_immersed_daily.FlavorImmersedDaily;
+import com.flavor_immersed_daily.all.ModItems;
+import com.flavor_immersed_daily.recipe.ModRecipes;
+import com.flavor_immersed_daily.recipe.WoodBasinRecipe;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import javax.annotation.Nullable;
+
+
+// 木盆 — 6px碰撞体积，右键纯净水装水 / chickenwithoutblood漂洗 / 放入水果踩踏成果酱
+// WATERED: false=空盆, true=有水
+// HAS_CHICKEN: false=无鸡, true=盆中有chickenwithoutblood
+// HAS_FRUIT: false=无水果, true=盆中有水果
+public class WoodBasinBlock extends BaseEntityBlock {
+
+    public static final BooleanProperty WATERED = BooleanProperty.create("watered");
+    public static final BooleanProperty HAS_CHICKEN = BooleanProperty.create("has_chicken");
+    public static final BooleanProperty HAS_FRUIT = BooleanProperty.create("has_fruit");
+
+    private static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 6, 16);
+
+// 水果 → 果酱 的映射表
+
+    public WoodBasinBlock(Properties properties) {
+        super(properties);
+        this.registerDefaultState(this.stateDefinition.any()
+                .setValue(WATERED, false)
+                .setValue(HAS_CHICKEN, false)
+                .setValue(HAS_FRUIT, false));
+    }
+
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(WATERED, HAS_CHICKEN, HAS_FRUIT);
+    }
+
+    @Override
+    public RenderShape getRenderShape(BlockState state) {
+        return RenderShape.MODEL;
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return SHAPE;
+    }
+
+    @Nullable
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new WoodBasinBlockEntity(pos, state);
+    }
+
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state,
+                                                                    BlockEntityType<T> type) {
+        return createTickerHelper(type, com.flavor_immersed_daily.all.ModBlockEntities.WOODBASIN_ENTITY.get(),
+                WoodBasinBlockEntity::tick);
+    }
+
+    @Override
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        ItemStack stack = player.getItemInHand(hand);
+        boolean watered = state.getValue(WATERED);
+        boolean hasChicken = state.getValue(HAS_CHICKEN);
+        boolean hasFruit = state.getValue(HAS_FRUIT);
+
+// 屠宰产物：一次全部取出
+        if (level.getBlockEntity(pos) instanceof WoodBasinBlockEntity basinBe && basinBe.hasStorage()) {
+            if (!level.isClientSide) {
+                for (ItemStack s : basinBe.takeAll()) {
+                    level.addFreshEntity(new ItemEntity(level,
+                            pos.getX() + 0.5, pos.getY() + 0.7, pos.getZ() + 0.5, s));
+                }
+            }
+            level.playSound(player, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 0.6f, 1.0f);
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        }
+
+// chickenwithoutblood 放上水盆
+        if (watered && !hasChicken && !hasFruit && stack.is(ModItems.CHICKENWITHOUTBLOOD.get())) {
+            if (!level.isClientSide) {
+                level.setBlock(pos, state.setValue(HAS_CHICKEN, true), 3);
+                if (!player.getAbilities().instabuild) {
+                    stack.shrink(1);
+                }
+            }
+            level.playSound(player, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0f, 1.1f);
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        }
+
+// 数据包 basin_wash 定义：任意物品放上有水木盆泡洗
+        if (watered && !hasChicken && !hasFruit && !stack.isEmpty()
+                && BasinWashRegistry.getByInput(stack.getItem()) != null) {
+            if (!level.isClientSide) {
+                level.setBlock(pos, state.setValue(HAS_CHICKEN, true), 3);
+                if (level.getBlockEntity(pos) instanceof WoodBasinBlockEntity basinBe) {
+                    basinBe.setWashStack(stack.copyWithCount(1));
+                }
+                if (!player.getAbilities().instabuild) {
+                    stack.shrink(1);
+                }
+            }
+            level.playSound(player, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0f, 1.1f);
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        }
+
+// 漂洗完取回：优先按 basin_wash 定义产出，未命中走原有鸡逻辑
+        if (hasChicken) {
+            if (!level.isClientSide) {
+                WoodBasinBlockEntity basinBe = level.getBlockEntity(pos) instanceof WoodBasinBlockEntity b ? b : null;
+                ItemStack wash = basinBe != null ? basinBe.getWashStack() : ItemStack.EMPTY;
+                BasinWashDefinition definition = wash.isEmpty() ? null : BasinWashRegistry.getByInput(wash.getItem());
+                level.setBlock(pos, state.setValue(WATERED, false).setValue(HAS_CHICKEN, false), 3);
+                if (definition != null) {
+                    if (definition.output() != null) {
+                        level.addFreshEntity(new ItemEntity(level,
+                                pos.getX() + 0.5, pos.getY() + 0.7, pos.getZ() + 0.5,
+                                new ItemStack(definition.output())));
+                    }
+                    for (Item item : definition.drops()) {
+                        level.addFreshEntity(new ItemEntity(level,
+                                pos.getX() + 0.5, pos.getY() + 0.7, pos.getZ() + 0.5,
+                                new ItemStack(item)));
+                    }
+                } else {
+                    level.addFreshEntity(new ItemEntity(level,
+                            pos.getX() + 0.5, pos.getY() + 0.7, pos.getZ() + 0.5,
+                            new ItemStack(ModItems.CHICKENWITHOUTFEATHER.get())));
+                    for (String itemId : Config.washedChickenDrops) {
+                        Item item = BuiltInRegistries.ITEM.get(new ResourceLocation(itemId));
+                        if (item != null) {
+                            level.addFreshEntity(new ItemEntity(level,
+                                    pos.getX() + 0.5, pos.getY() + 0.7, pos.getZ() + 0.5,
+                                    new ItemStack(item)));
+                        }
+                    }
+                }
+                if (basinBe != null) {
+                    basinBe.setWashStack(ItemStack.EMPTY);
+                }
+            }
+            level.playSound(player, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0f, 1.0f);
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        }
+
+// 空盆 → 装水
+        if (!watered && !hasFruit) {
+            if (stack.is(ModItems.TIDYWATER.get())) {
+                if (!level.isClientSide) {
+                    level.setBlock(pos, state.setValue(WATERED, true), 3);
+                    if (!player.getAbilities().instabuild) {
+                        stack.shrink(1);
+                    }
+                }
+                level.playSound(player, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0f, 1.0f);
+                return InteractionResult.sidedSuccess(level.isClientSide);
+            }
+        }
+
+// 空盆（无水无鸡无水果）→ 放入水果
+        if (!watered && !hasChicken && !hasFruit) {
+            var recipe = level.getRecipeManager().getRecipeFor(ModRecipes.WOOD_BASIN_TYPE.get(),
+                    new SimpleContainer(stack), level);
+            if (recipe.isPresent()) {
+                if (!level.isClientSide) {
+                    BlockState newState = state.setValue(HAS_FRUIT, true);
+                    level.setBlock(pos, newState, 3);
+                    BlockEntity be = level.getBlockEntity(pos);
+                    if (be instanceof WoodBasinBlockEntity basinBe) {
+                        basinBe.setFruit(stack.getItem(), stack.getCount());
+                    }
+// 强制同步BlockEntity数据到客户端
+                    level.sendBlockUpdated(pos, state, newState, Block.UPDATE_ALL);
+                    if (!player.getAbilities().instabuild) {
+                        stack.shrink(stack.getCount());
+                    }
+                }
+                level.playSound(player, pos, SoundEvents.CROP_PLANTED, SoundSource.BLOCKS, 1.0f, 1.0f);
+                return InteractionResult.sidedSuccess(level.isClientSide);
+            }
+        }
+
+// 有水盆 → 潜行右键倒水
+        if (watered && !hasChicken && !hasFruit && player.isShiftKeyDown() && stack.isEmpty()) {
+            if (!level.isClientSide) {
+                level.setBlock(pos, state.setValue(WATERED, false), 3);
+            }
+            level.playSound(player, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0f, 1.0f);
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        }
+
+        return InteractionResult.PASS;
+    }
+
+    @Override
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean moved) {
+        if (!state.is(newState.getBlock())) {
+            if (state.getValue(HAS_CHICKEN)) {
+                BlockEntity be = level.getBlockEntity(pos);
+                ItemStack drop = be instanceof WoodBasinBlockEntity basinBe && !basinBe.getWashStack().isEmpty()
+                        ? basinBe.getWashStack()
+                        : new ItemStack(ModItems.CHICKENWITHOUTBLOOD.get());
+                level.addFreshEntity(new ItemEntity(level,
+                        pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+                        drop.copy()));
+            }
+            if (state.getValue(HAS_FRUIT)) {
+                BlockEntity be = level.getBlockEntity(pos);
+                if (be instanceof WoodBasinBlockEntity basinBe && basinBe.hasFruit()) {
+                    ItemStack fruitStack = basinBe.getFruitStack();
+                    if (!fruitStack.isEmpty()) {
+                        level.addFreshEntity(new ItemEntity(level,
+                                pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+                                fruitStack));
+                    }
+                }
+            }
+// 屠宰产物存储：拆盆时掉落
+            if (level.getBlockEntity(pos) instanceof WoodBasinBlockEntity storageBe && storageBe.hasStorage()) {
+                for (ItemStack s : storageBe.takeAll()) {
+                    level.addFreshEntity(new ItemEntity(level,
+                            pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, s));
+                }
+            }
+            super.onRemove(state, level, pos, newState, moved);
+        }
+    }
+
+// 根据水果注册名查找对应的果酱物品
+// 获取所有水果→果酱映射，供JEI使用
+}

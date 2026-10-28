@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:coconutjam"
+    },
+    {
+      "item": "minecraft:ice"
+    },
+    {
+      "item": "minecraft:stick"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:coconutpopsicle",
+    "count": 2
+  }
+}

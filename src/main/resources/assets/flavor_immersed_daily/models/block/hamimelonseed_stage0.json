@@ -1,0 +1,24 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "block/block",
+	"render_type": "minecraft:cutout",
+	"textures": {
+		"0": "flavor_immersed_daily:block/hamimelon_crop_final",
+		"particle": "flavor_immersed_daily:block/hamimelon_crop_final"
+	},
+	"elements": [
+		{
+			"from": [7, 0, 7],
+			"to": [9, 5, 9],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 0, 7]},
+			"faces": {
+				"north": {"uv": [14, 0, 16, 5], "texture": "#0"},
+				"east": {"uv": [14, 0, 16, 5], "texture": "#0"},
+				"south": {"uv": [14, 0, 16, 5], "texture": "#0"},
+				"west": {"uv": [14, 0, 16, 5], "texture": "#0"},
+				"up": {"uv": [16, 2, 14, 0], "texture": "#0"},
+				"down": {"uv": [16, 0, 14, 2], "texture": "#0"}
+			}
+		}
+	]
+}

@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "dryer",
+  "ingredients": [
+    { "tag": "fid:intestines" }],
+  "result": {
+    "item": "flavor_immersed_daily:casing",
+    "count": 1
+  },
+  "cookingTime": 120
+}
+

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a",
+    "a",
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "flavor_immersed_daily:yuba"
+    }
+  },
+  "result": { "item": "flavor_immersed_daily:tofu_sticks",
+    "count": 2
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "mortar",
+  "ingredients": [
+    { "tag": "c:flour" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:modulatedwheatflour",
+    "count": 1
+  },
+  "cookingTime": 0
+}
+

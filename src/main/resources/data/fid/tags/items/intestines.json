@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "flavor_immersed_daily:rawpigintestine",
+    "flavor_immersed_daily:rawcattleintestine",
+    "flavor_immersed_daily:rawsheepintestine"
+  ]
+}

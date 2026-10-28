@@ -1,0 +1,16 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "wok",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:dicedcucumber" },
+    { "item": "flavor_immersed_daily:dicedradish" },
+    { "item": "flavor_immersed_daily:dicedbroccoil" },
+    { "item": "flavor_immersed_daily:dicedzucchini" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:reducefatsnack",
+    "count": 1
+  },
+  "cookingTime": 0
+}
+

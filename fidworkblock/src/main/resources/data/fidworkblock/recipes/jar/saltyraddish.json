@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "jar",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:dicedradish" },
+    { "item": "flavor_immersed_daily:tidywater" },
+    { "tag": "c:salt" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:saltyraddish",
+    "count": 1
+  },
+  "cookingTime": 40
+}
+

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a",
+    "a"
+  ],
+  "key": {
+    "a": {
+      "tag": "c:tomato"
+    }
+  },
+  "result": { "item": "bakeries:tomato",
+    "count": 2
+  }
+}

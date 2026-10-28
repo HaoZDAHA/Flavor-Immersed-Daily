@@ -1,0 +1,9 @@
+{
+  "type": "flavor_immersed_daily:wood_basin",
+  "ingredient": {
+    "item": "minecraft:melon_slice"
+  },
+  "result": {
+    "item": "flavor_immersed_daily:watermelonjam"
+  }
+}

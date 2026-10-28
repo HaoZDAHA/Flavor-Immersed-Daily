@@ -1,0 +1,9 @@
+{
+  "type": "flavor_immersed_daily:wood_basin",
+  "ingredient": {
+    "item": "flavor_immersed_daily:hawthorn"
+  },
+  "result": {
+    "item": "flavor_immersed_daily:hawthornjam"
+  }
+}

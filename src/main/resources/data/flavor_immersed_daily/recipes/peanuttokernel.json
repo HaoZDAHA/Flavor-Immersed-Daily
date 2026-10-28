@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:peanut"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:peanut_0",
+    "count": 1
+  }
+}

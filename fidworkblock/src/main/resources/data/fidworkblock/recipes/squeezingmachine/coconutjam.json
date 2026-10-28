@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "squeezingmachine",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:coconut" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:coconutjam",
+    "count": 4
+  },
+  "cookingTime": 80
+}
+

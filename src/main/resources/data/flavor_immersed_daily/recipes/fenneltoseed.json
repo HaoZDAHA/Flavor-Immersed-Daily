@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:fennel"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:fennelseedstates",
+    "count": 2
+  }
+}

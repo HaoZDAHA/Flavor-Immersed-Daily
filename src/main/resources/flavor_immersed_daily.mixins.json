@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.flavor_immersed_daily.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "flavor_immersed_daily.refmap.json",
+  "mixins": [
+    "EntityMixin",
+    "LivingEntityMixin",
+    "MobMixin"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

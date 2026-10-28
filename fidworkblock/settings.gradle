@@ -1,0 +1,18 @@
+pluginManagement {
+    repositories {
+        maven { url = 'https://maven.neoforged.net/releases' }
+        maven { url = 'https://maven.minecraftforge.net/' }
+        maven { url = 'https://bmclapi2.bangbang93.com/maven' }
+        maven { url = 'https://maven.aliyun.com/repository/public' }
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+
+plugins {
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
+}
+
+// 工程名固定为 fidworkblock，被主工程 includeBuild 复合构建时，
+// 坐标 com.fidtest:fidworkblock 才能命中这个构建。
+rootProject.name = 'fidworkblock'

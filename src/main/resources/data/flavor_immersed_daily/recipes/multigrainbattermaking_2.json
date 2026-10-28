@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:tidywater"
+    },
+    {
+      "item": "flavor_immersed_daily:tidywater"
+    },
+    {
+      "item": "flavor_immersed_daily:kao_liang_seed"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:multigrainbatter",
+    "count": 1
+  }
+}

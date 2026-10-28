@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:dry_pistachionut"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:pistachionutswithopenshells",
+    "count": 1
+  }
+}

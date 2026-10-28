@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "steambox",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:rawaikui"
+    }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:aikui",
+    "count": 1
+  },
+  "cookingTime": 200
+}
+

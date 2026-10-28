@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:durianjam"
+    },
+    {
+      "item": "flavor_immersed_daily:cream"
+    },
+    {
+      "item": "flavor_immersed_daily:sorbet"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:durianicecream",
+    "count": 1
+  }
+}

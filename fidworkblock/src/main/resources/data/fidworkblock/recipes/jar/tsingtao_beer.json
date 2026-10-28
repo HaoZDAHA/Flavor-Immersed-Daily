@@ -1,0 +1,16 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "jar",
+  "ingredients": [
+    { "item": "minecraft:wheat" },
+    { "item": "minecraft:wheat_seeds" },
+    { "item": "flavor_immersed_daily:kaolianggrain" },
+    { "item": "flavor_immersed_daily:tidywater" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:tsingtao_beer",
+    "count": 2
+  },
+  "cookingTime": 80
+}
+

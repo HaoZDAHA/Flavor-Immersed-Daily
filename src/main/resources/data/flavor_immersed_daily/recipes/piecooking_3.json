@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smoking",
+  "category": "misc",
+  "experience": 1,
+  "cookingtime": 100,
+  "ingredient": {
+    "item": "flavor_immersed_daily:rawpie"
+  },
+  "result": { "item": "flavor_immersed_daily:pie"
+  }
+}

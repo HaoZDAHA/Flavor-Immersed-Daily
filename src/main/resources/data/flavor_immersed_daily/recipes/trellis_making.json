@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a a",
+    "a a"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": { "item": "flavor_immersed_daily:trellis",
+    "count": 2
+  }
+}

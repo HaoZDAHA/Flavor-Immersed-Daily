@@ -1,0 +1,31 @@
+{
+	"parent": "block/block",
+	"credit": "Made with Blockbench",
+	"ambientocclusion": false,
+	"render_type": "minecraft:cutout",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "flavor_immersed_daily:block/glutinousseed3",
+		"particle": "flavor_immersed_daily:block/glutinousseed3"
+	},
+	"elements": [
+		{
+			"from": [-2, 0, 8],
+			"to": [18, 24, 8],
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 4, 8]},
+			"faces": {
+				"north": {"uv": [3, 2, 13, 16], "texture": "#0"},
+				"south": {"uv": [3, 2, 13, 16], "texture": "#0"}
+			}
+		},
+		{
+			"from": [8, 0, -2],
+			"to": [8, 24, 18],
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 4, 8]},
+			"faces": {
+				"east": {"uv": [3, 2, 13, 16], "texture": "#0"},
+				"west": {"uv": [3, 2, 13, 16], "texture": "#0"}
+			}
+		}
+	]
+}

@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "squeezingmachine",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:tangerine" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:tangerinejam",
+    "count": 2
+  },
+  "cookingTime": 80
+}
+

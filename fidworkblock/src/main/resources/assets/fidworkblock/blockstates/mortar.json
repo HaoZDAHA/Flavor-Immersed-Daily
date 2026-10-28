@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "fidworkblock:block/mortar" },
+    "facing=east":  { "model": "fidworkblock:block/mortar", "y": 90 },
+    "facing=south": { "model": "fidworkblock:block/mortar", "y": 180 },
+    "facing=west":  { "model": "fidworkblock:block/mortar", "y": 270 }
+  }
+}

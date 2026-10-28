@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "flavor_immersed_daily:block/verdantgracechair",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "flavor_immersed_daily:block/verdantgracechair"
+    },
+    "facing=south": {
+      "model": "flavor_immersed_daily:block/verdantgracechair",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "flavor_immersed_daily:block/verdantgracechair",
+      "y": 270
+    }
+  }
+}

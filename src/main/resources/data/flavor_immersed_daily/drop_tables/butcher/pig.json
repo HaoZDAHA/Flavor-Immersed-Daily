@@ -1,0 +1,7 @@
+{
+  "1": ["flavor_immersed_daily:rawpigblood"],
+  "2": ["flavor_immersed_daily:rawpigskin", "flavor_immersed_daily:rawpigskin", "flavor_immersed_daily:rawpigfat"],
+  "3": ["flavor_immersed_daily:rawpigear", "flavor_immersed_daily:rawpignose", "flavor_immersed_daily:rawpighead", "flavor_immersed_daily:rawpigtail", "flavor_immersed_daily:rawpigcerebrum", "flavor_immersed_daily:rawpigfeet", "flavor_immersed_daily:rawpigfeet", "flavor_immersed_daily:rawpigfeet", "flavor_immersed_daily:rawpigfeet", "flavor_immersed_daily:rawpigleg", "flavor_immersed_daily:rawpigleg", "flavor_immersed_daily:rawpigleg", "flavor_immersed_daily:rawpigleg"],
+  "4": ["flavor_immersed_daily:rawpigintestine", "flavor_immersed_daily:rawpigstomach", "flavor_immersed_daily:rawpiglung", "flavor_immersed_daily:rawpigliver", "flavor_immersed_daily:rawpigheart", "flavor_immersed_daily:rawpigkidney", "flavor_immersed_daily:rawpigkidney"],
+  "5": ["flavor_immersed_daily:rawpigtenderloin", "flavor_immersed_daily:rawpigstreakypork", "flavor_immersed_daily:rawpigstreakypork", "flavor_immersed_daily:rawpigstreakypork", "flavor_immersed_daily:rawpigstreakypork", "minecraft:porkchop", "minecraft:porkchop", "minecraft:porkchop", "flavor_immersed_daily:rawpigsparerib", "flavor_immersed_daily:rawpigsparerib"]
+}

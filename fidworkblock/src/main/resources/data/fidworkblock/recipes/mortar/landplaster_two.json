@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "mortar",
+  "ingredients": [
+    { "tag": "fid:bone" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:landplaster",
+    "count": 4
+  },
+  "cookingTime": 0
+}
+

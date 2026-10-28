@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "wok",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:dicedcauliflower" },
+    { "item": "flavor_immersed_daily:salteggyolk" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:saltedeggyolkfriedcauliflower",
+    "count": 1
+  },
+  "cookingTime": 0
+}
+

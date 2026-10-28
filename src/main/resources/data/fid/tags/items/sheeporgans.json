@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "flavor_immersed_daily:rawsheepliver",
+    "flavor_immersed_daily:rawsheepkidney",
+    "flavor_immersed_daily:rawsheepheart",
+    "flavor_immersed_daily:rawsheepstomach",
+    "flavor_immersed_daily:rawsheepintestine",
+    "flavor_immersed_daily:rawsheepeye"
+  ]
+}

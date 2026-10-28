@@ -1,0 +1,16 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "wok",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:rawdicedpigmeat_2" },
+    { "item": "flavor_immersed_daily:ginger" },
+    { "item": "flavor_immersed_daily:blackfungus" },
+    { "item": "flavor_immersed_daily:shreddedcarrots" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:friedshreddedporkwithsweetandsoursauce",
+    "count": 1
+  },
+  "cookingTime": 0
+}
+

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a",
+    "b"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:gunpowder"
+    },
+    "b": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": { "item": "flavor_immersed_daily:fairy_sparkler",
+    "count": 1
+  }
+}

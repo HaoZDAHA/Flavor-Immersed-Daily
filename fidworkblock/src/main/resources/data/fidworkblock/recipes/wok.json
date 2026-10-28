@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SS ",
+    "SS ",
+    "  P"
+  ],
+  "key": {
+    "P": { "item": "minecraft:stick" },
+    "S": { "item": "minecraft:iron_ingot" }
+  },
+  "result": {
+    "item": "fidworkblock:wok",
+    "count": 1
+  }
+}
+

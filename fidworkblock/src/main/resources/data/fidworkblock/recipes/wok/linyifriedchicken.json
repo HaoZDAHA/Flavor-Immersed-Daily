@@ -1,0 +1,15 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "wok",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:chickenwithoutfeather" },
+    { "item": "flavor_immersed_daily:dicedsweetpepper" },
+    { "item": "flavor_immersed_daily:dryaniseed" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:linyifriedchicken",
+    "count": 1
+  },
+  "cookingTime": 0
+}
+

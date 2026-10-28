@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "dryer",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:sweetpotatodough" }],
+  "result": {
+    "item": "flavor_immersed_daily:drypowderskin",
+    "count": 1
+  },
+  "cookingTime": 120
+}
+

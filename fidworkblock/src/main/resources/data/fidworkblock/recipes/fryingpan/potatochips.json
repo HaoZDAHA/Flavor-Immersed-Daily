@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "fryingpan",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:slicedpotato" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:potatochips",
+    "count": 1
+  },
+  "cookingTime": 60
+}
+

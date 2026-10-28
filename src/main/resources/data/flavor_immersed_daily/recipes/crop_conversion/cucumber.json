@@ -1,0 +1,12 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:cucumber",
+    "croptopia:cucumber",
+    "pamhc2crops:cucumberitem",
+    "extradelight:cucumber",
+    "youkaisfeasts:cucumber",
+    "sushigocrafting:cucumber",
+    "culturaldelights:cucumber"
+  ]
+}

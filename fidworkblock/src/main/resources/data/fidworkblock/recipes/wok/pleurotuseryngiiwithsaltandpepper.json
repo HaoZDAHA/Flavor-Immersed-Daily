@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "wok",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:dicedpleurotuseryngii" },
+    { "item": "flavor_immersed_daily:whitemushroom" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:pleurotuseryngiiwithsaltandpepper",
+    "count": 1
+  },
+  "cookingTime": 0
+}
+

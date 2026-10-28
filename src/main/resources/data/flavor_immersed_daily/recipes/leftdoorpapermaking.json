@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "abb",
+    "cbb",
+    "abb"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:paper"
+    },
+    "b": {
+      "tag": "minecraft:planks"
+    },
+    "c": {
+      "item": "minecraft:red_dye"
+    }
+  },
+  "result": { "item": "flavor_immersed_daily:leftdoorpaper",
+    "count": 1
+  }
+}

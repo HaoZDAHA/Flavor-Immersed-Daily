@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aba",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "flavor_immersed_daily:tidywater"
+    },
+    "b": {
+      "item": "flavor_immersed_daily:toufu"
+    }
+  },
+  "result": { "item": "flavor_immersed_daily:tofubrickblock",
+    "count": 64
+  }
+}

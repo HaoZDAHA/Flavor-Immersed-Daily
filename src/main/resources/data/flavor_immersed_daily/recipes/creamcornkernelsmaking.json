@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:cream"
+    },
+    {
+      "item": "flavor_immersed_daily:cornseed"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:creamcornkernels",
+    "count": 1
+  }
+}

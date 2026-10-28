@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pot",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:whitemushroom" },
+    { "item": "flavor_immersed_daily:cream" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:bakedwhitemushroomswithcream",
+    "count": 1
+  },
+  "cookingTime": 120,
+  "experience": 0.5
+}

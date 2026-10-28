@@ -1,0 +1,8 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:lotusroot",
+    "pamhc2crops:lotusitem",
+    "gan_delight_reborn:lotus_root"
+  ]
+}

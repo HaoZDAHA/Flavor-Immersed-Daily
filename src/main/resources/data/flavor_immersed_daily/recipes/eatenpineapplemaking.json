@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:pineapple"
+    },
+    {
+      "item": "flavor_immersed_daily:tidywater"
+    },
+    {
+      "tag": "c:salt"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:eatenpineapple",
+    "count": 2
+  }
+}

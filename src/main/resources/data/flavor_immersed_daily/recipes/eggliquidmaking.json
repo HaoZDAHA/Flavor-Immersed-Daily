@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:egg"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:eggliquid",
+    "count": 1
+  }
+}

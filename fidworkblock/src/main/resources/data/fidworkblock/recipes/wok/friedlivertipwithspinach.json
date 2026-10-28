@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "wok",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:spinach" },
+    { "item": "flavor_immersed_daily:rawpigliver" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:friedlivertipwithspinach",
+    "count": 1
+  },
+  "cookingTime": 0
+}
+

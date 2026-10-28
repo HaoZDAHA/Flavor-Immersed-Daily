@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "mortar",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:cassava" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:tapiocaflour",
+    "count": 2
+  },
+  "cookingTime": 0
+}
+

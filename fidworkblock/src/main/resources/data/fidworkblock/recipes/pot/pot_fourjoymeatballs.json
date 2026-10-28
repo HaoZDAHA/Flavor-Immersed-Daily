@@ -1,0 +1,16 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pot",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:rawmeatballwitheggball" },
+    { "item": "flavor_immersed_daily:rawmeatballwitheggball" },
+    { "item": "flavor_immersed_daily:rawmeatballwitheggball" },
+    { "item": "flavor_immersed_daily:rawmeatballwitheggball" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:fourjoymeatballs",
+    "count": 1
+  },
+  "cookingTime": 120,
+  "experience": 0.5
+}

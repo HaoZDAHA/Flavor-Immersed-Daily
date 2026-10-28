@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    "flavor_immersed_daily:rawsheepblood",
+    "flavor_immersed_daily:rawdicedsheepmeat",
+    "flavor_immersed_daily:rawsheepface",
+    "flavor_immersed_daily:rawsheeptailfat",
+    "flavor_immersed_daily:rawsheepfat",
+    "flavor_immersed_daily:rawsheepeye",
+    "flavor_immersed_daily:rawsheepstomach",
+    "flavor_immersed_daily:rawsheepliver",
+    "flavor_immersed_daily:rawsheepintestine",
+    "flavor_immersed_daily:rawsheepkidney",
+    "flavor_immersed_daily:rawsheepheart",
+    "flavor_immersed_daily:rawsheepsparerib",
+    "flavor_immersed_daily:rawsheepspine",
+    "flavor_immersed_daily:rawsheepfeet",
+    "flavor_immersed_daily:rawsheepleg",
+    "flavor_immersed_daily:rawsheeptail",
+    "flavor_immersed_daily:rawsheepoffal"
+  ]
+}

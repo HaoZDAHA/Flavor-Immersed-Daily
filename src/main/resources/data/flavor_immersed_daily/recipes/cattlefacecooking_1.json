@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "experience": 1,
+  "cookingtime": 100,
+  "ingredient": {
+    "item": "flavor_immersed_daily:rawcattleface"
+  },
+  "result": { "item": "flavor_immersed_daily:cookedcattleface"
+  }
+}

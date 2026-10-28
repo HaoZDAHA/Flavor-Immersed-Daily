@@ -1,0 +1,6 @@
+{
+  "type": "flavor_immersed_daily:fridge_freezing",
+  "ingredient": { "item": "flavor_immersed_daily:tidywater" },
+  "result": { "item": "minecraft:ice", "count": 1 },
+  "cookingTime": 80
+}

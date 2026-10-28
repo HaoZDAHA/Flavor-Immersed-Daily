@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:rawsoybeanmilk"
+    },
+    {
+      "item": "flavor_immersed_daily:rawsoybeanmilk"
+    },
+    {
+      "item": "flavor_immersed_daily:rawsoybeanmilk"
+    },
+    {
+      "item": "flavor_immersed_daily:landplaster"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:toufu",
+    "count": 1
+  }
+}

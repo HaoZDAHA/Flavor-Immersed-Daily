@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pot",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:winterjujube" },
+    { "item": "flavor_immersed_daily:brownsugarsyrup" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:tang_zi_xiao_zao",
+    "count": 1
+  },
+  "cookingTime": 120,
+  "experience": 0.5
+}

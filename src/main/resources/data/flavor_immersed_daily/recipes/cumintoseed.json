@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:cumin"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:cuminseed",
+    "count": 2
+  }
+}

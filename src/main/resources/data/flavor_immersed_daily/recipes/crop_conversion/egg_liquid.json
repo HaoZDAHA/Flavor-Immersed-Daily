@@ -1,0 +1,7 @@
+{
+  "type": "flavor_immersed_daily:crop_conversion",
+  "group": [
+    "flavor_immersed_daily:eggliquid",
+    "bakeries:whole_egg"
+  ]
+}

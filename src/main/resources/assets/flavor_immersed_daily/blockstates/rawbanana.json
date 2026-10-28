@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "age=0,facing=south": { "model": "flavor_immersed_daily:block/rawbanana_stage0" },
+    "age=0,facing=west": { "model": "flavor_immersed_daily:block/rawbanana_stage0", "y": 90 },
+    "age=0,facing=north": { "model": "flavor_immersed_daily:block/rawbanana_stage0", "y": 180 },
+    "age=0,facing=east": { "model": "flavor_immersed_daily:block/rawbanana_stage0", "y": 270 },
+    "age=1,facing=south": { "model": "flavor_immersed_daily:block/rawbanana_stage1" },
+    "age=1,facing=west": { "model": "flavor_immersed_daily:block/rawbanana_stage1", "y": 90 },
+    "age=1,facing=north": { "model": "flavor_immersed_daily:block/rawbanana_stage1", "y": 180 },
+    "age=1,facing=east": { "model": "flavor_immersed_daily:block/rawbanana_stage1", "y": 270 }
+  }
+}

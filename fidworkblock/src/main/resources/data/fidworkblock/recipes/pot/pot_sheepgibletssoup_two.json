@@ -1,0 +1,16 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pot",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:rawsheepoffal" },
+    { "item": "flavor_immersed_daily:tidywater" },
+    { "tag": "c:salt" },
+    { "item": "flavor_immersed_daily:scallion_2" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:sheepgibletssoup",
+    "count": 1
+  },
+  "cookingTime": 120,
+  "experience": 0.5
+}

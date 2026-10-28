@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:broccoil"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:broccoilseed",
+    "count": 2
+  }
+}

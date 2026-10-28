@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "dryer",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:rawchickenbreast" }],
+  "result": {
+    "item": "flavor_immersed_daily:somkedchickenbreast",
+    "count": 1
+  },
+  "cookingTime": 120
+}
+

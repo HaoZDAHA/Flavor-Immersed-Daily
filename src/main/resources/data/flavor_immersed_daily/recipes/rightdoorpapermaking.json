@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aab",
+    "aac",
+    "aab"
+  ],
+  "key": {
+    "a": {
+      "tag": "minecraft:planks"
+    },
+    "b": {
+      "item": "minecraft:paper"
+    },
+    "c": {
+      "item": "minecraft:red_dye"
+    }
+  },
+  "result": { "item": "flavor_immersed_daily:rightdoorpaper",
+    "count": 1
+  }
+}

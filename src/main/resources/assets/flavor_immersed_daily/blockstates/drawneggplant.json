@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "stage=0": {
+      "model": "flavor_immersed_daily:block/drawneggplant_stage0"
+    },
+    "stage=1": {
+      "model": "flavor_immersed_daily:block/drawneggplant_stage1"
+    },
+    "stage=2": {
+      "model": "flavor_immersed_daily:block/drawneggplant_stage2"
+    }
+  }
+}

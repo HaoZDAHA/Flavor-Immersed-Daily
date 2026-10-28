@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "fidworkblock:block/fryingpan", "y": 0 },
+    "facing=east":  { "model": "fidworkblock:block/fryingpan", "y": 90 },
+    "facing=south": { "model": "fidworkblock:block/fryingpan", "y": 180 },
+    "facing=west":  { "model": "fidworkblock:block/fryingpan", "y": 270 }
+  }
+}

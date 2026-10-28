@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aa"
+  ],
+  "key": {
+    "a": {
+      "item": "farmersdelight:tomato"
+    }
+  },
+  "result": { "item": "flavor_immersed_daily:tomato",
+    "count": 2
+  }
+}

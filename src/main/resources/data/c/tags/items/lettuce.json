@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "flavor_immersed_daily:chineseleaves",
+    "flavor_immersed_daily:cutchinesecabbage",
+    "flavor_immersed_daily:cabbage",
+    "flavor_immersed_daily:cutcabbage"
+  ]
+}

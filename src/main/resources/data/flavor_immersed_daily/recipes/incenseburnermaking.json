@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "b b",
+    "ccc"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:torch"
+    },
+    "b": {
+      "item": "minecraft:iron_ingot"
+    },
+    "c": {
+      "item": "minecraft:copper_ingot"
+    }
+  },
+  "result": { "item": "flavor_immersed_daily:incense_burner",
+    "count": 1
+  }
+}

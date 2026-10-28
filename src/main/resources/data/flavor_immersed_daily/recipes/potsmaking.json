@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aba",
+    "aca"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:iron_ingot"
+    },
+    "b": {
+      "item": "flavor_immersed_daily:tidywater"
+    },
+    "c": {
+      "item": "minecraft:coal"
+    }
+  },
+  "result": { "item": "fidworkblock:pot",
+    "count": 1
+  }
+}

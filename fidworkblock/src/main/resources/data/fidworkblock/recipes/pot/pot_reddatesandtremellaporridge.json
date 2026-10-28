@@ -1,0 +1,16 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pot",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:reddate" },
+    { "item": "flavor_immersed_daily:tremella" },
+    { "item": "flavor_immersed_daily:crystalsugar" },
+    { "item": "flavor_immersed_daily:tidywater" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:reddatesandtremellaporridge",
+    "count": 1
+  },
+  "cookingTime": 120,
+  "experience": 0.5
+}

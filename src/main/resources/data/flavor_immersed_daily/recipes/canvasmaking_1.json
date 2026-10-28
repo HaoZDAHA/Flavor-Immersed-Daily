@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "cdc",
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "tag": "minecraft:planks"
+    },
+    "b": {
+      "item": "minecraft:paper"
+    },
+    "c": {
+      "item": "minecraft:stick"
+    },
+    "d": {
+      "item": "minecraft:red_dye"
+    }
+  },
+  "result": { "item": "flavor_immersed_daily:canvas_screen_1",
+    "count": 2
+  }
+}

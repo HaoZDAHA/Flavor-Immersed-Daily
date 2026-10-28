@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:grater"
+    },
+    {
+      "item": "minecraft:potato"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:shreddedpotato_2",
+    "count": 6
+  }
+}

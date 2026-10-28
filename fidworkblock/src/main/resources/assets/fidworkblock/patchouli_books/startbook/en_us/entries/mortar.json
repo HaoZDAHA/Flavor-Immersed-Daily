@@ -1,0 +1,12 @@
+{
+  "name": "Mortar",
+  "category": "fidworkblock:blocks",
+  "icon": "fidworkblock:mortar",
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Mortar$(): right-click with crushable ingredients to add them.$(br)$(bold)Right-click$() with an empty hand to process instantly - results drop on top of the mortar, no heat source needed.$(br2)$(bold)Shift-right-click$() to take out the stored ingredients."
+    }
+  ]
+}

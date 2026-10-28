@@ -1,0 +1,12 @@
+{
+  "name": "砧板",
+  "category": "fidworkblock:blocks",
+  "icon": "fidworkblock:choppingboard",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)砧板$()：手持食材右键放上去（最多可叠 64 个）。$(br)手持$(bold)菜刀$()右键即可加工，产物直接掉落在砧板上方，即时完成、无需热源。$(br2)菜刀每次消耗 1 点耐久。$(br)$(bold)空手右键$()可以取出槽内的食材。"
+    }
+  ]
+}

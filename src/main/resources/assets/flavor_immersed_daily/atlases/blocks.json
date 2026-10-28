@@ -1,0 +1,8 @@
+{
+  "sources": [
+    {
+      "type": "minecraft:single",
+      "resource": "flavor_immersed_daily:item/fillingrender"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a  ",
+    "aaa",
+    "a a"
+  ],
+  "key": {
+    "a": {
+      "item": "flavor_immersed_daily:vineheart_timber_planks"
+    }
+  },
+  "result": { "item": "flavor_immersed_daily:vineheartchair",
+    "count": 2
+  }
+}

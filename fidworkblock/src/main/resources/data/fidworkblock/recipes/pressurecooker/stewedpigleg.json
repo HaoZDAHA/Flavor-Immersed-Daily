@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "pressurecooker",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:rawpigleg" },
+    { "item": "flavor_immersed_daily:tidywater" },
+{ "item": "flavor_immersed_daily:halogenbag" }],
+  "result": {
+    "item": "flavor_immersed_daily:stewedpigleg",
+    "count": 1
+  },
+  "cookingTime": 180
+}
+

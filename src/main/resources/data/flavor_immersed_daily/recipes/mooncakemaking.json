@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:rawpie"
+    },
+    {
+      "item": "flavor_immersed_daily:mooncakemold"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:rawmooncake",
+    "count": 1
+  }
+}

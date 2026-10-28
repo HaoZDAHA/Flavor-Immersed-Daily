@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:diecedpreservedegg"
+    },
+    {
+      "item": "flavor_immersed_daily:vinegar"
+    },
+    {
+      "item": "flavor_immersed_daily:scallion_2"
+    },
+    {
+      "item": "flavor_immersed_daily:garlicpowder"
+    },
+    {
+      "item": "flavor_immersed_daily:groundpowder"
+    },
+    {
+      "item": "flavor_immersed_daily:soy"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:preservedeggsalad",
+    "count": 1
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "wok",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:cutcabbage" },
+    { "item": "flavor_immersed_daily:redrepper" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:spicycabbage",
+    "count": 1
+  },
+  "cookingTime": 0
+}
+

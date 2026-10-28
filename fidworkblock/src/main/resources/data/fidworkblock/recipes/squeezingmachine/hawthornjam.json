@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "squeezingmachine",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:hawthorn" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:hawthornjam",
+    "count": 2
+  },
+  "cookingTime": 80
+}
+

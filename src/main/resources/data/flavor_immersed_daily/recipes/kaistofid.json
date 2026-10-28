@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a ",
+    " a"
+  ],
+  "key": {
+    "a": {
+      "item": "kaleidoscope_cookery:tomato"
+    }
+  },
+  "result": { "item": "flavor_immersed_daily:tomato",
+    "count": 2
+  }
+}

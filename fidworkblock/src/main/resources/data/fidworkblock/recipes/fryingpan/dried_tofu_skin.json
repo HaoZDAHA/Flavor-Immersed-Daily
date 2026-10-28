@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "fryingpan",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:thousand_layer_tofu_skin" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:dried_tofu_skin",
+    "count": 1
+  },
+  "cookingTime": 60
+}
+

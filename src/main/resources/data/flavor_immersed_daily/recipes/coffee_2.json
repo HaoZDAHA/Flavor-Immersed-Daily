@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:coffeepowder"
+    },
+    {
+      "item": "flavor_immersed_daily:tidywater"
+    },
+    {
+      "item": "flavor_immersed_daily:milkbottle"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:cafelatte",
+    "count": 1
+  }
+}

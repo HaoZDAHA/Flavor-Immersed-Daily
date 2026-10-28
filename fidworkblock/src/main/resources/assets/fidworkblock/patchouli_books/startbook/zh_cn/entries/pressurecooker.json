@@ -1,0 +1,12 @@
+{
+  "name": "高压锅",
+  "category": "fidworkblock:blocks",
+  "icon": "fidworkblock:pressurecooker",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)高压锅$()有$(bold)3 个输入槽$()。$(br)$(bold)空手右键$()打开界面放入食材。$(br2)放入后$(bold)自动开始烹饪$()，$(bold)无需任何热源$()。完成后从输出槽取出成品即可。"
+    }
+  ]
+}

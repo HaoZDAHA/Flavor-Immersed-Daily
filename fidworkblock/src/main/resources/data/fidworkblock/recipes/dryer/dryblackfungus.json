@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "dryer",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:blackfungus" }],
+  "result": {
+    "item": "flavor_immersed_daily:dryblackfungus",
+    "count": 1
+  },
+  "cookingTime": 120
+}
+

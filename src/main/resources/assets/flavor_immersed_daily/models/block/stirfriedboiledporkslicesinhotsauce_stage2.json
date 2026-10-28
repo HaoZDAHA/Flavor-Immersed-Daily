@@ -1,0 +1,144 @@
+{
+	"parent": "block/block",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"1": "flavor_immersed_daily:block/stirfriedboiledporkslicesinhotsauce",
+		"2": "flavor_immersed_daily:block/plate",
+		"particle": "flavor_immersed_daily:block/stirfriedboiledporkslicesinhotsauce"
+	},
+	"elements": [
+		{
+			"from": [2, 0, 2],
+			"to": [14, 1, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 0, 7]},
+			"faces": {
+				"north": {"uv": [6, 0, 12, 0.5], "texture": "#2"},
+				"east": {"uv": [6, 0.5, 12, 1], "texture": "#2"},
+				"south": {"uv": [6, 1, 12, 1.5], "texture": "#2"},
+				"west": {"uv": [6, 1.5, 12, 2], "texture": "#2"},
+				"up": {"uv": [6, 6, 0, 0], "texture": "#2"},
+				"down": {"uv": [6, 6, 0, 12], "texture": "#2"}
+			}
+		},
+		{
+			"name": "flavor_immersed_daily:block/stirfriedboiledporkslicesinhotsauce",
+			"from": [5.5, 1, 6],
+			"to": [6.5, 4, 10],
+			"rotation": {"angle": -45, "axis": "z", "origin": [6, 2.5, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 3, 4], "texture": "#1"},
+				"east": {"uv": [3, 0, 6, 4], "texture": "#1"},
+				"south": {"uv": [0, 4, 3, 8], "texture": "#1"},
+				"west": {"uv": [3, 4, 6, 8], "texture": "#1"},
+				"up": {"uv": [9, 3, 6, 0], "texture": "#1"},
+				"down": {"uv": [9, 3, 6, 6], "texture": "#1"}
+			}
+		},
+		{
+			"name": "flavor_immersed_daily:block/stirfriedboiledporkslicesinhotsauce",
+			"from": [6.5, 1, 6],
+			"to": [9.5, 2, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 1.5, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 3, 4], "rotation": 90, "texture": "#1"},
+				"east": {"uv": [9, 3, 6, 6], "rotation": 270, "texture": "#1"},
+				"south": {"uv": [0, 4, 3, 8], "rotation": 270, "texture": "#1"},
+				"west": {"uv": [9, 3, 6, 0], "rotation": 270, "texture": "#1"},
+				"up": {"uv": [3, 0, 6, 4], "rotation": 270, "texture": "#1"},
+				"down": {"uv": [3, 4, 6, 8], "rotation": 270, "texture": "#1"}
+			}
+		},
+		{
+			"name": "flavor_immersed_daily:block/stirfriedboiledporkslicesinhotsauce",
+			"from": [6.5, 2, 6],
+			"to": [9.5, 3, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 2.5, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 3, 4], "rotation": 90, "texture": "#1"},
+				"east": {"uv": [9, 3, 6, 6], "rotation": 270, "texture": "#1"},
+				"south": {"uv": [0, 4, 3, 8], "rotation": 270, "texture": "#1"},
+				"west": {"uv": [9, 3, 6, 0], "rotation": 270, "texture": "#1"},
+				"up": {"uv": [3, 0, 6, 4], "rotation": 270, "texture": "#1"},
+				"down": {"uv": [3, 4, 6, 8], "rotation": 270, "texture": "#1"}
+			}
+		},
+		{
+			"name": "flavor_immersed_daily:block/stirfriedboiledporkslicesinhotsauce",
+			"from": [4.06238, 0.91785, 9.69402],
+			"to": [6.06238, 1.91785, 11.69402],
+			"rotation": {"angle": 0, "axis": "y", "origin": [5.06238, 1.41785, 10.69402]},
+			"faces": {
+				"north": {"uv": [9, 5, 11, 6], "rotation": 90, "texture": "#1"},
+				"east": {"uv": [13, 3, 12, 5], "texture": "#1"},
+				"south": {"uv": [12, 5, 14, 6], "rotation": 270, "texture": "#1"},
+				"west": {"uv": [12, 5, 11, 3], "rotation": 180, "texture": "#1"},
+				"up": {"uv": [14, 5, 15, 6], "rotation": 270, "texture": "#1"},
+				"down": {"uv": [11, 5, 12, 6], "rotation": 270, "texture": "#1"}
+			}
+		},
+		{
+			"from": [3, 1, 3],
+			"to": [13, 1.2, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [2, 1, 2]},
+			"faces": {
+				"north": {"uv": [6, 8, 8, 10], "texture": "#1"},
+				"east": {"uv": [4, 8, 6, 10], "texture": "#1"},
+				"south": {"uv": [10, 8, 12, 10], "texture": "#1"},
+				"west": {"uv": [8, 8, 10, 10], "texture": "#1"},
+				"up": {"uv": [8, 8, 6, 6], "texture": "#1"},
+				"down": {"uv": [10, 6, 8, 8], "texture": "#1"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 3, 1],
+			"scale": [0.55, 0.55, 0.55]
+		},
+		"thirdperson_lefthand": {
+			"translation": [0, 3, 1],
+			"scale": [0.55, 0.55, 0.55]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, -90, 25],
+			"translation": [1.13, 3.2, 1.13],
+			"scale": [0.68, 0.68, 0.68]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, -90, 25],
+			"translation": [1.13, 3.2, 1.13],
+			"scale": [0.68, 0.68, 0.68]
+		},
+		"ground": {
+			"translation": [0, 2, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"gui": {
+			"rotation": [-130.06, -43.13, 178.13],
+			"translation": [0, 3.5, 0],
+			"scale": [0.9, 0.9, 0.9]
+		},
+		"head": {
+			"rotation": [0, 180, 0],
+			"translation": [0, 13, 7]
+		},
+		"fixed": {
+			"rotation": [0, 180, 0]
+		}
+	},
+	"groups": [
+		{
+			"name": "flavor_immersed_daily:block/plate",
+			"origin": [7, 0, 7],
+			"color": 0,
+			"children": [0]
+		},
+		{
+			"name": "group",
+			"origin": [4, 1, 6],
+			"color": 0,
+			"children": [1, 2, 3, 4]
+		},
+		5
+	]
+}

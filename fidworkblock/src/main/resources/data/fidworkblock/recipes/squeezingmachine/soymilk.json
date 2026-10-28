@@ -1,0 +1,13 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "squeezingmachine",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:soakedsoybeans" }
+  ],
+  "result": {
+    "item": "flavor_immersed_daily:rawsoybeanmilk",
+    "count": 2
+  },
+  "cookingTime": 80
+}
+

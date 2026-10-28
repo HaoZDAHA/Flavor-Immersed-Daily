@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "flavor_immersed_daily:block/colorful_fireworks_box" },
+    "facing=east":  { "model": "flavor_immersed_daily:block/colorful_fireworks_box", "y": 90 },
+    "facing=south": { "model": "flavor_immersed_daily:block/colorful_fireworks_box", "y": 180 },
+    "facing=west":  { "model": "flavor_immersed_daily:block/colorful_fireworks_box", "y": 270 }
+  }
+}

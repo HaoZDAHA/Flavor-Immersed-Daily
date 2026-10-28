@@ -1,0 +1,37 @@
+{
+  "type": "botanypots:crop",
+  "input": {
+    "item": "flavor_immersed_daily:radishseed"
+  },
+  "soil": {
+    "tag": "botanypots:soil/dirt"
+  },
+  "grow_time": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "flavor_immersed_daily:radishseed"
+  },
+  "drops": [
+    {
+      "type": "botanypots:items",
+      "items": [
+        {
+          "result": {
+            "id": "flavor_immersed_daily:radish",
+            "count": 1
+          },
+          "chance": 1.0
+        },
+        {
+          "result": {
+            "id": "flavor_immersed_daily:radishseed",
+            "count": 1
+          },
+          "chance": 0.05
+        }
+      ]
+    }
+  ],
+  "yield": 1.0,
+  "yield_scale": 1.0
+}

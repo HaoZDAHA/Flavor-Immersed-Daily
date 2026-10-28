@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "flavor_immersed_daily:pineapplejam"
+    },
+    {
+      "item": "flavor_immersed_daily:cream"
+    },
+    {
+      "item": "flavor_immersed_daily:sorbet"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:pineappleicecream",
+    "count": 1
+  }
+}

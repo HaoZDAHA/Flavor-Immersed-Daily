@@ -1,0 +1,12 @@
+{
+  "name": "Farmland Crops",
+  "category": "fidworkblock:crops",
+  "icon": "minecraft:wheat_seeds",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Farmland crops$() are planted $(bold)directly on farmland$().$(br2)They behave $(bold)exactly like vanilla wheat$(): they need farmland and light, and when mature you break them to get seeds and produce."
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "禽类屠宰",
+  "category": "fidworkblock:livestock",
+  "icon": "minecraft:feather",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)禽类的屠宰方式不同于兽类$()。$(br)使用$(bold)宽刃刀$()获取$(bold)鸡血$()后，应当$(bold)右键把鸡取下来$()。$(br2)在木盆里放上$(bold)纯净水$()（$(item)flavor_immersed_daily:tidywater$()），再把鸡放进去，然后$(bold)右键拔毛$()。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "拔完毛之后，再次把鸡$(bold)挂到大挂钩$()上，继续进行屠宰拆解。"
+    }
+  ]
+}

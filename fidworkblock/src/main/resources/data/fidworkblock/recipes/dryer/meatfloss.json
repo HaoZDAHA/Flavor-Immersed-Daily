@@ -1,0 +1,12 @@
+{
+  "type": "fidworkblock:cooking",
+  "appliance": "dryer",
+  "ingredients": [
+    { "item": "flavor_immersed_daily:rawsoyshreddedmeat" }],
+  "result": {
+    "item": "flavor_immersed_daily:meatfloss",
+    "count": 1
+  },
+  "cookingTime": 120
+}
+

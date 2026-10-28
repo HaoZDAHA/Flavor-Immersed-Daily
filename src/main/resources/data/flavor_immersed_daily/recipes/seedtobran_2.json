@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "fid:seeds"
+    },
+    {
+      "tag": "fid:seeds"
+    },
+    {
+      "tag": "fid:seeds"
+    },
+    {
+      "tag": "fid:seeds"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:bran",
+    "count": 1
+  }
+}

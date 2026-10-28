@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "c:flour"
+    },
+    {
+      "item": "flavor_immersed_daily:tidywater"
+    },
+    {
+      "item": "flavor_immersed_daily:thickbroadbeansauce"
+    }
+  ],
+  "result": { "item": "flavor_immersed_daily:sweetflourasuve",
+    "count": 3
+  }
+}

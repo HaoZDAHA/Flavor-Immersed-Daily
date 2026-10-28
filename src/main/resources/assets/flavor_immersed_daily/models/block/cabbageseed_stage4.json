@@ -1,0 +1,53 @@
+{
+	
+	"parent": "block/block",
+	"credit": "Made with Blockbench",
+		"render_type": "minecraft:cutout",
+	"textures": {
+		"0": "flavor_immersed_daily:block/cabbageseed0",
+		"particle": "flavor_immersed_daily:block/cabbageseed0"
+	},
+	"elements": [
+		{
+			"from": [-0.12132, -1, 8.12132],
+			"to": [15.87868, 8, 8.12132],
+			"rotation": {"angle": 45, "axis": "y", "origin": [7.87868, 2.5, 8.12132]},
+			"faces": {
+				"north": {"uv": [0, 7, 16, 16], "texture": "#0"},
+				"east": {"uv": [0, 0, 0, 4], "texture": "#0"},
+				"south": {"uv": [0, 7, 16, 16], "texture": "#0"},
+				"west": {"uv": [0, 0, 0, 4], "texture": "#0"},
+				"up": {"uv": [0, 16, 0, 0], "rotation": 270, "texture": "#0"},
+				"down": {"uv": [0, 0, 0, 16], "rotation": 90, "texture": "#0"}
+			}
+		},
+		{
+			"from": [7.87868, -1, 0.12132],
+			"to": [7.87868, 8, 16.12132],
+			"rotation": {"angle": 45, "axis": "y", "origin": [7.87868, 2.5, 8.12132]},
+			"faces": {
+				"north": {"uv": [0, 0, 0, 4], "texture": "#0"},
+				"east": {"uv": [0, 7, 16, 16], "texture": "#0"},
+				"south": {"uv": [0, 0, 0, 4], "texture": "#0"},
+				"west": {"uv": [0, 7, 16, 16], "texture": "#0"},
+				"up": {"uv": [0, 16, 0, 0], "rotation": 180, "texture": "#0"},
+				"down": {"uv": [0, 0, 0, 16], "rotation": 180, "texture": "#0"}
+			}
+		},
+		{
+			"from": [5, 0, 5],
+			"to": [11, 6, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 0, 7]},
+			"faces": {
+				"north": {"uv": [5, 8, 11, 14], "texture": "#0"},
+				"east": {"uv": [5, 8, 11, 14], "texture": "#0"},
+				"south": {"uv": [5, 8, 11, 14], "texture": "#0"},
+				"west": {"uv": [5, 8, 11, 14], "texture": "#0"},
+				"up": {"uv": [5, 8, 11, 14], "texture": "#0"},
+				"down": {"uv": [0, 0, 6, 6], "texture": "#0"}
+			}
+		}
+	]
+}
+
+
