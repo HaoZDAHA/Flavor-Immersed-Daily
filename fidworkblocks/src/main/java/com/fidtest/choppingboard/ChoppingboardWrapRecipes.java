@@ -12,12 +12,10 @@ import java.util.Map;
 
 // 砧板「包裹/成型」工序的展示数据（JEI 与 EMI 共用，保证两侧始终同步）。
 // 四种工序（mode）：
-// <ul>
-// <li>wrap —— 皮 + 任意馅料 → 生食（包子/饺子/烧麦/馄饨/汤圆/馅饼）</li>
-// <li>mooncake —— 生馅饼 + 月饼模具 → 生月饼</li>
-// <li>zongzi —— 芦苇叶 + 馅料 + 糯米 → 生粽子</li>
-// <li>roll —— 面团/面剂子/面皮 + 擀面杖 → 下一步形态</li>
-// </ul>
+// wrap —— 皮 + 任意馅料 → 生食（包子/饺子/烧麦/馄饨/汤圆/馅饼）
+// mooncake —— 生馅饼 + 月饼模具 → 生月饼
+// zongzi —— 芦苇叶 + 馅料 + 糯米 → 生粽子
+// roll —— 面团/面剂子/面皮 + 擀面杖 → 下一步形态
 // 这些工序写在方块逻辑里（不是 JSON 配方），故 JEI/EMI 展示配方在此统一合成。
 public final class ChoppingboardWrapRecipes {
 

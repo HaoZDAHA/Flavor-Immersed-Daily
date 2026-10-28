@@ -20,18 +20,7 @@ import java.util.List;
 // 供其他模组 / 数据包扩展砧板：把物品放上砧板后，可见对应生物实体平躺渲染，
 // 手持刀具多次右键，按阶段依次爆出产物。文件位置：
 // data/<任意命名空间>/choppingboard_mob/<名称>.json，本模组会加载所有命名空间下的定义。
-// <pre>{@code
-// {
-// "input": "my_mod:raw_grass_carp", // 放上砧板的物品
-// "entity": "my_mod:grass_carp", // 砧板上平躺渲染的实体（可选，缺省则用平面物品图标）
-// "tool": "flavor_immersed_daily:sharpknife", // 所需刀具：物品ID 或 "#tag"；可省略=默认切割刀
-// "render": { "scale": 0.75, "yaw": 0.0, "y_offset": 0.0, "roll": 0.0, "x_offset": 0.0, "z_offset": 0.0 },
-// "stages": [
-// { "name": "刮鳞", "drops": ["my_mod:fish_scale", "my_mod:fish_scale"] },
-// { "name": "开膛", "drops": ["my_mod:raw_fish_liver"] }
-// ]
-// }
-// }</pre>
+// JSON 结构与字段说明见 fidworkblocks/README.md 第 6 节。
 public record ChoppingboardMobDefinition(ResourceLocation id, Item input,
                                          @Nullable EntityType<?> entity,
                                          @Nullable Item toolItem, @Nullable TagKey<Item> toolTag,

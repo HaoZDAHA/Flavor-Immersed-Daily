@@ -32,7 +32,7 @@ public class CookingRecipeBatchLoader
     private static final Map<ApplianceType, List<RecipeHolder<CookingRecipe>>> RECIPES =
             new ConcurrentHashMap<>();
 
-// ═══════════════════ 资源加载（服务端/数据包重载时触发）═══════════════════
+// 资源加载（服务端/数据包重载时触发）
 
     @Override
     protected Map<ApplianceType, List<RecipeHolder<CookingRecipe>>> prepare(
@@ -85,7 +85,7 @@ public class CookingRecipeBatchLoader
         RECIPES.putAll(data);
     }
 
-// ═══════════════════ 公开查询接口 ═══════════════════
+// 公开查询接口
 
 // 获取指定厨具的所有配方
     public static List<RecipeHolder<CookingRecipe>> getRecipes(ApplianceType appliance) {
@@ -101,7 +101,7 @@ public class CookingRecipeBatchLoader
         return all;
     }
 
-// ═══════════════════ JSON 解析 ═══════════════════
+// JSON 解析
 
     private static CookingRecipe parseRecipe(JsonObject obj, String applianceName) {
 // 解析原料（支持 item 和 tag）
