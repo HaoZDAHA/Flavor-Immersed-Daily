@@ -3,7 +3,7 @@ package com.flavor_immersed_daily.effect;
 import com.flavor_immersed_daily.all.ModEffects;
 import com.flavor_immersed_daily.config.Config;
 import com.flavor_immersed_daily.FlavorImmersedDaily;
-import net.minecraft.world.effect.MobEffectInstance;
+import com.flavor_immersed_daily.entity.Freezable;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -55,11 +55,10 @@ public class ButterPitcherEffectHandler {
 // 姒傜巼鍒ゅ畾
         if (player.getRandom().nextDouble() >= Config.butterPitcherFreezeChance) return;
 
-// 鏂藉姞鍐荤粨鏁堟灉锛氭殏鍋滅洰鏍?AI 琛屼负鎸囧畾绉掓暟
-        livingTarget.addEffect(new MobEffectInstance(
-                ModEffects.FROZEN,
-                (int) (Config.butterPitcherFreezeDuration * 20),
-                0), player);
+// 施加冻结：直接写入实体的冻结刻数，暂停其 AI 行为
+        if (livingTarget instanceof Freezable freezable) {
+            freezable.fid$freeze((int) (Config.butterPitcherFreezeDuration * 20));
+        }
     }
 
 // 鍒ゅ畾瀹炰綋鏄惁涓?Boss锛氭湯褰遍緳銆佸噵鐏点€佸惊澹板畧鍗?

@@ -3,7 +3,7 @@
   "appliance": "wok",
   "ingredients": [
     { "item": "flavor_immersed_daily:cookeddicedpigmeat" },
-    { "item": "flavor_immersed_daily:cookedpigstreakmeat" },
+    { "item": "flavor_immersed_daily:cookedpigstreakypork" },
     { "item": "flavor_immersed_daily:dicedsweetpepper" }
   ],
   "result": {

@@ -128,7 +128,9 @@ public class ExampleMod {
                 serverPlayer.displayClientMessage(
                         Component.translatable("message.fidworkblock.need_patchouli"), false);
             }
-            unlockWelcomeAndGiveStartBook(serverPlayer);
+            if (Config.GIVE_STARTBOOK_ON_JOIN.get()) {
+                unlockWelcomeAndGiveStartBook(serverPlayer);
+            }
         }
     }
 

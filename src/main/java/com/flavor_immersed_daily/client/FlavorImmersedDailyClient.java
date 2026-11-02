@@ -139,6 +139,8 @@ public class FlavorImmersedDailyClient {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.RADDLES.get(), RenderType.translucent());
 // 石狮子：透明渲染，避免靠墙放置时透视
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.STONE_LION.get(), cutout);
+// 香炉：透明渲染，避免贴图透明区域在方块上显示成黑边
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.INCENSE_BURNER.get(), cutout);
     }
 
     @SubscribeEvent

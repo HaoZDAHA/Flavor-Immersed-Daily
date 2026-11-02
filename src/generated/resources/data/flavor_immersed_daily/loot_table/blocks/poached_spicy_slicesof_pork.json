@@ -5,6 +5,11 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
+          "condition": "minecraft:block_state_property",
+          "block": "flavor_immersed_daily:poached_spicy_slicesof_pork",
+          "properties": { "stage": "0" }
+        },
+        {
           "condition": "minecraft:survives_explosion"
         }
       ],

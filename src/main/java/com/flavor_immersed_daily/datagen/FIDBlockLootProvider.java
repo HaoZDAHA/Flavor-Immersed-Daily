@@ -7,6 +7,7 @@ import com.flavor_immersed_daily.block.common.block.FIDCropBlock;
 import com.flavor_immersed_daily.block.common.block.FIDLogMushroomBlock;
 import com.flavor_immersed_daily.block.common.block.FIDWaterCropBlock;
 import com.flavor_immersed_daily.block.block.food.ColaBlock;
+import com.flavor_immersed_daily.block.block.food.MultiStageInteractiveBlock;
 import com.flavor_immersed_daily.block.block.fruit.FruitingLeavesBlock;
 import com.flavor_immersed_daily.block.block.fruit.GrapeBlock;
 import net.minecraft.core.Holder;
@@ -72,6 +73,14 @@ public final class FIDBlockLootProvider extends BlockLootSubProvider {
             } else if (block instanceof ColaBlock) {
 // 可乐罐堆：方块本身不掉落，只通过右键升级/降级交互获得可乐物品
                 add(block, LootTable.lootTable());
+            } else if (block instanceof MultiStageInteractiveBlock) {
+// 放置的菜品：未被食用（stage=0）时破坏才返还物品
+                add(block, LootTable.lootTable().withPool(applyExplosionCondition(block, LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1.0F))
+                        .add(LootItem.lootTableItem(block))
+                        .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+                                .setProperties(StatePropertiesPredicate.Builder.properties()
+                                        .hasProperty(MultiStageInteractiveBlock.STAGE, 0))))));
             } else {
                 dropSelf(block);
             }

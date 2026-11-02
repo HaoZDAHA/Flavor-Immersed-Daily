@@ -84,7 +84,6 @@ public class FIDThirstIntegration {
         event.addFood(ModItems.COOKEDCHICKENNECK.get(), 0, 0);
         event.addFood(ModItems.COOKEDCHICKENPIECE.get(), 0, 0);
         event.addFood(ModItems.COOKEDCHICKENPIECEPIECE.get(), 0, 0);
-        event.addFood(ModItems.COOKEDCHICKENSTEAK.get(), 0, 0);
         event.addFood(ModItems.COOKEDCHICKENWING.get(), 0, 0);
         event.addFood(ModItems.COOKEDCHICKENWINGTIP.get(), 0, 0);
         event.addFood(ModItems.COOKEDCHINESEYAM.get(), 0, 0);

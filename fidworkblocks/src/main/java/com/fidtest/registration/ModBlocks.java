@@ -13,11 +13,11 @@ public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(ExampleMod.MODID);
 
     private static BlockBehaviour.Properties props(MapColor color, SoundType sound) {
-        return BlockBehaviour.Properties.of().mapColor(color).strength(2.0F, 3.0F).sound(sound).noOcclusion();
+        return BlockBehaviour.Properties.of().mapColor(color).strength(0.5F, 3.0F).sound(sound).noOcclusion();
     }
 
     private static BlockBehaviour.Properties steamboxProps() {
-        return BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(1.0F, 3.0F).sound(SoundType.WOOD).noOcclusion();
+        return BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(0.5F, 3.0F).sound(SoundType.WOOD).noOcclusion();
     }
 
     public static final DeferredBlock<SteamboxBlock>             STEAMBOX         = BLOCKS.register("steambox",         () -> new SteamboxBlock(steamboxProps()));

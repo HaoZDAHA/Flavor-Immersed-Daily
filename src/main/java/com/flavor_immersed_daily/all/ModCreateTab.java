@@ -60,7 +60,7 @@ public class ModCreateTab {
 // 田间耕种 260（源码 261，青提重复）、食材杂项 251（源码 255，糯米/白菜/挂糊裹粉的鸡腿/肉卷重复）。
 //
 // 厨房工具 32 件（本模组 19 件，另预留 13 件给其他模组在标签页最前注入的物品）、
-// 田间耕种 260 件、畜牧产品 79 件、食物佳肴 475 件、食材杂项 251 件，
+// 田间耕种 260 件、畜牧产品 78 件、食物佳肴 473 件、食材杂项 251 件，
 // 建筑装饰用负数表示「从这里起余下的全部」。
 // id 同时用作折叠状态的键与横幅纹理名。
     private static final List<SectionedCreativeModeTab.Section> SECTIONS = List.of(
@@ -72,10 +72,10 @@ public class ModCreateTab {
                     bannerTexture("farming"), 260),
             new SectionedCreativeModeTab.Section("livestock",
                     Component.translatable("gui.flavor_immersed_daily.creative_section.livestock"),
-                    bannerTexture("livestock"), 79),
+                    bannerTexture("livestock"), 78),
             new SectionedCreativeModeTab.Section("food",
                     Component.translatable("gui.flavor_immersed_daily.creative_section.food"),
-                    bannerTexture("food"), 475),
+                    bannerTexture("food"), 473),
             new SectionedCreativeModeTab.Section("ingredient_misc",
                     Component.translatable("gui.flavor_immersed_daily.creative_section.ingredient_misc"),
                     bannerTexture("ingredient_misc"), 251),
@@ -753,8 +753,6 @@ public class ModCreateTab {
                 output.accept(RAWDICEDSHEEPMEAT.get());
 // 生羊脸
                 output.accept(RAWSHEEPFACE.get());
-// 生羊尾油
-                output.accept(RAWSHEEPTAILFAT.get());
 // 生羊油
                 output.accept(RAWSHEEPFAT.get());
 // 生羊眼
@@ -1385,8 +1383,6 @@ public class ModCreateTab {
                 output.accept(COOKEDCHICKENLEG.get());
 // 烤鸡块
                 output.accept(COOKEDCHICKENPIECE.get());
-// 烤鸡排
-                output.accept(COOKEDCHICKENSTEAK.get());
 // 烤鸡叉骨
                 output.accept(COOKEDCHICKENFORK.get());
 // 烤鸡尾尖
@@ -1409,8 +1405,6 @@ public class ModCreateTab {
                 output.accept(COOKEDFLAKEBEEF.get());
 // 熟鸡大腿
                 output.accept(COOKEDHALFOFCHCIKENLEG.get());
-// 熟猪五花肉
-                output.accept(COOKEDPIGSTREAKMEAT.get());
 // 棒冰
 // 苹果棒冰
                 output.accept(APPLEPOPSICLE.get());
@@ -2307,18 +2301,6 @@ public class ModCreateTab {
 
 // 肉卷
                 output.accept(MEATFLOURROOL.get());
-// 火锅肉卷
-                output.accept(NORMALMEATROLL.get());
-// 羔羊嫩肉卷
-                output.accept(LAMBROLL.get());
-// 雪花肥牛卷
-                output.accept(FATBEEFROLL.get());
-// 番茄火锅底料
-                output.accept(TOMATO_HOT_POT_BASE.get());
-// 藤椒火锅底料
-                output.accept(PEPPER_HOT_POT_BASE.get());
-// 麻辣火锅底料
-                output.accept(SPICY_HOT_POT_BASE.get());
 // 建筑装饰
 // 建筑木料
 // 灿阳木木板

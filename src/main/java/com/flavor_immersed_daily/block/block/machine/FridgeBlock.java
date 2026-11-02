@@ -6,6 +6,7 @@ import com.flavor_immersed_daily.FlavorImmersedDaily;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.*;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -23,9 +24,13 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
 public class FridgeBlock extends HorizontalDirectionalBlock implements EntityBlock {
 
@@ -136,9 +141,29 @@ public class FridgeBlock extends HorizontalDirectionalBlock implements EntityBlo
                     level.setBlock(lowerPos, Blocks.AIR.defaultBlockState(), Block.UPDATE_SUPPRESS_DROPS | Block.UPDATE_ALL);
                     level.levelEvent(null, 2001, lowerPos, Block.getId(lowerState));
                 }
+// 上半本身不结算战利品（见 getDrops），从上半拆除时在这里补发唯一的一份
+                if (!player.isCreative()) {
+                    LootParams.Builder builder = new LootParams.Builder((ServerLevel) level)
+                            .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
+                            .withParameter(LootContextParams.TOOL, player.getMainHandItem())
+                            .withOptionalParameter(LootContextParams.THIS_ENTITY, player);
+                    super.getDrops(state, builder).forEach(stack -> Block.popResource(level, pos, stack));
+                }
             }
         }
         return super.playerWillDestroy(level, pos, state, player);
+    }
+
+// 掉落
+
+// 双格冰箱只在下半结算掉落，上半永远不产出，这样无论谁按格破坏（范围法术、爆炸、
+// 逐个 destroyBlock 等）都最多只拿到一份，不会因上下两半各结算一次而掉两个
+    @Override
+    protected List<ItemStack> getDrops(BlockState state, LootParams.Builder params) {
+        if (state.getValue(HALF) == DoubleBlockHalf.UPPER) {
+            return List.of();
+        }
+        return super.getDrops(state, params);
     }
 
     @Override

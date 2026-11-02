@@ -293,7 +293,8 @@ public class ChoppingboardBlockEntity extends BlockEntity {
             mooncake.set(net.minecraft.core.component.DataComponents.CUSTOM_DATA, custom);
         }
         spawnDrop(mooncake);
-        inventory.setStackInSlot(SLOT_INGREDIENT, ItemStack.EMPTY);
+// 只消耗 1 个生馅饼，整组放上时余下的继续留着压
+        inventory.extractItem(SLOT_INGREDIENT, 1, false);
         level.playSound(null, worldPosition, SoundEvents.UI_STONECUTTER_TAKE_RESULT,
                 SoundSource.BLOCKS, 1.0F, 1.0F);
         return true;
@@ -357,12 +358,14 @@ public class ChoppingboardBlockEntity extends BlockEntity {
         return result.getCount() != stack.getCount();
     }
 
-// 放 1 个食材到食材槽，放不进返回原栈
+// 放食材到食材槽（可整组放入），放不进返回原栈
     public ItemStack addItem(ItemStack stack) {
         if (stack.isEmpty()) return stack;
-// 换上新食材时屠宰进度归零
-        chopHits = 0;
-        return inventory.insertItem(0, stack.copyWithCount(1), false);
+// 换成新食材时屠宰进度归零
+        if (getStoredItem().isEmpty()) {
+            chopHits = 0;
+        }
+        return inventory.insertItem(SLOT_INGREDIENT, stack.copy(), false);
     }
 
     public ItemStack removeItem() {

@@ -52,6 +52,8 @@ public class MeatmincerBlockEntity extends BlockEntity {
 
     private boolean sealed = false;
     private boolean working = false;
+// 常态盖在绞肉机上的盖子（独立于 sealed，未启动绞肉时也保留在机器上）
+    private ItemStack coverStack = ItemStack.EMPTY;
     private int processTick = 0;
     private int totalProcessTime = DEFAULT_PROCESS_TIME;
     private List<ItemStack> renderInputItems = new ArrayList<>();
@@ -73,6 +75,20 @@ public class MeatmincerBlockEntity extends BlockEntity {
 
     public boolean hasAnyInput() {
         return !inventory.getStackInSlot(INPUT_SLOT).isEmpty();
+    }
+
+    public boolean hasCover() { return !coverStack.isEmpty(); }
+
+    public void setCover(ItemStack stack) {
+        coverStack = stack.copyWithCount(1);
+        setChanged();
+    }
+
+    public ItemStack takeCover() {
+        ItemStack stack = coverStack;
+        coverStack = ItemStack.EMPTY;
+        setChanged();
+        return stack;
     }
 
     public boolean hasOutput() {
@@ -180,6 +196,7 @@ public class MeatmincerBlockEntity extends BlockEntity {
     }
 
     public void unseal(Player player) {
+        boolean wasSealed = sealed;
         sealed = false;
         working = false;
         processTick = 0;
@@ -201,13 +218,10 @@ public class MeatmincerBlockEntity extends BlockEntity {
             }
         }
 
-        ItemStack cover = getCoverDrop();
-        if (!player.isCreative()) {
-            if (!player.getInventory().add(cover)) {
-                player.drop(cover, false);
-            }
+// 盖子常态留在机器上，不再随开盖返还；旧存档没有盖子记录时补一个留在机器上
+        if (coverStack.isEmpty() && wasSealed) {
+            coverStack = getCoverDrop();
         }
-
         setChanged();
     }
 
@@ -296,6 +310,9 @@ public class MeatmincerBlockEntity extends BlockEntity {
         tag.put("Inventory", inventory.serializeNBT(reg));
         tag.putBoolean("Sealed", sealed);
         tag.putBoolean("Working", working);
+        if (!coverStack.isEmpty()) {
+            tag.put("Cover", coverStack.saveOptional(reg));
+        }
         tag.putInt("ProcessTick", processTick);
         tag.putInt("TotalProcessTime", totalProcessTime);
         tag.putInt("PendingResultTotal", pendingResultTotal);
@@ -321,6 +338,9 @@ public class MeatmincerBlockEntity extends BlockEntity {
         inventory.deserializeNBT(reg, inventoryTag);
         sealed = tag.getBoolean("Sealed");
         working = tag.getBoolean("Working");
+        coverStack = tag.contains("Cover")
+                ? ItemStack.parseOptional(reg, tag.getCompound("Cover"))
+                : ItemStack.EMPTY;
         processTick = tag.getInt("ProcessTick");
         totalProcessTime = tag.getInt("TotalProcessTime");
         if (totalProcessTime <= 0) totalProcessTime = DEFAULT_PROCESS_TIME;

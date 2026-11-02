@@ -1558,7 +1558,7 @@ public static final DeferredItem<BlockItem> COCONUTJUICE = BLOCK_ITEMS.register(
 
     public static final BlockEntry<AgriculturalAppraisalMachineBlock> AGRICULTURALAPPRAISALMACHINE = REGISTRATE
             .block("agriculturalappraisalmachine", AgriculturalAppraisalMachineBlock::new)
-            .properties(properties -> properties.strength(1.5f).sound(SoundType.METAL).noOcclusion())
+            .properties(properties -> properties.strength(0.5f).sound(SoundType.METAL).noOcclusion())
             .setData(ProviderType.BLOCKSTATE, (ctx, provider) -> {})
             .item((block, properties) -> new TooltipBlockItem(block, properties,
                     Component.translatable("tooltip.flavor_immersed_daily.agriculturalappraisalmachine"), java.util.List::of))
@@ -1567,14 +1567,14 @@ public static final DeferredItem<BlockItem> COCONUTJUICE = BLOCK_ITEMS.register(
 
     public static final BlockEntry<FridgeBlock> FRIDGE = REGISTRATE
             .block("fridge", FridgeBlock::new)
-            .properties(properties -> properties.strength(1.5f).sound(SoundType.METAL).noOcclusion())
+            .properties(properties -> properties.strength(0.5f).sound(SoundType.METAL).noOcclusion())
             .setData(ProviderType.BLOCKSTATE, (ctx, provider) -> {})
             .item().build()
             .register();
 
     public static final BlockEntry<EggBreakingMachineBlock> EGGBREAKINGMACHINE = REGISTRATE
             .block("eggbreakingmachine", EggBreakingMachineBlock::new)
-            .properties(properties -> properties.strength(1.5f).sound(SoundType.METAL).noOcclusion())
+            .properties(properties -> properties.strength(0.5f).sound(SoundType.METAL).noOcclusion())
             .setData(ProviderType.BLOCKSTATE, (ctx, provider) -> {})
             .loot((loot, block) -> loot.dropSelf(block))
             .item()

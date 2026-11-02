@@ -46,3 +46,6 @@ hs_err_pid*.log
 ### Build Logs ###
 build_*.txt
 full_build*.txt
+
+### AI workspace ###
+.trae/

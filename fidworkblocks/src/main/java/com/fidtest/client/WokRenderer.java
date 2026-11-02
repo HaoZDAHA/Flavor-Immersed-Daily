@@ -39,12 +39,16 @@ public class WokRenderer implements BlockEntityRenderer<WokBlockEntity> {
     public void render(WokBlockEntity be, float partialTick, PoseStack poseStack,
                        MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
         List<ItemStack> items = be.getStoredItems();
-        if (items.isEmpty()) return;
+        if (items.isEmpty() && !be.hasSpatula()) return;
 
         float yRot = 0;
         if (be.getLevel() != null) {
             Direction facing = be.getBlockState().getValue(WokBlock.FACING);
             yRot = -facing.toYRot();
+        }
+
+        if (be.hasSpatula()) {
+            renderSpatula(be, poseStack, bufferSource, packedLight, packedOverlay, yRot);
         }
 
         boolean tossing = be.getTossTicks() > 0;
@@ -82,6 +86,21 @@ public class WokRenderer implements BlockEntityRenderer<WokBlockEntity> {
             poseStack.popPose();
         }
 
+        poseStack.popPose();
+    }
+
+// 常态搁在锅上的锅铲：斜躺在锅口，手柄朝向玩家
+    private void renderSpatula(WokBlockEntity be, PoseStack poseStack, MultiBufferSource bufferSource,
+                               int packedLight, int packedOverlay, float yRot) {
+        poseStack.pushPose();
+        poseStack.translate(0.5, WOK_BOTTOM + 0.16F, 0.5);
+        poseStack.mulPose(Axis.YP.rotationDegrees(yRot));
+        poseStack.mulPose(Axis.ZP.rotationDegrees(12));
+        poseStack.mulPose(Axis.XP.rotationDegrees(90));
+        poseStack.scale(0.55F, 0.55F, 0.55F);
+        itemRenderer.renderStatic(be.getSpatula(),
+                net.minecraft.world.item.ItemDisplayContext.FIXED,
+                packedLight, packedOverlay, poseStack, bufferSource, be.getLevel(), 0);
         poseStack.popPose();
     }
 }

@@ -149,25 +149,48 @@ public class EggBreakingMachineBlockEntity extends BlockEntity {
         setChanged();
     }
 
+// 立即停止加工并复位，用于机器已没有实际加工内容时关掉搅拌声
+    public void stopProcessing() {
+        if (progress == 0 && totalTime == 0) return;
+        progress = 0;
+        totalTime = 0;
+        if (level != null && !level.isClientSide()) {
+            BlockState current = getBlockState();
+            if (current.getValue(EggBreakingMachineBlock.STAGE) != 0) {
+                level.setBlock(worldPosition, current.setValue(EggBreakingMachineBlock.STAGE, 0), 3);
+            }
+        }
+        setChanged();
+    }
+
 // Ticks
 
     public static void serverTick(Level level, BlockPos pos, BlockState state, EggBreakingMachineBlockEntity be) {
-        if (be.totalTime > 0) {
-            be.progress++;
+        if (be.totalTime <= 0) return;
+
+// 没有产物或方块已不在加工状态时立即收尾，避免搅拌声一直播放
+        if (be.processingResults.isEmpty() || state.getValue(EggBreakingMachineBlock.STAGE) != 1) {
+            be.stopProcessing();
+            return;
+        }
+
+        be.progress++;
 
 // 每 5 tick 播放搅拌声
-            if (be.progress % 5 == 0) {
-                level.playSound(null, pos, SoundEvents.BREWING_STAND_BREW, SoundSource.BLOCKS, 0.5f, 1.0f);
-            }
-
-            if (be.progress >= be.totalTime) {
-                be.spawnResults(level, pos);
-                be.progress = 0;
-                be.totalTime = 0;
-                level.setBlock(pos, state.setValue(EggBreakingMachineBlock.STAGE, 0), 3);
-            }
-            be.setChanged();
+        if (be.progress % 5 == 0) {
+            level.playSound(null, pos, SoundEvents.BREWING_STAND_BREW, SoundSource.BLOCKS, 0.5f, 1.0f);
         }
+
+        if (be.progress >= be.totalTime) {
+            be.spawnResults(level, pos);
+            be.progress = 0;
+            be.totalTime = 0;
+            BlockState current = level.getBlockState(pos);
+            if (current.getValue(EggBreakingMachineBlock.STAGE) != 0) {
+                level.setBlock(pos, current.setValue(EggBreakingMachineBlock.STAGE, 0), 3);
+            }
+        }
+        be.setChanged();
     }
 
     public static void clientTick(Level level, BlockPos pos, BlockState state, EggBreakingMachineBlockEntity be) {
@@ -204,6 +227,10 @@ public class EggBreakingMachineBlockEntity extends BlockEntity {
 
 // 掉落所有物品（加工结果 + 库存）
     public void dropAllItems(Level level, BlockPos pos) {
+// 机器被破坏时一并清掉加工状态，避免残留的工作音效
+        progress = 0;
+        totalTime = 0;
+
 // 加工结果
         for (ItemStack stack : processingResults) {
             if (!stack.isEmpty()) {

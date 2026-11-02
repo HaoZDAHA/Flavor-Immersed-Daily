@@ -2,9 +2,6 @@ package com.flavor_immersed_daily.block.block.fruit;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
@@ -217,11 +214,7 @@ public class GrapeBlock extends Block implements SimpleWaterloggedBlock, Bonemea
     protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
         if (!state.is(newState.getBlock())) {
             if (!level.isClientSide) {
-// 掉落作物架 + 对应种子
-                Item trellisItem = BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("flavor_immersed_daily", "trellis"));
-                if (trellisItem != null) {
-                    popResource(level, pos, new ItemStack(trellisItem));
-                }
+// 作物架由战利品表掉落，这里只补掉对应种子，避免重复掉落作物架
                 ItemLike seed = seedSupplier.get();
                 if (seed != null) {
                     popResource(level, pos, new ItemStack(seed));

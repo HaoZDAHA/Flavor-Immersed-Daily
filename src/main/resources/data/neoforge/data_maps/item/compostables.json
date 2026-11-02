@@ -42,7 +42,6 @@
     "flavor_immersed_daily:rawsheepblood": { "chance": 1 },
     "flavor_immersed_daily:rawdicedsheepmeat": { "chance": 1 },
     "flavor_immersed_daily:rawsheepface": { "chance": 1 },
-    "flavor_immersed_daily:rawsheeptailfat": { "chance": 1 },
     "flavor_immersed_daily:rawsheepfat": { "chance": 1 },
     "flavor_immersed_daily:rawsheepeye": { "chance": 1 },
     "flavor_immersed_daily:rawsheepstomach": { "chance": 1 },

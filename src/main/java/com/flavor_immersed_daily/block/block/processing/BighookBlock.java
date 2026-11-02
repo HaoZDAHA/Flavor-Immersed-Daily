@@ -11,11 +11,13 @@ import com.flavor_immersed_daily.config.Config;
 import com.flavor_immersed_daily.gameplay.BighookCarryHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -78,7 +80,7 @@ public class BighookBlock extends Block implements SimpleWaterloggedBlock, Entit
                         Supplier<? extends Item> deadPig, Supplier<? extends Item> deadChicken,
                         Supplier<? extends Item> pluckedChicken, Supplier<? extends Item> bledChicken) {
         super(BlockBehaviour.Properties.of()
-                .strength(2.0f, 6.0f)
+                .strength(0.5f, 6.0f)
                 .noOcclusion()
                 .noCollission());
         this.deadCattle = deadCattle;
@@ -198,11 +200,7 @@ public class BighookBlock extends Block implements SimpleWaterloggedBlock, Entit
 // 鸡特殊：stage2 右键取回
         if (animal == 4 && stage == 2) {
             if (!level.isClientSide) {
-                level.setBlock(pos, state.setValue(STAGE, 0).setValue(ANIMAL, 0), 3);
-                ItemEntity entity = new ItemEntity(level,
-                        pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
-                        new ItemStack(bledChicken.get()));
-                level.addFreshEntity(entity);
+                takeBledChicken(level, pos, state, player);
             }
             return ItemInteractionResult.sidedSuccess(level.isClientSide);
         }
@@ -250,6 +248,11 @@ public class BighookBlock extends Block implements SimpleWaterloggedBlock, Entit
             }
         }
 
+// 有动物但手持工具不对：提示当前阶段该用什么（不拦截交互，仍可正常放方块）
+        if (animal != 0 && stage >= 1 && stage <= 6 && !level.isClientSide) {
+            showHint(player, animal, stage);
+        }
+
         return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
     }
 
@@ -260,6 +263,7 @@ public class BighookBlock extends Block implements SimpleWaterloggedBlock, Entit
                 stack.shrink(1);
             }
             level.setBlock(pos, state.setValue(STAGE, startStage).setValue(ANIMAL, animalType), 3);
+            showHint(player, animalType, startStage);
         }
         return ItemInteractionResult.sidedSuccess(level.isClientSide);
     }
@@ -269,8 +273,62 @@ public class BighookBlock extends Block implements SimpleWaterloggedBlock, Entit
         if (!level.isClientSide) {
             spawnDrops(level, pos, animal, stage);
             level.setBlock(pos, state.setValue(STAGE, stage + 1), 3);
+            showHint(player, animal, stage + 1);
         }
         return ItemInteractionResult.sidedSuccess(level.isClientSide);
+    }
+
+// 空手右键：取回放血后的鸡（与手持物品右键等价）
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos,
+                                               Player player, BlockHitResult hitResult) {
+        if (!(level.getBlockEntity(pos) instanceof BighookBlockEntity be)) {
+            return super.useWithoutItem(state, level, pos, player, hitResult);
+        }
+        if (be.hasCarried()) {
+            if (!level.isClientSide) {
+                be.releaseCarried();
+            }
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        }
+        if (state.getValue(ANIMAL) == 4 && state.getValue(STAGE) == 2) {
+            if (!level.isClientSide) {
+                takeBledChicken(level, pos, state, player);
+            }
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        }
+// 空手但还不到取回阶段：提示该怎么继续处理
+        int animal = state.getValue(ANIMAL);
+        int stage = state.getValue(STAGE);
+        if (animal != 0 && stage >= 1 && stage <= 6 && !level.isClientSide) {
+            showHint(player, animal, stage);
+        }
+        return super.useWithoutItem(state, level, pos, player, hitResult);
+    }
+
+    private void takeBledChicken(Level level, BlockPos pos, BlockState state, Player player) {
+        level.setBlock(pos, state.setValue(STAGE, 0).setValue(ANIMAL, 0), 3);
+        ItemEntity entity = new ItemEntity(level,
+                pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+                new ItemStack(bledChicken.get()));
+        level.addFreshEntity(entity);
+        player.displayClientMessage(Component.translatable("message.flavor_immersed_daily.bled_chicken_taken"), true);
+    }
+
+// 按当前阶段提示下一步该用的工具
+    private void showHint(Player player, int animal, int stage) {
+        String key = switch (stage) {
+            case 1 -> "message.flavor_immersed_daily.hook_hint_bleed";
+            case 2 -> animal == 4
+                    ? "message.flavor_immersed_daily.hook_hint_take_bled_chicken"
+                    : "message.flavor_immersed_daily.hook_hint_cut";
+            case 3 -> "message.flavor_immersed_daily.hook_hint_bone";
+            case 4, 5 -> "message.flavor_immersed_daily.hook_hint_cut";
+            default -> null;
+        };
+        if (key != null) {
+            player.displayClientMessage(Component.translatable(key), true);
+        }
     }
 
 // 从config弄掉落物，玩家可以自行添加哦

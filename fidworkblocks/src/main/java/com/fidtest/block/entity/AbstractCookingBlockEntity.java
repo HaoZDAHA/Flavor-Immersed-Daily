@@ -97,10 +97,12 @@ public abstract class AbstractCookingBlockEntity extends BlockEntity implements 
                 be.cookRecipe(recipe.value());
                 dirty = true;
             } else {
+// 先按当前配方同步总时间，再累加进度：cookingTotalTime 初始为 0，
+// 若在累加后才赋值，首件物品会因 1 >= 0 立即完成而不消耗加工时间
+                be.cookingTotalTime = recipe.value().getCookingTime();
                 be.cookingProgress++;
                 if (be.cookingProgress >= be.cookingTotalTime) {
                     be.cookingProgress = 0;
-                    be.cookingTotalTime = recipe.value().getCookingTime();
                     be.cookRecipe(recipe.value());
                     dirty = true;
                 }

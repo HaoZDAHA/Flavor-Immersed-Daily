@@ -2,7 +2,7 @@
   "type": "fidworkblock:cooking",
   "appliance": "squeezingmachine",
   "ingredients": [
-    { "item": "minecraft:melon" }
+    { "item": "minecraft:melon_slice" }
   ],
   "result": {
     "id": "flavor_immersed_daily:watermelonjam",

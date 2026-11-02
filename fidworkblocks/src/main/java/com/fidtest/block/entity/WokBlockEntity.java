@@ -48,6 +48,8 @@ public class WokBlockEntity extends BlockEntity {
     private int stirCount = 0;
     private int tossTicks = 0;
     private String seasoningName = "";
+// 常态搁在锅上的锅铲（存储用，不参与炒菜判定）
+    private ItemStack storedSpatula = ItemStack.EMPTY;
 
     public WokBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.WOK.get(), pos, state);
@@ -59,6 +61,22 @@ public class WokBlockEntity extends BlockEntity {
     public int getTossTicks() { return tossTicks; }
     public String getSeasoningName() { return seasoningName; }
     public void setSeasoningName(String name) { this.seasoningName = name; }
+
+    public boolean hasSpatula() { return !storedSpatula.isEmpty(); }
+
+    public ItemStack getSpatula() { return storedSpatula; }
+
+    public void setSpatula(ItemStack stack) {
+        this.storedSpatula = stack.copyWithCount(1);
+        syncToClient();
+    }
+
+    public ItemStack takeSpatula() {
+        ItemStack stack = storedSpatula;
+        storedSpatula = ItemStack.EMPTY;
+        syncToClient();
+        return stack;
+    }
 
     public int getItemCount() {
         int count = 0;
@@ -191,6 +209,9 @@ public class WokBlockEntity extends BlockEntity {
         tag.put("Inventory", inventory.serializeNBT(reg));
         tag.putInt("StirCount", stirCount);
         tag.putInt("TossTicks", tossTicks);
+        if (!storedSpatula.isEmpty()) {
+            tag.put("Spatula", storedSpatula.saveOptional(reg));
+        }
     }
 
     @Override
@@ -203,6 +224,9 @@ public class WokBlockEntity extends BlockEntity {
         inventory.deserializeNBT(reg, inventoryTag);
         stirCount = tag.getInt("StirCount");
         tossTicks = tag.getInt("TossTicks");
+        storedSpatula = tag.contains("Spatula")
+                ? ItemStack.parseOptional(reg, tag.getCompound("Spatula"))
+                : ItemStack.EMPTY;
     }
 
     @Override

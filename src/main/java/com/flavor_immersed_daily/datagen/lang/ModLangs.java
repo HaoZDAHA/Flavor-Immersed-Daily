@@ -50,8 +50,6 @@ public final class ModLangs {
         provider.add("effect.flavor_immersed_daily.acetic_erosion.description", "Melee attacks deal 1 extra durability damage to each piece of the target's armor.");
         provider.add("effect.flavor_immersed_daily.butter_pitcher", "Butter Pitcher");
         provider.add("effect.flavor_immersed_daily.butter_pitcher.description", "Projectiles have a 25% chance to freeze non-player, non-boss targets for 5 seconds.");
-        provider.add("effect.flavor_immersed_daily.frozen", "Frozen");
-        provider.add("effect.flavor_immersed_daily.frozen.description", "AI is disabled; the entity can only be attacked.");
         provider.add("effect.flavor_immersed_daily.bean_fury", "Bean Fury");
         provider.add("effect.flavor_immersed_daily.bean_fury.description", "Melee attacks can critically strike without jumping, with an increased 25% chance.");
         provider.add("effect.flavor_immersed_daily.flavor_base", "Flavor Base");

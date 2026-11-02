@@ -2,7 +2,7 @@
   "type": "fidworkblock:cooking",
   "appliance": "choppingboard",
   "ingredients": [
-    { "tag": "c:lettuce" }
+    { "item": "flavor_immersed_daily:cabbage" }
   ],
   "result": {
     "id": "flavor_immersed_daily:cutcabbage",

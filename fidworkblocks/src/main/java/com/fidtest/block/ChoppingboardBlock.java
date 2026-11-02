@@ -1,6 +1,7 @@
 package com.fidtest.block;
 
 import com.fidtest.block.entity.ChoppingboardBlockEntity;
+import com.fidtest.choppingboard.ChoppingboardMobRegistry;
 import com.fidtest.registration.ModBlockEntities;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
@@ -117,6 +118,17 @@ public class ChoppingboardBlock extends BaseEntityBlock {
         }
 
         if (heldItem.isEmpty()) {
+// 副手持刀：空手右键时优先继续切砧板上的食材（切完或没有配方时才走取回）
+            if (hand == InteractionHand.MAIN_HAND) {
+                ItemStack offhandKnife = player.getOffhandItem();
+                if (ChoppingboardBlockEntity.isKnife(offhandKnife) && !board.getStoredItem().isEmpty()) {
+                    if (level.isClientSide) return ItemInteractionResult.SUCCESS;
+                    if (board.processChop(offhandKnife, player)
+                            || board.processWithTool(offhandKnife, player)) {
+                        return ItemInteractionResult.SUCCESS;
+                    }
+                }
+            }
             if (board.isEmpty()) {
                 return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
             }
@@ -182,15 +194,21 @@ public class ChoppingboardBlock extends BaseEntityBlock {
 
         if (board.canAddItem(heldItem)) {
             if (level.isClientSide) return ItemInteractionResult.SUCCESS;
-            ItemStack remainder = board.addItem(heldItem.copyWithCount(1));
-            if (!remainder.isEmpty() && !player.isCreative()) {
+// 整组食材一次放上砧板，之后每刀切 1 个；屠宰用小型生物仍只放 1 个（刀数按单个推进）
+            ItemStack toAdd = heldItem.copy();
+            if (ChoppingboardMobRegistry.getByInput(toAdd.getItem()) != null) {
+                toAdd.setCount(1);
+            }
+            ItemStack remainder = board.addItem(toAdd);
+            int inserted = toAdd.getCount() - remainder.getCount();
+            if (inserted <= 0) {
                 return ItemInteractionResult.SUCCESS;
             }
             if (!player.isCreative()) {
-                heldItem.shrink(1);
+                heldItem.shrink(inserted);
             }
             if (ChoppingboardBlockEntity.RAW_PIE_ID.equals(
-                    heldItem.getItem().builtInRegistryHolder().key().location())) {
+                    toAdd.getItem().builtInRegistryHolder().key().location())) {
                 player.displayClientMessage(Component.literal("馅饼放好了，用月饼模具右键制作月饼"), true);
             }
             level.playSound(null, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1.0F, 0.8F);
@@ -204,6 +222,19 @@ public class ChoppingboardBlock extends BaseEntityBlock {
 
         if (board.processWithTool(heldItem, player)) {
             return ItemInteractionResult.SUCCESS;
+        }
+
+// 副手持刀：主手放置菜品后，可直接用副手的刀继续切割/屠宰
+        if (hand == InteractionHand.MAIN_HAND) {
+            ItemStack offhand = player.getOffhandItem();
+            if (!ChoppingboardBlockEntity.isKnife(heldItem) && ChoppingboardBlockEntity.isKnife(offhand)) {
+                if (board.processChop(offhand, player)) {
+                    return ItemInteractionResult.SUCCESS;
+                }
+                if (board.processWithTool(offhand, player)) {
+                    return ItemInteractionResult.SUCCESS;
+                }
+            }
         }
 
 // 手持物品时绝不取出砧板上的东西：取出只属于空手右键

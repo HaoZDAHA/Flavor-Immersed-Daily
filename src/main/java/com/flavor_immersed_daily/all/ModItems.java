@@ -30,11 +30,13 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.function.BooleanSupplier;
@@ -1142,8 +1144,15 @@ public final class ModItems {
     public static final DeferredItem<Item> SORBET = item("sorbet");
 // 肠衣
     public static final DeferredItem<Item> CASING = item("casing");
-// 蜂窝煤
-    public static final DeferredItem<Item> HONEYCOMBBRIQUET = item("honeycombbriquet");
+// 蜂窝煤：燃烧 800 tick（可烧炼 4 个物品）。燃烧时间直接在此声明，
+// 由物品本身返回，优先于燃料数据图，保证放入熔炉即可燃烧。
+    public static final DeferredItem<Item> HONEYCOMBBRIQUET = REGISTRY.register("honeycombbriquet",
+            () -> new Item(new Item.Properties()) {
+                @Override
+                public int getBurnTime(ItemStack stack, @Nullable RecipeType<?> recipeType) {
+                    return 800;
+                }
+            });
 // 麸
     public static final DeferredItem<Item> BRAN = item("bran");
 // 木薯珍珠
@@ -1492,12 +1501,6 @@ public final class ModItems {
 // 包子
     public static final DeferredItem<Item> COOKED_BAOZI = filledFood("cooked_baozi", 6, 0.6f);
 
-// 雪花肥牛卷
-    public static final DeferredItem<Item> FATBEEFROLL = food("fatbeefroll", 1, 0.6f);
-
-// 羔羊嫩肉卷
-    public static final DeferredItem<Item> LAMBROLL = food("lambroll", 1, 0.6f);
-
 // 挂上面糊的蘑菇
     public static final DeferredItem<Item> MUSHROOMSWRAPPEDINBATTER = REGISTRY.register("mushroomswrappedinbatter", () -> new Item(new Item.Properties()));
 
@@ -1524,9 +1527,6 @@ public final class ModItems {
 
 // 馄饨
     public static final DeferredItem<Item> WONTON = filledFood("wonton", 6, 0.6f);
-
-// 火锅肉卷
-    public static final DeferredItem<Item> NORMALMEATROLL = food("normalmeatroll", 1, 0.6f);
 
 // 焦糖玉米粒
     public static final DeferredItem<Item> CARAMELCORNKENNELS = REGISTRY.register("caramelcornkennels", () -> new Item(new Item.Properties()));
@@ -1653,9 +1653,6 @@ public final class ModItems {
     public static final DeferredItem<Item> THICKBROADBEANSAUCE = REGISTRY.register("thickbroadbeansauce", () -> new SeasoningItem(
             new Item.Properties(), () -> ModEffects.BEAN_FURY, () -> Config.beanFuryEnabled));
 
-// 番茄火锅底料
-    public static final DeferredItem<Item> TOMATO_HOT_POT_BASE = REGISTRY.register("tomato_hot_pot_base", () -> new Item(new Item.Properties()));
-
 // 骨汤精华
     public static final DeferredItem<Item> BONESOUPESSENCE = REGISTRY.register("bonesoupessence", () -> new Item(new Item.Properties()));
 
@@ -1676,9 +1673,6 @@ public final class ModItems {
 // 卤料包
     public static final DeferredItem<Item> HALOGENBAG = REGISTRY.register("halogenbag", () -> new Item(new Item.Properties()));
 
-// 麻辣火锅底料
-    public static final DeferredItem<Item> SPICY_HOT_POT_BASE = REGISTRY.register("spicy_hot_pot_base", () -> new Item(new Item.Properties()));
-
 // 麻汁
     public static final DeferredItem<Item> MAJUICE = REGISTRY.register("majuice", () -> new Item(new Item.Properties()));
 
@@ -1687,9 +1681,6 @@ public final class ModItems {
 
 // 食用油
     public static final DeferredItem<Item> COOKINGOIL = REGISTRY.register("cookingoil", () -> new Item(new Item.Properties()));
-
-// 藤椒火锅底料
-    public static final DeferredItem<Item> PEPPER_HOT_POT_BASE = REGISTRY.register("pepper_hot_pot_base", () -> new Item(new Item.Properties()));
 
 // 甜面酱
     public static final DeferredItem<Item> SWEETFLOURASUVE = REGISTRY.register("sweetflourasuve", () -> new Item(new Item.Properties()));
@@ -1783,25 +1774,25 @@ public final class ModItems {
                     Component.translatable("tooltip.flavor_immersed_daily.chicken_without_blood"), ModItems::chickenBloodIcons));
 
 // 切割刀
-    public static final DeferredItem<Item> SHARPKNIFE = REGISTRY.register("sharpknife", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SHARPKNIFE = REGISTRY.register("sharpknife", () -> new Item(new Item.Properties().stacksTo(1)));
 
 // 宽刃刀
-    public static final DeferredItem<Item> WIDEEDGEDKNIFE = REGISTRY.register("wideedgedknife", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> WIDEEDGEDKNIFE = REGISTRY.register("wideedgedknife", () -> new Item(new Item.Properties().stacksTo(1)));
 
 // 创造模式标签页图标（贴图 item/all.png，只做图标，不进任何创造栏）
     public static final DeferredItem<Item> ALL = item("all");
 
 // 斩骨刀
-    public static final DeferredItem<Item> BONECUTTERKNIFE = REGISTRY.register("bonecutterknife", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> BONECUTTERKNIFE = REGISTRY.register("bonecutterknife", () -> new Item(new Item.Properties().stacksTo(1)));
 
 // 菜刀
-    public static final DeferredItem<Item> KITCHENKNIFE = REGISTRY.register("kitchenknife", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> KITCHENKNIFE = REGISTRY.register("kitchenknife", () -> new Item(new Item.Properties().stacksTo(1)));
 
 // 除草剪刀
     public static final DeferredItem<Item> KITCHENSCISSOR = REGISTRY.register("kitchenscissor", () -> new KitchenScissorsItem(new Item.Properties()));
 
 // 锅铲
-    public static final DeferredItem<Item> SPATULA = REGISTRY.register("spatula", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SPATULA = REGISTRY.register("spatula", () -> new Item(new Item.Properties().stacksTo(1)));
 
 // 木槌
     public static final DeferredItem<Item> MALLET = REGISTRY.register("mallet", () -> new CoarseClothItem(new Item.Properties()));
@@ -2438,10 +2429,6 @@ public final class ModItems {
     public static final DeferredItem<Item> RAWSHEEPFACE = REGISTRY.register("rawsheepface",
             () -> new Item(new Item.Properties()));
 
-// 生羊尾油
-    public static final DeferredItem<Item> RAWSHEEPTAILFAT = REGISTRY.register("rawsheeptailfat",
-            () -> new Item(new Item.Properties()));
-
 // 生羊油
     public static final DeferredItem<Item> RAWSHEEPFAT = REGISTRY.register("rawsheepfat",
             () -> new Item(new Item.Properties()));
@@ -3062,15 +3049,6 @@ public final class ModItems {
                             .alwaysEdible()
                             .build())));
 
-// 烤鸡排
-    public static final DeferredItem<Item> COOKEDCHICKENSTEAK = REGISTRY.register("cookedchickensteak",
-            () -> new Item(new Item.Properties()
-                    .food(new FoodProperties.Builder()
-                            .nutrition(6)
-                            .saturationModifier(0.8f)
-                            .alwaysEdible()
-                            .build())));
-
 // 烤鸡叉骨
     public static final DeferredItem<Item> COOKEDCHICKENFORK = REGISTRY.register("cookedchickenfork",
             () -> new Item(new Item.Properties()
@@ -3437,9 +3415,6 @@ public final class ModItems {
 
 // 熟鸡大腿
     public static final DeferredItem<Item> COOKEDHALFOFCHCIKENLEG = REGISTRY.register("cookedhalfofchcikenleg", () -> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(7).saturationModifier(0.6f).alwaysEdible().build())));
-
-// 熟猪五花肉
-    public static final DeferredItem<Item> COOKEDPIGSTREAKMEAT = REGISTRY.register("cookedpigstreakmeat", () -> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.7f).alwaysEdible().build())));
 
 // 干豆腐皮
     public static final DeferredItem<Item> DRIED_TOFU_SKIN = REGISTRY.register("dried_tofu_skin", () -> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.4f).alwaysEdible().build())));

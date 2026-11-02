@@ -16,7 +16,6 @@ public final class ModEffects {
     public static final DeferredHolder<MobEffect, SesameSlipEffect> SESAME_SLIP = REGISTRY.register("sesame_slip", SesameSlipEffect::new);
     public static final DeferredHolder<MobEffect, AceticErosionEffect> ACETIC_EROSION = REGISTRY.register("acetic_erosion", AceticErosionEffect::new);
     public static final DeferredHolder<MobEffect, ButterPitcherEffect> BUTTER_PITCHER = REGISTRY.register("butter_pitcher", ButterPitcherEffect::new);
-    public static final DeferredHolder<MobEffect, FrozenEffect> FROZEN = REGISTRY.register("frozen", FrozenEffect::new);
     public static final DeferredHolder<MobEffect, BeanFuryEffect> BEAN_FURY = REGISTRY.register("bean_fury", BeanFuryEffect::new);
     public static final DeferredHolder<MobEffect, FlavorBaseEffect> FLAVOR_BASE = REGISTRY.register("flavor_base", FlavorBaseEffect::new);
     public static final DeferredHolder<MobEffect, SolarBrewEffect> SOLAR_BREW = REGISTRY.register("solar_brew", SolarBrewEffect::new);
