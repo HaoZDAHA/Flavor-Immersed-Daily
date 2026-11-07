@@ -5,6 +5,7 @@ import com.fidtest.registration.ModBlockEntities;
 import com.fidtest.registration.ModBlocks;
 import com.fidtest.registration.ModItems;
 import com.fidtest.registration.ModMenuTypes;
+import com.fidtest.network.ChopsticksEatPayload;
 import com.fidtest.network.DishNamePayload;
 import com.fidtest.network.DishOpenPayload;
 import com.fidtest.item.CowpeaSpinData;
@@ -62,6 +63,7 @@ public class ExampleMod {
 
     static {
         for (var blockEntry : ModBlocks.BLOCKS.getEntries()) {
+            if (blockEntry.getId().getPath().equals("plated_dish") || blockEntry.getId().getPath().equals("tableware")) continue;
             if (blockEntry.getId().getPath().equals("steambox")) {
                 ITEMS.register("steambox",
                     () -> new com.fidtest.item.SteamboxItem(blockEntry.get(), new Item.Properties()));
@@ -79,6 +81,10 @@ public class ExampleMod {
                     .displayItems((params, output) -> {
                         if (ModList.get().isLoaded("flavor_immersed_daily")) return;
                         output.accept(ModItems.STARTBOOK.get());
+                        output.accept(ModItems.PLATE.get());
+                        output.accept(ModItems.LONG_PLATE.get());
+                        output.accept(ModItems.SMALL_PLATE.get());
+                        output.accept(ModItems.CHOPSTICKS.get());
                         output.accept(ModBlocks.STEAMBOX.get());
                         output.accept(ModBlocks.WOK.get());
                         output.accept(ModBlocks.PRESSURECOOKER.get());
@@ -154,6 +160,13 @@ public class ExampleMod {
 
     private void registerPayloads(RegisterPayloadHandlersEvent event) {
         PayloadRegistrar registrar = event.registrar("1");
+        registrar.playToClient(
+                ChopsticksEatPayload.TYPE,
+                ChopsticksEatPayload.STREAM_CODEC,
+                (payload, context) -> context.enqueueWork(() -> {
+                    NeoForge.EVENT_BUS.post(new ChopsticksEatPayload.ReceivedEvent(payload.slot(), payload.bite(), payload.food()));
+                })
+        );
         registrar.playToServer(
                 DishNamePayload.TYPE,
                 DishNamePayload.STREAM_CODEC,

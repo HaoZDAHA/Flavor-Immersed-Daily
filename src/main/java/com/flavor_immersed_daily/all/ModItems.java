@@ -1647,11 +1647,11 @@ public final class ModItems {
 
 // 食醋
     public static final DeferredItem<Item> VINEGAR = REGISTRY.register("vinegar", () -> new SeasoningItem(
-            new Item.Properties(), () -> ModEffects.ACETIC_EROSION, () -> Config.aceticErosionEnabled));
+            new Item.Properties(), () -> ModEffects.ACETIC_EROSION, () -> Config.aceticErosionEnabled, SeasoningItem.SeasoningType.WET, 0x71351F));
 
 // 豆瓣酱
     public static final DeferredItem<Item> THICKBROADBEANSAUCE = REGISTRY.register("thickbroadbeansauce", () -> new SeasoningItem(
-            new Item.Properties(), () -> ModEffects.BEAN_FURY, () -> Config.beanFuryEnabled));
+            new Item.Properties(), () -> ModEffects.BEAN_FURY, () -> Config.beanFuryEnabled, SeasoningItem.SeasoningType.WET, 0x963C27));
 
 // 骨汤精华
     public static final DeferredItem<Item> BONESOUPESSENCE = REGISTRY.register("bonesoupessence", () -> new Item(new Item.Properties()));
@@ -1661,11 +1661,11 @@ public final class ModItems {
 
 // 黄油
     public static final DeferredItem<Item> BUTTER = REGISTRY.register("butter", () -> new SeasoningItem(
-            new Item.Properties(), () -> ModEffects.BUTTER_PITCHER, () -> Config.butterPitcherEnabled));
+            new Item.Properties(), () -> ModEffects.BUTTER_PITCHER, () -> Config.butterPitcherEnabled, SeasoningItem.SeasoningType.DRY, 0xF6DE79));
 
 // 酿造酱油
     public static final DeferredItem<Item> SOY = REGISTRY.register("soy", () -> new SeasoningItem(
-            new Item.Properties(), () -> ModEffects.SOLAR_BREW, () -> Config.solarBrewEnabled));
+            new Item.Properties(), () -> ModEffects.SOLAR_BREW, () -> Config.solarBrewEnabled, SeasoningItem.SeasoningType.WET, 0x392019));
 
 // 咖喱酱汁
     public static final DeferredItem<Item> CURRY = REGISTRY.register("curry", () -> new Item(new Item.Properties()));
@@ -1687,11 +1687,11 @@ public final class ModItems {
 
 // 香油
     public static final DeferredItem<Item> SESAMEOIL = REGISTRY.register("sesameoil", () -> new SeasoningItem(
-            new Item.Properties(), () -> ModEffects.SESAME_SLIP, () -> Config.sesameSlipEnabled));
+            new Item.Properties(), () -> ModEffects.SESAME_SLIP, () -> Config.sesameSlipEnabled, SeasoningItem.SeasoningType.WET, 0xC58A24));
 
 // 食用盐
     public static final DeferredItem<Item> SALT = REGISTRY.register("salt", () -> new SeasoningItem(
-            new Item.Properties(), () -> ModEffects.FLAVOR_BASE, () -> Config.flavorBaseEnabled));
+            new Item.Properties(), () -> ModEffects.FLAVOR_BASE, () -> Config.flavorBaseEnabled, SeasoningItem.SeasoningType.DRY, 0xF4F1E6));
 
 // 盐矿渣
     public static final DeferredItem<Item> SALTPIECE = REGISTRY.register("saltpiece", () -> new Item(new Item.Properties()));
@@ -1701,11 +1701,11 @@ public final class ModItems {
 
 // 八角粉
     public static final DeferredItem<Item> ANISEEDPOWDER = REGISTRY.register("aniseedpowder", () -> new SeasoningItem(
-            new Item.Properties(), () -> ModEffects.ANISEED_WARD, () -> Config.aniseedWardEnabled));
+            new Item.Properties(), () -> ModEffects.ANISEED_WARD, () -> Config.aniseedWardEnabled, SeasoningItem.SeasoningType.DRY, 0x856044));
 
 // 葱粉
     public static final DeferredItem<Item> ONIONPOWDER = REGISTRY.register("onionpowder", () -> new SeasoningItem(
-            new Item.Properties(), () -> ModEffects.HULK_LEEK, () -> Config.hulkLeekEnabled));
+            new Item.Properties(), () -> ModEffects.HULK_LEEK, () -> Config.hulkLeekEnabled, SeasoningItem.SeasoningType.DRY, 0x91AD57));
 
 // 丁香粉
     public static final DeferredItem<Item> LILACPOWDER = REGISTRY.register("lilacpowder", () -> new Item(new Item.Properties()));
@@ -1730,7 +1730,7 @@ public final class ModItems {
 
 // 辣椒粉
     public static final DeferredItem<Item> CHILLIPOWDER = REGISTRY.register("chillipowder", () -> new SeasoningItem(
-            new Item.Properties(), () -> ModEffects.FURY_ASSAULT, () -> Config.furyAssaultEnabled));
+            new Item.Properties(), () -> ModEffects.FURY_ASSAULT, () -> Config.furyAssaultEnabled, SeasoningItem.SeasoningType.DRY, 0xC43924));
 
 // 绿茶粉
     public static final DeferredItem<Item> GREENTEAPOWDER = REGISTRY.register("greenteapowder", () -> new Item(new Item.Properties()));
@@ -1873,7 +1873,7 @@ public final class ModItems {
 
 // 糖浆
     public static final DeferredItem<Item> BROWNSUGARSYRUP = REGISTRY.register("brownsugarsyrup", () -> new SeasoningItem(
-            new Item.Properties(), () -> ModEffects.CRIMSON_MAMBA, () -> true));
+            new Item.Properties(), () -> ModEffects.CRIMSON_MAMBA, () -> true, SeasoningItem.SeasoningType.WET, 0x95572A));
 
 // 盐水
     public static final DeferredItem<Item> SALTYWATER = REGISTRY.register("saltywater", () -> new Item(new Item.Properties()));

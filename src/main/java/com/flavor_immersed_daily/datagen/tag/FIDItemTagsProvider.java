@@ -29,8 +29,12 @@ public final class FIDItemTagsProvider extends ItemTagsProvider {
 
         ModItems.REGISTRY.getEntries().forEach(entry -> {
             Item item = entry.get();
-            if (item instanceof SeasoningItem) {
+            if (item instanceof SeasoningItem seasoning) {
                 tag(FIDItemTags.SEASONING).add(item);
+                tag(switch (seasoning.getSeasoningType()) {
+                    case DRY -> FIDItemTags.DRY_SEASONING;
+                    case WET -> FIDItemTags.WET_SEASONING;
+                }).add(item);
             }
         });
     }

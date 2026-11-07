@@ -89,6 +89,7 @@ public class DishItem extends Item {
         if (!chef.isEmpty()) {
             tooltipComponents.add(Component.translatable("tooltip.fidworkblock.dish_chef", chef));
         }
+        tooltipComponents.add(Component.translatable("tooltip.fidworkblock.dish_placeable").withColor(0xAAAAAA));
         tooltipComponents.add(Component.translatable("tooltip.fidworkblock.dish_hint").withColor(0x555555));
     }
 
@@ -112,6 +113,57 @@ public class DishItem extends Item {
         return 0.25F;
     }
 
+    @Override
+    public net.minecraft.world.InteractionResult useOn(net.minecraft.world.item.context.UseOnContext context) {
+        Player player = context.getPlayer();
+        if (player == null) return net.minecraft.world.InteractionResult.PASS;
+        if (player.isShiftKeyDown()) {
+            use(context.getLevel(), player, context.getHand());
+            return net.minecraft.world.InteractionResult.SUCCESS;
+        }
+        var placement = new net.minecraft.world.item.context.BlockPlaceContext(context);
+        Level level = context.getLevel();
+        var pos = placement.getClickedPos();
+        var state = com.fidtest.registration.ModBlocks.PLATED_DISH.get().defaultBlockState();
+        if (!placement.canPlace() || !level.mayInteract(player, pos)
+                || !player.mayUseItemAt(pos, placement.getClickedFace(), context.getItemInHand())
+                || !level.getWorldBorder().isWithinBounds(pos) || level.isOutsideBuildHeight(pos)
+                || !state.canSurvive(level, pos)
+                || !level.isUnobstructed(state, pos, net.minecraft.world.phys.shapes.CollisionContext.of(player))) {
+            return net.minecraft.world.InteractionResult.FAIL;
+        }
+        if (!level.isClientSide) {
+            if (!level.setBlock(pos, state, 3)) return net.minecraft.world.InteractionResult.FAIL;
+            if (level.getBlockEntity(pos) instanceof com.fidtest.block.entity.PlatedDishBlockEntity plate) {
+                plate.setDish(context.getItemInHand());
+                if (!player.getAbilities().instabuild) context.getItemInHand().shrink(1);
+            }
+            level.gameEvent(player, net.minecraft.world.level.gameevent.GameEvent.BLOCK_PLACE, pos);
+        }
+        return net.minecraft.world.InteractionResult.sidedSuccess(level.isClientSide);
+    }
+
+    public static boolean eatBite(ItemStack stack, Level level, Player player) {
+        int bites = DishFragments.data(stack).getInt("Bites");
+        if (bites >= 3) return true;
+        FoodProperties food = stack.get(DataComponents.FOOD);
+        if (food != null) {
+            int nutrition = food.nutrition() / 3 + (bites < food.nutrition() % 3 ? 1 : 0);
+            FoodProperties portion = new FoodProperties(nutrition, food.saturation() / 3F,
+                    food.canAlwaysEat(), food.eatSeconds(), Optional.empty(), food.effects());
+            player.eat(level, stack.copy(), portion);
+        }
+        return DishFragments.takeBite(stack);
+    }
+
+    @Override
+    public ItemStack finishUsingItem(ItemStack stack, Level level, net.minecraft.world.entity.LivingEntity entity) {
+        if (!level.isClientSide && entity instanceof Player player && eatBite(stack, level, player)) {
+            return ItemStack.EMPTY;
+        }
+        return stack;
+    }
+
     public static ItemStack createProceduralDish(List<ItemStack> inputs) {
         ItemStack dish = new ItemStack(com.fidtest.registration.ModItems.DISH.get());
 
@@ -133,6 +185,7 @@ public class DishItem extends Item {
             nameList.add(StringTag.valueOf(n));
         }
         wokData.put("Items", nameList);
+        DishFragments.generate(wokData, names, java.util.concurrent.ThreadLocalRandom.current().nextLong());
         wokData.putInt("Hunger", Math.max(1, totalHunger / 2));
 
         CompoundTag root = new CompoundTag();

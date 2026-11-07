@@ -12,6 +12,12 @@ public class ModBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
             DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, ExampleMod.MODID);
 
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TablewareBlockEntity>> TABLEWARE =
+            BLOCK_ENTITIES.register("tableware", () -> BlockEntityType.Builder.of(TablewareBlockEntity::new, ModBlocks.TABLEWARE.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PlatedDishBlockEntity>> PLATED_DISH =
+            BLOCK_ENTITIES.register("plated_dish", () -> BlockEntityType.Builder.of(PlatedDishBlockEntity::new, ModBlocks.PLATED_DISH.get()).build(null));
+
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SteamboxBlockEntity>> STEAMBOX =
             BLOCK_ENTITIES.register("steambox", () -> BlockEntityType.Builder.of(SteamboxBlockEntity::new, ModBlocks.STEAMBOX.get()).build(null));
 

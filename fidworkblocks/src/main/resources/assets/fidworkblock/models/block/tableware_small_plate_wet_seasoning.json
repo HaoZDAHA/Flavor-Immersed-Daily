@@ -1,0 +1,24 @@
+{
+  "texture_size": [32, 32],
+  "textures": {
+    "0": "fidworkblock:block/seasoning_white",
+    "particle": "fidworkblock:block/seasoning_white"
+  },
+  "elements": [
+    {
+      "name": "seasoning",
+      "from": [10, 1.001, 2],
+      "to": [14, 1.001, 6],
+      "rotation": {"angle": 0, "axis": "y", "origin": [11, 0, 3]},
+      "color": 8,
+      "faces": {
+        "north": {"uv": [0, 0, 2, 0], "texture": "#0"},
+        "east": {"uv": [0, 0, 2, 0], "texture": "#0"},
+        "south": {"uv": [0, 0, 2, 0], "texture": "#0"},
+        "west": {"uv": [0, 0, 2, 0], "texture": "#0"},
+        "up": {"uv": [0, 0, 2, 2], "texture": "#0"},
+        "down": {"uv": [0, 0, 2, 2], "texture": "#0"}
+      }
+    }
+  ]
+}

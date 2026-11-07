@@ -44,14 +44,31 @@ public class SeasoningItem extends Item {
 // 调味料注册名 -> 调味料物品 的懒加载映射（由 fid:seasoning 标签动态构建，无需硬编码）
     private static Map<ResourceLocation, SeasoningItem> seasoningMap;
 
+    public enum SeasoningType {
+        DRY,
+        WET
+    }
+
     private final Supplier<? extends Holder<MobEffect>> effect;
     private final BooleanSupplier enabled;
+    private final SeasoningType seasoningType;
+    private final int color;
 
     public SeasoningItem(Properties properties, Supplier<? extends Holder<MobEffect>> effect,
-                         BooleanSupplier enabled) {
+                         BooleanSupplier enabled, SeasoningType seasoningType, int color) {
         super(properties);
         this.effect = effect;
         this.enabled = enabled;
+        this.seasoningType = seasoningType;
+        this.color = color;
+    }
+
+    public SeasoningType getSeasoningType() {
+        return seasoningType;
+    }
+
+    public int getColor() {
+        return color;
     }
 
 // 应用对应 buff；受配置开关限制。返回是否成功施加（未启用时不施放）。
@@ -65,6 +82,20 @@ public class SeasoningItem extends Item {
     public Optional<TooltipComponent> getTooltipImage(ItemStack stack) {
         return Optional.of(new SeasoningTooltip(List.of(
                 new MobEffectInstance(effect.get(), DURATION_TICKS, 0))));
+    }
+
+    @SubscribeEvent
+    public static void onFoodTooltip(net.neoforged.neoforge.event.entity.player.ItemTooltipEvent event) {
+        ItemStack food = event.getItemStack();
+        if (!food.has(DataComponents.FOOD)) return;
+        String name = food.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY)
+                .copyTag().getString(SEASONING_NBT_KEY);
+        ResourceLocation id = ResourceLocation.tryParse(name);
+        if (id == null || !(BuiltInRegistries.ITEM.get(id) instanceof SeasoningItem seasoning)) return;
+        event.getToolTip().add(net.minecraft.network.chat.Component.translatable(
+                seasoning.effect.get().value().getDescriptionId())
+                .append(" (0:45)")
+                .withStyle(seasoning.effect.get().value().getCategory().getTooltipFormatting()));
     }
 
     @SubscribeEvent

@@ -1,0 +1,41 @@
+{
+  "parent": "fidworkblock:item/chopsticks",
+  "elements": [
+    {
+      "from": [9, -14, 7], "to": [11, 0, 9],
+      "rotation": {"angle": 0, "axis": "y", "origin": [9, -14, 7]},
+      "faces": {
+        "north": {"uv": [0, 7, 1, 14], "texture": "#0"},
+        "east": {"uv": [1, 7, 2, 14], "texture": "#0"},
+        "south": {"uv": [2, 7, 3, 14], "texture": "#0"},
+        "west": {"uv": [3, 7, 4, 14], "texture": "#0"},
+        "up": {"uv": [5, 1, 4, 0], "texture": "#0"},
+        "down": {"uv": [5, 1, 4, 2], "texture": "#0"}
+      }
+    },
+    {
+      "from": [9, 0, 7], "to": [11, 14, 9],
+      "rotation": {"angle": 0, "axis": "y", "origin": [9, 0, 7]},
+      "faces": {
+        "north": {"uv": [0, 7, 1, 14], "texture": "#0"},
+        "east": {"uv": [1, 7, 2, 14], "texture": "#0"},
+        "south": {"uv": [2, 7, 3, 14], "texture": "#0"},
+        "west": {"uv": [3, 7, 4, 14], "texture": "#0"},
+        "up": {"uv": [5, 1, 4, 0], "texture": "#0"},
+        "down": {"uv": [5, 1, 4, 2], "texture": "#0"}
+      }
+    },
+    {
+      "from": [9, 14, 7], "to": [11, 28, 9],
+      "rotation": {"angle": 0, "axis": "y", "origin": [9, 0, 7]},
+      "faces": {
+        "north": {"uv": [0, 0, 1, 7], "texture": "#0"},
+        "east": {"uv": [1, 0, 2, 7], "texture": "#0"},
+        "south": {"uv": [2, 0, 3, 7], "texture": "#0"},
+        "west": {"uv": [3, 0, 4, 7], "texture": "#0"},
+        "up": {"uv": [5, 1, 4, 0], "texture": "#0"},
+        "down": {"uv": [5, 1, 4, 2], "texture": "#0"}
+      }
+    }
+  ]
+}

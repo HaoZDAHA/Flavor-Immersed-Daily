@@ -12,6 +12,10 @@ import com.flavor_immersed_daily.datagen.tag.FIDItemTags;
 import com.flavor_immersed_daily.all.ModItems;
 
 import com.flavor_immersed_daily.item.FirecrackerHelper;
+import com.flavor_immersed_daily.item.SeasoningItem;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.item.Item;
+import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import com.flavor_immersed_daily.screen.CropConversionScreen;
 import com.flavor_immersed_daily.screen.EggBreakingMachineScreen;
 import com.flavor_immersed_daily.screen.FridgeScreen;
@@ -70,6 +74,16 @@ public class FlavorImmersedDailyClient {
         container.getEventBus().addListener(this::registerLayerDefinitions);
         container.getEventBus().addListener(MooncakeFillingColors::register);
         container.getEventBus().addListener(this::onBakingCompleted);
+        container.getEventBus().addListener(this::registerSeasoningColors);
+    }
+
+    private void registerSeasoningColors(RegisterColorHandlersEvent.Item event) {
+        for (Item item : BuiltInRegistries.ITEM) {
+            if (item instanceof SeasoningItem seasoning) {
+                event.register((stack, tintIndex) -> tintIndex == 100
+                        ? 0xFF000000 | seasoning.getColor() : 0xFFFFFFFF, seasoning);
+            }
+        }
     }
 
 // 模型重载完成后：让月饼馅料颜色缓存失效（纹理像素数据已变）

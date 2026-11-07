@@ -9,6 +9,8 @@ import net.minecraft.world.item.Item;
 public final class FIDItemTags {
     public static final TagKey<Item> RADISH = create("radish");
     public static final TagKey<Item> SEASONING = create("seasoning");
+    public static final TagKey<Item> DRY_SEASONING = create("dry_seasoning");
+    public static final TagKey<Item> WET_SEASONING = create("wet_seasoning");
     public static final TagKey<Item> SEEDS = create("seeds");
     public static final TagKey<Item> BLOOD = create("blood");
     public static final TagKey<Item> CHICKEN = create("chicken");

@@ -12,6 +12,12 @@ public class ModBlocks {
 
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(ExampleMod.MODID);
 
+    public static final DeferredBlock<TablewareBlock> TABLEWARE = BLOCKS.register("tableware",
+            () -> new TablewareBlock(props(MapColor.QUARTZ, SoundType.STONE).noLootTable()));
+
+    public static final DeferredBlock<PlatedDishBlock> PLATED_DISH = BLOCKS.register("plated_dish",
+            () -> new PlatedDishBlock(props(MapColor.QUARTZ, SoundType.STONE)));
+
     private static BlockBehaviour.Properties props(MapColor color, SoundType sound) {
         return BlockBehaviour.Properties.of().mapColor(color).strength(0.5F, 3.0F).sound(sound).noOcclusion();
     }

@@ -1,6 +1,7 @@
 package com.fidtest.block;
 
 import com.fidtest.block.entity.WokBlockEntity;
+import com.fidtest.item.DishItem;
 import com.fidtest.registration.ModBlockEntities;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
@@ -103,6 +104,11 @@ public class WokBlock extends BaseEntityBlock {
 
         boolean oiled = state.getValue(OILED);
 
+// 已出锅的自定义菜品禁止再次入锅炒制：直接吞掉交互，避免把菜品放到锅上或造成嵌套菜品数据
+        if (held.getItem() instanceof DishItem) {
+            return ItemInteractionResult.SUCCESS;
+        }
+
 // 锅铲：锅里有食材时只能手持锅铲翻炒，不允许放置；空锅且锅上没锅铲时可把锅铲常态搁在锅上
         if (isSpatula(held)) {
             if (wok.getItemCount() > 0) {
@@ -144,10 +150,11 @@ public class WokBlock extends BaseEntityBlock {
         if (!held.isDamageableItem() && wok.canAddItem()) {
             ItemStack single = held.copy();
             single.setCount(1);
-            wok.addItem(single);
-            if (!player.isCreative()) held.shrink(1);
-            level.playSound(null, pos, SoundEvents.LAVA_EXTINGUISH, SoundSource.BLOCKS, 0.3F, 1.5F);
-            return ItemInteractionResult.SUCCESS;
+            if (wok.addItem(single)) {
+                if (!player.isCreative()) held.shrink(1);
+                level.playSound(null, pos, SoundEvents.LAVA_EXTINGUISH, SoundSource.BLOCKS, 0.3F, 1.5F);
+                return ItemInteractionResult.SUCCESS;
+            }
         }
 
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;

@@ -90,14 +90,17 @@ public class WokBlockEntity extends BlockEntity {
         return getItemCount() < MAX_ITEMS;
     }
 
-    public void addItem(ItemStack stack) {
+    public boolean addItem(ItemStack stack) {
+// 已出锅的自定义菜品不能再次入锅，避免嵌套 WokDish 数据
+        if (stack.getItem() instanceof DishItem) return false;
         for (int i = 0; i < MAX_ITEMS; i++) {
             if (inventory.getStackInSlot(i).isEmpty()) {
                 inventory.setStackInSlot(i, stack.copy());
                 syncToClient();
-                return;
+                return true;
             }
         }
+        return false;
     }
 
     public void stirFry(@Nullable Player player) {
@@ -127,37 +130,52 @@ public class WokBlockEntity extends BlockEntity {
         String finalSeasoning = seasoningName;
 
         List<ItemStack> items = new ArrayList<>();
+        List<ItemStack> returned = new ArrayList<>();
         for (int i = 0; i < MAX_ITEMS; i++) {
             ItemStack s = inventory.getStackInSlot(i);
             if (!s.isEmpty()) {
-                items.add(s.copy());
+// 数据保护：旧存档或异常途径混入的成品菜不再参与炒制，原样退还，避免嵌套生成菜品数据
+                if (s.getItem() instanceof DishItem) {
+                    returned.add(s.copy());
+                } else {
+                    items.add(s.copy());
+                }
                 inventory.setStackInSlot(i, ItemStack.EMPTY);
             }
         }
 
-        ItemStack result = findRecipeResult(level, items);
-        boolean isProceduralDish = result == null;
-        if (isProceduralDish) {
-            result = DishItem.createProceduralDish(items);
-            DishItem.setFoodProperties(result, items, finalStirCount);
-            DishItem.setStirCount(result, finalStirCount);
-            result.set(DataComponents.CUSTOM_NAME, DishItem.getDefaultDishName(result));
+        for (ItemStack stack : returned) {
+            dropFromWok(level, pos, stack);
         }
+
+        if (!items.isEmpty()) {
+            ItemStack result = findRecipeResult(level, items);
+            if (result == null) {
+                result = DishItem.createProceduralDish(items);
+                DishItem.setFoodProperties(result, items, finalStirCount);
+                DishItem.setStirCount(result, finalStirCount);
+                result.set(DataComponents.CUSTOM_NAME, DishItem.getDefaultDishName(result));
+            }
 
 // 无论配方产物还是工序菜，都把调味料注册名写入 seasoning，供前置模组在食用时给予 buff
-        if (!finalSeasoning.isEmpty()) {
-            DishItem.setSeasoningEffect(result, finalSeasoning);
-        }
+            if (!finalSeasoning.isEmpty()) {
+                DishItem.setSeasoningEffect(result, finalSeasoning);
+            }
 
-        ItemEntity entity = new ItemEntity(level,
-                pos.getX() + 0.5, pos.getY() + 0.3, pos.getZ() + 0.5, result);
-        entity.setDefaultPickUpDelay();
-        level.addFreshEntity(entity);
+            dropFromWok(level, pos, result);
+        }
 
         stirCount = 0;
         tossTicks = 0;
         seasoningName = "";
         syncToClient();
+    }
+
+    private void dropFromWok(Level level, BlockPos pos, ItemStack stack) {
+        ItemEntity entity = new ItemEntity(level,
+                pos.getX() + 0.5, pos.getY() + 0.3, pos.getZ() + 0.5, stack);
+        entity.setDefaultPickUpDelay();
+        level.addFreshEntity(entity);
     }
 
     private ItemStack findRecipeResult(Level level, List<ItemStack> inputs) {
